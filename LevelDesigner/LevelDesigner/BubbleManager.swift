@@ -230,10 +230,9 @@ class BubbleManager: BubbleDelegate {
             print(ERROR_CANT_FIND_INDEX_OF_BUBBLE)
             return
         }
-        let specialBubblesIndexPaths: [IndexPath] = findSpecialBubbleAtNeighbour(indexPath)
-        print(specialBubblesIndexPaths)
+
         tryToPopBubble(indexPath, bubble)
-        activateSpecialBubbles(specialBubblesIndexPaths)
+        activateNeighbourSpecialBubble(indexPath)
         checkUnRootedBubble(animate: true)
         gameplayMode = GameplayMode.ready
     }
@@ -256,24 +255,26 @@ class BubbleManager: BubbleDelegate {
         }
     }
     
-    private func activateSpecialBubbles(_ specialBubblesIndexPaths: [IndexPath]) {
-        for index in specialBubblesIndexPaths {
-            guard let bubble = bubbles[index.row][index.section] else {
-                continue
-            }
-            
-            switch bubble.bubbleType {
-            case .bomb:
-                print("bomb activated")
-                print(index)
-                activeBombBubble(index)
-            case .lightning:
-                break
-            case .star:
-                break
-            case .normal:
-                break
-            }
+    private func activateNeighbourSpecialBubble(_ indexPath: IndexPath) {
+        let adjIndexPaths: [IndexPath] = findNeighbour(indexPath)
+        for index in adjIndexPaths {
+            activateSpecialBubble(index)
+        }
+    }
+    
+    private func activateSpecialBubble(_ index: IndexPath) {
+        guard let specialBubble = bubbles[index.row][index.section] else {
+            return
+        }
+        switch specialBubble.bubbleType {
+        case .bomb:
+            activeBombBubble(index)
+        case .lightning:
+            break
+        case .star:
+            break
+        case .normal:
+            break
         }
     }
     
@@ -281,21 +282,21 @@ class BubbleManager: BubbleDelegate {
         guard let bombBubble = bubbles[index.row][index.section] else {
             return
         }
+        bubbles[index.row][index.section] = nil
+        destroySpecialBubble(bombBubble)
         
         let adjIndexPaths = findNeighbour(index)
-        print("adj")
-        print(adjIndexPaths)
         for adjIndex in adjIndexPaths {
             guard let bubble = bubbles[adjIndex.row][adjIndex.section] else {
-                return
+                continue
             }
-            
-            bubbles[adjIndex.row][adjIndex.section] = nil
-            destroyRootedBubble(bubble)
+            if bubble.bubbleType == Bubble.BubbleType.normal {
+                bubbles[adjIndex.row][adjIndex.section] = nil
+                destroyRootedBubble(bubble)
+            } else {
+                activateSpecialBubble(adjIndex)
+            }
         }
-        
-        bubbles[index.row][index.section] = nil
-        destroyRootedBubble(bombBubble)
     }
 
     private func handleBubbleCollided(_ bubble: Bubble) {
@@ -320,6 +321,11 @@ class BubbleManager: BubbleDelegate {
             return true
         }
         return false
+    }
+    
+    private func destroySpecialBubble(_ bubble: Bubble) {
+        createAnimatedBubbleObject(bubble, fadeOutSpeed: BUBBLE_FADE_OUT_SPEED)
+        bubble.destroy()
     }
     
     private func destroyRootedBubble(_ bubble: Bubble) {
@@ -448,12 +454,7 @@ class BubbleManager: BubbleDelegate {
         }
         return visited
     }
-    
-    private func findSpecialBubbleAtNeighbour(_ indexPath: IndexPath) -> [IndexPath] {
-        let indexPaths = findNeighbour(indexPath)
-        return indexPaths
-    }
-    
+
     private func findNeighbour(_ indexPath: IndexPath) -> [IndexPath] {
         let row = indexPath.row
         let col = indexPath.section
