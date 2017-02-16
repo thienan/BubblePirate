@@ -9,11 +9,12 @@
 import Foundation
 import UIKit
 
-protocol CollidableObject {
+protocol PhysicObject {
     var uniqueId: Int { get }
     var isStatic: Bool { get }
     
-    func onCollide(_ other: CollidableObject)
+    
+    func onCollide(_ other: PhysicObject)
     
     func onCollideWithLeftWorldBound()
     
@@ -27,5 +28,5 @@ protocol CollidableObject {
     
     func getSphereCollider() -> SphereCollider?
     
-    func isEqual(_ other: CollidableObject) -> Bool
+    func isEqual(_ other: PhysicObject) -> Bool
 }

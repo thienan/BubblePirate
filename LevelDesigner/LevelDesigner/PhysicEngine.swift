@@ -13,59 +13,60 @@ class PhysicEngine {
     private(set) var worldBound: Bool = false
     private(set) var worldBoundRect: CGRect = CGRect.init()
     
-    init() {
+    public init() {
+        
     }
 
-    public func update(_ collidableObjects: [CollidableObject]) {
-        for collidableObject1 in collidableObjects {
-            if collidableObject1.isStatic {
+    public func update(_ physicObjects: [PhysicObject]) {
+        for physicObject1 in physicObjects {
+            if physicObject1.isStatic {
                 continue
             }
-            checkCollisionWithWorldBound(collidableObject1)
+            checkCollisionWithWorldBound(physicObject1)
             
-            for collidableObject2 in collidableObjects {
-                checkCollision(collidableObject1, collidableObject2)
+            for physicObject2 in physicObjects {
+                checkCollision(physicObject1, physicObject2)
             }
         }
     }
     
-    private func checkCollision(_ collidableObject1: CollidableObject, _ collidableObject2: CollidableObject) {
-        if collidableObject1.isEqual(collidableObject2) {
+    private func checkCollision(_ physicObject1: PhysicObject, _ physicObject2: PhysicObject) {
+        if physicObject1.isEqual(physicObject2) {
             return
         }
-        if !collidableObject1.isAlive() || !collidableObject2.isAlive() {
+        if !physicObject1.isAlive() || !physicObject2.isAlive() {
             return
         }
-        guard let collider1 = collidableObject1.getSphereCollider() else {
+        guard let collider1 = physicObject1.getSphereCollider() else {
             return
         }
-        guard let collider2 = collidableObject2.getSphereCollider() else {
+        guard let collider2 = physicObject2.getSphereCollider() else {
             return
         }
         if collider1.intersect(collider2) {
-            collidableObject1.onCollide(collidableObject2)
-            collidableObject2.onCollide(collidableObject1)
+            physicObject1.onCollide(physicObject2)
+            physicObject2.onCollide(physicObject1)
         }
     }
     
-    private func checkCollisionWithWorldBound(_ collidableObject: CollidableObject) {
+    private func checkCollisionWithWorldBound(_ physicObject: PhysicObject) {
         if !worldBound {
             return
         }
-        guard let collider = collidableObject.getSphereCollider() else {
+        guard let collider = physicObject.getSphereCollider() else {
             return
         }
         if collider.intersect(leftVerticalLine: worldBoundRect.minX) {
-            collidableObject.onCollideWithLeftWorldBound()
+            physicObject.onCollideWithLeftWorldBound()
         }
         if collider.intersect(rightVerticalLine: worldBoundRect.maxX) {
-            collidableObject.onCollideWithRightWorldBound()
+            physicObject.onCollideWithRightWorldBound()
         }
         if collider.intersect(topHorizontalLine: worldBoundRect.minY) {
-            collidableObject.onCollideWithTopWorldBound()
+            physicObject.onCollideWithTopWorldBound()
         }
         if collider.intersect(btmHorizontalLine: worldBoundRect.maxY) {
-            collidableObject.onCollideWithBtmWorldBound()
+            physicObject.onCollideWithBtmWorldBound()
         }
     }
     

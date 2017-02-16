@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class GameObject: Equatable, CollidableObject {
+class GameObject: Equatable, PhysicObject {
     private static var idCount = 0
     public var position: CGVector
     public var rotation: CGFloat
@@ -67,7 +67,7 @@ class GameObject: Equatable, CollidableObject {
     public func onCollide(_ other: GameObject) {
     }
     
-    public func onCollide(_ other: CollidableObject) {
+    public func onCollide(_ other: PhysicObject) {
         guard let otherGameObject = other as? GameObject else {
             return
         }
@@ -98,7 +98,7 @@ class GameObject: Equatable, CollidableObject {
         return lhs.uniqueId == rhs.uniqueId
     }
     
-    public func isEqual(_ other: CollidableObject) -> Bool {
+    public func isEqual(_ other: PhysicObject) -> Bool {
         if self.uniqueId == other.uniqueId {
             return true
         }
