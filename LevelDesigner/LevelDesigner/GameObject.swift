@@ -16,12 +16,14 @@ class GameObject: Equatable, PhysicObject {
     let uniqueId: Int
     private(set) var isWaitingToBeDestroyed = false
     public var isStatic: Bool = false
+    public var velocity: CGVector
     
     private(set) var sphereColliderComponent: SphereColliderComponent?
     private(set) var spriteComponent: SpriteComponent?
 
     init() {
         position = CGVector(0, 0)
+        velocity = CGVector(0, 0)
         rotation = 0
 
         uniqueId = GameObject.idCount

@@ -12,8 +12,9 @@ import UIKit
 protocol PhysicObject {
     var uniqueId: Int { get }
     var isStatic: Bool { get }
-    
-    
+    var velocity: CGVector { get set }
+    var position: CGVector { get set }
+
     func onCollide(_ other: PhysicObject)
     
     func onCollideWithLeftWorldBound()

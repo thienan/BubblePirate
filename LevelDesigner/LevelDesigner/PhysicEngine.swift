@@ -14,20 +14,29 @@ class PhysicEngine {
     private(set) var worldBoundRect: CGRect = CGRect.init()
     
     public init() {
-        
     }
 
-    public func update(_ physicObjects: [PhysicObject]) {
+    public func update(_ deltaTime: CGFloat, _ physicObjects: [PhysicObject]) {
         for physicObject1 in physicObjects {
-            if physicObject1.isStatic {
+            if isStatic(physicObject1) {
                 continue
             }
+            updatePhysicObject(deltaTime, physicObject1)
             checkCollisionWithWorldBound(physicObject1)
-            
+
             for physicObject2 in physicObjects {
                 checkCollision(physicObject1, physicObject2)
             }
         }
+    }
+    
+    private func updatePhysicObject(_ deltaTime: CGFloat, _ physicObject: PhysicObject) {
+        var physicObject = physicObject
+        physicObject.position = physicObject.position + (physicObject.velocity * deltaTime)
+    }
+    
+    private func isStatic(_ physicObject: PhysicObject) -> Bool {
+        return physicObject.velocity == CGVector.zero
     }
     
     private func checkCollision(_ physicObject1: PhysicObject, _ physicObject2: PhysicObject) {

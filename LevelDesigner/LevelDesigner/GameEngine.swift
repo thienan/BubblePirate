@@ -26,9 +26,9 @@ class GameEngine {
     }
     
     @objc public func update(displaylink: CADisplayLink) {
-        let deltaTime = displaylink.targetTimestamp - displaylink.timestamp
-        updateObjects(CGFloat(deltaTime))
-        physicEngine.update(gameObjects)
+        let deltaTime = CGFloat(displaylink.targetTimestamp - displaylink.timestamp)
+        updateObjects(deltaTime)
+        physicEngine.update(deltaTime, gameObjects)
         renderEngine.update(gameObjects)
         removeDeadObject()
     }

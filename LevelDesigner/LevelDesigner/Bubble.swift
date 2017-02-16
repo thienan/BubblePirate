@@ -16,13 +16,11 @@ class Bubble: GameObject {
         case snap
     }
 
-    public var velocity: CGVector
     private var snapToPos: CGVector = CGVector.init()
     public var moveState = MoveState.idle
     public var delegate: BubbleDelegate?
     
     init(_ position: CGVector) {
-        velocity = CGVector(0, 0)
         super.init()
         self.position = position
     }
@@ -30,12 +28,12 @@ class Bubble: GameObject {
     public override func update(_ deltaTime: CGFloat) {
         switch moveState {
         case .idle:
-            isStatic = true
+            //isStatic = true
             break
             
         case .move:
-            position = position + (velocity * deltaTime)
-            isStatic = false
+            //isStatic = false
+            break
             
         case .snap:
             position = snapToPos
@@ -59,6 +57,7 @@ class Bubble: GameObject {
             return
         }
         if moveState == MoveState.move {
+            velocity = CGVector(0, 0)
             delegate?.onBubbleCollidedWithBubble(self)
         }
     }
@@ -73,6 +72,7 @@ class Bubble: GameObject {
     
     public override func onCollideWithTopWorldBound() {
         if moveState == MoveState.move {
+            velocity = CGVector(0, 0)
             delegate?.onBubbleCollidedWithTopWall(self)
         }
     }
