@@ -85,9 +85,11 @@ class BubbleManager: BubbleDelegate {
         }
     }
     
-    private func createBubble(_ bubbleType: GridBubble.BubbleColor, _ position: CGVector) -> Bubble? {
+    private func createBubble(_ gridBubbleType: GridBubble.BubbleColor, _ position: CGVector) -> Bubble? {
         var spriteName: String
-        switch bubbleType {
+        var bubbleType: Bubble.BubbleType = Bubble.BubbleType.normal
+        
+        switch gridBubbleType {
         case .blue:
             spriteName = spriteNames[0]
         case .green:
@@ -100,24 +102,25 @@ class BubbleManager: BubbleDelegate {
             spriteName = spriteNames[4]
         case .lightning:
             spriteName = spriteNames[5]
+            bubbleType = Bubble.BubbleType.lightning
         case .bomb:
             spriteName = spriteNames[6]
-            let bubble = createBubbleObject(position, spriteName)
-            bubble.bubbleType = Bubble.BubbleType.bomb
-            return bubble
+            bubbleType = Bubble.BubbleType.bomb
         case .star:
             spriteName = spriteNames[7]
+            bubbleType = Bubble.BubbleType.star
         case .none:
             return nil
         }
-        return createBubbleObject(position, spriteName)
+        return createBubbleObject(position, spriteName, CGVector.zero, bubbleType)
     }
     
-    private func createBubbleObject(_ pos: CGVector, _ spriteName: String, _ velocity: CGVector = CGVector.zero) -> Bubble {
+    private func createBubbleObject(_ pos: CGVector, _ spriteName: String, _ velocity: CGVector = CGVector.zero, _ bubbleType: Bubble.BubbleType = Bubble.BubbleType.normal) -> Bubble {
         let bubble = Bubble(CGVector(pos.x, pos.y))
         bubble.addSpriteComponent(spriteName, CGRect(x: -cellWidth/2, y: -cellWidth/2, width: cellWidth, height: cellWidth))
         bubble.addSphereColliderComponent(CGVector.zero, cellWidth/2)
         bubble.setVelocity(velocity)
+        bubble.bubbleType = bubbleType
         bubble.delegate = self
         gameEngine.add(bubble)
         return bubble
@@ -266,26 +269,25 @@ class BubbleManager: BubbleDelegate {
         guard let specialBubble = bubbles[index.row][index.section] else {
             return
         }
-        switch specialBubble.bubbleType {
+        let specialBubbleType = specialBubble.bubbleType
+        var adjIndexPaths: [IndexPath] = []
+        
+        switch specialBubbleType {
         case .bomb:
-            activeBombBubble(index)
+            //activeBombBubble(index)
+            adjIndexPaths = findNeighbour(index)
         case .lightning:
+            adjIndexPaths = findRowNeighbour(index)
             break
         case .star:
             break
         case .normal:
-            break
-        }
-    }
-    
-    private func activeBombBubble(_ index: IndexPath) {
-        guard let bombBubble = bubbles[index.row][index.section] else {
             return
         }
-        bubbles[index.row][index.section] = nil
-        destroySpecialBubble(bombBubble)
         
-        let adjIndexPaths = findNeighbour(index)
+        bubbles[index.row][index.section] = nil
+        destroySpecialBubble(specialBubble)
+        
         for adjIndex in adjIndexPaths {
             guard let bubble = bubbles[adjIndex.row][adjIndex.section] else {
                 continue
@@ -297,6 +299,7 @@ class BubbleManager: BubbleDelegate {
                 activateSpecialBubble(adjIndex)
             }
         }
+ 
     }
 
     private func handleBubbleCollided(_ bubble: Bubble) {
@@ -454,7 +457,25 @@ class BubbleManager: BubbleDelegate {
         }
         return visited
     }
+    
+    private func findRowNeighbour(_ indexPath: IndexPath) -> [IndexPath] {
+        var indexPaths: [IndexPath] = []
+        let colCount = getColCount(indexPath.row)
 
+        var col = 0
+        
+        while col < colCount {
+            if col == indexPath.section {
+                col += 1
+                continue
+            }
+            indexPaths.append(IndexPath(row: indexPath.row, section: col))
+            col += 1
+        }
+        
+        return indexPaths
+    }
+    
     private func findNeighbour(_ indexPath: IndexPath) -> [IndexPath] {
         let row = indexPath.row
         let col = indexPath.section
