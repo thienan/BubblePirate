@@ -25,7 +25,11 @@ class GridBubble: NSObject, NSCoding {
         case red = 1
         case orange = 2
         case green = 3
-        case none = 4
+        case black = 4
+        case star = 5
+        case bomb = 6
+        case lightning = 7
+        case none = 8
     }
     
     var position: CGPoint = CGPoint(x: -1, y: -1)
@@ -43,20 +47,32 @@ class GridBubble: NSObject, NSCoding {
     
     public func cycleToNextColor() {
         switch color {
-        case BubbleColor.blue:
+        case .blue:
             color = BubbleColor.red
             
-        case GridBubble.BubbleColor.red:
+        case .red:
             color = BubbleColor.orange
             
-        case GridBubble.BubbleColor.orange:
+        case .orange:
             color = BubbleColor.green
             
-        case GridBubble.BubbleColor.green:
-            color = BubbleColor.blue
+        case .green:
+            color = BubbleColor.black
+        
+        case .black:
+            color = BubbleColor.star
+        
+        case .star:
+            color = BubbleColor.bomb
             
-        case GridBubble.BubbleColor.none:
+        case .bomb:
+            color = BubbleColor.lightning
+        
+        case .lightning:
             color = BubbleColor.none
+            
+        case .none:
+            color = .blue
         }
     }
     

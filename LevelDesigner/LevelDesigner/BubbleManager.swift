@@ -23,7 +23,7 @@ class BubbleManager: BubbleDelegate {
     private var gridCellPositions: [[CGVector]] = []
     private var cellWidth: CGFloat = GridSettings.cellWidth
     private var gameplayMode = GameplayMode.ready
-    private var spriteNames: [String] = ["bubble-blue", "bubble-green", "bubble-orange", "bubble-red"]
+    private var spriteNames: [String] = ["bubble-blue", "bubble-green", "bubble-orange", "bubble-red", "bubble-indestructible", "bubble-lightning", "bubble-bomb", "bubble-star"]
     private var gridLowerBound: CGFloat = 0
     private var nextBubbleQueue = [Bubble]()
     private var offScreenPosition: CGVector = CGVector(-200, -200)
@@ -77,10 +77,11 @@ class BubbleManager: BubbleDelegate {
         gridLowerBound = posOfLowestCell.y + cellWidth/2
     }
     
+    // TODO CHECK ERROR
     private func addBubbleToNextBubbleQueue() {
         // create bubble off screen
-        for spriteName in spriteNames {
-            nextBubbleQueue.append(createOffScreenBubble(spriteName))
+        for i in 0..<4{
+            nextBubbleQueue.append(createOffScreenBubble(spriteNames[i]))
         }
     }
     
@@ -95,6 +96,17 @@ class BubbleManager: BubbleDelegate {
             spriteName = spriteNames[2]
         case .red:
             spriteName = spriteNames[3]
+        case .black:
+            spriteName = spriteNames[4]
+        case .lightning:
+            spriteName = spriteNames[5]
+        case .bomb:
+            spriteName = spriteNames[6]
+            let bubble = createBubbleObject(position, spriteName)
+            bubble.bubbleType = Bubble.BubbleType.bomb
+            return bubble
+        case .star:
+            spriteName = spriteNames[7]
         case .none:
             return nil
         }
@@ -218,8 +230,16 @@ class BubbleManager: BubbleDelegate {
             print(ERROR_CANT_FIND_INDEX_OF_BUBBLE)
             return
         }
+        let specialBubblesIndexPaths: [IndexPath] = findSpecialBubbleAtNeighbour(indexPath)
+        print(specialBubblesIndexPaths)
         tryToPopBubble(indexPath, bubble)
+        activateSpecialBubbles(specialBubblesIndexPaths)
+        checkUnRootedBubble(animate: true)
         gameplayMode = GameplayMode.ready
+    }
+    
+    public func onBubbleCollidedWithBombBubble(_ bombBubble: BombBubble) {
+    
     }
     
     private func tryToPopBubble(_ indexPath: IndexPath, _ bubble: Bubble) {
@@ -234,12 +254,53 @@ class BubbleManager: BubbleDelegate {
             removeBubbleFromGrid(bubble)
             destroyRootedBubble(bubble)
         }
-        checkUnRootedBubble(animate: true)
     }
     
+    private func activateSpecialBubbles(_ specialBubblesIndexPaths: [IndexPath]) {
+        for index in specialBubblesIndexPaths {
+            guard let bubble = bubbles[index.row][index.section] else {
+                continue
+            }
+            
+            switch bubble.bubbleType {
+            case .bomb:
+                print("bomb activated")
+                print(index)
+                activeBombBubble(index)
+            case .lightning:
+                break
+            case .star:
+                break
+            case .normal:
+                break
+            }
+        }
+    }
+    
+    private func activeBombBubble(_ index: IndexPath) {
+        guard let bombBubble = bubbles[index.row][index.section] else {
+            return
+        }
+        
+        let adjIndexPaths = findNeighbour(index)
+        print("adj")
+        print(adjIndexPaths)
+        for adjIndex in adjIndexPaths {
+            guard let bubble = bubbles[adjIndex.row][adjIndex.section] else {
+                return
+            }
+            
+            bubbles[adjIndex.row][adjIndex.section] = nil
+            destroyRootedBubble(bubble)
+        }
+        
+        bubbles[index.row][index.section] = nil
+        destroyRootedBubble(bombBubble)
+    }
+
     private func handleBubbleCollided(_ bubble: Bubble) {
         if isOutOfBound(bubble) {
-            destroyRootedBubble(bubble)
+            destroyMovingBubble(bubble)
             gameplayMode = GameplayMode.ready
             return
         }
@@ -262,6 +323,11 @@ class BubbleManager: BubbleDelegate {
     }
     
     private func destroyRootedBubble(_ bubble: Bubble) {
+        createAnimatedBubbleObject(bubble, fadeOutSpeed: BUBBLE_FADE_OUT_SPEED)
+        bubble.destroy()
+    }
+    
+    private func destroyMovingBubble(_ bubble: Bubble) {
         createAnimatedBubbleObject(bubble, fadeOutSpeed: BUBBLE_FADE_OUT_SPEED)
         bubble.destroy()
     }
@@ -381,6 +447,11 @@ class BubbleManager: BubbleDelegate {
             }
         }
         return visited
+    }
+    
+    private func findSpecialBubbleAtNeighbour(_ indexPath: IndexPath) -> [IndexPath] {
+        let indexPaths = findNeighbour(indexPath)
+        return indexPaths
     }
     
     private func findNeighbour(_ indexPath: IndexPath) -> [IndexPath] {

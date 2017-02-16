@@ -20,6 +20,10 @@ class DesignerGridCollectionController: GridCollectionController {
     private let IMAGE_BUBBLE_GREEN = "bubble-green"
     private let IMAGE_BUBBLE_ORANGE = "bubble-orange"
     private let IMAGE_BUBBLE_RED = "bubble-red"
+    private let IMAGE_BUBBLE_BLACK = "bubble-indestructible"
+    private let IMAGE_BUBBLE_LIGHTNING = "bubble-lightning"
+    private let IMAGE_BUBBLE_BOMB = "bubble-bomb"
+    private let IMAGE_BUBBLE_STAR = "bubble-star"
     
     private let ALERT_LEVEL_NAMES_TITLE = "Level Names"
     private let ALERT_LEVEL_INVALID_NAME = "Invalid Level Name"
@@ -151,14 +155,22 @@ class DesignerGridCollectionController: GridCollectionController {
     
     public func getImage(bubbleColor: GridBubble.BubbleColor) -> UIImage? {
         switch bubbleColor {
-        case GridBubble.BubbleColor.blue :
+        case GridBubble.BubbleColor.blue:
             return UIImage(named: IMAGE_BUBBLE_BLUE)
-        case GridBubble.BubbleColor.green :
+        case GridBubble.BubbleColor.green:
             return UIImage(named: IMAGE_BUBBLE_GREEN)
-        case GridBubble.BubbleColor.red :
+        case GridBubble.BubbleColor.red:
             return UIImage(named: IMAGE_BUBBLE_RED)
-        case GridBubble.BubbleColor.orange :
+        case GridBubble.BubbleColor.orange:
             return UIImage(named: IMAGE_BUBBLE_ORANGE)
+        case GridBubble.BubbleColor.black:
+            return UIImage(named: IMAGE_BUBBLE_BLACK)
+        case GridBubble.BubbleColor.bomb:
+            return UIImage(named: IMAGE_BUBBLE_BOMB)
+        case GridBubble.BubbleColor.lightning:
+            return UIImage(named: IMAGE_BUBBLE_LIGHTNING)
+        case GridBubble.BubbleColor.star:
+            return UIImage(named: IMAGE_BUBBLE_STAR)
         case GridBubble.BubbleColor.none :
             return nil
         }

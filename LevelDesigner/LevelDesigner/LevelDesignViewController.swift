@@ -22,6 +22,10 @@ class LevelDesignViewController: UIViewController {
     @IBOutlet weak private var orangeButton: UIButton!
     @IBOutlet weak private var redButton: UIButton!
     @IBOutlet weak private var eraseButton: UIButton!
+    @IBOutlet weak private var blackButton: UIButton!
+    @IBOutlet weak private var bombButton: UIButton!
+    @IBOutlet weak private var lightingButton: UIButton!
+    @IBOutlet weak private var starButton: UIButton!
     
     private var buttonList: [UIButton] = []
     private var currentButton: UIButton? = nil
@@ -35,6 +39,10 @@ class LevelDesignViewController: UIViewController {
         buttonList.append(orangeButton)
         buttonList.append(redButton)
         buttonList.append(eraseButton)
+        buttonList.append(blackButton)
+        buttonList.append(bombButton)
+        buttonList.append(lightingButton)
+        buttonList.append(starButton)
         
         fadeAllButton()
     }
@@ -65,6 +73,26 @@ class LevelDesignViewController: UIViewController {
     
     @IBAction private func eraseButtonPressed(_ sender: Any) {
         embedController?.setEraseMode()
+        colorButtonPressed(sender)
+    }
+    
+    @IBAction func blackButtonPressed(_ sender: Any) {
+        selectBubble(GridBubble.BubbleColor.black)
+        colorButtonPressed(sender)
+    }
+    
+    @IBAction func bombButtonPressed(_ sender: Any) {
+        selectBubble(GridBubble.BubbleColor.bomb)
+        colorButtonPressed(sender)
+    }
+
+    @IBAction func lightingButtonPressed(_ sender: Any) {
+        selectBubble(GridBubble.BubbleColor.lightning)
+        colorButtonPressed(sender)
+    }
+    
+    @IBAction func starButtonPressed(_ sender: Any) {
+        selectBubble(GridBubble.BubbleColor.star)
         colorButtonPressed(sender)
     }
     

@@ -81,6 +81,28 @@
                                 <rect key="frame" x="0.0" y="911" width="768" height="126"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k82-aC-xjR">
+                                        <rect key="frame" x="613" y="57" width="60" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="Reset">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="resetButtonPressed:" destination="XUW-EG-fH6" eventType="touchUpInside" id="Y5x-9p-VQG"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjZ-oq-FoF">
+                                        <rect key="frame" x="613" y="15" width="60" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
+                                        <state key="normal" title="Start">
+                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="startButtonPressed:" destination="XUW-EG-fH6" eventType="touchUpInside" id="JnR-st-T75"/>
+                                        </connections>
+                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Nqx-dQ-5ZP">
                                         <rect key="frame" x="681" y="15" width="60" height="40"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -136,11 +158,11 @@
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wFX-Ii-k43" userLabel="RockButton">
-                                        <rect key="frame" x="289" y="24" width="50" height="50"/>
+                                        <rect key="frame" x="291" y="24" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="bubble-indestructible"/>
                                         <connections>
-                                            <action selector="blueButtonPressed:" destination="XUW-EG-fH6" eventType="touchUpInside" id="QIa-3W-WeC"/>
+                                            <action selector="blackButtonPressed:" destination="XUW-EG-fH6" eventType="touchUpInside" id="dng-p3-qPF"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Dii-sR-wIN" userLabel="BombButton">
@@ -148,15 +170,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="bubble-bomb"/>
                                         <connections>
-                                            <action selector="blueButtonPressed:" destination="XUW-EG-fH6" eventType="touchUpInside" id="Lez-lZ-FHD"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKs-qA-bkN" userLabel="StarButton">
-                                        <rect key="frame" x="485" y="24" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Button" image="bubble-star"/>
-                                        <connections>
-                                            <action selector="blueButtonPressed:" destination="XUW-EG-fH6" eventType="touchUpInside" id="Tgn-cE-jkJ"/>
+                                            <action selector="bombButtonPressed:" destination="XUW-EG-fH6" eventType="touchUpInside" id="xmf-1K-a0y"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="akG-OI-gGf" userLabel="LightingButton">
@@ -164,7 +178,7 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Button" image="bubble-lightning"/>
                                         <connections>
-                                            <action selector="blueButtonPressed:" destination="XUW-EG-fH6" eventType="touchUpInside" id="eO9-Qu-cUu"/>
+                                            <action selector="lightingButtonPressed:" destination="XUW-EG-fH6" eventType="touchUpInside" id="APW-Z2-HDT"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lNa-Pq-4tN" userLabel="EraseButton">
@@ -175,26 +189,12 @@
                                             <action selector="eraseButtonPressed:" destination="XUW-EG-fH6" eventType="touchUpInside" id="ekg-r7-ZqU"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k82-aC-xjR">
-                                        <rect key="frame" x="613" y="57" width="60" height="40"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mKs-qA-bkN" userLabel="StarButton">
+                                        <rect key="frame" x="482" y="24" width="50" height="50"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <state key="normal" title="Reset">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
+                                        <state key="normal" title="Button" image="bubble-star"/>
                                         <connections>
-                                            <action selector="resetButtonPressed:" destination="XUW-EG-fH6" eventType="touchUpInside" id="Y5x-9p-VQG"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BjZ-oq-FoF">
-                                        <rect key="frame" x="613" y="15" width="60" height="40"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="19"/>
-                                        <state key="normal" title="Start">
-                                            <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="startButtonPressed:" destination="XUW-EG-fH6" eventType="touchUpInside" id="JnR-st-T75"/>
+                                            <action selector="starButtonPressed:" destination="XUW-EG-fH6" eventType="touchUpInside" id="P5r-VX-IOm"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -204,11 +204,15 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="blackButton" destination="wFX-Ii-k43" id="PsC-R1-Cyf"/>
                         <outlet property="blueButton" destination="jG2-ox-2pt" id="n2O-FG-0Og"/>
+                        <outlet property="bombButton" destination="Dii-sR-wIN" id="ccv-sm-bVE"/>
                         <outlet property="eraseButton" destination="lNa-Pq-4tN" id="zTd-en-N6q"/>
                         <outlet property="greenButton" destination="8dC-XU-6Zh" id="zcu-0u-dTa"/>
+                        <outlet property="lightingButton" destination="akG-OI-gGf" id="wZu-7S-vd5"/>
                         <outlet property="orangeButton" destination="s7f-bP-VeS" id="eZ0-oX-U1R"/>
                         <outlet property="redButton" destination="s1R-yX-DbE" id="fnT-0W-e57"/>
+                        <outlet property="starButton" destination="mKs-qA-bkN" id="de7-HK-gzj"/>
                         <segue destination="SWk-fK-BLn" kind="show" identifier="toGameController" id="lgt-zJ-KJd"/>
                     </connections>
                 </viewController>

@@ -16,8 +16,16 @@ class Bubble: GameObject {
         case snap
     }
 
+    enum BubbleType {
+        case normal
+        case bomb
+        case lightning
+        case star
+    }
+    
     private var snapToPos: CGVector = CGVector.init()
     public var moveState = MoveState.idle
+    public var bubbleType = BubbleType.normal
     public var delegate: BubbleDelegate?
     
     init(_ position: CGVector) {
