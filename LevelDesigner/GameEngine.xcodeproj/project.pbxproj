@@ -15,7 +15,7 @@
 		F36807871E41A6CD00586C2E /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36807861E41A6CD00586C2E /* Bubble.swift */; };
 		F368078F1E422F1800586C2E /* LevelDesignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368078E1E422F1800586C2E /* LevelDesignViewController.swift */; };
 		F36A02A61E4971F5005F7BB6 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A02A51E4971F5005F7BB6 /* Component.swift */; };
-		F36A02A81E497BA0005F7BB6 /* CollidableObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A02A71E497BA0005F7BB6 /* CollidableObject.swift */; };
+		F36A02A81E497BA0005F7BB6 /* PhysicObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A02A71E497BA0005F7BB6 /* PhysicObject.swift */; };
 		F36DF4251E42D1C200CCCD7D /* GridBubbleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36DF4241E42D1C200CCCD7D /* GridBubbleManager.swift */; };
 		F36DF4271E42DE1A00CCCD7D /* GridCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36DF4261E42DE1A00CCCD7D /* GridCollectionCell.swift */; };
 		F36E8A471E4C2F84008F055C /* GridBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E8A461E4C2F84008F055C /* GridBubble.swift */; };
@@ -57,7 +57,7 @@
 		F36807861E41A6CD00586C2E /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		F368078E1E422F1800586C2E /* LevelDesignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignViewController.swift; sourceTree = "<group>"; };
 		F36A02A51E4971F5005F7BB6 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
-		F36A02A71E497BA0005F7BB6 /* CollidableObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollidableObject.swift; sourceTree = "<group>"; };
+		F36A02A71E497BA0005F7BB6 /* PhysicObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicObject.swift; sourceTree = "<group>"; };
 		F36DF4241E42D1C200CCCD7D /* GridBubbleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridBubbleManager.swift; sourceTree = "<group>"; };
 		F36DF4261E42DE1A00CCCD7D /* GridCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionCell.swift; sourceTree = "<group>"; };
 		F36E8A461E4C2F84008F055C /* GridBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridBubble.swift; sourceTree = "<group>"; };
@@ -152,7 +152,7 @@
 			isa = PBXGroup;
 			children = (
 				F33CD5ED1E488E2500DCECAA /* PhysicEngine.swift */,
-				F36A02A71E497BA0005F7BB6 /* CollidableObject.swift */,
+				F36A02A71E497BA0005F7BB6 /* PhysicObject.swift */,
 				F382CA601E4EFD8C0017C02A /* SphereCollider.swift */,
 				F376478A1E4853C40008454B /* CGVector.swift */,
 			);
@@ -308,7 +308,7 @@
 				F310F4EE1E4249CB00C72156 /* GridCollectionController.swift in Sources */,
 				F33CD5F01E48974C00DCECAA /* RenderEngine.swift in Sources */,
 				F376478B1E4853C40008454B /* CGVector.swift in Sources */,
-				F36A02A81E497BA0005F7BB6 /* CollidableObject.swift in Sources */,
+				F36A02A81E497BA0005F7BB6 /* PhysicObject.swift in Sources */,
 				F36E8A471E4C2F84008F055C /* GridBubble.swift in Sources */,
 				F36DF4271E42DE1A00CCCD7D /* GridCollectionCell.swift in Sources */,
 				F321920C1E447FCF0092B010 /* StorageManager.swift in Sources */,
