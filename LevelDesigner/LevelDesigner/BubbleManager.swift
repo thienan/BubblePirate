@@ -239,11 +239,7 @@ class BubbleManager: BubbleDelegate {
         checkUnRootedBubble(animate: true)
         gameplayMode = GameplayMode.ready
     }
-    
-    public func onBubbleCollidedWithBombBubble(_ bombBubble: BombBubble) {
-    
-    }
-    
+
     private func tryToPopBubble(_ indexPath: IndexPath, _ bubble: Bubble) {
         let visited: [IndexPath:Bool] = bfs(indexPath, bubble)
         let connectedSameColorBubble = getVisitedBubbles(visited)
@@ -261,44 +257,26 @@ class BubbleManager: BubbleDelegate {
     private func activateNeighbourSpecialBubble(_ indexPath: IndexPath, _ sourceBubble: Bubble) {
         let adjIndexPaths: [IndexPath] = findNeighbour(indexPath)
         for index in adjIndexPaths {
-            activateSpecialBubble(index, sourceBubble)
-            // activate star first then bomb and lighting
-        }
-    }
-    
-    private func activateSpecialBubble(_ index: IndexPath, _ sourceBubble: Bubble) {
-        guard let specialBubble = bubbles[index.row][index.section] else {
-            return
-        }
-        let specialBubbleType = specialBubble.bubbleType
-        
-        switch specialBubbleType {
-        case .bomb:
-            activateBombAndLightning(index)
-        case .lightning:
-            activateBombAndLightning(index)
-        case .star:
             activateStarBubble(index, sourceBubble)
-        case .normal:
-            return
+        }
+        for index in adjIndexPaths {
+            activateBombAndLightning(index)
         }
     }
-    
+
     private func activateBombAndLightning(_ index: IndexPath) {
         guard let specialBubble = bubbles[index.row][index.section] else {
             return
         }
         let specialBubbleType = specialBubble.bubbleType
         var adjIndexPaths: [IndexPath] = []
-        
+
         switch specialBubbleType {
         case .bomb:
             adjIndexPaths = findNeighbour(index)
         case .lightning:
             adjIndexPaths = findRowNeighbour(index)
-        case .star:
-            return
-        case .normal:
+        default:
             return
         }
         
@@ -309,17 +287,20 @@ class BubbleManager: BubbleDelegate {
             guard let bubble = bubbles[adjIndex.row][adjIndex.section] else {
                 continue
             }
-            if bubble.bubbleType == Bubble.BubbleType.normal || bubble.bubbleType == Bubble.BubbleType.star {
+            if bubble.bubbleType == Bubble.BubbleType.bomb || bubble.bubbleType == Bubble.BubbleType.lightning {
+                activateBombAndLightning(adjIndex)
+            } else {
                 bubbles[adjIndex.row][adjIndex.section] = nil
                 destroyRootedBubble(bubble)
-            } else {
-                activateBombAndLightning(adjIndex)
             }
         }
     }
     
     private func activateStarBubble(_ index: IndexPath, _ sourceBubble: Bubble) {
         guard let specialBubble = bubbles[index.row][index.section] else {
+            return
+        }
+        guard specialBubble.bubbleType == Bubble.BubbleType.star else {
             return
         }
         bubbles[index.row][index.section] = nil

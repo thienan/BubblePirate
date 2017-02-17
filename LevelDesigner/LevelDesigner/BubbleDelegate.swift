@@ -14,6 +14,4 @@ protocol BubbleDelegate {
     func onBubbleCollidedWithTopWall(_ bubble: Bubble)
     
     func onBubbleDoneSnapping(_ bubble: Bubble)
-    
-    func onBubbleCollidedWithBombBubble(_ bombBubble: BombBubble)
 }
