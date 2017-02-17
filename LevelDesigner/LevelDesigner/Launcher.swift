@@ -22,6 +22,7 @@ class Launcher: GameObject {
         self.bubbleManager = bubbleManager
         super.init()
         self.position = position
+        addSpriteComponent("background", CGRect(x: -30/2, y: -100, width: 30, height: 100), CGVector(0.5, 1))
     }
     
     public override func update(_ deltaTime: CGFloat) {
@@ -52,6 +53,8 @@ class Launcher: GameObject {
         }
         
         let dir = getLookAtDir(lookAt)
+        let dot = CGVector.dot(CGVector(-1, 0), dir)
+        rotation = CGFloat(Double(acos(dot)) * 180/M_PI) - 90
         bubbleManager.fireBubble(position, dir * speed)
     }
     

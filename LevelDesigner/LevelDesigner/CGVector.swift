@@ -58,4 +58,8 @@ extension CGVector {
     static func normalize(_ vec: CGVector) -> CGVector {
         return (vec / distance(vec))
     }
+    
+    static func dot(_ left: CGVector, _ right: CGVector) -> CGFloat {
+        return (left.x * right.x) + (left.y * right.y)
+    }
 }
