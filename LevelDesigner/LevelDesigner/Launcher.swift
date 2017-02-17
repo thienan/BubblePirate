@@ -13,6 +13,7 @@ class Launcher: GameObject {
     private let bubbleManager: BubbleManager
     private let nextBubbleOffsetPos: CGVector = CGVector(100, 50)
     let speed = CGFloat(1500)
+    var dir: CGVector = CGVector.zero
     
     private var verticalPosLimit: CGFloat {
         return position.y - 20
@@ -22,6 +23,7 @@ class Launcher: GameObject {
         self.bubbleManager = bubbleManager
         super.init()
         self.position = position
+        // magic number
         addSpriteComponent("background", CGRect(x: -30/2, y: -100, width: 30, height: 100), CGVector(0.5, 1))
     }
     
@@ -47,15 +49,23 @@ class Launcher: GameObject {
         return position + CGVector(0, -sc.rect.height)
     }
     
-    public func fireBubble(lookAt: CGVector) {
-        if !isValidFireAngle(lookAt) {
+    public func fireBubble(lookAtPosition: CGVector) {
+        if !isValidFireAngle(lookAtPosition) {
+            return
+        }
+        lookAt(lookAtPosition)
+        
+        bubbleManager.fireBubble(position, dir * speed)
+    }
+    
+    public func lookAt(_ lookAtPosition: CGVector) {
+        if !isValidFireAngle(lookAtPosition) {
             return
         }
         
-        let dir = getLookAtDir(lookAt)
+        dir = getLookAtDir(lookAtPosition)
         let dot = CGVector.dot(CGVector(-1, 0), dir)
         rotation = CGFloat(Double(acos(dot)) * 180/M_PI) - 90
-        bubbleManager.fireBubble(position, dir * speed)
     }
     
     // prevent from shooting toward the btm of the screen

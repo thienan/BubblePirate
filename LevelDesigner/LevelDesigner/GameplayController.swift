@@ -76,16 +76,17 @@ class GameplayController: UIViewController {
 
     // Fire bubble at on release
     func panGesture(gesture: UIPanGestureRecognizer) {
-        if gesture.state == .ended { 
-            let position = gesture.location(in: view)
-            launcher?.fireBubble(lookAt: CGVector.toVector(position))
+        let position = gesture.location(in: view)
+        launcher?.lookAt(CGVector.toVector(position))
+        if gesture.state == .ended {
+            launcher?.fireBubble(lookAtPosition: CGVector.toVector(position))
         }
     }
     
     func tapGesture(gesture: UITapGestureRecognizer) {
         if gesture.state == .ended {
             let position = gesture.location(in: view)
-            launcher?.fireBubble(lookAt: CGVector.toVector(position))
+            launcher?.fireBubble(lookAtPosition: CGVector.toVector(position))
         }
     }
     
