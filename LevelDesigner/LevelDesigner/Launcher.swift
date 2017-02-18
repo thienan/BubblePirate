@@ -25,6 +25,7 @@ class Launcher: GameObject {
         self.position = position
         // magic number
         addSpriteComponent("background", CGRect(x: -30/2, y: -100, width: 30, height: 100), CGVector(0.5, 1))
+        
     }
     
     public override func update(_ deltaTime: CGFloat) {

@@ -330,7 +330,7 @@ class BubbleManager: BubbleDelegate {
         removeBubbleWithSameColor(sourceBubble)
     }
     
-// ************************************ Removal Functions ***************************************//
+// ************************************ Bubble Removal Functions ***************************************//
     private func destroySpecialBubble(_ bubble: Bubble) {
         createAnimatedBubbleObject(bubble, fadeOutSpeed: BUBBLE_FADE_OUT_SPEED)
         bubble.destroy()

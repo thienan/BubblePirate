@@ -59,7 +59,11 @@ extension CGVector {
         return (vec / distance(vec))
     }
     
-    static func dot(_ left: CGVector, _ right: CGVector) -> CGFloat {
-        return (left.x * right.x) + (left.y * right.y)
+    static func dot(_ vec1: CGVector, _ vec2: CGVector) -> CGFloat {
+        return (vec1.x * vec2.x) + (vec1.y * vec2.y)
+    }
+    
+    static func lerp(_ vec1: CGVector, _ vec2: CGVector, _ t: CGFloat) -> CGVector {
+        return vec1 + ((vec2 - vec1) * t)
     }
 }

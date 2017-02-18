@@ -52,6 +52,4 @@ Your answer here
 
 
 
-bomb bubble destroying star bubble
-
-move bubble collide with bomb and star bubble
+bubble slowly snap to position

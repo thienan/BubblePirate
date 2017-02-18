@@ -28,6 +28,9 @@ class Bubble: GameObject {
     public var bubbleType = BubbleType.normal
     public var delegate: BubbleDelegate?
     
+    private var snapRatio: CGFloat = 0
+    private var snapSpeed: CGFloat = 10
+    
     init(_ position: CGVector) {
         super.init()
         self.position = position
@@ -36,16 +39,19 @@ class Bubble: GameObject {
     public override func update(_ deltaTime: CGFloat) {
         switch moveState {
         case .idle:
+            velocity = CGVector(0, 0)
             break
-            
         case .move:
-
             break
             
         case .snap:
-            position = snapToPos
-            moveState = MoveState.idle
-            delegate?.onBubbleDoneSnapping(self)
+            snapRatio += deltaTime * snapSpeed
+            position = CGVector.lerp(position, snapToPos, snapRatio)
+            
+            if CGVector.distanceSquare(position - snapToPos) < 0.01 {
+                delegate?.onBubbleDoneSnapping(self)
+                moveState = MoveState.idle
+            }
         }
     }
     
@@ -95,6 +101,7 @@ class Bubble: GameObject {
     public func snapTo(_ position: CGVector) {
         snapToPos = position
         moveState = MoveState.snap
+        snapRatio = 0
     }
     
     public func isSameColor(_ other: Bubble) -> Bool {
