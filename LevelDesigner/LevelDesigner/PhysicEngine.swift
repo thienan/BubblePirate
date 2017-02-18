@@ -40,8 +40,6 @@ class PhysicEngine {
     }
     
     private func checkCollision(_ physicObject1: PhysicObject, _ physicObject2: PhysicObject) {
-        var physicObject1 = physicObject1
-        var physicObject2 = physicObject2
         if physicObject1.isEqual(physicObject2) {
             return
         }
@@ -56,27 +54,49 @@ class PhysicEngine {
         }
         if collider1.intersect(collider2) {
             if !isStatic(physicObject1) && isStatic(physicObject2) {
-                let dir = CGVector.normalize(physicObject1.position - physicObject2.position)
-                physicObject1.position = physicObject2.position + (dir * collider1.radius) + (dir * collider2.radius)
+                    handleDynamicStaticCollision(physicObject1, physicObject2)
             }
-            
             if !isStatic(physicObject1) && !isStatic(physicObject2) {
-                let midPoint = (physicObject1.position + physicObject2.position) / 2
-                let dir1 = CGVector.normalize(physicObject1.position - physicObject2.position)
-                physicObject1.position = midPoint + (dir1 * collider1.radius)
-                
-                let dir2 = CGVector.normalize(physicObject2.position - physicObject1.position)
-                physicObject2.position = midPoint + (dir2 * collider2.radius)
-                
-                let momentum = CGVector.dot(physicObject1.velocity, dir2) - CGVector.dot(physicObject2.velocity, dir2)
-                
-                physicObject1.velocity = physicObject1.velocity - dir2 * momentum
-                physicObject2.velocity = physicObject2.velocity + dir2 * momentum
+                handleDynamicDynamicCollision(physicObject1, physicObject2)
             }
-            
             physicObject1.onCollide(physicObject2)
             physicObject2.onCollide(physicObject1)
         }
+    }
+    
+    private func handleDynamicStaticCollision(_ physicObject1: PhysicObject, _ physicObject2: PhysicObject) {
+        var physicObject1 = physicObject1
+        var physicObject2 = physicObject2
+        guard let collider1 = physicObject1.getSphereCollider() else {
+            return
+        }
+        guard let collider2 = physicObject2.getSphereCollider() else {
+            return
+        }
+        let dir = CGVector.normalize(physicObject1.position - physicObject2.position)
+        physicObject1.position = physicObject2.position + (dir * collider1.radius) + (dir * collider2.radius)
+    }
+    
+    private func handleDynamicDynamicCollision(_ physicObject1: PhysicObject, _ physicObject2: PhysicObject) {
+        var physicObject1 = physicObject1
+        var physicObject2 = physicObject2
+        guard let collider1 = physicObject1.getSphereCollider() else {
+            return
+        }
+        guard let collider2 = physicObject2.getSphereCollider() else {
+            return
+        }
+        let midPoint = (physicObject1.position + physicObject2.position) / 2
+        let dir2To1 = CGVector.normalize(physicObject1.position - physicObject2.position)
+        physicObject1.position = midPoint + (dir2To1 * collider1.radius)
+        
+        let dir1To2 = CGVector.normalize(physicObject2.position - physicObject1.position)
+        physicObject2.position = midPoint + (dir1To2 * collider2.radius)
+        
+        let momentum = CGVector.dot(physicObject1.velocity, dir1To2) - CGVector.dot(physicObject2.velocity, dir1To2)
+        
+        physicObject1.velocity = physicObject1.velocity - dir1To2 * momentum
+        physicObject2.velocity = physicObject2.velocity + dir1To2 * momentum
     }
     
     private func checkCollisionWithWorldBound(_ physicObject: PhysicObject) {
