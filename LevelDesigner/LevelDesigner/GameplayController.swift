@@ -89,7 +89,21 @@ class GameplayController: UIViewController {
         if gesture.state == .ended {
             let position = gesture.location(in: view)
             launcher?.fireBubble(lookAtPosition: CGVector.toVector(position))
+            launcher?.tapped(CGVector.toVector(position))
+            //785, 419
+            let starImageView = NaughtyImageView(frame: CGRect.zero)
+            starImageView.loop = false
+            starImageView.frame = CGRect(x: view.frame.width/2.0, y: 100, width: 785/6.0, height: 419/2.0)
+            view.addSubview(starImageView)
+            starImageView.setupWithImage(UIImage(named: "cannon")!, horizontalImages: 6, verticalImages: 2)
+            starImageView.startNaughtyAnimation()
+            //starImageView.naughtyAnimationDidStop({starImageView.removeFromSuperview()})
+            starImageView.naughtyAnimationDidStop = stop
         }
+    }
+    
+    public func stop(_ finished: Bool) {
+        
     }
     
     override func didReceiveMemoryWarning() {

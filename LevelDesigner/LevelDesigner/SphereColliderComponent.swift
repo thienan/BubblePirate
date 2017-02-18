@@ -58,6 +58,12 @@ class SphereColliderComponent: Component, SphereCollider {
         return pos.y + radius > btmHorizontalLine
     }
     
+    public func contains(point: CGVector) -> Bool {
+        let pos = GameEngine.localToWorldPosition(parent, centre)
+        let distanceSquare = CGVector.distanceSquare(pos - point)
+        return distanceSquare < (radius * radius)
+    }
+    
     public func getCenterWorldPosition() -> CGVector {
         return GameEngine.localToWorldPosition(parent, centre)
     }

@@ -209,6 +209,20 @@ class BubbleManager: BubbleDelegate {
         bubble.moveLinearlyTo(position)
     }
 
+    public func swapBubble() {
+        if nextBubbleQueue.count < 2 {
+            return
+        }
+        guard let firstBubble = nextBubbleQueue.first else {
+            return
+        }
+        let secondBubble = nextBubbleQueue[1]
+        
+        firstBubble.moveLinearlyTo(secondBubble.position)
+        secondBubble.moveLinearlyTo(firstBubble.position)
+        nextBubbleQueue[0] = secondBubble
+        nextBubbleQueue[1] = firstBubble
+    }
     
 // ************************************** Bubble Collision/Delegates Functions **************************************//
     public func onBubbleCollidedWithBubble(_ bubble: Bubble) {

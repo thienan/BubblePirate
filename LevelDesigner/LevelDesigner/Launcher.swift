@@ -26,7 +26,8 @@ class Launcher: GameObject {
         self.position = position
         // magic number
         addSpriteComponent(spriteName, CGRect(x: -30/2, y: -100, width: 30, height: 100), CGVector(0.5, 1))
-        
+        addSphereColliderComponent(position, 32)
+        sphereColliderComponent?.isActive = false
         bubbleManager.setCurrentBubbleInQueue(position: position)
         bubbleManager.setNextBubbleInQueue(position: position + nextBubbleOffsetPos)
         
@@ -66,6 +67,15 @@ class Launcher: GameObject {
         dir = getLookAtDir(lookAtPosition)
         let dot = CGVector.dot(CGVector(-1, 0), dir)
         rotation = CGFloat(Double(acos(dot)) * 180/M_PI) - 90
+    }
+    
+    public func tapped(_ position: CGVector) {
+        guard let sphereColliderComponent = sphereColliderComponent else {
+            return
+        }
+        if sphereColliderComponent.contains(point: position) {
+            bubbleManager.swapBubble()
+        }
     }
     
     // prevent from shooting toward the btm of the screen
