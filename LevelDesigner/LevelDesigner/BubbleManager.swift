@@ -51,6 +51,7 @@ class BubbleManager: BubbleDelegate {
         addBubbleToNextBubbleQueue()
     }
     
+// ************************************ grid init Functions ***************************************//
     // check validity
     private func initGrids(_ gridBubbles: [[GridBubble]]) {
         for row in 0..<gridBubbles.count {
@@ -77,19 +78,21 @@ class BubbleManager: BubbleDelegate {
         gridLowerBound = posOfLowestCell.y + cellWidth/2
     }
     
-
-    private func addBubbleToNextBubbleQueue() {
-        if NUM_OF_COLOR_BUBBLE < 1 {
-            return
+    private func isValid(gridBubbles: [[GridBubble]]) -> Bool {
+        guard gridBubbles.count == ROW_COUNT else {
+            return false
         }
-        var newArray: [Bubble] = []
-        // create bubble off screen
-        for i in 0..<NUM_OF_COLOR_BUBBLE {
-            newArray.append(createOffScreenBubble(spriteNames[i]))
+        for row in 0..<ROW_COUNT {
+            let colCount = getColCount(row)
+            guard gridBubbles[row].count == colCount else {
+                return false
+            }
         }
-        nextBubbleQueue.append(contentsOf: newArray.shuffled())
+        return true
     }
     
+    
+ // ************************************ Bubble Creation Functions ***************************************//
     private func createBubble(_ gridBubbleType: GridBubble.BubbleColor, _ position: CGVector) -> Bubble? {
         var spriteName: String
         var bubbleType: Bubble.BubbleType = Bubble.BubbleType.normal
@@ -142,6 +145,18 @@ class BubbleManager: BubbleDelegate {
         return bubble
     }
     
+    private func createAnimatedBubbleObject(_ bubble: Bubble, fadeOutSpeed: CGFloat, fallingSpeed: CGFloat = 0) {
+        guard let spriteComponent = bubble.spriteComponent else {
+            return
+        }
+        let bubble = AnimatedBubble(CGVector(bubble.position.x, bubble.position.y), fadeOutSpeed)
+        bubble.addSpriteComponent(spriteComponent.spriteName, CGRect(x: -cellWidth/2, y: -cellWidth/2, width: cellWidth, height: cellWidth))
+        if fallingSpeed != 0 {
+            bubble.setFalling(fallingSpeed: fallingSpeed)
+        }
+        gameEngine.add(bubble)
+    }
+    
     public func fireBubble(_ pos: CGVector, _ velocity: CGVector) {
         let bubble = nextBubbleQueue.removeFirst()
         bubble.position = pos
@@ -153,6 +168,19 @@ class BubbleManager: BubbleDelegate {
         if nextBubbleQueue.count < MIN_BUBBLE_IN_QUEUE {
             addBubbleToNextBubbleQueue()
         }
+    }
+    
+// ************************************** Queue Functions ******************************************//
+    private func addBubbleToNextBubbleQueue() {
+        if NUM_OF_COLOR_BUBBLE < 1 {
+            return
+        }
+        var newArray: [Bubble] = []
+        // create bubble off screen
+        for i in 0..<NUM_OF_COLOR_BUBBLE {
+            newArray.append(createOffScreenBubble(spriteNames[i]))
+        }
+        nextBubbleQueue.append(contentsOf: newArray.shuffled())
     }
     
     public func setCurrentBubbleInQueue(position: CGVector) {
@@ -173,54 +201,7 @@ class BubbleManager: BubbleDelegate {
         bubble.spriteComponent?.isActive = true
     }
     
-    private func createAnimatedBubbleObject(_ bubble: Bubble, fadeOutSpeed: CGFloat, fallingSpeed: CGFloat = 0) {
-        guard let spriteComponent = bubble.spriteComponent else {
-            return
-        }
-        let bubble = AnimatedBubble(CGVector(bubble.position.x, bubble.position.y), fadeOutSpeed)
-        bubble.addSpriteComponent(spriteComponent.spriteName, CGRect(x: -cellWidth/2, y: -cellWidth/2, width: cellWidth, height: cellWidth))
-        if fallingSpeed != 0 {
-            bubble.setFalling(fallingSpeed: fallingSpeed)
-        }
-        gameEngine.add(bubble)
-    }
-    
-    private func isValid(gridBubbles: [[GridBubble]]) -> Bool {
-        guard gridBubbles.count == ROW_COUNT else {
-            return false
-        }
-        for row in 0..<ROW_COUNT {
-            let colCount = getColCount(row)
-            guard gridBubbles[row].count == colCount else {
-                return false
-            }
-        }
-        return true
-    }
-    
-    private func findClosestGridCellPositionAndIndex(_ bubblePosition: CGVector) -> (CGVector, IndexPath) {
-        var minDist = CGFloat.greatestFiniteMagnitude
-        var closestPosition: CGVector = CGVector.zero
-        var index = IndexPath(row: 0, section: 0)
-
-        func checkMinDist(_ inRow: Int, _ inCol: Int) {
-            let gridCellPosition = gridCellPositions[inRow][inCol]
-            let dist = CGVector.distance(gridCellPosition - bubblePosition)
-            if dist  < minDist {
-                minDist = dist
-                closestPosition = gridCellPosition
-                index = IndexPath(row: inRow, section: inCol)
-            }
-        }
-        for row in 0..<ROW_COUNT {
-            let columnCount = getColCount(row)
-            for col in 0..<columnCount {
-               checkMinDist(row, col)
-            }
-        }
-        return (closestPosition, index)
-    }
-    
+// ************************************** Bubble Collision Functions ******************************************//
     public func onBubbleCollidedWithBubble(_ bubble: Bubble) {
         handleBubbleCollided(bubble)
     }
@@ -230,8 +211,24 @@ class BubbleManager: BubbleDelegate {
     }
     
     public func onBubbleCollidedWithBtmWall(_ bubble: Bubble) {
-        removeBubbleFromGrid(bubble)
+        removeBubbleFromGrid(bubble: bubble)
         destroyRootedBubble(bubble)
+    }
+    
+    private func handleBubbleCollided(_ bubble: Bubble) {
+        if isOutOfBound(bubble) {
+            destroyMovingBubble(bubble)
+            return
+        }
+        let pos_index = findClosestGridCellPositionAndIndex(bubble.position)
+        let pos = pos_index.0
+        let index = pos_index.1
+        
+        // add bubble to bubbles array
+        bubbles[index.row][index.section] = bubble
+        
+        // snap the bubble to the grid cell position
+        bubble.snapTo(pos)
     }
 
     public func onBubbleDoneSnapping(_ bubble: Bubble) {
@@ -243,7 +240,8 @@ class BubbleManager: BubbleDelegate {
         activateNeighbourSpecialBubble(indexPath, bubble)
         checkUnRootedBubble(animate: true)
     }
-
+    
+// ************************************** Check Bubble Action Functions ******************************************//
     private func tryToPopBubble(_ indexPath: IndexPath, _ bubble: Bubble) {
         let visited: [IndexPath:Bool] = bfs(indexPath, bubble)
         let connectedSameColorBubble = getVisitedBubbles(visited)
@@ -253,7 +251,7 @@ class BubbleManager: BubbleDelegate {
             return
         }
         for bubble in connectedSameColorBubble {
-            removeBubbleFromGrid(bubble)
+            removeBubbleFromGrid(bubble: bubble)
             destroyRootedBubble(bubble)
         }
     }
@@ -267,7 +265,27 @@ class BubbleManager: BubbleDelegate {
             activateBombAndLightning(index)
         }
     }
-
+    
+    private func checkUnRootedBubble(animate: Bool) {
+        if ROW_COUNT <= 0 {
+            return
+        }
+        var visited: [IndexPath:Bool] = [IndexPath:Bool]()
+        
+        guard let firstRowBubbles = bubbles.first else {
+            return
+        }
+        // for all bubble at first row
+        for col in 0..<firstRowBubbles.count {
+            guard let bubble = firstRowBubbles[col] else {
+                continue
+            }
+            visited = bfs(IndexPath(row: 0, section: col), bubble, false, visited)
+        }
+        removeUnrootedBubble(visited, animate)
+    }
+    
+// ************************************** Special Bubble Functions ******************************************//
     private func activateBombAndLightning(_ index: IndexPath) {
         guard let specialBubble = bubbles[index.row][index.section] else {
             return
@@ -284,7 +302,7 @@ class BubbleManager: BubbleDelegate {
             return
         }
         
-        bubbles[index.row][index.section] = nil
+        removeBubbleFromGrid(indexPath: index)
         destroySpecialBubble(specialBubble)
         
         for adjIndex in adjIndexPaths {
@@ -294,7 +312,7 @@ class BubbleManager: BubbleDelegate {
             if bubble.bubbleType == Bubble.BubbleType.bomb || bubble.bubbleType == Bubble.BubbleType.lightning {
                 activateBombAndLightning(adjIndex)
             } else {
-                bubbles[adjIndex.row][adjIndex.section] = nil
+                removeBubbleFromGrid(indexPath: adjIndex)
                 destroyRootedBubble(bubble)
             }
         }
@@ -307,48 +325,12 @@ class BubbleManager: BubbleDelegate {
         guard specialBubble.bubbleType == Bubble.BubbleType.star else {
             return
         }
-        bubbles[index.row][index.section] = nil
+        removeBubbleFromGrid(indexPath: index)
         destroySpecialBubble(specialBubble)
         removeBubbleWithSameColor(sourceBubble)
     }
     
-    private func removeBubbleWithSameColor(_ bubble: Bubble) {
-        for row in 0..<bubbles.count {
-            for col in 0..<bubbles[row].count {
-                guard let bubbleInGrid = bubbles[row][col] else {
-                    continue
-                }
-                if bubbleInGrid.isSameColor(bubble) {
-                    bubbles[row][col] = nil
-                    destroyRootedBubble(bubbleInGrid)
-                }
-            }
-        }
-    }
-
-    private func handleBubbleCollided(_ bubble: Bubble) {
-        if isOutOfBound(bubble) {
-            destroyMovingBubble(bubble)
-            return
-        }
-        let pos_index = findClosestGridCellPositionAndIndex(bubble.position)
-        let pos = pos_index.0
-        let index = pos_index.1
-        
-        // add bubble to bubbles array
-        bubbles[index.row][index.section] = bubble
-        
-        // snap the bubble to the grid cell position
-        bubble.snapTo(pos)
-    }
-    
-    private func isOutOfBound(_ bubble: Bubble) -> Bool {
-        if bubble.position.y > gridLowerBound {
-            return true
-        }
-        return false
-    }
-    
+// ************************************ Removal Functions ***************************************//
     private func destroySpecialBubble(_ bubble: Bubble) {
         createAnimatedBubbleObject(bubble, fadeOutSpeed: BUBBLE_FADE_OUT_SPEED)
         bubble.destroy()
@@ -373,25 +355,6 @@ class BubbleManager: BubbleDelegate {
         bubble.destroy()
     }
     
-    private func checkUnRootedBubble(animate: Bool) {
-        if ROW_COUNT <= 0 {
-            return
-        }
-        var visited: [IndexPath:Bool] = [IndexPath:Bool]()
-        
-        guard let firstRowBubbles = bubbles.first else {
-            return
-        }
-        // for all bubble at first row
-        for col in 0..<firstRowBubbles.count {
-            guard let bubble = firstRowBubbles[col] else {
-                continue
-            }
-            visited = bfs(IndexPath(row: 0, section: col), bubble, false, visited)
-        }
-        removeUnrootedBubble(visited, animate)
-    }
-    
     private func removeUnrootedBubble(_ visited: [IndexPath:Bool], _ animate: Bool) {
         for row in 0..<bubbles.count {
             for col in 0..<bubbles[row].count {
@@ -404,7 +367,7 @@ class BubbleManager: BubbleDelegate {
                     continue
                 }
                 // remove bubble
-                bubbles[row][col] = nil
+                removeBubbleFromGrid(indexPath: IndexPath(row: row, section: col))
                 
                 if animate {
                     destroyUnrootedBubble(bubble)
@@ -414,6 +377,29 @@ class BubbleManager: BubbleDelegate {
                 
             }
         }
+    }
+    
+    private func removeBubbleWithSameColor(_ bubble: Bubble) {
+        for row in 0..<bubbles.count {
+            for col in 0..<bubbles[row].count {
+                guard let bubbleInGrid = bubbles[row][col] else {
+                    continue
+                }
+                if bubbleInGrid.isSameColor(bubble) {
+                    removeBubbleFromGrid(indexPath: IndexPath(row: row, section: col))
+                    destroyRootedBubble(bubbleInGrid)
+                }
+            }
+        }
+    }
+    
+// ************************************ Helper Functions ***************************************//
+    private func getColCount(_ row: Int) -> Int {
+        return (row % 2 == 0) ? COLUMN_COUNT_EVEN : COLUMN_COUNT_ODD
+    }
+    
+    public func getGridLowerBound() -> CGFloat {
+        return gridLowerBound
     }
     
     private func getBubbleIndex(_ bubble: Bubble) -> IndexPath? {
@@ -430,26 +416,25 @@ class BubbleManager: BubbleDelegate {
         return nil
     }
     
-    private func removeBubbleFromGrid(_ bubble: Bubble) {
-        guard let indexPath = getBubbleIndex(bubble) else {
-            return
-        }
+    private func removeBubbleFromGrid(indexPath: IndexPath) {
         bubbles[indexPath.row][indexPath.section] = nil
     }
     
-    private func getVisitedBubbles(_ visited: [IndexPath:Bool]) -> [Bubble] {
-        var visitedBubbles: [Bubble] = [Bubble]()
-        let indexPaths: [IndexPath] = Array(visited.keys)
-        
-        for indexPath in indexPaths {
-            guard let bubble = bubbles[indexPath.row][indexPath.section] else {
-                continue
-            }
-            visitedBubbles.append(bubble)
+    private func removeBubbleFromGrid(bubble: Bubble) {
+        guard let indexPath = getBubbleIndex(bubble) else {
+            return
         }
-        return visitedBubbles
+        removeBubbleFromGrid(indexPath: indexPath)
     }
     
+    private func isOutOfBound(_ bubble: Bubble) -> Bool {
+        if bubble.position.y > gridLowerBound {
+            return true
+        }
+        return false
+    }
+    
+// ************************************ Traversal Functions ***************************************//
     private func bfs(_ startIndexPath: IndexPath, _ startBubble: Bubble, _ checkSameColor: Bool = true, _ visitedDict: [IndexPath:Bool] = [IndexPath:Bool]()) -> [IndexPath:Bool] {
         var visited: [IndexPath:Bool] = visitedDict
         visited[startIndexPath] = true
@@ -527,24 +512,56 @@ class BubbleManager: BubbleDelegate {
         return indexPaths
     }
     
-    private func getColCount(_ row: Int) -> Int {
-        return (row % 2 == 0) ? COLUMN_COUNT_EVEN : COLUMN_COUNT_ODD
+    private func getVisitedBubbles(_ visited: [IndexPath:Bool]) -> [Bubble] {
+        var visitedBubbles: [Bubble] = [Bubble]()
+        let indexPaths: [IndexPath] = Array(visited.keys)
+        
+        for indexPath in indexPaths {
+            guard let bubble = bubbles[indexPath.row][indexPath.section] else {
+                continue
+            }
+            visitedBubbles.append(bubble)
+        }
+        return visitedBubbles
     }
     
-    public func getGridLowerBound() -> CGFloat {
-        return gridLowerBound
+    private func findClosestGridCellPositionAndIndex(_ bubblePosition: CGVector) -> (CGVector, IndexPath) {
+        var minDist = CGFloat.greatestFiniteMagnitude
+        var closestPosition: CGVector = CGVector.zero
+        var index = IndexPath(row: 0, section: 0)
+        
+        func checkMinDist(_ inRow: Int, _ inCol: Int) {
+            let gridCellPosition = gridCellPositions[inRow][inCol]
+            let dist = CGVector.distance(gridCellPosition - bubblePosition)
+            if dist  < minDist {
+                minDist = dist
+                closestPosition = gridCellPosition
+                index = IndexPath(row: inRow, section: inCol)
+            }
+        }
+        for row in 0..<ROW_COUNT {
+            let columnCount = getColCount(row)
+            for col in 0..<columnCount {
+                checkMinDist(row, col)
+            }
+        }
+        return (closestPosition, index)
     }
 }
 
+// ************************************ Array utils Functions ***************************************//
 extension MutableCollection where Indices.Iterator.Element == Index {
     /// Shuffles the contents of this collection.
     mutating func shuffle() {
         let c = count
-        guard c > 1 else { return }
-        
+        guard c > 1 else {
+            return
+        }
         for (firstUnshuffled , unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
             let d: IndexDistance = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
-            guard d != 0 else { continue }
+            guard d != 0 else {
+                continue
+            }
             let i = index(firstUnshuffled, offsetBy: d)
             swap(&self[firstUnshuffled], &self[i])
         }
