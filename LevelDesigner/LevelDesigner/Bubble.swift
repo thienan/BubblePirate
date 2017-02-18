@@ -14,6 +14,7 @@ class Bubble: GameObject {
         case idle
         case move
         case snap
+        case swap
     }
 
     enum BubbleType {
@@ -23,13 +24,18 @@ class Bubble: GameObject {
         case star
     }
     
-    private var snapToPos: CGVector = CGVector.init()
+    
     public var moveState = MoveState.idle
     public var bubbleType = BubbleType.normal
     public var delegate: BubbleDelegate?
     
+    private var snapToPos: CGVector = CGVector.init()
     private var snapRatio: CGFloat = 0
     private var snapSpeed: CGFloat = 10
+    
+    private var moveLinearlyToPos: CGVector = CGVector.init()
+    private var moveLinearlyRatio: CGFloat = 0
+    private var moveLinearlySpeed: CGFloat = 5
     
     init(_ position: CGVector) {
         super.init()
@@ -50,6 +56,14 @@ class Bubble: GameObject {
             
             if CGVector.distanceSquare(position - snapToPos) < 0.01 {
                 delegate?.onBubbleDoneSnapping(self)
+                moveState = MoveState.idle
+            }
+            
+        case .swap:
+            moveLinearlyRatio += deltaTime * moveLinearlySpeed
+            position = CGVector.lerp(position, moveLinearlyToPos, moveLinearlyRatio)
+            
+            if CGVector.distanceSquare(position - moveLinearlyToPos) < 0.01 {
                 moveState = MoveState.idle
             }
         }
@@ -102,6 +116,12 @@ class Bubble: GameObject {
         snapToPos = position
         moveState = MoveState.snap
         snapRatio = 0
+    }
+    
+    public func moveLinearlyTo(_ position: CGVector) {
+        moveLinearlyToPos = position
+        moveState = MoveState.swap
+        moveLinearlyRatio = 0
     }
     
     public func isSameColor(_ other: Bubble) -> Bool {

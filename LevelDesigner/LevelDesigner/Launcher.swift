@@ -11,9 +11,10 @@ import UIKit
 
 class Launcher: GameObject {
     private let bubbleManager: BubbleManager
-    private let nextBubbleOffsetPos: CGVector = CGVector(100, 50)
+    private let nextBubbleOffsetPos: CGVector = CGVector(100, 30)
     let speed = CGFloat(1500)
-    var dir: CGVector = CGVector.zero
+    private var dir: CGVector = CGVector.zero
+    private let spriteName = "background"
     
     private var verticalPosLimit: CGFloat {
         return position.y - 20
@@ -24,15 +25,13 @@ class Launcher: GameObject {
         super.init()
         self.position = position
         // magic number
-        addSpriteComponent("background", CGRect(x: -30/2, y: -100, width: 30, height: 100), CGVector(0.5, 1))
+        addSpriteComponent(spriteName, CGRect(x: -30/2, y: -100, width: 30, height: 100), CGVector(0.5, 1))
         
-    }
-    
-    public override func update(_ deltaTime: CGFloat) {
         bubbleManager.setCurrentBubbleInQueue(position: position)
         bubbleManager.setNextBubbleInQueue(position: position + nextBubbleOffsetPos)
+        
     }
-    
+
     public func getLookAtDir(_ lookAtPoint: CGVector) -> CGVector {
         return CGVector.normalize(lookAtPoint - position)
     }
@@ -53,8 +52,10 @@ class Launcher: GameObject {
             return
         }
         lookAt(lookAtPosition)
-        
         bubbleManager.fireBubble(position, dir * speed)
+        
+        bubbleManager.moveCurrentBubbleInQueue(position: position)
+        bubbleManager.setNextBubbleInQueue(position: position + nextBubbleOffsetPos)
     }
     
     public func lookAt(_ lookAtPosition: CGVector) {

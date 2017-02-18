@@ -201,6 +201,15 @@ class BubbleManager: BubbleDelegate {
         bubble.spriteComponent?.isActive = true
     }
     
+    public func moveCurrentBubbleInQueue(position: CGVector) {
+        guard let bubble = nextBubbleQueue.first else {
+            return
+        }
+        bubble.spriteComponent?.isActive = true
+        bubble.moveLinearlyTo(position)
+    }
+
+    
 // ************************************** Bubble Collision/Delegates Functions **************************************//
     public func onBubbleCollidedWithBubble(_ bubble: Bubble) {
         handleBubbleCollided(bubble)
