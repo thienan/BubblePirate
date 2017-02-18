@@ -15,7 +15,6 @@ class GameObject: Equatable, PhysicObject {
     public var rotation: CGFloat
     let uniqueId: Int
     private(set) var isWaitingToBeDestroyed = false
-    public var isStatic: Bool = false
     public var velocity: CGVector
     
     private(set) var sphereColliderComponent: SphereColliderComponent?

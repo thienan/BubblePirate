@@ -30,7 +30,6 @@
 		F37DD6091E4C6F0700CE1A9B /* GridSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DD6081E4C6F0700CE1A9B /* GridSettings.swift */; };
 		F382CA611E4EFD8C0017C02A /* SphereCollider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382CA601E4EFD8C0017C02A /* SphereCollider.swift */; };
 		F38BECF41E4B3A80009FCE86 /* Launcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = F38BECF31E4B3A80009FCE86 /* Launcher.swift */; };
-		F3913BCD1E559F0E00C88EB2 /* BombBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3913BCC1E559F0E00C88EB2 /* BombBubble.swift */; };
 		F39A0C801E5055E100B1DC45 /* AnimatedBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39A0C7F1E5055E000B1DC45 /* AnimatedBubble.swift */; };
 		F39A0C821E50884F00B1DC45 /* Queue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F39A0C811E50884F00B1DC45 /* Queue.swift */; };
 		F3DD1F521E40AE0800A16909 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3DD1F511E40AE0800A16909 /* AppDelegate.swift */; };
@@ -73,7 +72,6 @@
 		F37DD6081E4C6F0700CE1A9B /* GridSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSettings.swift; sourceTree = "<group>"; };
 		F382CA601E4EFD8C0017C02A /* SphereCollider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SphereCollider.swift; sourceTree = "<group>"; };
 		F38BECF31E4B3A80009FCE86 /* Launcher.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Launcher.swift; sourceTree = "<group>"; };
-		F3913BCC1E559F0E00C88EB2 /* BombBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BombBubble.swift; sourceTree = "<group>"; };
 		F39A0C7F1E5055E000B1DC45 /* AnimatedBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedBubble.swift; sourceTree = "<group>"; };
 		F39A0C811E50884F00B1DC45 /* Queue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Queue.swift; sourceTree = "<group>"; };
 		F3DD1F4F1E40AE0800A16909 /* GameEngine.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GameEngine.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,7 +129,6 @@
 				F37DD6061E4C6D3C00CE1A9B /* BubbleManager.swift */,
 				F32072241E4DCAC300234C4B /* BubbleDelegate.swift */,
 				F36807861E41A6CD00586C2E /* Bubble.swift */,
-				F3913BCC1E559F0E00C88EB2 /* BombBubble.swift */,
 				F39A0C7F1E5055E000B1DC45 /* AnimatedBubble.swift */,
 				F38BECF31E4B3A80009FCE86 /* Launcher.swift */,
 			);
@@ -316,7 +313,6 @@
 				F36DF4271E42DE1A00CCCD7D /* GridCollectionCell.swift in Sources */,
 				F321920C1E447FCF0092B010 /* StorageManager.swift in Sources */,
 				F37647871E4836AF0008454B /* GameObject.swift in Sources */,
-				F3913BCD1E559F0E00C88EB2 /* BombBubble.swift in Sources */,
 				F368078F1E422F1800586C2E /* LevelDesignViewController.swift in Sources */,
 				F32072251E4DCAC300234C4B /* BubbleDelegate.swift in Sources */,
 				F36E8A491E4C4E17008F055C /* DesingerGridCollectionController.swift in Sources */,

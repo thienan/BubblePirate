@@ -28,10 +28,8 @@ class Launcher: GameObject {
     }
     
     public override func update(_ deltaTime: CGFloat) {
-        if bubbleManager.getGameplayMode() == BubbleManager.GameplayMode.ready {
-            bubbleManager.setCurrentBubbleInQueue(position: position)
-            bubbleManager.setNextBubbleInQueue(position: position + nextBubbleOffsetPos)
-        }
+        bubbleManager.setCurrentBubbleInQueue(position: position)
+        bubbleManager.setNextBubbleInQueue(position: position + nextBubbleOffsetPos)
     }
     
     public func getLookAtDir(_ lookAtPoint: CGVector) -> CGVector {

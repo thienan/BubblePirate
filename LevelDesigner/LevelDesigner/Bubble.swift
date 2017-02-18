@@ -36,11 +36,10 @@ class Bubble: GameObject {
     public override func update(_ deltaTime: CGFloat) {
         switch moveState {
         case .idle:
-            //isStatic = true
             break
             
         case .move:
-            //isStatic = false
+
             break
             
         case .snap:

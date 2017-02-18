@@ -22,7 +22,6 @@ class BubbleManager: BubbleDelegate {
     private var bubbles: [[Bubble?]] = []
     private var gridCellPositions: [[CGVector]] = []
     private var cellWidth: CGFloat = GridSettings.cellWidth
-    private var gameplayMode = GameplayMode.ready
     private var spriteNames: [String] = ["bubble-blue", "bubble-green", "bubble-orange", "bubble-red", "bubble-indestructible", "bubble-lightning", "bubble-bomb", "bubble-star"]
     private var gridLowerBound: CGFloat = 0
     private var nextBubbleQueue = [Bubble]()
@@ -33,6 +32,7 @@ class BubbleManager: BubbleDelegate {
     private let BUBBLE_FADE_OUT_SPEED = CGFloat(0.03)
     private let BUBBLE_ROOTED_FADE_OUT_SPEED = CGFloat(0.02)
     private let BUBBLE_FALLING_SPEED = CGFloat(0.4)
+    private let NUM_OF_COLOR_BUBBLE = 4
     
     init?(_ gridBubbles: [[GridBubble]], _ gameEngine: GameEngine) {
         ROW_COUNT = GridSettings.ROW_COUNT
@@ -77,12 +77,17 @@ class BubbleManager: BubbleDelegate {
         gridLowerBound = posOfLowestCell.y + cellWidth/2
     }
     
-    // TODO CHECK ERROR
+
     private func addBubbleToNextBubbleQueue() {
-        // create bubble off screen
-        for i in 0..<4{
-            nextBubbleQueue.append(createOffScreenBubble(spriteNames[i]))
+        if NUM_OF_COLOR_BUBBLE < 1 {
+            return
         }
+        var newArray: [Bubble] = []
+        // create bubble off screen
+        for i in 0..<NUM_OF_COLOR_BUBBLE {
+            newArray.append(createOffScreenBubble(spriteNames[i]))
+        }
+        nextBubbleQueue.append(contentsOf: newArray.shuffled())
     }
     
     private func createBubble(_ gridBubbleType: GridBubble.BubbleColor, _ position: CGVector) -> Bubble? {
@@ -138,10 +143,6 @@ class BubbleManager: BubbleDelegate {
     }
     
     public func fireBubble(_ pos: CGVector, _ velocity: CGVector) {
-        if gameplayMode != GameplayMode.ready {
-            //return
-        }
-        gameplayMode = GameplayMode.waiting
         let bubble = nextBubbleQueue.removeFirst()
         bubble.position = pos
         bubble.setVelocity(velocity)
@@ -238,11 +239,9 @@ class BubbleManager: BubbleDelegate {
             print(ERROR_CANT_FIND_INDEX_OF_BUBBLE)
             return
         }
-    
         tryToPopBubble(indexPath, bubble)
         activateNeighbourSpecialBubble(indexPath, bubble)
         checkUnRootedBubble(animate: true)
-        gameplayMode = GameplayMode.ready
     }
 
     private func tryToPopBubble(_ indexPath: IndexPath, _ bubble: Bubble) {
@@ -330,7 +329,6 @@ class BubbleManager: BubbleDelegate {
     private func handleBubbleCollided(_ bubble: Bubble) {
         if isOutOfBound(bubble) {
             destroyMovingBubble(bubble)
-            gameplayMode = GameplayMode.ready
             return
         }
         let pos_index = findClosestGridCellPositionAndIndex(bubble.position)
@@ -536,8 +534,28 @@ class BubbleManager: BubbleDelegate {
     public func getGridLowerBound() -> CGFloat {
         return gridLowerBound
     }
-    
-    public func getGameplayMode() -> GameplayMode {
-        return gameplayMode
+}
+
+extension MutableCollection where Indices.Iterator.Element == Index {
+    /// Shuffles the contents of this collection.
+    mutating func shuffle() {
+        let c = count
+        guard c > 1 else { return }
+        
+        for (firstUnshuffled , unshuffledCount) in zip(indices, stride(from: c, to: 1, by: -1)) {
+            let d: IndexDistance = numericCast(arc4random_uniform(numericCast(unshuffledCount)))
+            guard d != 0 else { continue }
+            let i = index(firstUnshuffled, offsetBy: d)
+            swap(&self[firstUnshuffled], &self[i])
+        }
+    }
+}
+
+extension Sequence {
+    /// Returns an array with the contents of this sequence, shuffled.
+    func shuffled() -> [Iterator.Element] {
+        var result = Array(self)
+        result.shuffle()
+        return result
     }
 }
