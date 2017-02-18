@@ -227,6 +227,11 @@ class BubbleManager: BubbleDelegate {
     public func onBubbleCollidedWithTopWall(_ bubble: Bubble) {
         handleBubbleCollided(bubble)
     }
+    
+    public func onBubbleCollidedWithBtmWall(_ bubble: Bubble) {
+        removeBubbleFromGrid(bubble)
+        destroyRootedBubble(bubble)
+    }
 
     public func onBubbleDoneSnapping(_ bubble: Bubble) {
         guard let indexPath = getBubbleIndex(bubble) else {

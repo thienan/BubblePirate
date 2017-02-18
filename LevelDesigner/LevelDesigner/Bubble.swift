@@ -78,6 +78,10 @@ class Bubble: GameObject {
         flipXVelocity()
     }
     
+    public override func onCollideWithBtmWorldBound() {
+        delegate?.onBubbleCollidedWithBtmWall(self)
+    }
+    
     public override func onCollideWithTopWorldBound() {
         if moveState == MoveState.move {
             velocity = CGVector(0, 0)

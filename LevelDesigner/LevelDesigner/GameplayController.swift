@@ -23,6 +23,8 @@ class GameplayController: UIViewController {
     private let ERROR_GRID_BUBBLES_NOT_LOADED = "ERROR: gridBubblesAreNotLoaded"
     private let ERROR_BUBBLE_MANAGER_FAILED = "ERROR: Bubble Manager failed to initialised"
     
+    private let WORLD_BOUND_Y_OFFSET = CGFloat(100)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpGesture()
@@ -32,7 +34,7 @@ class GameplayController: UIViewController {
     
     private func setUpEngineAndBubbleManagerAndGridBound() {
         let newGameEngine = GameEngine(scene)
-        newGameEngine.setWorldBound()
+        newGameEngine.setWorldBound(CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height + WORLD_BOUND_Y_OFFSET))
     
         guard let gridBubbles = gridBubblesPosition else {
             print(ERROR_GRID_BUBBLES_NOT_LOADED)

@@ -68,11 +68,10 @@ class PhysicEngine {
                 let dir2 = CGVector.normalize(physicObject2.position - physicObject1.position)
                 physicObject2.position = midPoint + (dir2 * collider2.radius)
                 
-                let p = CGVector.dot(physicObject1.velocity, dir2) - CGVector.dot(physicObject2.velocity, dir2)
-                let distance = CGVector.distance(physicObject2.position - physicObject1.position)
+                let momentum = CGVector.dot(physicObject1.velocity, dir2) - CGVector.dot(physicObject2.velocity, dir2)
                 
-                physicObject1.velocity = physicObject1.velocity - dir2 * min(p, distance)
-                physicObject2.velocity = physicObject2.velocity + dir2 * min(p, distance)
+                physicObject1.velocity = physicObject1.velocity - dir2 * momentum
+                physicObject2.velocity = physicObject2.velocity + dir2 * momentum
             }
             
             physicObject1.onCollide(physicObject2)
@@ -81,6 +80,7 @@ class PhysicEngine {
     }
     
     private func checkCollisionWithWorldBound(_ physicObject: PhysicObject) {
+        var physicObject = physicObject
         if !worldBound {
             return
         }
@@ -88,19 +88,23 @@ class PhysicEngine {
             return
         }
         if collider.intersect(leftVerticalLine: worldBoundRect.minX) {
+            physicObject.position = CGVector(worldBoundRect.minX + collider.radius, physicObject.position.y)
             physicObject.onCollideWithLeftWorldBound()
         }
         if collider.intersect(rightVerticalLine: worldBoundRect.maxX) {
+            physicObject.position = CGVector(worldBoundRect.maxX - collider.radius, physicObject.position.y)
             physicObject.onCollideWithRightWorldBound()
         }
         if collider.intersect(topHorizontalLine: worldBoundRect.minY) {
+            physicObject.position = CGVector(physicObject.position.x, worldBoundRect.minY + collider.radius)
             physicObject.onCollideWithTopWorldBound()
         }
         if collider.intersect(btmHorizontalLine: worldBoundRect.maxY) {
+            physicObject.position = CGVector(physicObject.position.x, worldBoundRect.maxY - collider.radius)
             physicObject.onCollideWithBtmWorldBound()
         }
     }
-    
+
     public func setWorldBound(_ worldBoundRect: CGRect) {
         self.worldBound = true
         self.worldBoundRect = worldBoundRect
