@@ -40,6 +40,8 @@ class PhysicEngine {
     }
     
     private func checkCollision(_ physicObject1: PhysicObject, _ physicObject2: PhysicObject) {
+        var physicObject1 = physicObject1
+        var physicObject2 = physicObject2
         if physicObject1.isEqual(physicObject2) {
             return
         }
@@ -53,6 +55,20 @@ class PhysicEngine {
             return
         }
         if collider1.intersect(collider2) {
+            if !isStatic(physicObject1) && isStatic(physicObject2) {
+                let dir = CGVector.normalize(physicObject1.position - physicObject2.position)
+                physicObject1.position = physicObject2.position + (dir * collider1.radius) + (dir * collider2.radius)
+            }
+            
+            if !isStatic(physicObject1) && !isStatic(physicObject2) {
+                let midPoint = (physicObject1.position + physicObject2.position) / 2
+                let dir1 = CGVector.normalize(physicObject1.position - physicObject2.position)
+                physicObject1.position = midPoint + (dir1 * collider1.radius)
+                
+                let dir2 = CGVector.normalize(physicObject2.position - physicObject1.position)
+                physicObject2.position = midPoint + (dir2 * collider2.radius)
+            }
+            
             physicObject1.onCollide(physicObject2)
             physicObject2.onCollide(physicObject1)
         }
