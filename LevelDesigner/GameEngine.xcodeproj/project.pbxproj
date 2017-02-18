@@ -12,7 +12,8 @@
 		F321920C1E447FCF0092B010 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321920B1E447FCF0092B010 /* StorageManager.swift */; };
 		F33CD5EE1E488E2500DCECAA /* PhysicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33CD5ED1E488E2500DCECAA /* PhysicEngine.swift */; };
 		F33CD5F01E48974C00DCECAA /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33CD5EF1E48974C00DCECAA /* RenderEngine.swift */; };
-		F3640F731E5856F6009EC3B2 /* NaughtyImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3640F721E5856F6009EC3B2 /* NaughtyImageView.swift */; };
+		F3640F731E5856F6009EC3B2 /* UIAnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3640F721E5856F6009EC3B2 /* UIAnimatedImageView.swift */; };
+		F3640F751E587248009EC3B2 /* AnimatedSpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3640F741E587248009EC3B2 /* AnimatedSpriteComponent.swift */; };
 		F36807871E41A6CD00586C2E /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36807861E41A6CD00586C2E /* Bubble.swift */; };
 		F368078F1E422F1800586C2E /* LevelDesignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368078E1E422F1800586C2E /* LevelDesignViewController.swift */; };
 		F36A02A61E4971F5005F7BB6 /* Component.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36A02A51E4971F5005F7BB6 /* Component.swift */; };
@@ -55,7 +56,8 @@
 		F321920B1E447FCF0092B010 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		F33CD5ED1E488E2500DCECAA /* PhysicEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicEngine.swift; sourceTree = "<group>"; };
 		F33CD5EF1E48974C00DCECAA /* RenderEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderEngine.swift; sourceTree = "<group>"; };
-		F3640F721E5856F6009EC3B2 /* NaughtyImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NaughtyImageView.swift; sourceTree = "<group>"; };
+		F3640F721E5856F6009EC3B2 /* UIAnimatedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAnimatedImageView.swift; sourceTree = "<group>"; };
+		F3640F741E587248009EC3B2 /* AnimatedSpriteComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSpriteComponent.swift; sourceTree = "<group>"; };
 		F36807861E41A6CD00586C2E /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		F368078E1E422F1800586C2E /* LevelDesignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignViewController.swift; sourceTree = "<group>"; };
 		F36A02A51E4971F5005F7BB6 /* Component.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Component.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				F37647841E4836A10008454B /* GameEngine.swift */,
 				F33CD5EF1E48974C00DCECAA /* RenderEngine.swift */,
+				F3640F721E5856F6009EC3B2 /* UIAnimatedImageView.swift */,
 				F37647861E4836AF0008454B /* GameObject.swift */,
 				F382CA641E4F0BC30017C02A /* Component */,
 				F382CA5C1E4EEB210017C02A /* PhysicEngine */,
@@ -133,7 +136,6 @@
 				F36807861E41A6CD00586C2E /* Bubble.swift */,
 				F39A0C7F1E5055E000B1DC45 /* AnimatedBubble.swift */,
 				F38BECF31E4B3A80009FCE86 /* Launcher.swift */,
-				F3640F721E5856F6009EC3B2 /* NaughtyImageView.swift */,
 			);
 			name = GamePlay;
 			sourceTree = "<group>";
@@ -175,6 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				F376478C1E4854720008454B /* SpriteComponent.swift */,
+				F3640F741E587248009EC3B2 /* AnimatedSpriteComponent.swift */,
 				F37647881E48459A0008454B /* SphereColliderComponent.swift */,
 				F36A02A51E4971F5005F7BB6 /* Component.swift */,
 			);
@@ -304,7 +307,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F37DD6091E4C6F0700CE1A9B /* GridSettings.swift in Sources */,
-				F3640F731E5856F6009EC3B2 /* NaughtyImageView.swift in Sources */,
+				F3640F731E5856F6009EC3B2 /* UIAnimatedImageView.swift in Sources */,
 				F37DD6071E4C6D3C00CE1A9B /* BubbleManager.swift in Sources */,
 				F376478D1E4854720008454B /* SpriteComponent.swift in Sources */,
 				F38BECF41E4B3A80009FCE86 /* Launcher.swift in Sources */,
@@ -320,6 +323,7 @@
 				F368078F1E422F1800586C2E /* LevelDesignViewController.swift in Sources */,
 				F32072251E4DCAC300234C4B /* BubbleDelegate.swift in Sources */,
 				F36E8A491E4C4E17008F055C /* DesingerGridCollectionController.swift in Sources */,
+				F3640F751E587248009EC3B2 /* AnimatedSpriteComponent.swift in Sources */,
 				F3DD1F521E40AE0800A16909 /* AppDelegate.swift in Sources */,
 				F39A0C821E50884F00B1DC45 /* Queue.swift in Sources */,
 				F382CA611E4EFD8C0017C02A /* SphereCollider.swift in Sources */,

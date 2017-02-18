@@ -53,3 +53,7 @@ Your answer here
 
 
 bubble slowly snap to position
+
+remove status bar at top
+
+SCREENSHAKE

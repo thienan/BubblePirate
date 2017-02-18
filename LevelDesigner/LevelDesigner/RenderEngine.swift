@@ -78,6 +78,19 @@ class RenderEngine {
         return newImageView
     }
     
+    private func createNewAnimatedImageView(_ spriteComponent: AnimatedSpriteComponent) -> UIImageView {
+        let newImageView = UIAnimatedImageView(frame: spriteComponent.rect)
+        guard let image = UIImage(named: spriteComponent.spriteName) else {
+            return newImageView
+        }
+        newImageView.setupWithImage(image, spriteComponent.horizontalImages, spriteComponent.verticalImages)
+        setAnchorPoint(anchorPoint: spriteComponent.anchorPoint, view: newImageView)
+        scene.addSubview(newImageView)
+        newImageView.frameSkip = 4
+        newImageView.startAnimation()
+        return newImageView
+    }
+    
     public func removeSpriteComponent(_ gameObjects: [GameObject]) {
         for gameObject in gameObjects {
             guard let spriteComponent = gameObject.getSpriteComponent() else {

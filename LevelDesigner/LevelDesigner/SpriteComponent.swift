@@ -18,7 +18,7 @@ class SpriteComponent: Component {
     let uniqueId: Int
     private(set) var anchorPoint: CGVector
     
-    init(_ parent: GameObject, _ spriteName: String, _ rect: CGRect, _ anchorPoint: CGVector) {
+    init(_ parent: GameObject, _ spriteName: String, _ rect: CGRect, _ anchorPoint: CGVector = CGVector.zero) {
         self.spriteName = spriteName
         self.rect = rect
         self.anchorPoint = anchorPoint

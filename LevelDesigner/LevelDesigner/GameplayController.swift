@@ -90,19 +90,30 @@ class GameplayController: UIViewController {
             let position = gesture.location(in: view)
             launcher?.fireBubble(lookAtPosition: CGVector.toVector(position))
             launcher?.tapped(CGVector.toVector(position))
-            //785, 419
-            let starImageView = NaughtyImageView(frame: CGRect.zero)
+            /*
+            let starImageView = UIAnimatedImageView(frame: CGRect.zero)
             starImageView.loop = false
             starImageView.frame = CGRect(x: view.frame.width/2.0, y: 100, width: 785/6.0, height: 419/2.0)
             view.addSubview(starImageView)
+            starImageView.frameSkip = 2
             starImageView.setupWithImage(UIImage(named: "cannon")!, horizontalImages: 6, verticalImages: 2)
             starImageView.startNaughtyAnimation()
             //starImageView.naughtyAnimationDidStop({starImageView.removeFromSuperview()})
             starImageView.naughtyAnimationDidStop = stop
+            */
+            let starImageView = UIAnimatedImageView(frame: CGRect.zero)
+            starImageView.loop = false
+            starImageView.frame = CGRect(x: view.frame.width/2.0, y: 100, width: 80, height: 80)
+            view.addSubview(starImageView)
+            starImageView.frameSkip = 4
+            starImageView.setupWithImage(UIImage(named: "bubble-burst")!, 4, 1)
+            starImageView.startAnimation()
+            //starImageView.naughtyAnimationDidStop({starImageView.removeFromSuperview()})
+            starImageView.animationDidStop = stop
         }
     }
     
-    public func stop(_ finished: Bool) {
+    public func stop() {
         
     }
     

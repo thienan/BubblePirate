@@ -18,7 +18,7 @@ import Foundation
 
 import UIKit
 
-open class NaughtyImageView: UIImageView {
+open class UIAnimatedImageView: UIImageView {
     
     open var horizontalImages: Int!
     
@@ -39,17 +39,20 @@ open class NaughtyImageView: UIImageView {
     
     var displayLink: CADisplayLink!
     
-    open var naughtyAnimating = false
+    open var isImageAnimating = false
     
     open var frameSkip = 0
+    var autoDestroy = true
     
     fileprivate var frameCount = 0
+    var frameCountDelta: CGFloat = 0
+    var timePerFrame: CGFloat = 0
     
     open var loop = true
     
     fileprivate var finished = false
     
-    open var naughtyAnimationDidStop: ((Bool) -> Void)?
+    open var animationDidStop: (() -> Void)?
     
     open var debug = false {
         didSet {
@@ -78,7 +81,7 @@ open class NaughtyImageView: UIImageView {
         addSubview(floatingImage)
     }
     
-    open func setupWithImage(_ newImage: UIImage, horizontalImages: Int, verticalImages: Int) {
+    open func setupWithImage(_ newImage: UIImage, _ horizontalImages: Int, _ verticalImages: Int) {
         
         if !debug {
             clipsToBounds = true
@@ -137,15 +140,14 @@ open class NaughtyImageView: UIImageView {
         }
     }
     
-    open func startNaughtyAnimation() {
+    open func startAnimation() {
         finished = false
-        naughtyAnimating = true
-        displayLink = CADisplayLink(target: self, selector: #selector(NaughtyImageView.callbackNaughtyAnimation))
+        isImageAnimating = true
+        displayLink = CADisplayLink(target: self, selector: #selector(UIAnimatedImageView.callbackNaughtyAnimation))
         displayLink.add(to: RunLoop.current, forMode: RunLoopMode.commonModes)
     }
     
     open func callbackNaughtyAnimation() {
-        
         if frameCount == frameSkip {
             toNewFrame(currentIndex + 1)
             frameCount = 0
@@ -156,12 +158,16 @@ open class NaughtyImageView: UIImageView {
     }
     
     open func stopNaughtyAnimation() {
-        naughtyAnimating = false
+        isImageAnimating = false
         displayLink.invalidate()
-        //removeFromSuperview()
         
-        if let naughtyAnimationDidStop = naughtyAnimationDidStop {
-            naughtyAnimationDidStop(finished)
+        if autoDestroy {
+            removeFromSuperview()
+        }
+        
+        
+        if let naughtyAnimationDidStop = animationDidStop {
+            naughtyAnimationDidStop()
         }
         
     }
