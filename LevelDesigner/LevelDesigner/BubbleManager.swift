@@ -201,7 +201,7 @@ class BubbleManager: BubbleDelegate {
         bubble.spriteComponent?.isActive = true
     }
     
-// ************************************** Bubble Collision Functions ******************************************//
+// ************************************** Bubble Collision/Delegates Functions **************************************//
     public func onBubbleCollidedWithBubble(_ bubble: Bubble) {
         handleBubbleCollided(bubble)
     }
