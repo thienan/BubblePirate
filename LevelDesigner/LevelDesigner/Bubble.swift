@@ -61,10 +61,10 @@ class Bubble: GameObject {
     }
 
     public override func onCollide(_ other: GameObject) {
-        guard other is Bubble else {
+        guard let other = other as? Bubble else {
             return
         }
-        if moveState == MoveState.move {
+        if moveState == MoveState.move && other.moveState == MoveState.idle {
             velocity = CGVector(0, 0)
             delegate?.onBubbleCollidedWithBubble(self)
         }

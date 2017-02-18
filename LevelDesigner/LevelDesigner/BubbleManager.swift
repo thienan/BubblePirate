@@ -139,7 +139,7 @@ class BubbleManager: BubbleDelegate {
     
     public func fireBubble(_ pos: CGVector, _ velocity: CGVector) {
         if gameplayMode != GameplayMode.ready {
-            return
+            //return
         }
         gameplayMode = GameplayMode.waiting
         let bubble = nextBubbleQueue.removeFirst()

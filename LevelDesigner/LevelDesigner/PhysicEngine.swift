@@ -67,6 +67,12 @@ class PhysicEngine {
                 
                 let dir2 = CGVector.normalize(physicObject2.position - physicObject1.position)
                 physicObject2.position = midPoint + (dir2 * collider2.radius)
+                
+                let p = CGVector.dot(physicObject1.velocity, dir2) - CGVector.dot(physicObject2.velocity, dir2)
+                let distance = CGVector.distance(physicObject2.position - physicObject1.position)
+                
+                physicObject1.velocity = physicObject1.velocity - dir2 * min(p, distance)
+                physicObject2.velocity = physicObject2.velocity + dir2 * min(p, distance)
             }
             
             physicObject1.onCollide(physicObject2)

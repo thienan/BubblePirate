@@ -58,7 +58,7 @@ class GameEngine {
     }
     
     public func setWorldBound() {
-        physicEngine.setWorldBound(CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
+        //physicEngine.setWorldBound(CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height))
     }
 
     public static func localToWorldPosition(_ parent: GameObject, _ vec: CGVector) -> CGVector {
