@@ -22,6 +22,8 @@ class GameplayController: UIViewController {
     
     private let ERROR_GRID_BUBBLES_NOT_LOADED = "ERROR: gridBubblesAreNotLoaded"
     private let ERROR_BUBBLE_MANAGER_FAILED = "ERROR: Bubble Manager failed to initialised"
+    private let SEQ_GRID = "grid"
+    private var gridController: GridCollectionController?
     
     private let WORLD_BOUND_Y_OFFSET = CGFloat(100)
     
@@ -103,12 +105,19 @@ class GameplayController: UIViewController {
             launcher?.tapped(CGVector.toVector(position))
             scene.shake2(count: 3, for: 0.3, withTranslation: 3)
             scene.shake()
+            gridController?.test()
         }
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SEQ_GRID {
+            gridController = segue.destination as? GridCollectionController
+        }
     }
 }
 
