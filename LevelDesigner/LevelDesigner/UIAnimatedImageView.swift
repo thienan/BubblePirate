@@ -1,20 +1,14 @@
 //
-//  NaughtyImageView.swift
-//  GameEngine
-//
-//  Created by limte on 18/2/17.
-//  Copyright © 2017 nus.cs3217.a0101010. All rights reserved.
-//
-
-import Foundation
-
-//
-//  NaughtyImageView.swift
+//  UIAnimatedImageViews.swift
 //
 //
 //  Created by kevinzhow on 15/7/13.
 //
 //
+
+import Foundation
+
+
 
 import UIKit
 

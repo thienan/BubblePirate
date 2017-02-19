@@ -10,13 +10,12 @@ import Foundation
 import UIKit
 
 class GameEngine {
-    private(set) var gameObjects: [GameObject] = []
-    private let physicEngine: PhysicEngine
+    private(set) static var gameObjects: [GameObject] = []
+    private static let physicEngine: PhysicEngine = PhysicEngine()
     private let renderEngine: RenderEngine
 
     init(_ scene: UIView) {
         renderEngine = RenderEngine(scene)
-        physicEngine = PhysicEngine()
         createDisplayLink()
     }
 
@@ -28,17 +27,17 @@ class GameEngine {
     @objc public func update(displaylink: CADisplayLink) {
         let deltaTime = CGFloat(displaylink.targetTimestamp - displaylink.timestamp)
         updateObjects(deltaTime)
-        physicEngine.update(deltaTime, gameObjects)
-        renderEngine.update(gameObjects)
+        GameEngine.physicEngine.update(deltaTime, GameEngine.gameObjects)
+        renderEngine.update(GameEngine.gameObjects)
         removeDeadObject()
     }
 
     private func removeDeadObject() {
         // remove gameobject's sprite component from renderer
-        let removedObject = gameObjects.filter{!$0.isAlive()}
+        let removedObject = GameEngine.gameObjects.filter{!$0.isAlive()}
         renderEngine.removeSpriteComponent(removedObject)
         notifyDestroyed(removedObject)
-        gameObjects = gameObjects.filter{$0.isAlive()}
+        GameEngine.gameObjects = GameEngine.gameObjects.filter{$0.isAlive()}
     }
     
     private func notifyDestroyed(_ inGameObject: [GameObject]) {
@@ -48,20 +47,24 @@ class GameEngine {
     }
     
     private func updateObjects(_ deltaTime: CGFloat) {
-        for gameObject in gameObjects {
+        for gameObject in GameEngine.gameObjects {
             gameObject.update(deltaTime)
         }
     }
     
     public func add(_ gameObject: GameObject) {
-        gameObjects.append(gameObject)
+        GameEngine.gameObjects.append(gameObject)
     }
     
     public func setWorldBound(_ boundRect: CGRect) {
-        physicEngine.setWorldBound(boundRect)
+        GameEngine.physicEngine.setWorldBound(boundRect)
     }
 
     public static func localToWorldPosition(_ parent: GameObject, _ vec: CGVector) -> CGVector {
         return parent.position + vec
+    }
+    
+    public static func rayCast(_ origin: CGVector, _ direction: CGVector) -> GameObject? {
+        return GameEngine.physicEngine.rayCast(GameEngine.gameObjects, origin, direction) as? GameObject
     }
 }

@@ -125,6 +125,12 @@ class PhysicEngine {
         }
     }
 
+    public func rayCast(_ physicObjects: [PhysicObject], _ origin: CGVector, _ direction: CGVector) -> PhysicObject? {
+        
+        return nil
+    }
+
+    
     public func setWorldBound(_ worldBoundRect: CGRect) {
         self.worldBound = true
         self.worldBoundRect = worldBoundRect
