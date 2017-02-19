@@ -90,12 +90,10 @@ class RenderEngine {
         guard let image = UIImage(named: spriteComponent.spriteName) else {
             return newImageView
         }
-
         newImageView.setupWithImage(image, spriteComponent.horizontalImages, spriteComponent.verticalImages)
         setAnchorPoint(anchorPoint: spriteComponent.anchorPoint, view: newImageView)
         newImageView.frameSkip = 4
         newImageView.loop = spriteComponent.loop
-        //newImageView.autoDestroy = test
         newImageView.autoDestroy = false
         newImageView.animationDidStop = spriteComponent.animationFinished
         scene.addSubview(newImageView)
