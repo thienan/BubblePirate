@@ -28,6 +28,7 @@
 		F37647891E48459A0008454B /* SphereColliderComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37647881E48459A0008454B /* SphereColliderComponent.swift */; };
 		F376478B1E4853C40008454B /* CGVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376478A1E4853C40008454B /* CGVector.swift */; };
 		F376478D1E4854720008454B /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376478C1E4854720008454B /* SpriteComponent.swift */; };
+		F376DAFA1E5998B400B0B80D /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376DAF91E5998B400B0B80D /* MainMenuViewController.swift */; };
 		F37DD6071E4C6D3C00CE1A9B /* BubbleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DD6061E4C6D3C00CE1A9B /* BubbleManager.swift */; };
 		F37DD6091E4C6F0700CE1A9B /* GridSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DD6081E4C6F0700CE1A9B /* GridSettings.swift */; };
 		F382CA611E4EFD8C0017C02A /* SphereCollider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382CA601E4EFD8C0017C02A /* SphereCollider.swift */; };
@@ -72,6 +73,7 @@
 		F37647881E48459A0008454B /* SphereColliderComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SphereColliderComponent.swift; sourceTree = "<group>"; };
 		F376478A1E4853C40008454B /* CGVector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGVector.swift; sourceTree = "<group>"; };
 		F376478C1E4854720008454B /* SpriteComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
+		F376DAF91E5998B400B0B80D /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
 		F37DD6061E4C6D3C00CE1A9B /* BubbleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleManager.swift; sourceTree = "<group>"; };
 		F37DD6081E4C6F0700CE1A9B /* GridSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSettings.swift; sourceTree = "<group>"; };
 		F382CA601E4EFD8C0017C02A /* SphereCollider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SphereCollider.swift; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				F382CA5D1E4EEB7E0017C02A /* LevelDesigner */,
 				F382CA5A1E4EEAE30017C02A /* GamePlay */,
 				F33CD5F11E48A75A00DCECAA /* GameEngine */,
+				F376DAF91E5998B400B0B80D /* MainMenuViewController.swift */,
 			);
 			name = GameEngine;
 			path = LevelDesigner;
@@ -330,6 +333,7 @@
 				F33CD5EE1E488E2500DCECAA /* PhysicEngine.swift in Sources */,
 				F37647891E48459A0008454B /* SphereColliderComponent.swift in Sources */,
 				F36DF4251E42D1C200CCCD7D /* GridBubbleManager.swift in Sources */,
+				F376DAFA1E5998B400B0B80D /* MainMenuViewController.swift in Sources */,
 				F36A02A61E4971F5005F7BB6 /* Component.swift in Sources */,
 				F37647851E4836A10008454B /* GameEngine.swift in Sources */,
 				F39A0C801E5055E100B1DC45 /* AnimatedBubble.swift in Sources */,

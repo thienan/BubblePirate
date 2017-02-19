@@ -56,4 +56,8 @@ bubble slowly snap to position
 
 remove status bar at top
 
+switch bubble
+
+bubble moves to cannon
+
 SCREENSHAKE

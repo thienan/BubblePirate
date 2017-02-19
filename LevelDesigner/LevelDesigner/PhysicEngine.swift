@@ -125,9 +125,9 @@ class PhysicEngine {
         }
     }
 
-    public func rayCast(_ physicObjects: [PhysicObject], _ origin: CGVector, _ direction: CGVector) -> PhysicObject? {
+    public func rayCast(_ physicObjects: [PhysicObject], _ origin: CGVector, _ direction: CGVector) -> (Bool, PhysicObject?) {
         
-        return nil
+        return (true, nil)
     }
 
     

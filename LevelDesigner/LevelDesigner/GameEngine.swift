@@ -64,7 +64,7 @@ class GameEngine {
         return parent.position + vec
     }
     
-    public static func rayCast(_ origin: CGVector, _ direction: CGVector) -> GameObject? {
-        return GameEngine.physicEngine.rayCast(GameEngine.gameObjects, origin, direction) as? GameObject
+    public static func rayCast(_ origin: CGVector, _ direction: CGVector) -> (Bool, GameObject?) {
+        return GameEngine.physicEngine.rayCast(GameEngine.gameObjects, origin, direction) as! (Bool, GameObject?)
     }
 }
