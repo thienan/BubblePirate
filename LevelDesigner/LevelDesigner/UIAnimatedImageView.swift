@@ -42,7 +42,7 @@ open class UIAnimatedImageView: UIImageView {
     open var isImageAnimating = false
     
     open var frameSkip = 0
-    var autoDestroy = true
+    var autoDestroy = false
     
     fileprivate var frameCount = 0
     var frameCountDelta: CGFloat = 0
@@ -81,6 +81,16 @@ open class UIAnimatedImageView: UIImageView {
         addSubview(floatingImage)
     }
     
+    func resizeImage(image: UIImage, newWidth: CGFloat) -> UIImage {
+        let scale = newWidth / image.size.width
+        let newHeight = image.size.height * scale
+        UIGraphicsBeginImageContext(CGSize(width: newWidth, height: newHeight))
+        image.draw(in: CGRect(x: 0, y: 0, width: newWidth, height: newHeight))
+        let newImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return newImage!
+    }
+    
     open func setupWithImage(_ newImage: UIImage, _ horizontalImages: Int, _ verticalImages: Int) {
         
         if !debug {
@@ -88,8 +98,8 @@ open class UIAnimatedImageView: UIImageView {
         }
         
         floatingImage.frame = CGRect(x: 0, y: 0, width: frame.width * CGFloat(horizontalImages), height: frame.height * CGFloat(verticalImages))
-        
-        floatingImage.image = newImage
+
+        floatingImage.image = resizeImage(image: newImage, newWidth: frame.width * CGFloat(horizontalImages))
         
         self.horizontalImages = horizontalImages
         self.verticalImages = verticalImages
@@ -154,21 +164,18 @@ open class UIAnimatedImageView: UIImageView {
         } else {
             frameCount += 1
         }
-        
     }
     
     open func stopNaughtyAnimation() {
         isImageAnimating = false
         displayLink.invalidate()
         
-        if autoDestroy {
-            removeFromSuperview()
-        }
-        
-        
         if let naughtyAnimationDidStop = animationDidStop {
             naughtyAnimationDidStop()
         }
         
+        if autoDestroy {
+            removeFromSuperview()
+        }
     }
 }

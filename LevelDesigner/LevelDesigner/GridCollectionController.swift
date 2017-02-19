@@ -20,7 +20,16 @@ class GridCollectionController: UICollectionViewController, UICollectionViewDele
     override func viewDidLoad() {
         super.viewDidLoad()
     }
-
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true);
+        navigationController?.navigationBar.isHidden = true // for navigation bar hide
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }

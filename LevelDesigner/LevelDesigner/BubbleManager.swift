@@ -145,18 +145,6 @@ class BubbleManager: BubbleDelegate {
         return bubble
     }
     
-    private func createAnimatedBubbleObject(_ bubble: Bubble, fadeOutSpeed: CGFloat, fallingSpeed: CGFloat = 0) {
-        guard let spriteComponent = bubble.spriteComponent else {
-            return
-        }
-        let bubble = AnimatedBubble(CGVector(bubble.position.x, bubble.position.y), fadeOutSpeed)
-        bubble.addSpriteComponent(spriteComponent.spriteName, CGRect(x: -cellWidth/2, y: -cellWidth/2, width: cellWidth, height: cellWidth))
-        if fallingSpeed != 0 {
-            bubble.setFalling(fallingSpeed: fallingSpeed)
-        }
-        gameEngine.add(bubble)
-    }
-    
     public func fireBubble(_ pos: CGVector, _ velocity: CGVector) {
         let bubble = nextBubbleQueue.removeFirst()
         bubble.position = pos
@@ -168,6 +156,34 @@ class BubbleManager: BubbleDelegate {
         if nextBubbleQueue.count < MIN_BUBBLE_IN_QUEUE {
             addBubbleToNextBubbleQueue()
         }
+    }
+    
+// ************************************** Bubble Animation Functions ******************************************//
+    private func createAnimatedBubbleObject(_ bubble: Bubble, fadeOutSpeed: CGFloat, fallingSpeed: CGFloat = 0) {
+        guard let spriteComponent = bubble.spriteComponent else {
+            return
+        }
+        let bubble = AnimatedBubble(CGVector(bubble.position.x, bubble.position.y), fadeOutSpeed)
+        bubble.addSpriteComponent(spriteComponent.spriteName, spriteComponent.rect)
+        if fallingSpeed != 0 {
+            bubble.setFalling(fallingSpeed: fallingSpeed)
+        }
+        gameEngine.add(bubble)
+    }
+    
+    private func createBubblePopObject(_ bubble: Bubble) {
+        guard let spriteComponent = bubble.spriteComponent else {
+            return
+        }
+        let bubblePop = GameObject()
+        bubblePop.position = CGVector(bubble.position.x, bubble.position.y)
+        bubblePop.addAnimatedSpriteComponent("bubble-burst", spriteComponent.rect, 4, 1)
+        gameEngine.add(bubblePop)
+        
+        guard let animatedSpriteComponent = bubblePop.spriteComponent as? AnimatedSpriteComponent else {
+            return
+        }
+        animatedSpriteComponent.frameSkip = 4
     }
     
 // ************************************** Queue Functions ******************************************//
@@ -360,7 +376,8 @@ class BubbleManager: BubbleDelegate {
     }
     
     private func destroyRootedBubble(_ bubble: Bubble) {
-        createAnimatedBubbleObject(bubble, fadeOutSpeed: BUBBLE_FADE_OUT_SPEED)
+        //createAnimatedBubbleObject(bubble, fadeOutSpeed: BUBBLE_FADE_OUT_SPEED)
+        createBubblePopObject(bubble)
         bubble.destroy()
     }
     

@@ -11,14 +11,12 @@ import UIKit
 
 class AnimatedSpriteComponent: SpriteComponent {
     var loop: Bool = false
-    var destroyWhenFinish: Bool = false
+    var destroyWhenFinish: Bool = true
     var frameSkip: Int = 0
     
     var horizontalImages: Int
     var verticalImages: Int
     
-    //var animationDidStop: (() -> Void)?
-
     init(_ parent: GameObject, _ spriteName: String, _ rect: CGRect, _ horizontalImages: Int, _ verticalImages: Int, _ anchorPoint: CGVector = CGVector.zero) {
         self.horizontalImages = horizontalImages
         self.verticalImages = verticalImages
@@ -26,6 +24,8 @@ class AnimatedSpriteComponent: SpriteComponent {
     }
     
     public func animationFinished() {
-    
+        if destroyWhenFinish {
+            parent.destroy()
+        } 
     }
 }

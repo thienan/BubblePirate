@@ -32,9 +32,12 @@ class GameObject: Equatable, PhysicObject {
     public func update(_ deltaTime: CGFloat) {
     }
 
-    // check if parent is correct
     public func addSpriteComponent(_ spriteName: String, _ rect: CGRect, _ anchorPoint: CGVector = CGVector.zero) {
         spriteComponent = SpriteComponent(self, spriteName, rect, anchorPoint)
+    }
+    
+    public func addAnimatedSpriteComponent(_ spriteName: String, _ rect: CGRect, _ horizontalImages: Int, _ vecticalImages: Int, _ anchorPoint: CGVector = CGVector.zero) {
+        spriteComponent = AnimatedSpriteComponent(self, spriteName, rect, horizontalImages, vecticalImages, anchorPoint)
     }
     
     public func addSphereColliderComponent(_ centre: CGVector, _ radius: CGFloat) {
