@@ -301,6 +301,7 @@ class BubbleManager: BubbleDelegate {
             removeBubbleFromGrid(bubble: bubble)
             destroyRootedBubble(bubble)
         }
+        gameEngine.shake()
     }
     
     private func activateNeighbourSpecialBubble(_ indexPath: IndexPath, _ sourceBubble: Bubble) {
@@ -363,6 +364,7 @@ class BubbleManager: BubbleDelegate {
                 destroyRootedBubble(bubble)
             }
         }
+        gameEngine.shake()
     }
     
     private func activateStarBubble(_ index: IndexPath, _ sourceBubble: Bubble) {
@@ -375,6 +377,7 @@ class BubbleManager: BubbleDelegate {
         removeBubbleFromGrid(indexPath: index)
         destroySpecialBubble(specialBubble)
         removeBubbleWithSameColor(sourceBubble)
+        gameEngine.shake()
     }
     
 // ************************************ Bubble Removal Functions ***************************************//

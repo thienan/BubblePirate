@@ -29,6 +29,8 @@
 		F376478B1E4853C40008454B /* CGVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376478A1E4853C40008454B /* CGVector.swift */; };
 		F376478D1E4854720008454B /* SpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376478C1E4854720008454B /* SpriteComponent.swift */; };
 		F376DAFA1E5998B400B0B80D /* MainMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376DAF91E5998B400B0B80D /* MainMenuViewController.swift */; };
+		F376DAFC1E59C6D200B0B80D /* LevelSelectCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376DAFB1E59C6D200B0B80D /* LevelSelectCollectionController.swift */; };
+		F376DAFE1E59C76300B0B80D /* LevelSelectCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F376DAFD1E59C76300B0B80D /* LevelSelectCell.swift */; };
 		F37DD6071E4C6D3C00CE1A9B /* BubbleManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DD6061E4C6D3C00CE1A9B /* BubbleManager.swift */; };
 		F37DD6091E4C6F0700CE1A9B /* GridSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37DD6081E4C6F0700CE1A9B /* GridSettings.swift */; };
 		F382CA611E4EFD8C0017C02A /* SphereCollider.swift in Sources */ = {isa = PBXBuildFile; fileRef = F382CA601E4EFD8C0017C02A /* SphereCollider.swift */; };
@@ -74,6 +76,8 @@
 		F376478A1E4853C40008454B /* CGVector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CGVector.swift; sourceTree = "<group>"; };
 		F376478C1E4854720008454B /* SpriteComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SpriteComponent.swift; sourceTree = "<group>"; };
 		F376DAF91E5998B400B0B80D /* MainMenuViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainMenuViewController.swift; sourceTree = "<group>"; };
+		F376DAFB1E59C6D200B0B80D /* LevelSelectCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectCollectionController.swift; sourceTree = "<group>"; };
+		F376DAFD1E59C76300B0B80D /* LevelSelectCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectCell.swift; sourceTree = "<group>"; };
 		F37DD6061E4C6D3C00CE1A9B /* BubbleManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleManager.swift; sourceTree = "<group>"; };
 		F37DD6081E4C6F0700CE1A9B /* GridSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridSettings.swift; sourceTree = "<group>"; };
 		F382CA601E4EFD8C0017C02A /* SphereCollider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SphereCollider.swift; sourceTree = "<group>"; };
@@ -200,6 +204,8 @@
 				F382CA5A1E4EEAE30017C02A /* GamePlay */,
 				F33CD5F11E48A75A00DCECAA /* GameEngine */,
 				F376DAF91E5998B400B0B80D /* MainMenuViewController.swift */,
+				F376DAFB1E59C6D200B0B80D /* LevelSelectCollectionController.swift */,
+				F376DAFD1E59C76300B0B80D /* LevelSelectCell.swift */,
 			);
 			name = GameEngine;
 			path = LevelDesigner;
@@ -309,6 +315,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F376DAFC1E59C6D200B0B80D /* LevelSelectCollectionController.swift in Sources */,
 				F37DD6091E4C6F0700CE1A9B /* GridSettings.swift in Sources */,
 				F3640F731E5856F6009EC3B2 /* UIAnimatedImageView.swift in Sources */,
 				F37DD6071E4C6D3C00CE1A9B /* BubbleManager.swift in Sources */,
@@ -328,6 +335,7 @@
 				F36E8A491E4C4E17008F055C /* DesingerGridCollectionController.swift in Sources */,
 				F3640F751E587248009EC3B2 /* AnimatedSpriteComponent.swift in Sources */,
 				F3DD1F521E40AE0800A16909 /* AppDelegate.swift in Sources */,
+				F376DAFE1E59C76300B0B80D /* LevelSelectCell.swift in Sources */,
 				F39A0C821E50884F00B1DC45 /* Queue.swift in Sources */,
 				F382CA611E4EFD8C0017C02A /* SphereCollider.swift in Sources */,
 				F33CD5EE1E488E2500DCECAA /* PhysicEngine.swift in Sources */,

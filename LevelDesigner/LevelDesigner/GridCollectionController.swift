@@ -95,10 +95,6 @@ class GridCollectionController: UICollectionViewController, UICollectionViewDele
         return bubbles
     }
     
-    public func test() {
-        print("yes")
-    }
-    
     public func resetGrid() {
         bubbleGridManager.createEmptyBubbleGrid()
         self.collectionView?.reloadData()

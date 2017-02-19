@@ -94,7 +94,7 @@ class GameplayController: UIViewController {
         launcher?.lookAt(CGVector.toVector(position))
         if gesture.state == .ended {
             launcher?.fireBubble(lookAtPosition: CGVector.toVector(position))
-            scene.shake()
+            //scene.shake()
         }
     }
     
@@ -103,9 +103,8 @@ class GameplayController: UIViewController {
             let position = gesture.location(in: view)
             launcher?.fireBubble(lookAtPosition: CGVector.toVector(position))
             launcher?.tapped(CGVector.toVector(position))
-            scene.shake2(count: 3, for: 0.3, withTranslation: 3)
-            scene.shake()
-            gridController?.test()
+            //scene.shake2(count: 3, for: 0.3, withTranslation: 3)
+            //scene.shake()
         }
     }
 
@@ -121,27 +120,4 @@ class GameplayController: UIViewController {
     }
 }
 
-extension UIView {
-    func shake() {
-        let animation = CAKeyframeAnimation(keyPath: "transform.translation.y")
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        animation.duration = 0.3
-        //animation.values = [-20.0, 20.0, -20.0, 20.0, -10.0, 10.0, -5.0, 5.0, 0.0 ]
-        animation.values = [-3.0, 0.0, 1.0, 3.0, 2.0, 0.0]
-        layer.add(animation, forKey: "shake")
-    }
-}
 
-public extension UIView {
-    
-    func shake2(count : Float? = nil,for duration : TimeInterval? = nil,withTranslation translation : Float? = nil) {
-        let animation : CABasicAnimation = CABasicAnimation(keyPath: "transform.translation.y")
-        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        
-        animation.repeatCount = count ?? 2
-        animation.duration = (duration ?? 0.5)/TimeInterval(animation.repeatCount)
-        animation.autoreverses = true
-        animation.byValue = translation ?? -5
-        layer.add(animation, forKey: "shake")
-    }    
-}

@@ -191,7 +191,6 @@ class DesignerGridCollectionController: GridCollectionController {
     
     public func setGameLoadMode() {
         designMode = DesignMode.GAME_LOAD
-        print("load")
     }
     
     public func getDesignMode() -> DesignMode {
