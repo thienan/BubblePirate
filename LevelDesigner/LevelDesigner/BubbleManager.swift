@@ -196,7 +196,15 @@ class BubbleManager: BubbleDelegate {
         for i in 0..<NUM_OF_COLOR_BUBBLE {
             newArray.append(createOffScreenBubble(spriteNames[i]))
         }
-        nextBubbleQueue.append(contentsOf: newArray.shuffled())
+        newArray = newArray.shuffled()
+        
+        var zPosition = CGFloat(newArray.count)
+        for bubble in newArray {
+            bubble.spriteComponent?.zPosition = zPosition
+            zPosition -= 1
+        }
+        
+        nextBubbleQueue.append(contentsOf: newArray)
     }
     
     public func setCurrentBubbleInQueue(position: CGVector) {

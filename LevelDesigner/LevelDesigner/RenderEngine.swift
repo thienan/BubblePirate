@@ -80,6 +80,7 @@ class RenderEngine {
         let image = UIImage(named: spriteComponent.spriteName)
         let newImageView = UIImageView(image: image)
         newImageView.frame = spriteComponent.rect
+        newImageView.layer.zPosition = spriteComponent.zPosition
         setAnchorPoint(anchorPoint: spriteComponent.anchorPoint, view: newImageView)
         scene.addSubview(newImageView)
         return newImageView

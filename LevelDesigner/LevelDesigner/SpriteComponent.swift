@@ -17,6 +17,7 @@ class SpriteComponent: Component {
     public var alpha: CGFloat = 1.0
     let uniqueId: Int
     private(set) var anchorPoint: CGVector
+    var zPosition: CGFloat = 0
     
     init(_ parent: GameObject, _ spriteName: String, _ rect: CGRect, _ anchorPoint: CGVector = CGVector.zero) {
         self.spriteName = spriteName
