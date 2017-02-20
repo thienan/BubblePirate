@@ -12,11 +12,12 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
     public let storageManager = StorageManager()
     
     var levelNames: [String] = []
+    private let SEQ_TO_GAMEPLAY = "levelSelectToGame"
     
     //var levelNames = ["a", "b", "c"]
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector((tapGesture))))
         levelNames = storageManager.getLevelNames()
     }
 
@@ -60,6 +61,16 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
         }
         
         return cell
+    }
+    
+    func tapGesture(gesture: UITapGestureRecognizer) {
+        if gesture.state == .ended {
+            let position = gesture.location(in: collectionView)
+            guard let indexPath = collectionView?.indexPathForItem(at: position) else {
+                return
+            }
+            print(indexPath)
+        }
     }
 
     // MARK: UICollectionViewDelegate

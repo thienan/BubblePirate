@@ -15,7 +15,7 @@ class LevelDesignViewController: UIViewController {
     private let BUTTON_TITLE_SAVE = "Save"
     private let ALERT_TITLE_SAVE_AS = "Save As"
     private let SEQ_GRID = "embed"
-    private let SEQ_TO_GAMEPLAY = "toGameController"
+    private let SEQ_TO_GAMEPLAY = "levelDesignerToGame"
     
     @IBOutlet weak private var blueButton: UIButton!
     @IBOutlet weak private var greenButton: UIButton!

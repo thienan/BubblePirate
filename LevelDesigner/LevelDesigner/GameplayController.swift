@@ -103,6 +103,7 @@ class GameplayController: UIViewController {
         panGestureReg.minimumNumberOfTouches = 1
         panGestureReg.maximumNumberOfTouches = 1
         view.addGestureRecognizer(panGestureReg)
+        
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector((tapGesture))))
     }
     
@@ -126,7 +127,6 @@ class GameplayController: UIViewController {
             return
         }
         let launcher = Launcher(CGVector(UIScreen.main.bounds.size.width/2, UIScreen.main.bounds.size.height - cellWidth/2), bubbleManager)
-        
         self.launcher = launcher
         gameEngine?.add(launcher)
     }
