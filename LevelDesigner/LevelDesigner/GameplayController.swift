@@ -22,7 +22,7 @@ class GameplayController: UIViewController {
     private var launcher: Launcher?
     private var cellWidth: CGFloat = GridSettings.cellWidth
     
-    @IBOutlet weak var containerView: UIView!
+    @IBOutlet private weak var containerView: UIView!
     @IBOutlet private var scene: UIView!
     @IBOutlet private weak var cannon: UIImageView!
     @IBOutlet private weak var border: UIView!
@@ -132,7 +132,7 @@ class GameplayController: UIViewController {
     }
 
     // Fire bubble at on release
-    func panGesture(gesture: UIPanGestureRecognizer) {
+    public func panGesture(gesture: UIPanGestureRecognizer) {
         let position = gesture.location(in: view)
         launcher?.lookAt(CGVector.toVector(position))
         if gesture.state == .ended {
@@ -141,7 +141,7 @@ class GameplayController: UIViewController {
         }
     }
     
-    func tapGesture(gesture: UITapGestureRecognizer) {
+    public func tapGesture(gesture: UITapGestureRecognizer) {
         if gesture.state == .ended {
             let position = gesture.location(in: view)
             launcher?.fireBubble(lookAtPosition: CGVector.toVector(position))
