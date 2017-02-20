@@ -80,8 +80,7 @@ class GridCollectionController: UICollectionViewController, UICollectionViewDele
         self.collectionView?.reloadData()
     }
     
-    public func getGridBubblesWithPosition() -> [[GridBubble]] {
-        var bubbles: [[GridBubble]] = bubbleGridManager.getBubbles()
+    public func getGridBubblesWithPosition(_ bubbles: [[GridBubble]]) -> [[GridBubble]] {
         for row in 0..<bubbleGridManager.ROW_COUNT {
             let columnCount = (row % 2 == 0) ? bubbleGridManager.COLUMN_COUNT_EVEN : bubbleGridManager.COLUMN_COUNT_ODD
             for col in 0..<columnCount {
@@ -93,6 +92,10 @@ class GridCollectionController: UICollectionViewController, UICollectionViewDele
             }
         }
         return bubbles
+    }
+    
+    public func getEmptyGridBubblesWithPosition() -> [[GridBubble]] {
+        return getGridBubblesWithPosition(bubbleGridManager.getBubbles())
     }
     
     public func resetGrid() {

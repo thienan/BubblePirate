@@ -220,6 +220,10 @@ class DesignerGridCollectionController: GridCollectionController {
     public func load() {
         createLoadAlert(storageManager.getLevelNames())
     }
+    
+    public func getGridBubbles() -> [[GridBubble]] {
+        return bubbleGridManager.getBubbles()
+    }
 
     private func createSaveFailedAlert() {
         let alert = UIAlertController(title: ALERT_LEVEL_INVALID_NAME, message: nil, preferredStyle: UIAlertControllerStyle.alert)

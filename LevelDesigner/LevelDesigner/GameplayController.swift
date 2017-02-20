@@ -10,9 +10,15 @@ import UIKit
 import Foundation
 
 class GameplayController: UIViewController {
+    enum LoadMode {
+        case gridBubbles
+        case levelName
+        case none
+    }
+    
     private var gameEngine: GameEngine?
     private var bubbleManager: BubbleManager?
-    private var gridBubblesPosition: [[GridBubble]]?
+    
     private var launcher: Launcher?
     private var cellWidth: CGFloat = GridSettings.cellWidth
     
@@ -24,16 +30,17 @@ class GameplayController: UIViewController {
     private let ERROR_GRID_BUBBLES_NOT_LOADED = "ERROR: gridBubblesAreNotLoaded"
     private let ERROR_BUBBLE_MANAGER_FAILED = "ERROR: Bubble Manager failed to initialised"
     private let SEQ_GRID = "grid"
-    private var gridController: GridCollectionController?
     
     private let WORLD_BOUND_Y_OFFSET = CGFloat(100)
+    
+    private var loadMode: LoadMode = LoadMode.none
+    private var gridController: GridCollectionController?
+    private var gridBubbles: [[GridBubble]]?
+    private var levelName: String = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpGesture()
-        setUpEngineAndBubbleManagerAndGridBound()
-        createLauncher()
-        
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -45,19 +52,42 @@ class GameplayController: UIViewController {
         navigationController?.navigationBar.isHidden = true // for navigation bar hide
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        setUpEngineAndBubbleManagerAndGridBound()
+        createLauncher()
+    }
+    
     private func setUpEngineAndBubbleManagerAndGridBound() {
         let newGameEngine = GameEngine(scene)
         newGameEngine.setWorldBound(CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height + WORLD_BOUND_Y_OFFSET))
-    
-        guard let gridBubbles = gridBubblesPosition else {
-            print(ERROR_GRID_BUBBLES_NOT_LOADED)
-            return
+        
+        var gridBubblesWithPosition: [[GridBubble]] = []
+        if loadMode == LoadMode.gridBubbles {
+            guard let gridBubbles = gridBubbles else {
+                print(ERROR_GRID_BUBBLES_NOT_LOADED)
+                return
+            }
+            guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition(gridBubbles) else {
+                return
+            }
+            gridBubblesWithPosition = gridBubblesFromGridController
+            self.gridBubbles = nil
+            
+        } else if loadMode == LoadMode.levelName {
+            //gridController?.loadLevel(levelName)
+            
+        } else if loadMode == LoadMode.none {
+            guard let gridBubblesFromGridController = gridController?.getEmptyGridBubblesWithPosition() else {
+                return
+            }
+            gridBubblesWithPosition = gridBubblesFromGridController
         }
-        guard let bubbleManager = BubbleManager(gridBubbles, newGameEngine) else {
+        
+        guard let bubbleManager = BubbleManager(gridBubblesWithPosition, newGameEngine) else {
             print(ERROR_BUBBLE_MANAGER_FAILED)
             return
         }
-        gridBubblesPosition = nil
+        
         self.bubbleManager = bubbleManager
         setUpGridLowerBound(bubbleManager)
         gameEngine = newGameEngine
@@ -78,7 +108,17 @@ class GameplayController: UIViewController {
     }
     
     public func loadGridBubblesPosition(_ gridBubblesPosition: [[GridBubble]]) {
-        self.gridBubblesPosition = gridBubblesPosition
+        //self.gridBubblesPosition = gridBubblesPosition
+    }
+    
+    public func playWithBubbles(_ gridBubbles: [[GridBubble]]) {
+        loadMode = LoadMode.gridBubbles
+        self.gridBubbles = gridBubbles
+    }
+    
+    public func playWithLevelName(_ levelName: String) {
+        loadMode = LoadMode.levelName
+        self.levelName = levelName
     }
     
     private func createLauncher() {

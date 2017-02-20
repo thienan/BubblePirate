@@ -157,8 +157,13 @@ class LevelDesignViewController: UIViewController {
         if segue.identifier == SEQ_GRID {
             embedController = segue.destination as? DesignerGridCollectionController
         } else if segue.identifier == SEQ_TO_GAMEPLAY  {
-            let gameController = segue.destination as? GameplayController
-            gameController?.loadGridBubblesPosition((embedController?.getGridBubblesWithPosition())!)
+            guard let gameController = segue.destination as? GameplayController else {
+                return
+            }
+            guard let embedController = embedController else {
+                return
+            }
+            gameController.playWithBubbles(embedController.getGridBubbles())
         }
     }
     
