@@ -308,10 +308,13 @@
                             <outlet property="delegate" destination="fcY-7o-AKY" id="vsg-vf-bbC"/>
                         </connections>
                     </collectionView>
+                    <connections>
+                        <segue destination="SWk-fK-BLn" kind="show" identifier="levelSelectToGame" id="O7s-mx-x5R"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1g-EW-ZFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1345" y="1797"/>
+            <point key="canvasLocation" x="-1316" y="1865"/>
         </scene>
         <!--Gameplay Controller-->
         <scene sceneID="aPo-mH-EKX">
@@ -412,4 +415,7 @@
         <image name="bubble-star" width="168" height="168"/>
         <image name="erase" width="168" height="168"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="O7s-mx-x5R"/>
+    </inferredMetricsTieBreakers>
 </document>

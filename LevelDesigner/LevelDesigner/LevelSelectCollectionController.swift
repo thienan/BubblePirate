@@ -13,6 +13,7 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
     
     var levelNames: [String] = []
     private let SEQ_TO_GAMEPLAY = "levelSelectToGame"
+    private var levelName: String = ""
     
     //var levelNames = ["a", "b", "c"]
     override func viewDidLoad() {
@@ -48,7 +49,7 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
             return 2
         }
     }
-
+    
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? LevelSelectCell else {
             return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
@@ -66,12 +67,24 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
     func tapGesture(gesture: UITapGestureRecognizer) {
         if gesture.state == .ended {
             let position = gesture.location(in: collectionView)
-            guard let indexPath = collectionView?.indexPathForItem(at: position) else {
-                return
-            }
-            print(indexPath)
+            guard let indexPath = collectionView?.indexPathForItem(at: position) else { return }
+            guard let cell = collectionView?.cellForItem(at: indexPath) as? LevelSelectCell else { return }
+            guard let levelName = cell.label.text else { return }
+            
+            self.levelName = levelName
+            performSegue(withIdentifier: SEQ_TO_GAMEPLAY, sender: self)
         }
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == SEQ_TO_GAMEPLAY  {
+            guard let gameController = segue.destination as? GameplayController else {
+                return
+            }
+            gameController.playWithLevelName(levelName)
+        }
+    }
+
 
     // MARK: UICollectionViewDelegate
 
