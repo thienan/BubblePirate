@@ -67,17 +67,21 @@ class GameplayController: UIViewController {
                 print(ERROR_GRID_BUBBLES_NOT_LOADED)
                 return
             }
-            guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition(gridBubbles) else {
+            guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition(bubbles: gridBubbles) else {
                 return
             }
             gridBubblesWithPosition = gridBubblesFromGridController
             self.gridBubbles = nil
             
         } else if loadMode == LoadMode.levelName {
-            //gridController?.loadLevel(levelName)
-            
+            //gridController?.loadLevel(levelName: levelName)
+            guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition(levelName: levelName) else {
+                return
+            }
+            gridBubblesWithPosition = gridBubblesFromGridController
+
         } else if loadMode == LoadMode.none {
-            guard let gridBubblesFromGridController = gridController?.getEmptyGridBubblesWithPosition() else {
+            guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition() else {
                 return
             }
             gridBubblesWithPosition = gridBubblesFromGridController
@@ -106,11 +110,7 @@ class GameplayController: UIViewController {
         let oldFrame = border.layer.frame
         border.layer.frame = CGRect(x: oldFrame.minX, y: bubbleManager.getGridLowerBound(), width: oldFrame.width, height: oldFrame.height)
     }
-    
-    public func loadGridBubblesPosition(_ gridBubblesPosition: [[GridBubble]]) {
-        //self.gridBubblesPosition = gridBubblesPosition
-    }
-    
+
     public func playWithBubbles(_ gridBubbles: [[GridBubble]]) {
         loadMode = LoadMode.gridBubbles
         self.gridBubbles = gridBubbles

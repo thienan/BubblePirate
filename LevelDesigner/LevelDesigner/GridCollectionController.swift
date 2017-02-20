@@ -68,6 +68,11 @@ class GridCollectionController: UICollectionViewController, UICollectionViewDele
     }
         
     public func loadLevel(levelName: String) {
+        loadLevelFromStorageToBubbleManager(levelName)
+        self.collectionView?.reloadData()
+    }
+    
+    private func loadLevelFromStorageToBubbleManager(_ levelName: String) {
         guard let bubbles = storageManager.loadLevel(levelName: levelName) else {
             print(ERROR_FAIL_TO_LOAD_LEVEL)
             return
@@ -77,10 +82,9 @@ class GridCollectionController: UICollectionViewController, UICollectionViewDele
         } catch {
             print(ERROR_FAIL_TO_LOAD_BUBBLES)
         }
-        self.collectionView?.reloadData()
     }
     
-    public func getGridBubblesWithPosition(_ bubbles: [[GridBubble]]) -> [[GridBubble]] {
+    public func getGridBubblesWithPosition(bubbles: [[GridBubble]]) -> [[GridBubble]] {
         for row in 0..<bubbleGridManager.ROW_COUNT {
             let columnCount = (row % 2 == 0) ? bubbleGridManager.COLUMN_COUNT_EVEN : bubbleGridManager.COLUMN_COUNT_ODD
             for col in 0..<columnCount {
@@ -94,8 +98,13 @@ class GridCollectionController: UICollectionViewController, UICollectionViewDele
         return bubbles
     }
     
-    public func getEmptyGridBubblesWithPosition() -> [[GridBubble]] {
-        return getGridBubblesWithPosition(bubbleGridManager.getBubbles())
+    public func getGridBubblesWithPosition() -> [[GridBubble]] {
+        return getGridBubblesWithPosition(bubbles: bubbleGridManager.getBubbles())
+    }
+    
+    public func getGridBubblesWithPosition(levelName: String) -> [[GridBubble]] {
+        loadLevelFromStorageToBubbleManager(levelName)
+        return getGridBubblesWithPosition(bubbles: bubbleGridManager.getBubbles())
     }
     
     public func resetGrid() {
