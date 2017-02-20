@@ -16,6 +16,7 @@ class GameplayController: UIViewController {
     private var launcher: Launcher?
     private var cellWidth: CGFloat = GridSettings.cellWidth
     
+    @IBOutlet weak var containerView: UIView!
     @IBOutlet private var scene: UIView!
     @IBOutlet private weak var cannon: UIImageView!
     @IBOutlet private weak var border: UIView!
@@ -60,6 +61,7 @@ class GameplayController: UIViewController {
         self.bubbleManager = bubbleManager
         setUpGridLowerBound(bubbleManager)
         gameEngine = newGameEngine
+        containerView.removeFromSuperview()
     }
     
     private func setUpGesture() {
@@ -84,6 +86,7 @@ class GameplayController: UIViewController {
             return
         }
         let launcher = Launcher(CGVector(UIScreen.main.bounds.size.width/2, UIScreen.main.bounds.size.height - cellWidth/2), bubbleManager)
+        
         self.launcher = launcher
         gameEngine?.add(launcher)
     }

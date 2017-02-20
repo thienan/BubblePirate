@@ -14,7 +14,7 @@ class Launcher: GameObject {
     private let nextBubbleOffsetPos: CGVector = CGVector(100, 30)
     let speed = CGFloat(1500)
     private var dir: CGVector = CGVector.zero
-    private let spriteName = "background"
+    private let spriteName = "cannon2"
     
     private var verticalPosLimit: CGFloat {
         return position.y - 20
@@ -25,7 +25,8 @@ class Launcher: GameObject {
         super.init()
         self.position = position
         // magic number
-        addSpriteComponent(spriteName, CGRect(x: -30/2, y: -100, width: 30, height: 100), CGVector(0.5, 1))
+        addSpriteComponent(spriteName, CGRect(x: -112/2, y: -100, width: 112, height: 144), CGVector(0.5, 0.7))
+        spriteComponent?.zPosition = 100
         addSphereColliderComponent(position, 32)
         sphereColliderComponent?.isActive = false
         bubbleManager.setCurrentBubbleInQueue(position: position)
