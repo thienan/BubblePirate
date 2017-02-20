@@ -120,6 +120,23 @@
 			);
 			sourceTree = "<group>";
 		};
+		F313EB331E5B2DFA0079A223 /* MainMenu */ = {
+			isa = PBXGroup;
+			children = (
+				F376DAF91E5998B400B0B80D /* MainMenuViewController.swift */,
+			);
+			name = MainMenu;
+			sourceTree = "<group>";
+		};
+		F313EB341E5B2E1C0079A223 /* LevelSelect */ = {
+			isa = PBXGroup;
+			children = (
+				F376DAFB1E59C6D200B0B80D /* LevelSelectCollectionController.swift */,
+				F376DAFD1E59C76300B0B80D /* LevelSelectCell.swift */,
+			);
+			name = LevelSelect;
+			sourceTree = "<group>";
+		};
 		F33CD5F11E48A75A00DCECAA /* GameEngine */ = {
 			isa = PBXGroup;
 			children = (
@@ -149,12 +166,12 @@
 		F382CA5B1E4EEAEB0017C02A /* Grid */ = {
 			isa = PBXGroup;
 			children = (
-				F37DD6081E4C6F0700CE1A9B /* GridSettings.swift */,
 				F310F4ED1E4249CB00C72156 /* GridCollectionController.swift */,
 				F36DF4261E42DE1A00CCCD7D /* GridCollectionCell.swift */,
-				F36DF4241E42D1C200CCCD7D /* GridBubbleManager.swift */,
 				F36E8A461E4C2F84008F055C /* GridBubble.swift */,
+				F36DF4241E42D1C200CCCD7D /* GridBubbleManager.swift */,
 				F321920B1E447FCF0092B010 /* StorageManager.swift */,
+				F37DD6081E4C6F0700CE1A9B /* GridSettings.swift */,
 			);
 			name = Grid;
 			sourceTree = "<group>";
@@ -199,13 +216,12 @@
 				F3DD1F581E40AE0800A16909 /* Assets.xcassets */,
 				F3DD1F5D1E40AE0800A16909 /* Info.plist */,
 				F3DD1F551E40AE0800A16909 /* Main.storyboard */,
+				F313EB331E5B2DFA0079A223 /* MainMenu */,
+				F313EB341E5B2E1C0079A223 /* LevelSelect */,
 				F382CA5B1E4EEAEB0017C02A /* Grid */,
 				F382CA5D1E4EEB7E0017C02A /* LevelDesigner */,
 				F382CA5A1E4EEAE30017C02A /* GamePlay */,
 				F33CD5F11E48A75A00DCECAA /* GameEngine */,
-				F376DAF91E5998B400B0B80D /* MainMenuViewController.swift */,
-				F376DAFB1E59C6D200B0B80D /* LevelSelectCollectionController.swift */,
-				F376DAFD1E59C76300B0B80D /* LevelSelectCell.swift */,
 			);
 			name = GameEngine;
 			path = LevelDesigner;
