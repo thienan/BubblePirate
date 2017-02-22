@@ -25,8 +25,17 @@ class Launcher: GameObject {
         super.init()
         self.position = position
         // magic number
-        addSpriteComponent(spriteName, CGRect(x: -112/2, y: -100, width: 112, height: 144), CGVector(0.5, 0.7))
-        spriteComponent?.zPosition = 100
+        //addSpriteComponent(spriteName, CGRect(x: -112/2, y: -100, width: 112, height: 144), CGVector(0.5, 0.7))
+
+        addAnimatedSpriteComponent("cannon-shoot-2", CGRect(x: -112/2, y: -144, width: 112, height: 456), 4, 1, CGVector(0.5, 0.7))
+        guard let animatedSpriteComponent = spriteComponent as? AnimatedSpriteComponent else {
+            return
+        }
+        animatedSpriteComponent.frameSkip = 4
+        animatedSpriteComponent.autoPlay = false
+        animatedSpriteComponent.destroyWhenFinish = false
+        //animatedSpriteComponent.zPosition = 100
+        
         addSphereColliderComponent(position, 32)
         sphereColliderComponent?.isActive = false
         bubbleManager.setCurrentBubbleInQueue(position: position)
@@ -58,6 +67,11 @@ class Launcher: GameObject {
         
         bubbleManager.moveCurrentBubbleInQueue(position: position)
         bubbleManager.setNextBubbleInQueue(position: position + nextBubbleOffsetPos)
+        
+        guard let animatedSpriteComponent = spriteComponent as? AnimatedSpriteComponent else {
+            return
+        }
+        animatedSpriteComponent.playAnimation()
     }
     
     public func lookAt(_ lookAtPosition: CGVector) {

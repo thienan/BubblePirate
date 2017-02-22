@@ -41,6 +41,7 @@
 		F3DD1F571E40AE0800A16909 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DD1F551E40AE0800A16909 /* Main.storyboard */; };
 		F3DD1F591E40AE0800A16909 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3DD1F581E40AE0800A16909 /* Assets.xcassets */; };
 		F3DD1F5C1E40AE0800A16909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DD1F5A1E40AE0800A16909 /* LaunchScreen.storyboard */; };
+		F3F6E83C1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F6E83B1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -91,6 +92,7 @@
 		F3DD1F5B1E40AE0800A16909 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		F3DD1F5D1E40AE0800A16909 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3DD1F621E40AE0800A16909 /* GameEngineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameEngineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		F3F6E83B1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSpriteDelegate.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -203,6 +205,7 @@
 				F3640F741E587248009EC3B2 /* AnimatedSpriteComponent.swift */,
 				F37647881E48459A0008454B /* SphereColliderComponent.swift */,
 				F36A02A51E4971F5005F7BB6 /* Component.swift */,
+				F3F6E83B1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift */,
 			);
 			name = Component;
 			sourceTree = "<group>";
@@ -343,6 +346,7 @@
 				F376478B1E4853C40008454B /* CGVector.swift in Sources */,
 				F36A02A81E497BA0005F7BB6 /* PhysicObject.swift in Sources */,
 				F36E8A471E4C2F84008F055C /* GridBubble.swift in Sources */,
+				F3F6E83C1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift in Sources */,
 				F36DF4271E42DE1A00CCCD7D /* GridCollectionCell.swift in Sources */,
 				F321920C1E447FCF0092B010 /* StorageManager.swift in Sources */,
 				F37647871E4836AF0008454B /* GameObject.swift in Sources */,

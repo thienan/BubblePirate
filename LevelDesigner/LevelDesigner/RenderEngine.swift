@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class RenderEngine {
+class RenderEngine: AnimatedSpriteDelegate {
     private var scene: UIView
     private var imageViews: [Int:UIImageView]
     
@@ -98,7 +98,10 @@ class RenderEngine {
         newImageView.autoDestroy = false
         newImageView.animationDidStop = spriteComponent.animationFinished
         scene.addSubview(newImageView)
-        newImageView.startAnimation()
+        spriteComponent.animatedSpriteDelegate = self
+        if spriteComponent.autoPlay {
+            newImageView.startAnimation()
+        }
         return newImageView
     }
 
@@ -113,5 +116,19 @@ class RenderEngine {
             imageView.removeFromSuperview()
             imageViews.removeValue(forKey: spriteComponent.uniqueId)
         }
+    }
+    
+    public func play(_ id: Int) {
+        guard let animatedSprite = imageViews[id] as? UIAnimatedImageView else {
+            return
+        }
+        animatedSprite.startAnimation()
+    }
+    
+    public func setFrame(_ id: Int, _ frame: Int) {
+        guard let animatedSprite = imageViews[id] as? UIAnimatedImageView else {
+            return
+        }
+        animatedSprite.toNewFrame(0)
     }
 }
