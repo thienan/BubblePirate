@@ -38,10 +38,6 @@ class GameplayController: UIViewController {
     private var gridBubbles: [[GridBubble]]?
     private var levelName: String = ""
     
-    var bubblePop :GameObject?
-    
-    var imagesStr = ["cannon1", "cannon2", "cannon3", "cannon4"]
-    var anim2: UIImageView?
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpGesture()
@@ -59,31 +55,6 @@ class GameplayController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         setUpEngineAndBubbleManagerAndGridBound()
         createLauncher()
-        /*
-        bubblePop = GameObject()
-        bubblePop?.position = CGVector(500, 500)
-        bubblePop?.addAnimatedSpriteComponent("cannon-shoot-2", CGRect(x: -112/2, y: -100, width: 112, height: 456), 4, 1)
-        gameEngine?.add(bubblePop!)
-        
-        guard let animatedSpriteComponent = bubblePop?.spriteComponent as? AnimatedSpriteComponent else {
-            return
-        }
-        animatedSpriteComponent.frameSkip = 4
-        animatedSpriteComponent.autoPlay = false
-        animatedSpriteComponent.destroyWhenFinish = false
-        */
-        var uiImages = [UIImage]()
-
-        for image in imagesStr {
-            uiImages.append(UIImage(named: image)!)
-        }
-        let uiImageView = UIImageView(image: UIImage(named: "cannon1"))
-        uiImageView.frame = CGRect(x: 500, y: 500, width: 136, height: 228)
-        uiImageView.animationImages = uiImages
-        uiImageView.animationDuration = 0.5
-        uiImageView.animationRepeatCount = 1
-        anim2 = uiImageView
-        scene.addSubview(uiImageView)
     }
     
     private func setUpEngineAndBubbleManagerAndGridBound() {
@@ -177,9 +148,6 @@ class GameplayController: UIViewController {
             launcher?.tapped(CGVector.toVector(position))
             //scene.shake2(count: 3, for: 0.3, withTranslation: 3)
             //scene.shake()
-            let anim = bubblePop?.spriteComponent as? AnimatedSpriteComponent
-            anim?.playAnimation()
-            anim2?.startAnimating()
         }
     }
 

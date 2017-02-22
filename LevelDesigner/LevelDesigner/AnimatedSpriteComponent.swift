@@ -32,6 +32,6 @@ class AnimatedSpriteComponent: SpriteComponent {
     }
     
     public func playAnimation() {
-        animatedSpriteDelegate?.play(uniqueId)
+        animatedSpriteDelegate?.play(self)
     }
 }

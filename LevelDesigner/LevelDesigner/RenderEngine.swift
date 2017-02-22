@@ -104,7 +104,7 @@ class RenderEngine: AnimatedSpriteDelegate {
         newImageView.animationDuration = spriteComponent.animationDuration
         newImageView.animationRepeatCount = spriteComponent.animationRepeatCount
 
-        Timer.scheduledTimer(timeInterval: spriteComponent.animationDuration, target: self, selector: #selector(spriteComponent.animationFinished), userInfo: nil, repeats: false)
+        
         
         scene.addSubview(newImageView)
         return newImageView
@@ -123,10 +123,12 @@ class RenderEngine: AnimatedSpriteDelegate {
         }
     }
     
-    public func play(_ id: Int) {
-        guard let imageView = imageViews[id] else {
+    public func play(_ animeSpriteComponent: AnimatedSpriteComponent) {
+        guard let imageView = imageViews[animeSpriteComponent.uniqueId] else {
             return
         }
         imageView.startAnimating()
+        
+        Timer.scheduledTimer(timeInterval: imageView.animationDuration, target: animeSpriteComponent, selector: #selector(animeSpriteComponent.animationFinished), userInfo: nil, repeats: false)
     }
 }

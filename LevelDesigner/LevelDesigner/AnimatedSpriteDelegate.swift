@@ -9,5 +9,5 @@
 import Foundation
 
 protocol AnimatedSpriteDelegate {
-    func play(_ id: Int)
+    func play(_ animeSpriteComponent: AnimatedSpriteComponent)
 }
