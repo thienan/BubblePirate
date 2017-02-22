@@ -148,6 +148,16 @@ class GameplayController: UIViewController {
             launcher?.tapped(CGVector.toVector(position))
             //scene.shake2(count: 3, for: 0.3, withTranslation: 3)
             //scene.shake()
+            
+            let bubblePop = GameObject()
+            bubblePop.position = CGVector(500, 500)
+            bubblePop.addAnimatedSpriteComponent("bubble-burst", CGRect(x: -112/2, y: -100, width: 112, height: 144), 4, 1)
+            gameEngine?.add(bubblePop)
+            
+            guard let animatedSpriteComponent = bubblePop.spriteComponent as? AnimatedSpriteComponent else {
+                return
+            }
+            animatedSpriteComponent.frameSkip = 4
         }
     }
 
