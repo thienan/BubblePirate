@@ -27,14 +27,14 @@ class Launcher: GameObject {
         // magic number
         //addSpriteComponent(spriteName, CGRect(x: -112/2, y: -100, width: 112, height: 144), CGVector(0.5, 0.7))
 
-        addAnimatedSpriteComponent("cannon-shoot-2", CGRect(x: -112/2, y: -144, width: 112, height: 456), 4, 1, CGVector(0.5, 0.7))
+        addAnimatedSpriteComponent("cannon1", ["cannon1", "cannon2", "cannon3", "cannon4"], CGRect(x: -136/2, y: -175, width: 136, height: 228), CGVector(0.5, 0.77))
         guard let animatedSpriteComponent = spriteComponent as? AnimatedSpriteComponent else {
             return
         }
-        animatedSpriteComponent.frameSkip = 4
         animatedSpriteComponent.autoPlay = false
         animatedSpriteComponent.destroyWhenFinish = false
-        //animatedSpriteComponent.zPosition = 100
+        animatedSpriteComponent.animationDuration = 0.3
+        animatedSpriteComponent.zPosition = 100
         
         addSphereColliderComponent(position, 32)
         sphereColliderComponent?.isActive = false

@@ -36,8 +36,8 @@ class GameObject: Equatable, PhysicObject {
         spriteComponent = SpriteComponent(self, spriteName, rect, anchorPoint)
     }
     
-    public func addAnimatedSpriteComponent(_ spriteName: String, _ rect: CGRect, _ horizontalImages: Int, _ vecticalImages: Int, _ anchorPoint: CGVector = CGVector.zero) {
-        spriteComponent = AnimatedSpriteComponent(self, spriteName, rect, horizontalImages, vecticalImages, anchorPoint)
+    public func addAnimatedSpriteComponent(_ spriteName: String, _ animatedSpriteNames: [String], _ rect: CGRect, _ anchorPoint: CGVector = CGVector.zero) {
+        spriteComponent = AnimatedSpriteComponent(self, spriteName, animatedSpriteNames, rect, anchorPoint)
     }
     
     public func addSphereColliderComponent(_ centre: CGVector, _ radius: CGFloat) {

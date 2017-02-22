@@ -10,6 +10,4 @@ import Foundation
 
 protocol AnimatedSpriteDelegate {
     func play(_ id: Int)
-    
-    func setFrame(_ id: Int, _ frame: Int)
 }

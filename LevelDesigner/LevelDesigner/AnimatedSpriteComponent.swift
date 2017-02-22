@@ -10,27 +10,24 @@ import Foundation
 import UIKit
 
 class AnimatedSpriteComponent: SpriteComponent {
-    var loop: Bool = false
     var destroyWhenFinish: Bool = true
     var autoPlay: Bool = true
-    var frameSkip: Int = 0
-    
-    var horizontalImages: Int
-    var verticalImages: Int
-    
+
     var animatedSpriteDelegate: AnimatedSpriteDelegate?
     
-    init(_ parent: GameObject, _ spriteName: String, _ rect: CGRect, _ horizontalImages: Int, _ verticalImages: Int, _ anchorPoint: CGVector = CGVector.zero) {
-        self.horizontalImages = horizontalImages
-        self.verticalImages = verticalImages
+    var animationDuration: TimeInterval = 0.5
+    var animationRepeatCount: Int = 1
+    
+    var animatedSpriteNames: [String]
+    
+    init(_ parent: GameObject, _ spriteName: String, _ animatedSpriteNames: [String], _ rect: CGRect, _ anchorPoint: CGVector = CGVector.zero) {
+        self.animatedSpriteNames = animatedSpriteNames
         super.init(parent, spriteName, rect, anchorPoint)
     }
     
-    public func animationFinished() {
+    @objc public func animationFinished() {
         if destroyWhenFinish {
             parent.destroy()
-        } else {
-            animatedSpriteDelegate?.setFrame(uniqueId, 0)
         }
     }
     

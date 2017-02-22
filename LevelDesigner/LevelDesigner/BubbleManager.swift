@@ -173,6 +173,7 @@ class BubbleManager: BubbleDelegate {
     }
     
     private func createBubblePopObject(_ bubble: Bubble) {
+        /*
         guard let spriteComponent = bubble.spriteComponent else {
             return
         }
@@ -185,6 +186,7 @@ class BubbleManager: BubbleDelegate {
             return
         }
         animatedSpriteComponent.frameSkip = 4
+*/
     }
     
 // ************************************** Queue Functions ******************************************//

@@ -87,21 +87,26 @@ class RenderEngine: AnimatedSpriteDelegate {
     }
     
     private func createNewAnimatedImageView(_ spriteComponent: AnimatedSpriteComponent) -> UIImageView {
-        let newImageView = UIAnimatedImageView(frame: spriteComponent.rect)
-        guard let image = UIImage(named: spriteComponent.spriteName) else {
-            return newImageView
-        }
-        newImageView.setupWithImage(image, spriteComponent.horizontalImages, spriteComponent.verticalImages)
-        setAnchorPoint(anchorPoint: spriteComponent.anchorPoint, view: newImageView)
-        newImageView.frameSkip = 4
-        newImageView.loop = spriteComponent.loop
-        newImageView.autoDestroy = false
-        newImageView.animationDidStop = spriteComponent.animationFinished
-        scene.addSubview(newImageView)
         spriteComponent.animatedSpriteDelegate = self
-        if spriteComponent.autoPlay {
-            newImageView.startAnimation()
+        
+        let image = UIImage(named: spriteComponent.spriteName)
+        let newImageView = UIImageView(image: image)
+        newImageView.frame = spriteComponent.rect
+        newImageView.layer.zPosition = spriteComponent.zPosition
+        setAnchorPoint(anchorPoint: spriteComponent.anchorPoint, view: newImageView)
+        
+        var uiImages = [UIImage]()
+        for image in spriteComponent.animatedSpriteNames {
+            // remove question mark
+            uiImages.append(UIImage(named: image)!)
         }
+        newImageView.animationImages = uiImages
+        newImageView.animationDuration = spriteComponent.animationDuration
+        newImageView.animationRepeatCount = spriteComponent.animationRepeatCount
+
+        Timer.scheduledTimer(timeInterval: spriteComponent.animationDuration, target: self, selector: #selector(spriteComponent.animationFinished), userInfo: nil, repeats: false)
+        
+        scene.addSubview(newImageView)
         return newImageView
     }
 
@@ -119,16 +124,9 @@ class RenderEngine: AnimatedSpriteDelegate {
     }
     
     public func play(_ id: Int) {
-        guard let animatedSprite = imageViews[id] as? UIAnimatedImageView else {
+        guard let imageView = imageViews[id] else {
             return
         }
-        animatedSprite.startAnimation()
-    }
-    
-    public func setFrame(_ id: Int, _ frame: Int) {
-        guard let animatedSprite = imageViews[id] as? UIAnimatedImageView else {
-            return
-        }
-        animatedSprite.toNewFrame(0)
+        imageView.startAnimating()
     }
 }

@@ -59,7 +59,7 @@ class GameplayController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         setUpEngineAndBubbleManagerAndGridBound()
         createLauncher()
-        
+        /*
         bubblePop = GameObject()
         bubblePop?.position = CGVector(500, 500)
         bubblePop?.addAnimatedSpriteComponent("cannon-shoot-2", CGRect(x: -112/2, y: -100, width: 112, height: 456), 4, 1)
@@ -71,7 +71,7 @@ class GameplayController: UIViewController {
         animatedSpriteComponent.frameSkip = 4
         animatedSpriteComponent.autoPlay = false
         animatedSpriteComponent.destroyWhenFinish = false
-        
+        */
         var uiImages = [UIImage]()
 
         for image in imagesStr {
