@@ -29,9 +29,17 @@ class BubbleManager: BubbleDelegate {
     private let IMAGE_BUBBLE_RED = "ball-red"
     private let IMAGE_BUBBLE_BLACK = "ball-black"
     private let IMAGE_BUBBLE_LIGHTNING = "ball-lightning"
-    private let IMAGE_BUBBLE_BOMB = "bubble-bomb"
+    private let IMAGE_BUBBLE_BOMB = "ball-bomb"
     private let IMAGE_BUBBLE_STAR = "ball-star"
     
+    private let IMAGE_EXPLODE_BOMB = "bomb-explode"
+    private let IMAGE_EXPLODE_LIGHTNING = "lightning-explode"
+    private let IMAGE_EXPLODE_BLUE = "blue-explode"
+    private let IMAGE_EXPLODE_GREEN = "green-explode"
+    private let IMAGE_EXPLODE_PURPLE = "purple-explode"
+    private let IMAGE_EXPLODE_RED = "red-explode"
+    
+    private let EMPTY_STRING = ""
     private var gridLowerBound: CGFloat = 0
     private var nextBubbleQueue = [Bubble]()
     private var offScreenPosition: CGVector = CGVector(-200, -200)
@@ -98,7 +106,6 @@ class BubbleManager: BubbleDelegate {
         }
         return true
     }
-    
     
  // ************************************ Bubble Creation Functions ***************************************//
     private func createBubble(_ gridBubbleType: GridBubble.BubbleColor, _ position: CGVector) -> Bubble? {
@@ -179,24 +186,23 @@ class BubbleManager: BubbleDelegate {
         gameEngine.add(bubble)
     }
     
-    
     private func createColourBubblePopObject(_ bubble: Bubble) {
         guard let spriteComponent = bubble.spriteComponent else {
             return
         }
-        var spriteName = ""
+        var spriteName = EMPTY_STRING
         switch spriteComponent.spriteName {
         case IMAGE_BUBBLE_BLUE:
-            spriteName = "blue-explode"
+            spriteName = IMAGE_EXPLODE_BLUE
             
         case IMAGE_BUBBLE_GREEN:
-            spriteName = "green-explode"
+            spriteName = IMAGE_EXPLODE_GREEN
             
         case IMAGE_BUBBLE_PURPLE:
-            spriteName = "purple-explode"
+            spriteName = IMAGE_EXPLODE_PURPLE
             
         case IMAGE_BUBBLE_RED:
-            spriteName = "red-explode"
+            spriteName = IMAGE_EXPLODE_RED
         
         default:
             return
@@ -215,7 +221,8 @@ class BubbleManager: BubbleDelegate {
         
         let bubblePop = GameObject()
         bubblePop.position = CGVector(bubble.position.x, bubble.position.y)
-        bubblePop.addAnimatedSpriteComponent(sprite1, [sprite1, sprite2, sprite3], spriteComponent.rect)
+        bubblePop.addAnimatedSpriteComponent(sprite1, [sprite1, sprite2, sprite3], spriteComponent.rect, CGVector(0.5, 0.5))
+        bubblePop.rotation = CGFloat(arc4random_uniform(360))
         gameEngine.add(bubblePop)
         
         guard let animatedSpriteComponent = bubblePop.spriteComponent as? AnimatedSpriteComponent else {
@@ -377,19 +384,23 @@ class BubbleManager: BubbleDelegate {
         let specialBubbleType = specialBubble.bubbleType
         var adjIndexPaths: [IndexPath] = []
 
+        var isBomb = true
+        
         switch specialBubbleType {
         case .bomb:
+            isBomb = true
             adjIndexPaths = findNeighbour(index)
+            destroyBubbleWithBomb(specialBubble)
         case .lightning:
+            isBomb = false
             adjIndexPaths = findRowNeighbour(index)
+            destroyBubbleWithLightning(specialBubble)
         default:
             return
         }
         
         removeBubbleFromGrid(indexPath: index)
-        //destroySpecialBubble(specialBubble)
-        destroyBubbleWithBomb(specialBubble)
-        
+
         for adjIndex in adjIndexPaths {
             guard let bubble = bubbles[adjIndex.row][adjIndex.section] else {
                 continue
@@ -398,7 +409,7 @@ class BubbleManager: BubbleDelegate {
                 activateBombAndLightning(adjIndex)
             } else {
                 removeBubbleFromGrid(indexPath: adjIndex)
-                destroyBubbleWithBomb(bubble)
+                isBomb ? destroyBubbleWithBomb(bubble) : destroyBubbleWithLightning(bubble)
             }
         }
         gameEngine.shake()
@@ -423,8 +434,13 @@ class BubbleManager: BubbleDelegate {
         bubble.destroy()
     }
     
+    private func destroyBubbleWithLightning(_ bubble: Bubble) {
+        createBubblePopObject(bubble, IMAGE_EXPLODE_LIGHTNING)
+        bubble.destroy()
+    }
+
     private func destroyBubbleWithBomb(_ bubble: Bubble) {
-        createBubblePopObject(bubble, "bomb-explode")
+        createBubblePopObject(bubble, IMAGE_EXPLODE_BOMB)
         bubble.destroy()
     }
     

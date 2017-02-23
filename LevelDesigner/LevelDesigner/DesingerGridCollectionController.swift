@@ -23,7 +23,7 @@ class DesignerGridCollectionController: GridCollectionController {
     private let IMAGE_BUBBLE_RED = "ball-red"
     private let IMAGE_BUBBLE_BLACK = "ball-black"
     private let IMAGE_BUBBLE_LIGHTNING = "ball-lightning"
-    private let IMAGE_BUBBLE_BOMB = "bubble-bomb"
+    private let IMAGE_BUBBLE_BOMB = "ball-bomb"
     private let IMAGE_BUBBLE_STAR = "ball-star"
     
     private let ALERT_LEVEL_NAMES_TITLE = "Level Names"

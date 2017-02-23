@@ -61,3 +61,5 @@ switch bubble
 bubble moves to cannon
 
 SCREENSHAKE
+
+bubble explode in random rotation
