@@ -54,7 +54,7 @@ class PhysicEngine {
         }
         if collider1.intersect(collider2) {
             if !isStatic(physicObject1) && isStatic(physicObject2) {
-                    handleDynamicStaticCollision(physicObject1, physicObject2)
+                handleDynamicStaticCollision(physicObject1, physicObject2)
             }
             if !isStatic(physicObject1) && !isStatic(physicObject2) {
                 handleDynamicDynamicCollision(physicObject1, physicObject2)

@@ -87,7 +87,6 @@ class GameplayController: UIViewController {
             self.gridBubbles = nil
             
         } else if loadMode == LoadMode.levelName {
-            //gridController?.loadLevel(levelName: levelName)
             guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition(levelName: levelName) else {
                 return
             }
@@ -108,7 +107,6 @@ class GameplayController: UIViewController {
         self.bubbleManager = bubbleManager
         setUpGridLowerBound(bubbleManager)
         gameEngine = newGameEngine
-        //containerView.removeFromSuperview()
     }
     
     private func setUpGesture() {
