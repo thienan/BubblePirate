@@ -104,7 +104,10 @@ class RenderEngine: AnimatedSpriteDelegate {
         newImageView.animationDuration = spriteComponent.animationDuration
         newImageView.animationRepeatCount = spriteComponent.animationRepeatCount
 
-        
+        if spriteComponent.autoPlay {
+            newImageView.startAnimating()
+            Timer.scheduledTimer(timeInterval: newImageView.animationDuration, target: spriteComponent, selector: #selector(spriteComponent.animationFinished), userInfo: nil, repeats: false)
+        }
         
         scene.addSubview(newImageView)
         return newImageView

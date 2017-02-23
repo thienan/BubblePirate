@@ -23,7 +23,7 @@ class BubbleManager: BubbleDelegate {
     private var gridCellPositions: [[CGVector]] = []
     private var cellWidth: CGFloat = GridSettings.cellWidth
     //private var spriteNames: [String] = ["bubble-blue", "bubble-green", "bubble-orange", "bubble-red", "bubble-indestructible", "bubble-lightning", "bubble-bomb", "bubble-star"]
-    private var spriteNames: [String] = ["ball-blue", "ball-green", "ball-yellow", "ball-red", "bubble-indestructible", "bubble-lightning", "bubble-bomb", "bubble-star"]
+    private var spriteNames: [String] = ["ball-blue", "ball-green", "ball-yellow", "ball-red", "ball-black", "ball-lightning", "bubble-bomb", "ball-star"]
     private var gridLowerBound: CGFloat = 0
     private var nextBubbleQueue = [Bubble]()
     private var offScreenPosition: CGVector = CGVector(-200, -200)
@@ -173,20 +173,19 @@ class BubbleManager: BubbleDelegate {
     }
     
     private func createBubblePopObject(_ bubble: Bubble) {
-        /*
+        
         guard let spriteComponent = bubble.spriteComponent else {
             return
         }
         let bubblePop = GameObject()
         bubblePop.position = CGVector(bubble.position.x, bubble.position.y)
-        bubblePop.addAnimatedSpriteComponent("bubble-burst", spriteComponent.rect, 4, 1)
+        bubblePop.addAnimatedSpriteComponent("red-explode1", ["red-explode1", "red-explode2", "red-explode3"], spriteComponent.rect)
         gameEngine.add(bubblePop)
         
         guard let animatedSpriteComponent = bubblePop.spriteComponent as? AnimatedSpriteComponent else {
             return
         }
-        animatedSpriteComponent.frameSkip = 4
-*/
+        animatedSpriteComponent.animationDuration = 0.3
     }
     
 // ************************************** Queue Functions ******************************************//
