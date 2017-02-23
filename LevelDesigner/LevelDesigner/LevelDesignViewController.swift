@@ -72,7 +72,7 @@ class LevelDesignViewController: UIViewController {
     }
     
     @IBAction private func orangeButtonPressed(_ sender: Any) {
-        selectBubble(GridBubble.BubbleColor.orange)
+        selectBubble(GridBubble.BubbleColor.purple)
         colorButtonPressed(sender)
     }
     

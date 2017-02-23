@@ -23,7 +23,7 @@ class GridBubble: NSObject, NSCoding {
     public enum BubbleColor: Int {
         case blue = 0
         case red = 1
-        case orange = 2
+        case purple = 2
         case green = 3
         case black = 4
         case star = 5
@@ -51,9 +51,9 @@ class GridBubble: NSObject, NSCoding {
             color = BubbleColor.red
             
         case .red:
-            color = BubbleColor.orange
+            color = BubbleColor.purple
             
-        case .orange:
+        case .purple:
             color = BubbleColor.green
             
         case .green:

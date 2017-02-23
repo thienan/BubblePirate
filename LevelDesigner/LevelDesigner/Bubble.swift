@@ -23,8 +23,7 @@ class Bubble: GameObject {
         case lightning
         case star
     }
-    
-    
+
     public var moveState = MoveState.idle
     public var bubbleType = BubbleType.normal
     public var delegate: BubbleDelegate?

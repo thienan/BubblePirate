@@ -16,14 +16,14 @@ class DesignerGridCollectionController: GridCollectionController {
         case IDLE
         case GAME_LOAD
     }
-    private let IMAGE_BUBBLE_BLUE = "bubble-blue"
-    private let IMAGE_BUBBLE_GREEN = "bubble-green"
-    private let IMAGE_BUBBLE_ORANGE = "bubble-orange"
-    private let IMAGE_BUBBLE_RED = "bubble-red"
-    private let IMAGE_BUBBLE_BLACK = "bubble-indestructible"
-    private let IMAGE_BUBBLE_LIGHTNING = "bubble-lightning"
+    private let IMAGE_BUBBLE_BLUE = "ball-blue"
+    private let IMAGE_BUBBLE_GREEN = "ball-green"
+    private let IMAGE_BUBBLE_PURPLE = "ball-purple"
+    private let IMAGE_BUBBLE_RED = "ball-red"
+    private let IMAGE_BUBBLE_BLACK = "ball-black"
+    private let IMAGE_BUBBLE_LIGHTNING = "ball-lightning"
     private let IMAGE_BUBBLE_BOMB = "bubble-bomb"
-    private let IMAGE_BUBBLE_STAR = "bubble-star"
+    private let IMAGE_BUBBLE_STAR = "ball-star"
     
     private let ALERT_LEVEL_NAMES_TITLE = "Level Names"
     private let ALERT_LEVEL_INVALID_NAME = "Invalid Level Name"
@@ -74,6 +74,7 @@ class DesignerGridCollectionController: GridCollectionController {
         guard let image = getImage(bubbleColor: bubble.color) else {
             return cell
         }
+        cell.layer.borderWidth = CGFloat(0)
         cell.setImage(image: image)
         return cell
     }
@@ -161,8 +162,8 @@ class DesignerGridCollectionController: GridCollectionController {
             return UIImage(named: IMAGE_BUBBLE_GREEN)
         case GridBubble.BubbleColor.red:
             return UIImage(named: IMAGE_BUBBLE_RED)
-        case GridBubble.BubbleColor.orange:
-            return UIImage(named: IMAGE_BUBBLE_ORANGE)
+        case GridBubble.BubbleColor.purple:
+            return UIImage(named: IMAGE_BUBBLE_PURPLE)
         case GridBubble.BubbleColor.black:
             return UIImage(named: IMAGE_BUBBLE_BLACK)
         case GridBubble.BubbleColor.bomb:

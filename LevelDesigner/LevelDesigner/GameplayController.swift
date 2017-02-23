@@ -25,7 +25,6 @@ class GameplayController: UIViewController {
     
     @IBOutlet private weak var containerView: UIView!
     @IBOutlet private var scene: UIView!
-    @IBOutlet private weak var cannon: UIImageView!
     @IBOutlet private weak var border: UIView!
     
     private let ERROR_GRID_BUBBLES_NOT_LOADED = "ERROR: gridBubblesAreNotLoaded"
