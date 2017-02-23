@@ -424,6 +424,37 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqF-gw-oWL" userLabel="gameOver">
+                                <rect key="frame" x="264" y="0.0" width="240" height="183"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EvG-bc-rzM">
+                                        <rect key="frame" x="66" y="33" width="109" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Level Selection"/>
+                                        <connections>
+                                            <segue destination="fcY-7o-AKY" kind="show" id="qWN-xH-ert"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hud-4A-kdi">
+                                        <rect key="frame" x="66" y="71" width="109" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Custom Level"/>
+                                        <connections>
+                                            <segue destination="XUW-EG-fH6" kind="show" id="dzH-7Y-CUu"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="taA-ZC-drh">
+                                        <rect key="frame" x="66" y="108" width="109" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Main Menu"/>
+                                        <connections>
+                                            <segue destination="Zoy-wT-oze" kind="show" id="zg2-kM-nRU"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -431,6 +462,7 @@
                         <outlet property="blackBackground" destination="jbN-m3-A6A" id="MGk-WF-QcI"/>
                         <outlet property="border" destination="LrG-s6-GVD" id="Lfv-es-ueh"/>
                         <outlet property="containerView" destination="kOg-7W-BNr" id="7uM-ss-TRb"/>
+                        <outlet property="gameOverMenu" destination="RqF-gw-oWL" id="dIq-gc-6yZ"/>
                         <outlet property="scene" destination="FJ4-sj-i3n" id="sr8-tJ-huA"/>
                         <outlet property="settingMenu" destination="VyJ-Mb-PPw" id="XEP-Jt-yST"/>
                     </connections>
@@ -503,5 +535,6 @@
         <segue reference="16j-wR-fbL"/>
         <segue reference="lgt-zJ-KJd"/>
         <segue reference="mcJ-Da-L1I"/>
+        <segue reference="zg2-kM-nRU"/>
     </inferredMetricsTieBreakers>
 </document>

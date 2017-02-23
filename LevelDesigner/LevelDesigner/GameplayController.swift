@@ -42,6 +42,7 @@ class GameplayController: UIViewController {
     
     @IBOutlet weak var settingMenu: UIView!
     @IBOutlet weak var blackBackground: UIImageView!
+    @IBOutlet weak var gameOverMenu: UIView!
 
     private var isPaused = false
     
@@ -49,9 +50,11 @@ class GameplayController: UIViewController {
         super.viewDidLoad()
         setUpGesture()
         settingMenu.center = CGPoint(x: -settingMenu.frame.width, y: UIScreen.main.bounds.size.height/2)
+        gameOverMenu.center = CGPoint(x: UIScreen.main.bounds.size.width/2, y: -settingMenu.frame.height)
         blackBackground.isHidden = true
         blackBackground.layer.zPosition = UI_Z_Position
         settingMenu.layer.zPosition = UI_Z_Position
+        gameOverMenu.layer.zPosition = UI_Z_Position
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -191,7 +194,6 @@ class GameplayController: UIViewController {
         }
     }
     
-    
     @IBAction func onSettingButtonPressed(_ sender: Any) {
         if isPaused { return }
         isPaused = true
@@ -207,6 +209,14 @@ class GameplayController: UIViewController {
             self.settingMenu.center.x = -self.settingMenu.frame.width
         }), completion: nil)
         blackBackground.isHidden = true
+    }
+    
+    private func gameOver() {
+        isPaused = true
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: .curveEaseInOut, animations: ({
+            self.gameOverMenu.center.y = UIScreen.main.bounds.size.height/2
+        }), completion: nil)
+        blackBackground.isHidden = false
     }
 }
 

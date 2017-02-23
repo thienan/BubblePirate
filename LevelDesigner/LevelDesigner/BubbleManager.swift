@@ -49,6 +49,7 @@ class BubbleManager: BubbleDelegate {
     private let BUBBLE_FADE_OUT_SPEED = CGFloat(0.03)
     private let BUBBLE_ROOTED_FADE_OUT_SPEED = CGFloat(0.02)
     private let BUBBLE_FALLING_SPEED = CGFloat(0.4)
+    private let BUBBLE_ANIMATION_SPEED = 0.3
     
     init?(_ gridBubbles: [[GridBubble]], _ gameEngine: GameEngine) {
         ROW_COUNT = GridSettings.ROW_COUNT
@@ -228,7 +229,7 @@ class BubbleManager: BubbleDelegate {
         guard let animatedSpriteComponent = bubblePop.spriteComponent as? AnimatedSpriteComponent else {
             return
         }
-        animatedSpriteComponent.animationDuration = 0.3
+        animatedSpriteComponent.animationDuration = BUBBLE_ANIMATION_SPEED
     }
     
 // ************************************** Queue Functions ******************************************//

@@ -44,6 +44,7 @@
 		F3F6E83C1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F6E83B1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift */; };
 		F3F91BED1E5ECC1900CB3B55 /* LauncherRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BEC1E5ECC1900CB3B55 /* LauncherRing.swift */; };
 		F3F91BEF1E5ED18500CB3B55 /* LauncherBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BEE1E5ED18500CB3B55 /* LauncherBackground.swift */; };
+		F3F91BF11E5F0D4100CB3B55 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BF01E5F0D4100CB3B55 /* ScoreManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +98,7 @@
 		F3F6E83B1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSpriteDelegate.swift; sourceTree = "<group>"; };
 		F3F91BEC1E5ECC1900CB3B55 /* LauncherRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauncherRing.swift; sourceTree = "<group>"; };
 		F3F91BEE1E5ED18500CB3B55 /* LauncherBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauncherBackground.swift; sourceTree = "<group>"; };
+		F3F91BF01E5F0D4100CB3B55 /* ScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +163,7 @@
 			children = (
 				F37647821E4834960008454B /* GameplayController.swift */,
 				F37DD6061E4C6D3C00CE1A9B /* BubbleManager.swift */,
+				F3F91BF01E5F0D4100CB3B55 /* ScoreManager.swift */,
 				F32072241E4DCAC300234C4B /* BubbleDelegate.swift */,
 				F36807861E41A6CD00586C2E /* Bubble.swift */,
 				F39A0C7F1E5055E000B1DC45 /* AnimatedBubble.swift */,
@@ -367,6 +370,7 @@
 				F33CD5EE1E488E2500DCECAA /* PhysicEngine.swift in Sources */,
 				F37647891E48459A0008454B /* SphereColliderComponent.swift in Sources */,
 				F36DF4251E42D1C200CCCD7D /* GridBubbleManager.swift in Sources */,
+				F3F91BF11E5F0D4100CB3B55 /* ScoreManager.swift in Sources */,
 				F376DAFA1E5998B400B0B80D /* MainMenuViewController.swift in Sources */,
 				F36A02A61E4971F5005F7BB6 /* Component.swift in Sources */,
 				F3F91BEF1E5ED18500CB3B55 /* LauncherBackground.swift in Sources */,

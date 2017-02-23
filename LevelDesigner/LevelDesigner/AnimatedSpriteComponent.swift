@@ -12,12 +12,9 @@ import UIKit
 class AnimatedSpriteComponent: SpriteComponent {
     var destroyWhenFinish: Bool = true
     var autoPlay: Bool = true
-
     var animatedSpriteDelegate: AnimatedSpriteDelegate?
-    
     var animationDuration: TimeInterval = 0.5
     var animationRepeatCount: Int = 1
-    
     var animatedSpriteNames: [String]
     
     init(_ parent: GameObject, _ spriteName: String, _ animatedSpriteNames: [String], _ rect: CGRect, _ anchorPoint: CGVector = CGVector.zero) {
