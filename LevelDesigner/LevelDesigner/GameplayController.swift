@@ -20,6 +20,7 @@ class GameplayController: UIViewController {
     private var bubbleManager: BubbleManager?
     
     private var launcher: Launcher?
+    private let launcherYOffSet = CGFloat(100)
     private var cellWidth: CGFloat = GridSettings.cellWidth
     
     @IBOutlet private weak var containerView: UIView!
@@ -126,7 +127,7 @@ class GameplayController: UIViewController {
         guard let bubbleManager = bubbleManager else {
             return
         }
-        let launcher = Launcher(CGVector(UIScreen.main.bounds.size.width/2, UIScreen.main.bounds.size.height - cellWidth/2), bubbleManager)
+        let launcher = Launcher(CGVector(UIScreen.main.bounds.size.width/2, UIScreen.main.bounds.size.height - launcherYOffSet), bubbleManager)
         self.launcher = launcher
         gameEngine?.add(launcher)
     }

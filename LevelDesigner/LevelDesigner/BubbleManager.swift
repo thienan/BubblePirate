@@ -23,7 +23,7 @@ class BubbleManager: BubbleDelegate {
     private var gridCellPositions: [[CGVector]] = []
     private var cellWidth: CGFloat = GridSettings.cellWidth
     //private var spriteNames: [String] = ["bubble-blue", "bubble-green", "bubble-orange", "bubble-red", "bubble-indestructible", "bubble-lightning", "bubble-bomb", "bubble-star"]
-    private var spriteNames: [String] = ["ball-blue", "ball-green", "ball-yellow", "ball-red", "ball-black", "ball-lightning", "bubble-bomb", "ball-star"]
+    private var spriteNames: [String] = ["ball-blue", "ball-green", "ball-purple", "ball-red", "ball-black", "ball-lightning", "bubble-bomb", "ball-star"]
     private var gridLowerBound: CGFloat = 0
     private var nextBubbleQueue = [Bubble]()
     private var offScreenPosition: CGVector = CGVector(-200, -200)
