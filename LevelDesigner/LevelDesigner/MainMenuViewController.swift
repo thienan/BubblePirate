@@ -9,7 +9,14 @@
 import UIKit
 
 class MainMenuViewController: UIViewController {
-
+    
+    private let GAME_MUSIC_VOLUME: Float = 0.1
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        SoundPlayer.playLoop("game_music", GAME_MUSIC_VOLUME)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

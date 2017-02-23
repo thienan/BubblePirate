@@ -39,6 +39,8 @@ class BubbleManager: BubbleDelegate {
     private let IMAGE_EXPLODE_PURPLE = "purple-explode"
     private let IMAGE_EXPLODE_RED = "red-explode"
     
+    private let COMBO_SOUNDS = ["combo_01", "combo_02", "combo_03", "combo_04"]
+    
     private let EMPTY_STRING = ""
     private var gridLowerBound: CGFloat = 0
     private var nextBubbleQueue = [Bubble]()
@@ -345,6 +347,7 @@ class BubbleManager: BubbleDelegate {
             removeBubbleFromGrid(bubble: bubble)
             destroyRootedBubble(bubble)
         }
+        SoundPlayer.playRandom(soundNames: COMBO_SOUNDS)
         gameEngine.shake()
     }
     

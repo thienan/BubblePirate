@@ -50,7 +50,7 @@ class GameplayController: UIViewController {
         super.viewDidLoad()
         setUpGesture()
         settingMenu.center = CGPoint(x: -settingMenu.frame.width, y: UIScreen.main.bounds.size.height/2)
-        gameOverMenu.center = CGPoint(x: UIScreen.main.bounds.size.width/2, y: -settingMenu.frame.height)
+        gameOverMenu.center = CGPoint(x: UIScreen.main.bounds.size.width/2, y: UIScreen.main.bounds.size.height + settingMenu.frame.height)
         blackBackground.isHidden = true
         blackBackground.layer.zPosition = UI_Z_Position
         settingMenu.layer.zPosition = UI_Z_Position

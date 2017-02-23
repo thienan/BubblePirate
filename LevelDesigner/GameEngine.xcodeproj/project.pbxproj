@@ -43,8 +43,15 @@
 		F3DD1F5C1E40AE0800A16909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DD1F5A1E40AE0800A16909 /* LaunchScreen.storyboard */; };
 		F3F6E83C1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F6E83B1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift */; };
 		F3F91BED1E5ECC1900CB3B55 /* LauncherRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BEC1E5ECC1900CB3B55 /* LauncherRing.swift */; };
-		F3F91BEF1E5ED18500CB3B55 /* LauncherBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BEE1E5ED18500CB3B55 /* LauncherBackground.swift */; };
 		F3F91BF11E5F0D4100CB3B55 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BF01E5F0D4100CB3B55 /* ScoreManager.swift */; };
+		F3F91BF41E5F11B500CB3B55 /* combo_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3F91BF31E5F11B500CB3B55 /* combo_01.mp3 */; };
+		F3F91BF61E5F125700CB3B55 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BF51E5F125700CB3B55 /* Sound.swift */; };
+		F3F91BF81E5F16A100CB3B55 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BF71E5F16A100CB3B55 /* SoundPlayer.swift */; };
+		F3F91BFE1E5F19BB00CB3B55 /* combo_02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3F91BF91E5F19BB00CB3B55 /* combo_02.mp3 */; };
+		F3F91BFF1E5F19BB00CB3B55 /* combo_03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3F91BFA1E5F19BB00CB3B55 /* combo_03.mp3 */; };
+		F3F91C001E5F19BB00CB3B55 /* combo_04.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3F91BFB1E5F19BB00CB3B55 /* combo_04.mp3 */; };
+		F3F91C011E5F19BB00CB3B55 /* combo_05.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3F91BFC1E5F19BB00CB3B55 /* combo_05.mp3 */; };
+		F3F91C021E5F19BB00CB3B55 /* game_music.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3F91BFD1E5F19BB00CB3B55 /* game_music.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,8 +104,15 @@
 		F3DD1F621E40AE0800A16909 /* GameEngineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameEngineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3F6E83B1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSpriteDelegate.swift; sourceTree = "<group>"; };
 		F3F91BEC1E5ECC1900CB3B55 /* LauncherRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauncherRing.swift; sourceTree = "<group>"; };
-		F3F91BEE1E5ED18500CB3B55 /* LauncherBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauncherBackground.swift; sourceTree = "<group>"; };
 		F3F91BF01E5F0D4100CB3B55 /* ScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
+		F3F91BF31E5F11B500CB3B55 /* combo_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = combo_01.mp3; path = ../Sounds/combo_01.mp3; sourceTree = "<group>"; };
+		F3F91BF51E5F125700CB3B55 /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
+		F3F91BF71E5F16A100CB3B55 /* SoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
+		F3F91BF91E5F19BB00CB3B55 /* combo_02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = combo_02.mp3; path = ../Sounds/combo_02.mp3; sourceTree = "<group>"; };
+		F3F91BFA1E5F19BB00CB3B55 /* combo_03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = combo_03.mp3; path = ../Sounds/combo_03.mp3; sourceTree = "<group>"; };
+		F3F91BFB1E5F19BB00CB3B55 /* combo_04.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = combo_04.mp3; path = ../Sounds/combo_04.mp3; sourceTree = "<group>"; };
+		F3F91BFC1E5F19BB00CB3B55 /* combo_05.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = combo_05.mp3; path = ../Sounds/combo_05.mp3; sourceTree = "<group>"; };
+		F3F91BFD1E5F19BB00CB3B55 /* game_music.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = game_music.mp3; path = ../Sounds/game_music.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -124,6 +138,7 @@
 			children = (
 				F3DD1F4F1E40AE0800A16909 /* GameEngine.app */,
 				F3DD1F501E40AE0800A16909 /* GameEngine */,
+				F3F91BF21E5F119400CB3B55 /* Sounds */,
 				F3DD1F621E40AE0800A16909 /* GameEngineUITests.xctest */,
 			);
 			sourceTree = "<group>";
@@ -152,6 +167,8 @@
 				F33CD5EF1E48974C00DCECAA /* RenderEngine.swift */,
 				F3640F721E5856F6009EC3B2 /* UIAnimatedImageView.swift */,
 				F37647861E4836AF0008454B /* GameObject.swift */,
+				F3F91BF51E5F125700CB3B55 /* Sound.swift */,
+				F3F91BF71E5F16A100CB3B55 /* SoundPlayer.swift */,
 				F382CA641E4F0BC30017C02A /* Component */,
 				F382CA5C1E4EEB210017C02A /* PhysicEngine */,
 			);
@@ -169,7 +186,6 @@
 				F39A0C7F1E5055E000B1DC45 /* AnimatedBubble.swift */,
 				F38BECF31E4B3A80009FCE86 /* Launcher.swift */,
 				F3F91BEC1E5ECC1900CB3B55 /* LauncherRing.swift */,
-				F3F91BEE1E5ED18500CB3B55 /* LauncherBackground.swift */,
 			);
 			name = GamePlay;
 			sourceTree = "<group>";
@@ -237,6 +253,19 @@
 			);
 			name = GameEngine;
 			path = LevelDesigner;
+			sourceTree = "<group>";
+		};
+		F3F91BF21E5F119400CB3B55 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				F3F91BF31E5F11B500CB3B55 /* combo_01.mp3 */,
+				F3F91BF91E5F19BB00CB3B55 /* combo_02.mp3 */,
+				F3F91BFA1E5F19BB00CB3B55 /* combo_03.mp3 */,
+				F3F91BFB1E5F19BB00CB3B55 /* combo_04.mp3 */,
+				F3F91BFC1E5F19BB00CB3B55 /* combo_05.mp3 */,
+				F3F91BFD1E5F19BB00CB3B55 /* game_music.mp3 */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -325,7 +354,13 @@
 			files = (
 				F3DD1F5C1E40AE0800A16909 /* LaunchScreen.storyboard in Resources */,
 				F3DD1F591E40AE0800A16909 /* Assets.xcassets in Resources */,
+				F3F91C001E5F19BB00CB3B55 /* combo_04.mp3 in Resources */,
+				F3F91BFF1E5F19BB00CB3B55 /* combo_03.mp3 in Resources */,
+				F3F91BF41E5F11B500CB3B55 /* combo_01.mp3 in Resources */,
 				F3DD1F571E40AE0800A16909 /* Main.storyboard in Resources */,
+				F3F91C021E5F19BB00CB3B55 /* game_music.mp3 in Resources */,
+				F3F91C011E5F19BB00CB3B55 /* combo_05.mp3 in Resources */,
+				F3F91BFE1E5F19BB00CB3B55 /* combo_02.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -350,12 +385,14 @@
 				F376478D1E4854720008454B /* SpriteComponent.swift in Sources */,
 				F38BECF41E4B3A80009FCE86 /* Launcher.swift in Sources */,
 				F36807871E41A6CD00586C2E /* Bubble.swift in Sources */,
+				F3F91BF61E5F125700CB3B55 /* Sound.swift in Sources */,
 				F310F4EE1E4249CB00C72156 /* GridCollectionController.swift in Sources */,
 				F33CD5F01E48974C00DCECAA /* RenderEngine.swift in Sources */,
 				F376478B1E4853C40008454B /* CGVector.swift in Sources */,
 				F36A02A81E497BA0005F7BB6 /* PhysicObject.swift in Sources */,
 				F36E8A471E4C2F84008F055C /* GridBubble.swift in Sources */,
 				F3F6E83C1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift in Sources */,
+				F3F91BF81E5F16A100CB3B55 /* SoundPlayer.swift in Sources */,
 				F36DF4271E42DE1A00CCCD7D /* GridCollectionCell.swift in Sources */,
 				F321920C1E447FCF0092B010 /* StorageManager.swift in Sources */,
 				F37647871E4836AF0008454B /* GameObject.swift in Sources */,
@@ -373,7 +410,6 @@
 				F3F91BF11E5F0D4100CB3B55 /* ScoreManager.swift in Sources */,
 				F376DAFA1E5998B400B0B80D /* MainMenuViewController.swift in Sources */,
 				F36A02A61E4971F5005F7BB6 /* Component.swift in Sources */,
-				F3F91BEF1E5ED18500CB3B55 /* LauncherBackground.swift in Sources */,
 				F37647851E4836A10008454B /* GameEngine.swift in Sources */,
 				F39A0C801E5055E100B1DC45 /* AnimatedBubble.swift in Sources */,
 				F37647831E4834960008454B /* GameplayController.swift in Sources */,
