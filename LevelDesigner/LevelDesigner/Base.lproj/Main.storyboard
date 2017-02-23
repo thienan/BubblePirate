@@ -375,9 +375,18 @@
                                 <rect key="frame" x="698" y="925" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button" image="ball-black"/>
+                                <connections>
+                                    <action selector="onSettingButtonPressed:" destination="SWk-fK-BLn" eventType="touchUpInside" id="CL0-VZ-u2U"/>
+                                </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jbN-m3-A6A" userLabel="black">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="tintColor" red="0.076775196335078566" green="0.076775196335078566" blue="0.076775196335078566" alpha="1" colorSpace="calibratedRGB"/>
+                            </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VyJ-Mb-PPw" userLabel="setting">
-                                <rect key="frame" x="0.0" y="309" width="240" height="146"/>
+                                <rect key="frame" x="0.0" y="309" width="240" height="183"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-fU-SmB">
@@ -401,8 +410,15 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <state key="normal" title="Main Menu"/>
                                         <connections>
-                                            <action selector="onMainMenuPressed:" destination="SWk-fK-BLn" eventType="touchUpInside" id="h62-2b-irb"/>
                                             <segue destination="Zoy-wT-oze" kind="show" id="c2B-uK-qlL"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kR-EY-3iu">
+                                        <rect key="frame" x="66" y="141" width="109" height="30"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <state key="normal" title="Resume"/>
+                                        <connections>
+                                            <action selector="onResumeButtonPressed:" destination="SWk-fK-BLn" eventType="touchUpInside" id="6t4-SD-uOi"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -412,6 +428,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <connections>
+                        <outlet property="blackBackground" destination="jbN-m3-A6A" id="MGk-WF-QcI"/>
                         <outlet property="border" destination="LrG-s6-GVD" id="Lfv-es-ueh"/>
                         <outlet property="containerView" destination="kOg-7W-BNr" id="7uM-ss-TRb"/>
                         <outlet property="scene" destination="FJ4-sj-i3n" id="sr8-tJ-huA"/>
@@ -420,7 +437,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n1C-4V-vdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1407" y="1694"/>
+            <point key="canvasLocation" x="-1407.03125" y="1693.9453125"/>
         </scene>
         <!--Grid Collection Controller-->
         <scene sceneID="yIL-GD-IDn">

@@ -31,7 +31,7 @@ class GameplayController: UIViewController {
     private let ERROR_GRID_BUBBLES_NOT_LOADED = "ERROR: gridBubblesAreNotLoaded"
     private let ERROR_BUBBLE_MANAGER_FAILED = "ERROR: Bubble Manager failed to initialised"
     private let SEQ_GRID = "grid"
-    
+    private let UI_Z_Position = CGFloat(1000)
     private let WORLD_BOUND_Y_OFFSET = CGFloat(100)
     
     private var loadMode: LoadMode = LoadMode.none
@@ -39,12 +39,19 @@ class GameplayController: UIViewController {
     private var gridBubbles: [[GridBubble]]?
     private var levelName: String = ""
     
+    
     @IBOutlet weak var settingMenu: UIView!
+    @IBOutlet weak var blackBackground: UIImageView!
+
+    private var isPaused = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpGesture()
         settingMenu.center = CGPoint(x: -settingMenu.frame.width, y: UIScreen.main.bounds.size.height/2)
+        blackBackground.isHidden = true
+        blackBackground.layer.zPosition = UI_Z_Position
+        settingMenu.layer.zPosition = UI_Z_Position
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -60,9 +67,7 @@ class GameplayController: UIViewController {
         setUpEngineAndBubbleManagerAndGridBound()
         createLauncher()
         
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: .curveEaseInOut, animations: ({
-            self.settingMenu.center.x = UIScreen.main.bounds.size.width/2
-        }), completion: nil)
+        
     }
     
     private func setUpEngineAndBubbleManagerAndGridBound() {
@@ -155,6 +160,7 @@ class GameplayController: UIViewController {
 
     // Fire bubble at on release
     public func panGesture(gesture: UIPanGestureRecognizer) {
+        if isPaused { return }
         let position = gesture.location(in: view)
         launcher?.lookAt(CGVector.toVector(position))
         if gesture.state == .ended {
@@ -164,6 +170,7 @@ class GameplayController: UIViewController {
     }
     
     public func tapGesture(gesture: UITapGestureRecognizer) {
+        if isPaused { return }
         if gesture.state == .ended {
             let position = gesture.location(in: view)
             launcher?.fireBubble(lookAtPosition: CGVector.toVector(position))
@@ -187,8 +194,21 @@ class GameplayController: UIViewController {
     }
     
     
-    @IBAction func onMainMenuPressed(_ sender: Any) {
-        gameEngine?.turnOffEngine()
+    @IBAction func onSettingButtonPressed(_ sender: Any) {
+        if isPaused { return }
+        isPaused = true
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: .curveEaseInOut, animations: ({
+            self.settingMenu.center.x = UIScreen.main.bounds.size.width/2
+        }), completion: nil)
+        blackBackground.isHidden = false
+    }
+    
+    @IBAction func onResumeButtonPressed(_ sender: Any) {
+        isPaused = false
+        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: ({
+            self.settingMenu.center.x = -self.settingMenu.frame.width
+        }), completion: nil)
+        blackBackground.isHidden = true
     }
 }
 

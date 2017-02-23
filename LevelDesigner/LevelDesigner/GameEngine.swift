@@ -15,6 +15,7 @@ class GameEngine {
     private let renderEngine: RenderEngine
     private let scene: UIView
     private var displayLink: CADisplayLink?
+    public var isPaused: Bool = false
     
     init(_ scene: UIView) {
         self.scene = scene
@@ -28,6 +29,8 @@ class GameEngine {
     }
     
     @objc public func update(displaylink: CADisplayLink) {
+        if isPaused { return }
+        
         let deltaTime = CGFloat(displaylink.targetTimestamp - displaylink.timestamp)
         updateObjects(deltaTime)
         GameEngine.physicEngine.update(deltaTime, GameEngine.gameObjects)
