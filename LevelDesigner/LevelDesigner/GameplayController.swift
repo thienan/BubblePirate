@@ -39,9 +39,12 @@ class GameplayController: UIViewController {
     private var gridBubbles: [[GridBubble]]?
     private var levelName: String = ""
     
+    @IBOutlet weak var settingMenu: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setUpGesture()
+        settingMenu.center = CGPoint(x: -settingMenu.frame.width, y: UIScreen.main.bounds.size.height/2)
     }
     
     override var prefersStatusBarHidden: Bool {
@@ -56,6 +59,10 @@ class GameplayController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         setUpEngineAndBubbleManagerAndGridBound()
         createLauncher()
+        
+        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: .curveEaseInOut, animations: ({
+            self.settingMenu.center.x = UIScreen.main.bounds.size.width/2
+        }), completion: nil)
     }
     
     private func setUpEngineAndBubbleManagerAndGridBound() {

@@ -377,7 +377,7 @@
                                 <state key="normal" title="Button" image="ball-black"/>
                             </button>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VyJ-Mb-PPw" userLabel="setting">
-                                <rect key="frame" x="264" y="321" width="240" height="146"/>
+                                <rect key="frame" x="0.0" y="309" width="240" height="146"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-fU-SmB">
@@ -415,6 +415,7 @@
                         <outlet property="border" destination="LrG-s6-GVD" id="Lfv-es-ueh"/>
                         <outlet property="containerView" destination="kOg-7W-BNr" id="7uM-ss-TRb"/>
                         <outlet property="scene" destination="FJ4-sj-i3n" id="sr8-tJ-huA"/>
+                        <outlet property="settingMenu" destination="VyJ-Mb-PPw" id="XEP-Jt-yST"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n1C-4V-vdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
