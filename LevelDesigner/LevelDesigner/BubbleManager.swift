@@ -22,6 +22,18 @@ class BubbleManager: BubbleDelegate {
     private var bubbles: [[Bubble?]] = []
     private var gridCellPositions: [[CGVector]] = []
     private var cellWidth: CGFloat = GridSettings.cellWidth
+    private let EMPTY_STRING = ""
+    private var gridLowerBound: CGFloat = 0
+    private var nextBubbleQueue = [Bubble]()
+    private var offScreenPosition: CGVector = CGVector(-200, -200)
+    private let MIN_BUBBLE_IN_QUEUE = 3
+    private let MIN_BUBBLE_IN_GROUP = 3
+    private let ERROR_CANT_FIND_INDEX_OF_BUBBLE = "UNEXPECTED BEHAVIOUR: cant find index of bubble"
+    
+    private let BUBBLE_FADE_OUT_SPEED = CGFloat(0.03)
+    private let BUBBLE_ROOTED_FADE_OUT_SPEED = CGFloat(0.02)
+    private let BUBBLE_FALLING_SPEED = CGFloat(0.4)
+    private let BUBBLE_ANIMATION_SPEED = 0.3
     
     private let IMAGE_BUBBLE_BLUE = "ball-blue"
     private let IMAGE_BUBBLE_GREEN = "ball-green"
@@ -39,20 +51,11 @@ class BubbleManager: BubbleDelegate {
     private let IMAGE_EXPLODE_PURPLE = "purple-explode"
     private let IMAGE_EXPLODE_RED = "red-explode"
     
-    private let COMBO_SOUNDS = ["combo_01", "combo_02", "combo_03", "combo_04"]
-    
-    private let EMPTY_STRING = ""
-    private var gridLowerBound: CGFloat = 0
-    private var nextBubbleQueue = [Bubble]()
-    private var offScreenPosition: CGVector = CGVector(-200, -200)
-    private let MIN_BUBBLE_IN_QUEUE = 3
-    private let MIN_BUBBLE_IN_GROUP = 3
-    private let ERROR_CANT_FIND_INDEX_OF_BUBBLE = "UNEXPECTED BEHAVIOUR: cant find index of bubble"
-    private let BUBBLE_FADE_OUT_SPEED = CGFloat(0.03)
-    private let BUBBLE_ROOTED_FADE_OUT_SPEED = CGFloat(0.02)
-    private let BUBBLE_FALLING_SPEED = CGFloat(0.4)
-    private let BUBBLE_ANIMATION_SPEED = 0.3
-    
+    private let SOUNDS_COMBO = ["combo_01", "combo_02", "combo_03", "combo_04"]
+    private let SOUND_EXPLOSION = "explosion"
+    private let SOUND_LIGHTNING = "lightning"
+    private let SOUND_STAR = "star"
+
     init?(_ gridBubbles: [[GridBubble]], _ gameEngine: GameEngine) {
         ROW_COUNT = GridSettings.ROW_COUNT
         COLUMN_COUNT_EVEN = GridSettings.COLUMN_COUNT_EVEN
@@ -347,7 +350,7 @@ class BubbleManager: BubbleDelegate {
             removeBubbleFromGrid(bubble: bubble)
             destroyRootedBubble(bubble)
         }
-        SoundPlayer.playRandom(soundNames: COMBO_SOUNDS)
+        SoundPlayer.playRandom(soundNames: SOUNDS_COMBO)
         gameEngine.shake()
     }
     
@@ -394,10 +397,12 @@ class BubbleManager: BubbleDelegate {
         case .bomb:
             isBomb = true
             adjIndexPaths = findNeighbour(index)
+            SoundPlayer.play(SOUND_EXPLOSION)
             destroyBubbleWithBomb(specialBubble)
         case .lightning:
             isBomb = false
             adjIndexPaths = findRowNeighbour(index)
+            SoundPlayer.play(SOUND_LIGHTNING)
             destroyBubbleWithLightning(specialBubble)
         default:
             return
@@ -416,6 +421,7 @@ class BubbleManager: BubbleDelegate {
                 isBomb ? destroyBubbleWithBomb(bubble) : destroyBubbleWithLightning(bubble)
             }
         }
+
         gameEngine.shake()
     }
     
@@ -429,6 +435,8 @@ class BubbleManager: BubbleDelegate {
         removeBubbleFromGrid(indexPath: index)
         destroyStarBubble(specialBubble)
         removeBubbleWithSameColor(sourceBubble)
+        
+        SoundPlayer.play(SOUND_STAR)
         gameEngine.shake()
     }
     

@@ -179,6 +179,8 @@ class GameplayController: UIViewController {
             //scene.shake2(count: 3, for: 0.3, withTranslation: 3)
             //scene.shake()
         }
+        SoundPlayer.play("lightning")
+        SoundPlayer.play("explosion")
     }
 
     override func didReceiveMemoryWarning() {
