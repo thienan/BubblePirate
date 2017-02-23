@@ -179,14 +179,43 @@ class BubbleManager: BubbleDelegate {
         gameEngine.add(bubble)
     }
     
-    private func createBubblePopObject(_ bubble: Bubble) {
-        
+    
+    private func createColourBubblePopObject(_ bubble: Bubble) {
         guard let spriteComponent = bubble.spriteComponent else {
             return
         }
+        var spriteName = ""
+        switch spriteComponent.spriteName {
+        case IMAGE_BUBBLE_BLUE:
+            spriteName = "blue-explode"
+            
+        case IMAGE_BUBBLE_GREEN:
+            spriteName = "green-explode"
+            
+        case IMAGE_BUBBLE_PURPLE:
+            spriteName = "purple-explode"
+            
+        case IMAGE_BUBBLE_RED:
+            spriteName = "red-explode"
+        
+        default:
+            return
+        }
+        createBubblePopObject(bubble, spriteName)
+    }
+    
+    private func createBubblePopObject(_ bubble: Bubble, _ spriteName: String) {
+        guard let spriteComponent = bubble.spriteComponent else {
+            return
+        }
+        
+        let sprite1 = spriteName + "1"
+        let sprite2 = spriteName + "2"
+        let sprite3 = spriteName + "3"
+        
         let bubblePop = GameObject()
         bubblePop.position = CGVector(bubble.position.x, bubble.position.y)
-        bubblePop.addAnimatedSpriteComponent("red-explode1", ["red-explode1", "red-explode2", "red-explode3"], spriteComponent.rect)
+        bubblePop.addAnimatedSpriteComponent(sprite1, [sprite1, sprite2, sprite3], spriteComponent.rect)
         gameEngine.add(bubblePop)
         
         guard let animatedSpriteComponent = bubblePop.spriteComponent as? AnimatedSpriteComponent else {
@@ -358,7 +387,8 @@ class BubbleManager: BubbleDelegate {
         }
         
         removeBubbleFromGrid(indexPath: index)
-        destroySpecialBubble(specialBubble)
+        //destroySpecialBubble(specialBubble)
+        destroyBubbleWithBomb(specialBubble)
         
         for adjIndex in adjIndexPaths {
             guard let bubble = bubbles[adjIndex.row][adjIndex.section] else {
@@ -368,7 +398,7 @@ class BubbleManager: BubbleDelegate {
                 activateBombAndLightning(adjIndex)
             } else {
                 removeBubbleFromGrid(indexPath: adjIndex)
-                destroyRootedBubble(bubble)
+                destroyBubbleWithBomb(bubble)
             }
         }
         gameEngine.shake()
@@ -393,9 +423,13 @@ class BubbleManager: BubbleDelegate {
         bubble.destroy()
     }
     
+    private func destroyBubbleWithBomb(_ bubble: Bubble) {
+        createBubblePopObject(bubble, "bomb-explode")
+        bubble.destroy()
+    }
+    
     private func destroyRootedBubble(_ bubble: Bubble) {
-        //createAnimatedBubbleObject(bubble, fadeOutSpeed: BUBBLE_FADE_OUT_SPEED)
-        createBubblePopObject(bubble)
+        createColourBubblePopObject(bubble)
         bubble.destroy()
     }
     

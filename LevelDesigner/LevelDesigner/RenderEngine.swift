@@ -97,8 +97,10 @@ class RenderEngine: AnimatedSpriteDelegate {
         
         var uiImages = [UIImage]()
         for image in spriteComponent.animatedSpriteNames {
-            // remove question mark
-            uiImages.append(UIImage(named: image)!)
+            guard let uiImage = UIImage(named: image) else {
+                continue
+            }
+            uiImages.append(uiImage)
         }
         newImageView.animationImages = uiImages
         newImageView.animationDuration = spriteComponent.animationDuration
