@@ -16,6 +16,7 @@ class DesignerGridCollectionController: GridCollectionController {
         case IDLE
         case GAME_LOAD
     }
+    
     private let IMAGE_BUBBLE_BLUE = "ball-blue"
     private let IMAGE_BUBBLE_GREEN = "ball-green"
     private let IMAGE_BUBBLE_PURPLE = "ball-purple"

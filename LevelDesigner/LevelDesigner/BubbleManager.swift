@@ -23,9 +23,14 @@ class BubbleManager: BubbleDelegate {
     private var gridCellPositions: [[CGVector]] = []
     private var cellWidth: CGFloat = GridSettings.cellWidth
     
-    // REFACTOR to single string
-    private var spriteNames: [String] = ["ball-blue", "ball-green", "ball-purple", "ball-red", "ball-black", "ball-lightning", "bubble-bomb", "ball-star"]
-    // REFACTOR
+    private let IMAGE_BUBBLE_BLUE = "ball-blue"
+    private let IMAGE_BUBBLE_GREEN = "ball-green"
+    private let IMAGE_BUBBLE_PURPLE = "ball-purple"
+    private let IMAGE_BUBBLE_RED = "ball-red"
+    private let IMAGE_BUBBLE_BLACK = "ball-black"
+    private let IMAGE_BUBBLE_LIGHTNING = "ball-lightning"
+    private let IMAGE_BUBBLE_BOMB = "bubble-bomb"
+    private let IMAGE_BUBBLE_STAR = "ball-star"
     
     private var gridLowerBound: CGFloat = 0
     private var nextBubbleQueue = [Bubble]()
@@ -36,7 +41,6 @@ class BubbleManager: BubbleDelegate {
     private let BUBBLE_FADE_OUT_SPEED = CGFloat(0.03)
     private let BUBBLE_ROOTED_FADE_OUT_SPEED = CGFloat(0.02)
     private let BUBBLE_FALLING_SPEED = CGFloat(0.4)
-    private let NUM_OF_COLOR_BUBBLE = 4
     
     init?(_ gridBubbles: [[GridBubble]], _ gameEngine: GameEngine) {
         ROW_COUNT = GridSettings.ROW_COUNT
@@ -103,23 +107,23 @@ class BubbleManager: BubbleDelegate {
         
         switch gridBubbleType {
         case .blue:
-            spriteName = spriteNames[0]
+            spriteName = IMAGE_BUBBLE_BLUE
         case .green:
-            spriteName = spriteNames[1]
+            spriteName = IMAGE_BUBBLE_GREEN
         case .purple:
-            spriteName = spriteNames[2]
+            spriteName = IMAGE_BUBBLE_PURPLE
         case .red:
-            spriteName = spriteNames[3]
+            spriteName = IMAGE_BUBBLE_RED
         case .black:
-            spriteName = spriteNames[4]
+            spriteName = IMAGE_BUBBLE_BLACK
         case .lightning:
-            spriteName = spriteNames[5]
+            spriteName = IMAGE_BUBBLE_LIGHTNING
             bubbleType = Bubble.BubbleType.lightning
         case .bomb:
-            spriteName = spriteNames[6]
+            spriteName = IMAGE_BUBBLE_BOMB
             bubbleType = Bubble.BubbleType.bomb
         case .star:
-            spriteName = spriteNames[7]
+            spriteName = IMAGE_BUBBLE_STAR
             bubbleType = Bubble.BubbleType.star
         case .none:
             return nil
@@ -193,13 +197,11 @@ class BubbleManager: BubbleDelegate {
     
 // ************************************** Queue Functions ******************************************//
     private func addBubbleToNextBubbleQueue() {
-        if NUM_OF_COLOR_BUBBLE < 1 {
-            return
-        }
+        let colourBubbleSpriteNames = [IMAGE_BUBBLE_BLUE, IMAGE_BUBBLE_GREEN, IMAGE_BUBBLE_PURPLE, IMAGE_BUBBLE_RED]
         var newArray: [Bubble] = []
         // create bubble off screen
-        for i in 0..<NUM_OF_COLOR_BUBBLE {
-            newArray.append(createOffScreenBubble(spriteNames[i]))
+        for spriteName in colourBubbleSpriteNames {
+            newArray.append(createOffScreenBubble(spriteName))
         }
         newArray = newArray.shuffled()
         
