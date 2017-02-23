@@ -27,6 +27,7 @@ class GameplayController: UIViewController {
     @IBOutlet private var scene: UIView!
     @IBOutlet private weak var border: UIView!
     
+    private let IMAGE_CANNON_BACKGROUND = "cannon-background"
     private let ERROR_GRID_BUBBLES_NOT_LOADED = "ERROR: gridBubblesAreNotLoaded"
     private let ERROR_BUBBLE_MANAGER_FAILED = "ERROR: Bubble Manager failed to initialised"
     private let SEQ_GRID = "grid"
@@ -95,7 +96,7 @@ class GameplayController: UIViewController {
         self.bubbleManager = bubbleManager
         setUpGridLowerBound(bubbleManager)
         gameEngine = newGameEngine
-        containerView.removeFromSuperview()
+        //containerView.removeFromSuperview()
     }
     
     private func setUpGesture() {
@@ -141,7 +142,7 @@ class GameplayController: UIViewController {
     private func createCannonBackground(_ position: CGVector) {
         let cannonBackground = GameObject()
         cannonBackground.position = position
-        cannonBackground.addSpriteComponent("cannon-background", CGRect(x: -cellWidth/2, y: -cellWidth/2, width: cellWidth, height: cellWidth))
+        cannonBackground.addSpriteComponent(IMAGE_CANNON_BACKGROUND, CGRect(x: -cellWidth/2, y: -cellWidth/2, width: cellWidth, height: cellWidth))
         gameEngine?.add(cannonBackground)
     }
 
@@ -173,7 +174,14 @@ class GameplayController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == SEQ_GRID {
             gridController = segue.destination as? GridCollectionController
+        } else {
+            gameEngine?.turnOffEngine()
         }
+    }
+    
+    
+    @IBAction func onMainMenuPressed(_ sender: Any) {
+        gameEngine?.turnOffEngine()
     }
 }
 

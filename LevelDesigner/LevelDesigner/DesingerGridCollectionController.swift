@@ -64,7 +64,7 @@ class DesignerGridCollectionController: GridCollectionController {
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.masksToBounds = true
         cell.layer.backgroundColor = UIColor.gray.withAlphaComponent(CGFloat(BUTTON_BACKGROUND_ALPHA)).cgColor
-        
+
         guard let bubble = bubbleGridManager.getBubbleAt(indexRow: indexPath.section, indexCol: indexPath.row) else {
             return cell
         }
@@ -76,6 +76,7 @@ class DesignerGridCollectionController: GridCollectionController {
             return cell
         }
         cell.layer.borderWidth = CGFloat(0)
+        cell.layer.backgroundColor = UIColor.gray.withAlphaComponent(0).cgColor
         cell.setImage(image: image)
         return cell
     }

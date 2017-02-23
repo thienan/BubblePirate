@@ -221,7 +221,7 @@ class BubbleManager: BubbleDelegate {
         
         let bubblePop = GameObject()
         bubblePop.position = CGVector(bubble.position.x, bubble.position.y)
-        bubblePop.addAnimatedSpriteComponent(sprite1, [sprite1, sprite2, sprite3], spriteComponent.rect, CGVector(0.5, 0.5))
+        bubblePop.addAnimatedSpriteComponent("", [sprite1, sprite2, sprite3], spriteComponent.rect, CGVector(0.5, 0.5))
         bubblePop.rotation = CGFloat(arc4random_uniform(360))
         gameEngine.add(bubblePop)
         
@@ -423,13 +423,13 @@ class BubbleManager: BubbleDelegate {
             return
         }
         removeBubbleFromGrid(indexPath: index)
-        destroySpecialBubble(specialBubble)
+        destroyStarBubble(specialBubble)
         removeBubbleWithSameColor(sourceBubble)
         gameEngine.shake()
     }
     
 // ************************************ Bubble Removal Functions ***************************************//
-    private func destroySpecialBubble(_ bubble: Bubble) {
+    private func destroyStarBubble(_ bubble: Bubble) {
         createAnimatedBubbleObject(bubble, fadeOutSpeed: BUBBLE_FADE_OUT_SPEED)
         bubble.destroy()
     }

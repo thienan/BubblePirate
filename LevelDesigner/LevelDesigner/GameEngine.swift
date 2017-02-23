@@ -14,6 +14,7 @@ class GameEngine {
     private static let physicEngine: PhysicEngine = PhysicEngine()
     private let renderEngine: RenderEngine
     private let scene: UIView
+    private var displayLink: CADisplayLink?
     
     init(_ scene: UIView) {
         self.scene = scene
@@ -22,8 +23,8 @@ class GameEngine {
     }
 
     private func createDisplayLink() {
-        let displaylink = CADisplayLink(target: self, selector: #selector(update))
-        displaylink.add(to: .current, forMode: .defaultRunLoopMode)
+        displayLink = CADisplayLink(target: self, selector: #selector(update))
+        displayLink?.add(to: .current, forMode: .defaultRunLoopMode)
     }
     
     @objc public func update(displaylink: CADisplayLink) {
@@ -52,6 +53,12 @@ class GameEngine {
         for gameObject in GameEngine.gameObjects {
             gameObject.update(deltaTime)
         }
+    }
+    
+    public func turnOffEngine() {
+        renderEngine.removeSpriteComponent(GameEngine.gameObjects)
+        GameEngine.gameObjects = []
+        displayLink?.invalidate()
     }
     
     public func add(_ gameObject: GameObject) {
