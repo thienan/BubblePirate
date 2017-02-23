@@ -63,3 +63,5 @@ bubble moves to cannon
 SCREENSHAKE
 
 bubble explode in random rotation
+
+cannon with background n ring

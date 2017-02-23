@@ -11,7 +11,7 @@ import UIKit
 
 class Launcher: GameObject {
     private let bubbleManager: BubbleManager
-    private let nextBubbleOffsetPos: CGVector = CGVector(100, 30)
+    public let nextBubbleOffsetPos: CGVector = CGVector(100, 30)
     let speed = CGFloat(1500)
     private var dir: CGVector = CGVector.zero
     private let spriteName = "cannon2"

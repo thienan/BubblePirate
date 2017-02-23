@@ -129,6 +129,14 @@ class GameplayController: UIViewController {
         let launcher = Launcher(CGVector(UIScreen.main.bounds.size.width/2, UIScreen.main.bounds.size.height - launcherYOffSet), bubbleManager)
         self.launcher = launcher
         gameEngine?.add(launcher)
+        
+        let cannonBackground = GameObject()
+        cannonBackground.position = launcher.position
+        cannonBackground.addSpriteComponent("cannon-background", CGRect(x: -cellWidth/2, y: -cellWidth/2, width: cellWidth, height: cellWidth))
+        gameEngine?.add(cannonBackground)
+        
+        let launcherRing = LauncherRing(launcher.position + launcher.nextBubbleOffsetPos)
+        gameEngine?.add(launcherRing)
     }
 
     // Fire bubble at on release

@@ -42,6 +42,8 @@
 		F3DD1F591E40AE0800A16909 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F3DD1F581E40AE0800A16909 /* Assets.xcassets */; };
 		F3DD1F5C1E40AE0800A16909 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F3DD1F5A1E40AE0800A16909 /* LaunchScreen.storyboard */; };
 		F3F6E83C1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F6E83B1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift */; };
+		F3F91BED1E5ECC1900CB3B55 /* LauncherRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BEC1E5ECC1900CB3B55 /* LauncherRing.swift */; };
+		F3F91BEF1E5ED18500CB3B55 /* LauncherBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BEE1E5ED18500CB3B55 /* LauncherBackground.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -93,6 +95,8 @@
 		F3DD1F5D1E40AE0800A16909 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F3DD1F621E40AE0800A16909 /* GameEngineUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GameEngineUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F3F6E83B1E5DBA22006195B3 /* AnimatedSpriteDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSpriteDelegate.swift; sourceTree = "<group>"; };
+		F3F91BEC1E5ECC1900CB3B55 /* LauncherRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauncherRing.swift; sourceTree = "<group>"; };
+		F3F91BEE1E5ED18500CB3B55 /* LauncherBackground.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauncherBackground.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +165,8 @@
 				F36807861E41A6CD00586C2E /* Bubble.swift */,
 				F39A0C7F1E5055E000B1DC45 /* AnimatedBubble.swift */,
 				F38BECF31E4B3A80009FCE86 /* Launcher.swift */,
+				F3F91BEC1E5ECC1900CB3B55 /* LauncherRing.swift */,
+				F3F91BEE1E5ED18500CB3B55 /* LauncherBackground.swift */,
 			);
 			name = GamePlay;
 			sourceTree = "<group>";
@@ -363,9 +369,11 @@
 				F36DF4251E42D1C200CCCD7D /* GridBubbleManager.swift in Sources */,
 				F376DAFA1E5998B400B0B80D /* MainMenuViewController.swift in Sources */,
 				F36A02A61E4971F5005F7BB6 /* Component.swift in Sources */,
+				F3F91BEF1E5ED18500CB3B55 /* LauncherBackground.swift in Sources */,
 				F37647851E4836A10008454B /* GameEngine.swift in Sources */,
 				F39A0C801E5055E100B1DC45 /* AnimatedBubble.swift in Sources */,
 				F37647831E4834960008454B /* GameplayController.swift in Sources */,
+				F3F91BED1E5ECC1900CB3B55 /* LauncherRing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
