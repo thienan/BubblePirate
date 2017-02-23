@@ -15,9 +15,11 @@ class Launcher: GameObject {
     let speed = CGFloat(1500)
     private var dir: CGVector = CGVector.zero
     
-    private let spriteName = "cannon2"
     private let CANNON_SPRITE_Z_POSITION = CGFloat(100)
     private let CANNON_ANIMATION_DURATION = 0.2
+    private let CANNON_WIDTH = 136
+    private let CANNON_HEIGHT = 228
+    private let CANNON_Y_OFFSET = 175
     
     private var verticalPosLimit: CGFloat {
         return position.y - 20
@@ -27,8 +29,7 @@ class Launcher: GameObject {
         self.bubbleManager = bubbleManager
         super.init()
         self.position = position
-        // magic number
-        addAnimatedSpriteComponent("cannon1", ["cannon1", "cannon2", "cannon3", "cannon4"], CGRect(x: -136/2, y: -175, width: 136, height: 228), CGVector(0.5, 0.77))
+        addAnimatedSpriteComponent("cannon1", ["cannon1", "cannon2", "cannon3", "cannon4"], CGRect(x: -CANNON_WIDTH/2, y: -CANNON_Y_OFFSET, width: CANNON_WIDTH, height: CANNON_HEIGHT), CGVector(0.5, 0.77))
         guard let animatedSpriteComponent = spriteComponent as? AnimatedSpriteComponent else {
             return
         }
@@ -39,6 +40,7 @@ class Launcher: GameObject {
         
         addSphereColliderComponent(position, GridSettings.cellWidth)
         sphereColliderComponent?.isActive = false
+        
         bubbleManager.setCurrentBubbleInQueue(position: position)
         bubbleManager.setNextBubbleInQueue(position: position + nextBubbleOffsetPos)
     }
