@@ -346,6 +346,7 @@ class BubbleManager: BubbleDelegate {
         tryToPopBubble(indexPath, bubble)
         activateNeighbourSpecialBubble(indexPath, bubble)
         checkUnRootedBubble(animate: true)
+        delegate?.bubbleSnapped(bubble)
     }
     
 // ************************************** Check Bubble Action Functions ******************************************//
@@ -463,34 +464,41 @@ class BubbleManager: BubbleDelegate {
     private func destroyStarBubble(_ bubble: Bubble) {
         createAnimatedBubbleObject(bubble, fadeOutSpeed: BUBBLE_FADE_OUT_SPEED)
         bubble.destroy()
+        delegate?.bubbleDestroyed(bubble)
     }
     
     private func destroyBubbleWithBomb(_ bubble: Bubble) {
         createBubblePopObject(bubble, IMAGE_EXPLODE_BOMB)
         bubble.destroy()
+        delegate?.bubbleDestroyed(bubble)
     }
     
     private func destroyRootedBubble(_ bubble: Bubble) {
         createColourBubblePopObject(bubble)
         bubble.destroy()
+        delegate?.bubbleDestroyed(bubble)
     }
     
     private func destroyMovingBubble(_ bubble: Bubble) {
         createAnimatedBubbleObject(bubble, fadeOutSpeed: BUBBLE_FADE_OUT_SPEED)
         bubble.destroy()
+        delegate?.bubbleDestroyed(bubble)
     }
     
     private func destroyUnrootedBubble(_ bubble: Bubble) {
         createAnimatedBubbleObject(bubble, fadeOutSpeed: BUBBLE_ROOTED_FADE_OUT_SPEED, fallingSpeed: BUBBLE_FALLING_SPEED)
         bubble.destroy()
+        delegate?.bubbleDestroyed(bubble)
     }
     
     private func destroyFreshlyLoadedBubble(_ bubble: Bubble) {
         bubble.destroy()
+        delegate?.bubbleDestroyed(bubble)
     }
     
     private func destroyBubble(_ bubble: Bubble) {
         bubble.destroy()
+        delegate?.bubbleDestroyed(bubble)
     }
     
     private func activateLightningEffect(_ row: Int, _ bubble: Bubble) {
@@ -508,6 +516,7 @@ class BubbleManager: BubbleDelegate {
             }
         }
         bubble.destroy()
+        delegate?.bubbleDestroyed(bubble)
     }
     
     private func removeUnrootedBubble(_ visited: [IndexPath:Bool], _ animate: Bool) {
@@ -523,6 +532,7 @@ class BubbleManager: BubbleDelegate {
                 }
                 // remove bubble
                 removeBubbleFromGrid(indexPath: IndexPath(row: row, section: col))
+                delegate?.bubbleDestroyed(bubble)
                 
                 if animate {
                     destroyUnrootedBubble(bubble)
@@ -587,6 +597,31 @@ class BubbleManager: BubbleDelegate {
             return true
         }
         return false
+    }
+    
+    public func getBubbleCount() -> Int {
+        var count = 0
+        for row in 0..<bubbles.count {
+            for col in 0..<bubbles[row].count {
+                guard bubbles[row][col] != nil else {
+                    continue
+                }
+                count += 1
+            }
+        }
+        return count
+    }
+    
+    public func isLastRowFull() -> Bool {
+        let lastIndex = ROW_COUNT-1
+        var colCount = getColCount(lastIndex)
+        for col in 0..<bubbles[lastIndex].count {
+            guard bubbles[lastIndex][col] != nil else {
+                continue
+            }
+            colCount -= 1
+        }
+        return colCount == 0
     }
     
 // ************************************ Traversal Functions ***************************************//

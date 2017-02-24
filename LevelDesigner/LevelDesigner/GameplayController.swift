@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class GameplayController: UIViewController {
+class GameplayController: UIViewController, ScoreManagerDelegate {
     enum LoadMode {
         case gridBubbles
         case levelName
@@ -18,6 +18,7 @@ class GameplayController: UIViewController {
     
     private var gameEngine: GameEngine?
     private var bubbleManager: BubbleManager?
+    private var scoreManager: ScoreManager?
     
     private var launcher: Launcher?
     private let launcherYOffSet = CGFloat(100)
@@ -84,22 +85,16 @@ class GameplayController: UIViewController {
                 print(ERROR_GRID_BUBBLES_NOT_LOADED)
                 return
             }
-            guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition(bubbles: gridBubbles) else {
-                return
-            }
+            guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition(bubbles: gridBubbles) else { return }
             gridBubblesWithPosition = gridBubblesFromGridController
             self.gridBubbles = nil
             
         } else if loadMode == LoadMode.levelName {
-            guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition(levelName: levelName) else {
-                return
-            }
+            guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition(levelName: levelName) else { return }
             gridBubblesWithPosition = gridBubblesFromGridController
 
         } else if loadMode == LoadMode.none {
-            guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition() else {
-                return
-            }
+            guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition() else { return }
             gridBubblesWithPosition = gridBubblesFromGridController
         }
         
@@ -110,6 +105,9 @@ class GameplayController: UIViewController {
         
         self.bubbleManager = bubbleManager
         setUpGridLowerBound(bubbleManager)
+        scoreManager = ScoreManager(bubbleManager)
+        scoreManager?.delegate = self
+        bubbleManager.delegate = scoreManager
         gameEngine = newGameEngine
     }
     
@@ -218,6 +216,14 @@ class GameplayController: UIViewController {
             self.gameOverMenu.center.y = UIScreen.main.bounds.size.height/2
         }), completion: nil)
         blackBackground.isHidden = false
+    }
+    
+    func gameWon() {
+        gameOver()
+    }
+    
+    func gameLost() {
+        gameOver()
     }
 }
 

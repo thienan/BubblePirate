@@ -11,6 +11,7 @@
 		F3206E331E601AFD007F60C0 /* shoot1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3206E311E601AFD007F60C0 /* shoot1.mp3 */; };
 		F3206E341E601AFD007F60C0 /* shoot2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3206E321E601AFD007F60C0 /* shoot2.mp3 */; };
 		F3206E361E6032A8007F60C0 /* BubbleManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3206E351E6032A7007F60C0 /* BubbleManagerDelegate.swift */; };
+		F3206E381E6046AB007F60C0 /* ScoreManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3206E371E6046AB007F60C0 /* ScoreManagerDelegate.swift */; };
 		F32072251E4DCAC300234C4B /* BubbleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32072241E4DCAC300234C4B /* BubbleDelegate.swift */; };
 		F321920C1E447FCF0092B010 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321920B1E447FCF0092B010 /* StorageManager.swift */; };
 		F33CD5EE1E488E2500DCECAA /* PhysicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33CD5ED1E488E2500DCECAA /* PhysicEngine.swift */; };
@@ -73,6 +74,7 @@
 		F3206E311E601AFD007F60C0 /* shoot1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = shoot1.mp3; path = ../Sounds/shoot1.mp3; sourceTree = "<group>"; };
 		F3206E321E601AFD007F60C0 /* shoot2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = shoot2.mp3; path = ../Sounds/shoot2.mp3; sourceTree = "<group>"; };
 		F3206E351E6032A7007F60C0 /* BubbleManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleManagerDelegate.swift; sourceTree = "<group>"; };
+		F3206E371E6046AB007F60C0 /* ScoreManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreManagerDelegate.swift; sourceTree = "<group>"; };
 		F32072241E4DCAC300234C4B /* BubbleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleDelegate.swift; sourceTree = "<group>"; };
 		F321920B1E447FCF0092B010 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		F33CD5ED1E488E2500DCECAA /* PhysicEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicEngine.swift; sourceTree = "<group>"; };
@@ -188,6 +190,7 @@
 				F37DD6061E4C6D3C00CE1A9B /* BubbleManager.swift */,
 				F3206E351E6032A7007F60C0 /* BubbleManagerDelegate.swift */,
 				F3F91BF01E5F0D4100CB3B55 /* ScoreManager.swift */,
+				F3206E371E6046AB007F60C0 /* ScoreManagerDelegate.swift */,
 				F32072241E4DCAC300234C4B /* BubbleDelegate.swift */,
 				F36807861E41A6CD00586C2E /* Bubble.swift */,
 				F39A0C7F1E5055E000B1DC45 /* AnimatedBubble.swift */,
@@ -422,6 +425,7 @@
 				F382CA611E4EFD8C0017C02A /* SphereCollider.swift in Sources */,
 				F33CD5EE1E488E2500DCECAA /* PhysicEngine.swift in Sources */,
 				F37647891E48459A0008454B /* SphereColliderComponent.swift in Sources */,
+				F3206E381E6046AB007F60C0 /* ScoreManagerDelegate.swift in Sources */,
 				F36DF4251E42D1C200CCCD7D /* GridBubbleManager.swift in Sources */,
 				F3F91BF11E5F0D4100CB3B55 /* ScoreManager.swift in Sources */,
 				F376DAFA1E5998B400B0B80D /* MainMenuViewController.swift in Sources */,

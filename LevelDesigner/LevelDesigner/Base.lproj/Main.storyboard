@@ -533,7 +533,7 @@
                                     <action selector="onSettingButtonPressed:" destination="SWk-fK-BLn" eventType="touchUpInside" id="CL0-VZ-u2U"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="jbN-m3-A6A" userLabel="black">
+                            <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jbN-m3-A6A" userLabel="black">
                                 <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -611,11 +611,6 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <variation key="default">
-                            <mask key="subviews">
-                                <exclude reference="jbN-m3-A6A"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="blackBackground" destination="jbN-m3-A6A" id="MGk-WF-QcI"/>
@@ -695,9 +690,9 @@
         <image name="rail" width="768" height="122"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YyS-UD-pun"/>
-        <segue reference="zg2-kM-nRU"/>
+        <segue reference="dzH-7Y-CUu"/>
         <segue reference="O7s-mx-x5R"/>
-        <segue reference="eXJ-Cj-XtW"/>
+        <segue reference="qWN-xH-ert"/>
+        <segue reference="zg2-kM-nRU"/>
     </inferredMetricsTieBreakers>
 </document>
