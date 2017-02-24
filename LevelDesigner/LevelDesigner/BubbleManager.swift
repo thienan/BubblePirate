@@ -57,6 +57,7 @@ class BubbleManager: BubbleDelegate {
     private let SOUND_LIGHTNING = "lightning"
     private let SOUND_STAR = "star"
 
+    private var isLightningActivated = false
     private var isBombSoundPlayed = false
     private var isLightningSoundPlayed = false
     
@@ -223,6 +224,10 @@ class BubbleManager: BubbleDelegate {
     }
     
     private func createBubblePopObject(_ bubble: Bubble, _ spriteName: String) {
+        createBubblePopObject(bubble, spriteName, bubble.position)
+    }
+    
+    private func createBubblePopObject(_ bubble: Bubble, _ spriteName: String, _ position: CGVector) {
         guard let spriteComponent = bubble.spriteComponent else {
             return
         }
@@ -232,8 +237,8 @@ class BubbleManager: BubbleDelegate {
         let sprite3 = spriteName + "3"
         
         let bubblePop = GameObject()
-        bubblePop.position = CGVector(bubble.position.x, bubble.position.y)
-        bubblePop.addAnimatedSpriteComponent("", [sprite1, sprite2, sprite3], spriteComponent.rect, CGVector(0.5, 0.5))
+        bubblePop.position = CGVector(position.x, position.y)
+        bubblePop.addAnimatedSpriteComponent(EMPTY_STRING, [sprite1, sprite2, sprite3], spriteComponent.rect, CGVector(0.5, 0.5))
         bubblePop.rotation = CGFloat(arc4random_uniform(360))
         gameEngine.add(bubblePop)
         
@@ -367,6 +372,7 @@ class BubbleManager: BubbleDelegate {
         }
         
         resetBombAndLightningSound()
+        resetLightningBubble()
         for index in adjIndexPaths {
             activateBombAndLightning(index)
         }
@@ -410,7 +416,7 @@ class BubbleManager: BubbleDelegate {
             isBomb = false
             adjIndexPaths = findRowNeighbour(index)
             playLightingSound()
-            destroyBubbleWithLightning(specialBubble)
+            activateLightningEffect(index.row, specialBubble)
         default:
             return
         }
@@ -425,7 +431,7 @@ class BubbleManager: BubbleDelegate {
                 activateBombAndLightning(adjIndex)
             } else {
                 removeBubbleFromGrid(indexPath: adjIndex)
-                isBomb ? destroyBubbleWithBomb(bubble) : destroyBubbleWithLightning(bubble)
+                isBomb ? destroyBubbleWithBomb(bubble) : destroyBubble(bubble)
             }
         }
 
@@ -447,17 +453,18 @@ class BubbleManager: BubbleDelegate {
         gameEngine.shake()
     }
     
+    private func resetLightningBubble() {
+        isLightningActivated = false
+    }
+    
+    
+    
 // ************************************ Bubble Removal Functions ***************************************//
     private func destroyStarBubble(_ bubble: Bubble) {
         createAnimatedBubbleObject(bubble, fadeOutSpeed: BUBBLE_FADE_OUT_SPEED)
         bubble.destroy()
     }
     
-    private func destroyBubbleWithLightning(_ bubble: Bubble) {
-        createBubblePopObject(bubble, IMAGE_EXPLODE_LIGHTNING)
-        bubble.destroy()
-    }
-
     private func destroyBubbleWithBomb(_ bubble: Bubble) {
         createBubblePopObject(bubble, IMAGE_EXPLODE_BOMB)
         bubble.destroy()
@@ -479,6 +486,27 @@ class BubbleManager: BubbleDelegate {
     }
     
     private func destroyFreshlyLoadedBubble(_ bubble: Bubble) {
+        bubble.destroy()
+    }
+    
+    private func destroyBubble(_ bubble: Bubble) {
+        bubble.destroy()
+    }
+    
+    private func activateLightningEffect(_ row: Int, _ bubble: Bubble) {
+        
+        if !isLightningActivated {
+            isLightningActivated = true
+            
+            for col in 0..<gridCellPositions[row].count {
+                createBubblePopObject(bubble, IMAGE_EXPLODE_LIGHTNING, gridCellPositions[row][col])
+                
+                if col > 0 {
+                    let midPoint: CGVector = (gridCellPositions[row][col-1] + gridCellPositions[row][col]) / 2
+                    createBubblePopObject(bubble, IMAGE_EXPLODE_LIGHTNING, midPoint)
+                }
+            }
+        }
         bubble.destroy()
     }
     
