@@ -33,6 +33,7 @@ class GameplayController: UIViewController {
     private let SEQ_GRID = "grid"
     private let UI_Z_Position = CGFloat(1000)
     private let WORLD_BOUND_Y_OFFSET = CGFloat(100)
+    private let BORDER_Y_OFFSET = CGFloat(20)
     
     private var loadMode: LoadMode = LoadMode.none
     private var gridController: GridCollectionController?
@@ -123,7 +124,7 @@ class GameplayController: UIViewController {
     
     private func setUpGridLowerBound(_ bubbleManager: BubbleManager) {
         let oldFrame = border.layer.frame
-        border.layer.frame = CGRect(x: oldFrame.minX, y: bubbleManager.getGridLowerBound(), width: oldFrame.width, height: oldFrame.height)
+        border.layer.frame = CGRect(x: oldFrame.minX, y: bubbleManager.getGridLowerBound() + BORDER_Y_OFFSET, width: oldFrame.width, height: oldFrame.height)
     }
 
     public func playWithBubbles(_ gridBubbles: [[GridBubble]]) {
