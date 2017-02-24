@@ -10,5 +10,6 @@ import Foundation
 
 protocol BubbleManagerDelegate {
     func bubbleDestroyed(_ bubble: Bubble)
+    
     func bubbleSnapped(_ bubble: Bubble)
 }

@@ -17,10 +17,7 @@ class ScoreManager: BubbleManagerDelegate {
         self.bubbleManager = bubbleManager
     }
     
-    
     func bubbleDestroyed(_ bubble: Bubble) {
-        print("bubble left" + String(bubbleManager.getBubbleCount()))
-        
         if bubbleManager.getBubbleCount() == 0 {
             delegate?.gameWon()
         }
@@ -30,6 +27,5 @@ class ScoreManager: BubbleManagerDelegate {
         if bubbleManager.isLastRowFull() {
             delegate?.gameLost()
         }
-
     }
 }
