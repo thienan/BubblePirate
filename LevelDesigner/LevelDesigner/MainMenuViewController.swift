@@ -11,15 +11,18 @@ import UIKit
 class MainMenuViewController: UIViewController {
     
     private let GAME_MUSIC_VOLUME: Float = 0.1
+    private static var isBackgroundMusicPlayed = false
     
-    required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        SoundPlayer.playLoop("game_music", GAME_MUSIC_VOLUME)
+    func playBackgroundMusic() {
+        if !MainMenuViewController.isBackgroundMusicPlayed {
+            SoundPlayer.playLoop("game_music", GAME_MUSIC_VOLUME)
+            MainMenuViewController.isBackgroundMusicPlayed = true
+        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        playBackgroundMusic()
         // Do any additional setup after loading the view.
     }
 
