@@ -13,12 +13,12 @@
         <scene sceneID="v6O-IR-yxs">
             <objects>
                 <collectionViewController id="wZb-DX-5T6" customClass="DesignerGridCollectionController" customModule="GameEngine" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="bBM-of-JvJ">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bBM-of-JvJ">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qsK-Wg-jsm">
-                            <size key="itemSize" width="60" height="60"/>
+                            <size key="itemSize" width="64" height="64"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -36,7 +36,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lf-sn-1GL">
-                                            <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         </imageView>
                                     </subviews>
@@ -56,7 +56,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Cgx-Oj-vpk" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-486" y="735"/>
+            <point key="canvasLocation" x="-461" y="570"/>
         </scene>
         <!--Main Menu View Controller-->
         <scene sceneID="OxA-Ba-bje">
@@ -285,12 +285,12 @@
         <scene sceneID="axD-bp-ftq">
             <objects>
                 <collectionViewController id="fcY-7o-AKY" customClass="LevelSelectCollectionController" customModule="GameEngine" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="l4G-Cu-WGn">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="l4G-Cu-WGn">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Pus-fX-jLk">
-                            <size key="itemSize" width="222" height="222"/>
+                            <size key="itemSize" width="200" height="200"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -301,10 +301,10 @@
                         </imageView>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="a55-hx-mdH" customClass="LevelSelectCell" customModule="GameEngine" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="222" height="222"/>
+                                <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="222" height="222"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuY-oO-fKD">
@@ -634,7 +634,7 @@
         <scene sceneID="yIL-GD-IDn">
             <objects>
                 <collectionViewController id="WUJ-yl-VbP" customClass="GridCollectionController" customModule="GameEngine" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="WY3-8p-ptA">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="WY3-8p-ptA">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1016"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -646,10 +646,10 @@
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="iKV-qG-DqZ" customClass="GridCollectionCell" customModule="GameEngine" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                    <rect key="frame" x="0.0" y="0.0" width="64" height="64"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="60" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Szl-0r-7aq">
@@ -659,7 +659,7 @@
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" red="0.0094968501960000003" green="0.30672175530000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <size key="customSize" width="64" height="64"/>
+                                <size key="customSize" width="60" height="60"/>
                                 <connections>
                                     <outlet property="imageView" destination="Szl-0r-7aq" id="RZ9-1d-Kbj"/>
                                 </connections>
@@ -697,7 +697,7 @@
     <inferredMetricsTieBreakers>
         <segue reference="YyS-UD-pun"/>
         <segue reference="zg2-kM-nRU"/>
-        <segue reference="lgt-zJ-KJd"/>
+        <segue reference="O7s-mx-x5R"/>
         <segue reference="eXJ-Cj-XtW"/>
     </inferredMetricsTieBreakers>
 </document>
