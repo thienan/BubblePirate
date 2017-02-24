@@ -21,6 +21,16 @@ class Launcher: GameObject {
     private let CANNON_HEIGHT = 228
     private let CANNON_Y_OFFSET = 175
     
+    private let CANNON_SPRITE_1 = "cannon1"
+    private let CANNON_SPRITE_2 = "cannon2"
+    private let CANNON_SPRITE_3 = "cannon3"
+    private let CANNON_SPRITE_4 = "cannon4"
+    
+    private let SOUND_SHOOT1 = "shoot1"
+    private let SOUND_SHOOT2 = "shoot2"
+    
+    private let cannonAnchor = CGVector(0.5, 0.77)
+    
     private var verticalPosLimit: CGFloat {
         return position.y - 20
     }
@@ -29,7 +39,7 @@ class Launcher: GameObject {
         self.bubbleManager = bubbleManager
         super.init()
         self.position = position
-        addAnimatedSpriteComponent("cannon1", ["cannon1", "cannon2", "cannon3", "cannon4"], CGRect(x: -CANNON_WIDTH/2, y: -CANNON_Y_OFFSET, width: CANNON_WIDTH, height: CANNON_HEIGHT), CGVector(0.5, 0.77))
+        addAnimatedSpriteComponent(CANNON_SPRITE_1, [CANNON_SPRITE_1, CANNON_SPRITE_2, CANNON_SPRITE_3, CANNON_SPRITE_4], CGRect(x: -CANNON_WIDTH/2, y: -CANNON_Y_OFFSET, width: CANNON_WIDTH, height: CANNON_HEIGHT), cannonAnchor)
         guard let animatedSpriteComponent = spriteComponent as? AnimatedSpriteComponent else {
             return
         }
@@ -74,6 +84,7 @@ class Launcher: GameObject {
             return
         }
         animatedSpriteComponent.playAnimation()
+        SoundPlayer.playRandom(soundNames: [SOUND_SHOOT1, SOUND_SHOOT2])
     }
     
     public func lookAt(_ lookAtPosition: CGVector) {
@@ -81,9 +92,12 @@ class Launcher: GameObject {
             return
         }
         
+        let angleOffset: CGFloat = 90
+        let leftVector = CGVector(-1, 0)
+        
         dir = getLookAtDir(lookAtPosition)
-        let dot = CGVector.dot(CGVector(-1, 0), dir)
-        rotation = CGFloat(Double(acos(dot)) * 180/M_PI) - 90
+        let dot = CGVector.dot(leftVector, dir)
+        rotation = CGFloat(Double(acos(dot)) * 180/M_PI) - angleOffset
     }
     
     public func tapped(_ position: CGVector) {

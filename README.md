@@ -66,3 +66,4 @@ bubble explode in random rotation
 
 cannon with background n ring
 different combo sound
+sound system reuse old sound

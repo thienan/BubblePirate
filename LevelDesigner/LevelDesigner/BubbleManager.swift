@@ -28,6 +28,7 @@ class BubbleManager: BubbleDelegate {
     private var offScreenPosition: CGVector = CGVector(-200, -200)
     private let MIN_BUBBLE_IN_QUEUE = 3
     private let MIN_BUBBLE_IN_GROUP = 3
+    private let MIN_BUBBLE_IN_QUEUE_FOR_SWAPPING = 2
     private let ERROR_CANT_FIND_INDEX_OF_BUBBLE = "UNEXPECTED BEHAVIOUR: cant find index of bubble"
     
     private let BUBBLE_FADE_OUT_SPEED = CGFloat(0.03)
@@ -56,6 +57,11 @@ class BubbleManager: BubbleDelegate {
     private let SOUND_LIGHTNING = "lightning"
     private let SOUND_STAR = "star"
 
+    private var isBombSoundPlayed = false
+    private var isLightningSoundPlayed = false
+    
+    public var delegate: BubbleManagerDelegate?
+    
     init?(_ gridBubbles: [[GridBubble]], _ gameEngine: GameEngine) {
         ROW_COUNT = GridSettings.ROW_COUNT
         COLUMN_COUNT_EVEN = GridSettings.COLUMN_COUNT_EVEN
@@ -265,7 +271,7 @@ class BubbleManager: BubbleDelegate {
     }
     
     public func setNextBubbleInQueue(position: CGVector) {
-        if nextBubbleQueue.count < 2 {
+        if nextBubbleQueue.count < MIN_BUBBLE_IN_QUEUE_FOR_SWAPPING {
             return
         }
         let bubble = nextBubbleQueue[1]
@@ -283,7 +289,7 @@ class BubbleManager: BubbleDelegate {
     }
 
     public func swapBubble() {
-        if nextBubbleQueue.count < 2 {
+        if nextBubbleQueue.count < MIN_BUBBLE_IN_QUEUE_FOR_SWAPPING {
             return
         }
         guard let firstBubble = nextBubbleQueue.first else {
@@ -359,6 +365,8 @@ class BubbleManager: BubbleDelegate {
         for index in adjIndexPaths {
             activateStarBubble(index, sourceBubble)
         }
+        
+        resetBombAndLightningSound()
         for index in adjIndexPaths {
             activateBombAndLightning(index)
         }
@@ -390,19 +398,18 @@ class BubbleManager: BubbleDelegate {
         }
         let specialBubbleType = specialBubble.bubbleType
         var adjIndexPaths: [IndexPath] = []
-
         var isBomb = true
         
         switch specialBubbleType {
         case .bomb:
             isBomb = true
             adjIndexPaths = findNeighbour(index)
-            SoundPlayer.play(SOUND_EXPLOSION)
+            playBombSound()
             destroyBubbleWithBomb(specialBubble)
         case .lightning:
             isBomb = false
             adjIndexPaths = findRowNeighbour(index)
-            SoundPlayer.play(SOUND_LIGHTNING)
+            playLightingSound()
             destroyBubbleWithLightning(specialBubble)
         default:
             return
@@ -666,6 +673,26 @@ class BubbleManager: BubbleDelegate {
             }
         }
         return (closestPosition, index)
+    }
+    
+// ************************************ Sound Functions ***************************************//
+    private func playBombSound() {
+        if !isBombSoundPlayed {
+            SoundPlayer.play(SOUND_EXPLOSION)
+            isBombSoundPlayed = true
+        }
+    }
+    
+    private func playLightingSound() {
+        if !isLightningSoundPlayed {
+            SoundPlayer.play(SOUND_LIGHTNING)
+            isLightningSoundPlayed = true
+        }
+    }
+    
+    private func resetBombAndLightningSound() {
+        isBombSoundPlayed = false
+        isLightningSoundPlayed = false
     }
 }
 

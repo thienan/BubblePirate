@@ -8,16 +8,15 @@
 
 import Foundation
 
-class ScoreManager {
+class ScoreManager: BubbleManagerDelegate {
     
 
-
-
-
-
-
-
-
+    func bubbleDestroyed(_ bubble: Bubble) {
+    
+    
+    
+    
+    }
 
 
 }

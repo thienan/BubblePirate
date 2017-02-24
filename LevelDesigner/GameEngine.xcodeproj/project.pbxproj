@@ -8,11 +8,13 @@
 
 /* Begin PBXBuildFile section */
 		F310F4EE1E4249CB00C72156 /* GridCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310F4ED1E4249CB00C72156 /* GridCollectionController.swift */; };
+		F3206E331E601AFD007F60C0 /* shoot1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3206E311E601AFD007F60C0 /* shoot1.mp3 */; };
+		F3206E341E601AFD007F60C0 /* shoot2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3206E321E601AFD007F60C0 /* shoot2.mp3 */; };
+		F3206E361E6032A8007F60C0 /* BubbleManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3206E351E6032A7007F60C0 /* BubbleManagerDelegate.swift */; };
 		F32072251E4DCAC300234C4B /* BubbleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32072241E4DCAC300234C4B /* BubbleDelegate.swift */; };
 		F321920C1E447FCF0092B010 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321920B1E447FCF0092B010 /* StorageManager.swift */; };
 		F33CD5EE1E488E2500DCECAA /* PhysicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33CD5ED1E488E2500DCECAA /* PhysicEngine.swift */; };
 		F33CD5F01E48974C00DCECAA /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33CD5EF1E48974C00DCECAA /* RenderEngine.swift */; };
-		F3640F731E5856F6009EC3B2 /* UIAnimatedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3640F721E5856F6009EC3B2 /* UIAnimatedImageView.swift */; };
 		F3640F751E587248009EC3B2 /* AnimatedSpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3640F741E587248009EC3B2 /* AnimatedSpriteComponent.swift */; };
 		F36807871E41A6CD00586C2E /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36807861E41A6CD00586C2E /* Bubble.swift */; };
 		F368078F1E422F1800586C2E /* LevelDesignViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F368078E1E422F1800586C2E /* LevelDesignViewController.swift */; };
@@ -45,7 +47,6 @@
 		F3F91BED1E5ECC1900CB3B55 /* LauncherRing.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BEC1E5ECC1900CB3B55 /* LauncherRing.swift */; };
 		F3F91BF11E5F0D4100CB3B55 /* ScoreManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BF01E5F0D4100CB3B55 /* ScoreManager.swift */; };
 		F3F91BF41E5F11B500CB3B55 /* combo_01.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3F91BF31E5F11B500CB3B55 /* combo_01.mp3 */; };
-		F3F91BF61E5F125700CB3B55 /* Sound.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BF51E5F125700CB3B55 /* Sound.swift */; };
 		F3F91BF81E5F16A100CB3B55 /* SoundPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3F91BF71E5F16A100CB3B55 /* SoundPlayer.swift */; };
 		F3F91BFE1E5F19BB00CB3B55 /* combo_02.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3F91BF91E5F19BB00CB3B55 /* combo_02.mp3 */; };
 		F3F91BFF1E5F19BB00CB3B55 /* combo_03.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3F91BFA1E5F19BB00CB3B55 /* combo_03.mp3 */; };
@@ -69,11 +70,13 @@
 
 /* Begin PBXFileReference section */
 		F310F4ED1E4249CB00C72156 /* GridCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionController.swift; sourceTree = "<group>"; };
+		F3206E311E601AFD007F60C0 /* shoot1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = shoot1.mp3; path = ../Sounds/shoot1.mp3; sourceTree = "<group>"; };
+		F3206E321E601AFD007F60C0 /* shoot2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = shoot2.mp3; path = ../Sounds/shoot2.mp3; sourceTree = "<group>"; };
+		F3206E351E6032A7007F60C0 /* BubbleManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleManagerDelegate.swift; sourceTree = "<group>"; };
 		F32072241E4DCAC300234C4B /* BubbleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleDelegate.swift; sourceTree = "<group>"; };
 		F321920B1E447FCF0092B010 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
 		F33CD5ED1E488E2500DCECAA /* PhysicEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicEngine.swift; sourceTree = "<group>"; };
 		F33CD5EF1E48974C00DCECAA /* RenderEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderEngine.swift; sourceTree = "<group>"; };
-		F3640F721E5856F6009EC3B2 /* UIAnimatedImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIAnimatedImageView.swift; sourceTree = "<group>"; };
 		F3640F741E587248009EC3B2 /* AnimatedSpriteComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSpriteComponent.swift; sourceTree = "<group>"; };
 		F36807861E41A6CD00586C2E /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
 		F368078E1E422F1800586C2E /* LevelDesignViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelDesignViewController.swift; sourceTree = "<group>"; };
@@ -109,7 +112,6 @@
 		F3F91BEC1E5ECC1900CB3B55 /* LauncherRing.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LauncherRing.swift; sourceTree = "<group>"; };
 		F3F91BF01E5F0D4100CB3B55 /* ScoreManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreManager.swift; sourceTree = "<group>"; };
 		F3F91BF31E5F11B500CB3B55 /* combo_01.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = combo_01.mp3; path = ../Sounds/combo_01.mp3; sourceTree = "<group>"; };
-		F3F91BF51E5F125700CB3B55 /* Sound.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sound.swift; sourceTree = "<group>"; };
 		F3F91BF71E5F16A100CB3B55 /* SoundPlayer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SoundPlayer.swift; sourceTree = "<group>"; };
 		F3F91BF91E5F19BB00CB3B55 /* combo_02.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = combo_02.mp3; path = ../Sounds/combo_02.mp3; sourceTree = "<group>"; };
 		F3F91BFA1E5F19BB00CB3B55 /* combo_03.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = combo_03.mp3; path = ../Sounds/combo_03.mp3; sourceTree = "<group>"; };
@@ -171,9 +173,7 @@
 			children = (
 				F37647841E4836A10008454B /* GameEngine.swift */,
 				F33CD5EF1E48974C00DCECAA /* RenderEngine.swift */,
-				F3640F721E5856F6009EC3B2 /* UIAnimatedImageView.swift */,
 				F37647861E4836AF0008454B /* GameObject.swift */,
-				F3F91BF51E5F125700CB3B55 /* Sound.swift */,
 				F3F91BF71E5F16A100CB3B55 /* SoundPlayer.swift */,
 				F382CA641E4F0BC30017C02A /* Component */,
 				F382CA5C1E4EEB210017C02A /* PhysicEngine */,
@@ -186,6 +186,7 @@
 			children = (
 				F37647821E4834960008454B /* GameplayController.swift */,
 				F37DD6061E4C6D3C00CE1A9B /* BubbleManager.swift */,
+				F3206E351E6032A7007F60C0 /* BubbleManagerDelegate.swift */,
 				F3F91BF01E5F0D4100CB3B55 /* ScoreManager.swift */,
 				F32072241E4DCAC300234C4B /* BubbleDelegate.swift */,
 				F36807861E41A6CD00586C2E /* Bubble.swift */,
@@ -264,6 +265,8 @@
 		F3F91BF21E5F119400CB3B55 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				F3206E311E601AFD007F60C0 /* shoot1.mp3 */,
+				F3206E321E601AFD007F60C0 /* shoot2.mp3 */,
 				F3F91C031E5F200F00CB3B55 /* explosion.mp3 */,
 				F3F91C041E5F200F00CB3B55 /* lightning.mp3 */,
 				F3F91C051E5F200F00CB3B55 /* star.mp3 */,
@@ -366,8 +369,10 @@
 				F3F91C071E5F200F00CB3B55 /* lightning.mp3 in Resources */,
 				F3F91C001E5F19BB00CB3B55 /* combo_04.mp3 in Resources */,
 				F3F91BFF1E5F19BB00CB3B55 /* combo_03.mp3 in Resources */,
+				F3206E341E601AFD007F60C0 /* shoot2.mp3 in Resources */,
 				F3F91C061E5F200F00CB3B55 /* explosion.mp3 in Resources */,
 				F3F91BF41E5F11B500CB3B55 /* combo_01.mp3 in Resources */,
+				F3206E331E601AFD007F60C0 /* shoot1.mp3 in Resources */,
 				F3DD1F571E40AE0800A16909 /* Main.storyboard in Resources */,
 				F3F91C081E5F200F00CB3B55 /* star.mp3 in Resources */,
 				F3F91C021E5F19BB00CB3B55 /* game_music.mp3 in Resources */,
@@ -392,12 +397,11 @@
 			files = (
 				F376DAFC1E59C6D200B0B80D /* LevelSelectCollectionController.swift in Sources */,
 				F37DD6091E4C6F0700CE1A9B /* GridSettings.swift in Sources */,
-				F3640F731E5856F6009EC3B2 /* UIAnimatedImageView.swift in Sources */,
 				F37DD6071E4C6D3C00CE1A9B /* BubbleManager.swift in Sources */,
+				F3206E361E6032A8007F60C0 /* BubbleManagerDelegate.swift in Sources */,
 				F376478D1E4854720008454B /* SpriteComponent.swift in Sources */,
 				F38BECF41E4B3A80009FCE86 /* Launcher.swift in Sources */,
 				F36807871E41A6CD00586C2E /* Bubble.swift in Sources */,
-				F3F91BF61E5F125700CB3B55 /* Sound.swift in Sources */,
 				F310F4EE1E4249CB00C72156 /* GridCollectionController.swift in Sources */,
 				F33CD5F01E48974C00DCECAA /* RenderEngine.swift in Sources */,
 				F376478B1E4853C40008454B /* CGVector.swift in Sources */,

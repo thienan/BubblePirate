@@ -23,13 +23,22 @@ class SoundPlayer {
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
             
-            let player: AVAudioPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3)
-
+            let player: AVAudioPlayer
+            var findPlayer = findIdlePlayer(url)
+            
+            if findPlayer == nil {
+                findPlayer = try AVAudioPlayer(contentsOf: url, fileTypeHint: AVFileTypeMPEGLayer3)
+                guard let findPlayer = findPlayer else { return }
+                
+                player = findPlayer
+                soundPlayers.append(player)
+            } else {
+                player = findPlayer!
+            }
+            
             player.prepareToPlay()
             player.numberOfLoops = numOfLoops
             player.volume = volume
-            soundPlayers.append(player)
-            print("count: " + String(soundPlayers.count))
             DispatchQueue.global(qos: .background).async {
                 DispatchQueue.main.async {
                     player.play()
@@ -61,10 +70,12 @@ class SoundPlayer {
         }
     }
     
-    private static func findIdlePlayer() -> AVAudioPlayer? {
+    private static func findIdlePlayer(_ url: URL) -> AVAudioPlayer? {
         for player in soundPlayers {
             if !player.isPlaying {
-                print("pool")
+                continue
+            }
+            if player.url == url {
                 return player
             }
         }

@@ -14,10 +14,12 @@ class LauncherRing: GameObject {
         return GridSettings.cellWidth + 20
     }
     
+    let UI_Z_POSITION: CGFloat = 99
+    
     convenience init(_ position: CGVector) {
         self.init()
         self.position = position
         addSpriteComponent("ring", CGRect(x: -ringWidth/2, y: -ringWidth/2, width: ringWidth, height: ringWidth))
-        spriteComponent?.zPosition = 99
+        spriteComponent?.zPosition = UI_Z_POSITION
     }
 }
