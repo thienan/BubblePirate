@@ -41,10 +41,13 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     private var gridBubbles: [[GridBubble]]?
     private var levelName: String = ""
     
+    private let SOUND_GAME_WON = "game-won"
+    private let SOUND_GAME_LOST = "game-lost"
     
     @IBOutlet weak var settingMenu: UIView!
     @IBOutlet weak var blackBackground: UIImageView!
     @IBOutlet weak var gameOverMenu: UIView!
+    @IBOutlet weak var gameOverBanner: UIImageView!
 
     private var isPaused = false
     
@@ -217,10 +220,14 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     }
     
     func gameWon() {
+        gameOverBanner.image = UIImage(named: "win-banner")
+        SoundPlayer.play(SOUND_GAME_WON)
         gameOver()
     }
     
     func gameLost() {
+        gameOverBanner.image = UIImage(named: "lose-banner")
+        SoundPlayer.play(SOUND_GAME_LOST)
         gameOver()
     }
 }

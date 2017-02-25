@@ -26,6 +26,8 @@
 		F36E8A471E4C2F84008F055C /* GridBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E8A461E4C2F84008F055C /* GridBubble.swift */; };
 		F36E8A491E4C4E17008F055C /* DesingerGridCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36E8A481E4C4E17008F055C /* DesingerGridCollectionController.swift */; };
 		F3737D181E616414003C5335 /* LevelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3737D171E616414003C5335 /* LevelSelectViewController.swift */; };
+		F3737D1D1E618AB6003C5335 /* game-lost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3737D1B1E618AB6003C5335 /* game-lost.mp3 */; };
+		F3737D1E1E618AB6003C5335 /* game-won.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3737D1C1E618AB6003C5335 /* game-won.mp3 */; };
 		F37647831E4834960008454B /* GameplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37647821E4834960008454B /* GameplayController.swift */; };
 		F37647851E4836A10008454B /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37647841E4836A10008454B /* GameEngine.swift */; };
 		F37647871E4836AF0008454B /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37647861E4836AF0008454B /* GameObject.swift */; };
@@ -90,6 +92,8 @@
 		F36E8A461E4C2F84008F055C /* GridBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridBubble.swift; sourceTree = "<group>"; };
 		F36E8A481E4C4E17008F055C /* DesingerGridCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DesingerGridCollectionController.swift; sourceTree = "<group>"; };
 		F3737D171E616414003C5335 /* LevelSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectViewController.swift; sourceTree = "<group>"; };
+		F3737D1B1E618AB6003C5335 /* game-lost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "game-lost.mp3"; path = "../Sounds/game-lost.mp3"; sourceTree = "<group>"; };
+		F3737D1C1E618AB6003C5335 /* game-won.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "game-won.mp3"; path = "../Sounds/game-won.mp3"; sourceTree = "<group>"; };
 		F37647821E4834960008454B /* GameplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayController.swift; sourceTree = "<group>"; };
 		F37647841E4836A10008454B /* GameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		F37647861E4836AF0008454B /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
@@ -271,6 +275,8 @@
 		F3F91BF21E5F119400CB3B55 /* Sounds */ = {
 			isa = PBXGroup;
 			children = (
+				F3737D1B1E618AB6003C5335 /* game-lost.mp3 */,
+				F3737D1C1E618AB6003C5335 /* game-won.mp3 */,
 				F3206E311E601AFD007F60C0 /* shoot1.mp3 */,
 				F3206E321E601AFD007F60C0 /* shoot2.mp3 */,
 				F3F91C031E5F200F00CB3B55 /* explosion.mp3 */,
@@ -375,10 +381,12 @@
 				F3F91C071E5F200F00CB3B55 /* lightning.mp3 in Resources */,
 				F3F91C001E5F19BB00CB3B55 /* combo_04.mp3 in Resources */,
 				F3F91BFF1E5F19BB00CB3B55 /* combo_03.mp3 in Resources */,
+				F3737D1E1E618AB6003C5335 /* game-won.mp3 in Resources */,
 				F3206E341E601AFD007F60C0 /* shoot2.mp3 in Resources */,
 				F3F91C061E5F200F00CB3B55 /* explosion.mp3 in Resources */,
 				F3F91BF41E5F11B500CB3B55 /* combo_01.mp3 in Resources */,
 				F3206E331E601AFD007F60C0 /* shoot1.mp3 in Resources */,
+				F3737D1D1E618AB6003C5335 /* game-lost.mp3 in Resources */,
 				F3DD1F571E40AE0800A16909 /* Main.storyboard in Resources */,
 				F3F91C081E5F200F00CB3B55 /* star.mp3 in Resources */,
 				F3F91C021E5F19BB00CB3B55 /* game_music.mp3 in Resources */,
