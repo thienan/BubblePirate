@@ -27,7 +27,6 @@ class LevelDesignViewController: UIViewController {
     @IBOutlet weak private var lightingButton: UIButton!
     @IBOutlet weak private var starButton: UIButton!
     
-    @IBOutlet weak var testImage: UIImageView!
     private var buttonList: [UIButton] = []
     private var currentButton: UIButton? = nil
     private var embedController : DesignerGridCollectionController? = nil
@@ -143,9 +142,6 @@ class LevelDesignViewController: UIViewController {
     }
 
     @IBAction private func saveLevelPressed(_ sender: Any) {
-        let window: UIWindow! = UIApplication.shared.keyWindow
-        let windowImage = window.capture()
-        testImage.image = windowImage
         createSaveAlert(title: ALERT_TITLE_SAVE_AS)
     }
 
@@ -184,15 +180,5 @@ class LevelDesignViewController: UIViewController {
         }))
         
         self.present(alert, animated: true, completion: nil)
-    }
-}
-
-public extension UIWindow {
-    func capture() -> UIImage {
-        UIGraphicsBeginImageContextWithOptions(CGSize(width: self.frame.width, height: self.frame.height/4 * 3), self.isOpaque, UIScreen.main.scale)
-        self.layer.render(in: UIGraphicsGetCurrentContext()!)
-        let image = UIGraphicsGetImageFromCurrentImageContext()
-        UIGraphicsEndImageContext()
-        return image!
     }
 }

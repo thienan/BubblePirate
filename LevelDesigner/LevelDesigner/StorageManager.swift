@@ -9,14 +9,14 @@
 import Foundation
 
 class StorageManager {
-    private var levelNamesArr: [String] = []
-    private let PATH_LEVEL_NAME = "level-names"
+    private var levels: [Level] = []
+    private let PATH_LEVEL_NAME = "level-object-name"
     
     init() {
-        levelNamesArr = loadLevelNames()
+        levels = loadLevelObject()
     }
     
-    private func getLevelNamesPath() -> String? {
+    private func getLevelObjectPath() -> String? {
         let fileManger = FileManager.default
         guard let url = fileManger.urls(for: .documentDirectory, in: .userDomainMask).first else {
             return nil
@@ -33,38 +33,40 @@ class StorageManager {
     }
 
     // save level with given levelName, overwrite the content if same levelName exists
-    public func save(levelName: String, bubbles: [[GridBubble]]) -> Bool {
+    public func save(level: Level, bubbles: [[GridBubble]]) -> Bool {
+        /*
         guard levelName != "" else {
             return false
         }
+        */
         
-        guard let levelNamesPath = getLevelNamesPath() else {
+        guard let levelObjectPath = getLevelObjectPath() else {
             return false
         }
         
-        guard let levelContentsPath = getLevelContentsPath(levelName) else {
+        guard let levelContentsPath = getLevelContentsPath(level.levelName) else {
             return false
         }
         
-        if !levelNamesArr.contains(levelName) {
-            levelNamesArr.append(levelName)
+        if !levels.contains(level) {
+            levels.append(level)
         }
         
-        NSKeyedArchiver.archiveRootObject(levelNamesArr, toFile: levelNamesPath)
+        NSKeyedArchiver.archiveRootObject(levels, toFile: levelObjectPath)
         NSKeyedArchiver.archiveRootObject(bubbles, toFile: levelContentsPath)
         return true
     }
     
-    private func loadLevelNames() -> [String] {
-        guard let levelNamesPath = getLevelNamesPath() else {
+    private func loadLevelObject() -> [Level] {
+        guard let levelObjectPath = getLevelObjectPath() else {
             return []
         }
         
-        guard let levelNames = NSKeyedUnarchiver.unarchiveObject(withFile: levelNamesPath) as? [String] else {
+        guard let levels = NSKeyedUnarchiver.unarchiveObject(withFile: levelObjectPath) as? [Level] else {
             return []
         }
         
-        return levelNames
+        return levels
     }
     
     public func loadLevel(levelName: String) -> [[GridBubble]]? {
@@ -79,7 +81,15 @@ class StorageManager {
     }
     
     public func getLevelNames() -> [String] {
-        return levelNamesArr
+        var levelNames = [String]()
+        for level in levels {
+            levelNames.append(level.levelName)
+        }
+        return levelNames
+    }
+    
+    public func getLevels() -> [Level] {
+        return levels
     }
 }
 

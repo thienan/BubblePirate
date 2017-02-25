@@ -8,13 +8,13 @@
 
 import Foundation
 
-class Level: NSObject, NSCoding  {
+class Level: NSObject, NSCoding {
     
     private struct Keys {
         static let levelName = "levelName"
     }
 
-    private let levelName: String
+    public let levelName: String
     
     init(_ levelName: String) {
         self.levelName = levelName
@@ -28,5 +28,9 @@ class Level: NSObject, NSCoding  {
     func encode(with coder: NSCoder) {
         coder.encode(levelName, forKey: Keys.levelName)
 
+    }
+    
+    static func == (lhs: Level, rhs: Level) -> Bool {
+        return lhs.levelName == rhs.levelName
     }
 }

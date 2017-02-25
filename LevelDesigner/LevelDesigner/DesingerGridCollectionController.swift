@@ -202,7 +202,7 @@ class DesignerGridCollectionController: GridCollectionController {
     }
     
     public func save(levelName: String) {
-        guard storageManager.save(levelName: levelName, bubbles: bubbleGridManager.getBubbles()) else {
+        guard storageManager.save(level: Level(levelName), bubbles: bubbleGridManager.getBubbles()) else {
             createSaveFailedAlert()
             return
         }
