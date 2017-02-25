@@ -12,7 +12,7 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
     public let storageManager = StorageManager()
     
     var levelNames: [String] = []
-    private let SEQ_TO_GAMEPLAY = "levelSelectToGame"
+    private let SEQGUE_TO_GAMEPLAY = "levelSelectToGame"
     private var levelName: String = ""
     private let COL_COUNT = 3
     
@@ -86,12 +86,12 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
             guard let levelName = cell.label.text else { return }
             
             self.levelName = levelName
-            performSegue(withIdentifier: SEQ_TO_GAMEPLAY, sender: self)
+            performSegue(withIdentifier: SEQGUE_TO_GAMEPLAY, sender: self)
         }
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SEQ_TO_GAMEPLAY  {
+        if segue.identifier == SEQGUE_TO_GAMEPLAY  {
             guard let gameController = segue.destination as? GameplayController else {
                 return
             }

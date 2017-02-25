@@ -14,8 +14,8 @@ class LevelDesignViewController: UIViewController {
     private let BUTTON_TITLE_CANCEL = "Cancel"
     private let BUTTON_TITLE_SAVE = "Save"
     private let ALERT_TITLE_SAVE_AS = "Save As"
-    private let SEQ_GRID = "embed"
-    private let SEQ_TO_GAMEPLAY = "levelDesignerToGame"
+    private let SEQGUE_GRID = "embed"
+    private let SEQGUE_TO_GAMEPLAY = "levelDesignerToGame"
     
     @IBOutlet weak private var blueButton: UIButton!
     @IBOutlet weak private var greenButton: UIButton!
@@ -131,7 +131,7 @@ class LevelDesignViewController: UIViewController {
     }
     
     @IBAction func startButtonPressed(_ sender: Any) {
-        performSegue(withIdentifier: SEQ_TO_GAMEPLAY, sender: self)
+        performSegue(withIdentifier: SEQGUE_TO_GAMEPLAY, sender: self)
     }
     
     @IBAction private func resetButtonPressed(_ sender: Any) {
@@ -154,9 +154,9 @@ class LevelDesignViewController: UIViewController {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == SEQ_GRID {
+        if segue.identifier == SEQGUE_GRID {
             embedController = segue.destination as? DesignerGridCollectionController
-        } else if segue.identifier == SEQ_TO_GAMEPLAY  {
+        } else if segue.identifier == SEQGUE_TO_GAMEPLAY  {
             guard let gameController = segue.destination as? GameplayController else {
                 return
             }
