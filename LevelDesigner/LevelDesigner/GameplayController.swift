@@ -47,6 +47,11 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     private let IMAGE_WIN_BANNER = "win-banner"
     private let IMAGE_LOSE_BANNER = "lose-banner"
     
+    private let MENU_ANIMATE_APPEAR_DURATION: TimeInterval = 1
+    private let MENU_ANIMATE_DISAPPEAR_DURATION: TimeInterval = 0.3
+    private let MENU_SPRINT_DAMPING: CGFloat = 0.6
+    private let MENU_INITIAL_VELOCITY: CGFloat = 2
+    
     @IBOutlet weak var settingMenu: UIView!
     @IBOutlet weak var blackBackground: UIImageView!
     @IBOutlet weak var gameOverMenu: UIView!
@@ -204,7 +209,7 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     @IBAction func onSettingButtonPressed(_ sender: Any) {
         if isPaused { return }
         isPaused = true
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: .curveEaseInOut, animations: ({
+        UIView.animate(withDuration: MENU_ANIMATE_APPEAR_DURATION, delay: 0, usingSpringWithDamping: MENU_SPRINT_DAMPING, initialSpringVelocity: MENU_INITIAL_VELOCITY, options: .curveEaseInOut, animations: ({
             self.settingMenu.center.x = UIScreen.main.bounds.size.width/2
         }), completion: nil)
         blackBackground.isHidden = false
@@ -212,7 +217,7 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     
     @IBAction func onResumeButtonPressed(_ sender: Any) {
         isPaused = false
-        UIView.animate(withDuration: 0.3, delay: 0, options: .curveLinear, animations: ({
+        UIView.animate(withDuration: MENU_ANIMATE_DISAPPEAR_DURATION, delay: 0, options: .curveLinear, animations: ({
             self.settingMenu.center.x = -self.settingMenu.frame.width
         }), completion: nil)
         blackBackground.isHidden = true
@@ -222,7 +227,7 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
         if isPaused { return }
         isPaused = true
         bubbleManager?.isGameEnded = true
-        UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: .curveEaseInOut, animations: ({
+        UIView.animate(withDuration: MENU_ANIMATE_APPEAR_DURATION, delay: 0, usingSpringWithDamping: MENU_SPRINT_DAMPING, initialSpringVelocity: MENU_INITIAL_VELOCITY, options: .curveEaseInOut, animations: ({
             self.gameOverMenu.center.y = UIScreen.main.bounds.size.height/2
         }), completion: nil)
         blackBackground.isHidden = false
