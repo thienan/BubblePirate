@@ -61,6 +61,8 @@ class BubbleManager: BubbleDelegate {
     private var isBombSoundPlayed = false
     private var isLightningSoundPlayed = false
     
+    public var isGameEnded = false
+    
     public var delegate: BubbleManagerDelegate?
     
     init?(_ gridBubbles: [[GridBubble]], _ gameEngine: GameEngine) {
@@ -323,7 +325,7 @@ class BubbleManager: BubbleDelegate {
     }
     
     private func handleBubbleCollided(_ bubble: Bubble) {
-        if isOutOfBound(bubble) {
+        if isOutOfBound(bubble) || isGameEnded {
             destroyMovingBubble(bubble)
             return
         }
@@ -343,6 +345,7 @@ class BubbleManager: BubbleDelegate {
             print(ERROR_CANT_FIND_INDEX_OF_BUBBLE)
             return
         }
+
         tryToPopBubble(indexPath, bubble)
         activateNeighbourSpecialBubble(indexPath, bubble)
         checkUnRootedBubble(animate: true)
@@ -412,18 +415,18 @@ class BubbleManager: BubbleDelegate {
             isBomb = true
             adjIndexPaths = findNeighbour(index)
             playBombSound()
+            removeBubbleFromGrid(indexPath: index)
             destroyBubbleWithBomb(specialBubble)
         case .lightning:
             isBomb = false
             adjIndexPaths = findRowNeighbour(index)
             playLightingSound()
+            removeBubbleFromGrid(indexPath: index)
             activateLightningEffect(index.row, specialBubble)
         default:
             return
         }
         
-        removeBubbleFromGrid(indexPath: index)
-
         for adjIndex in adjIndexPaths {
             guard let bubble = bubbles[adjIndex.row][adjIndex.section] else {
                 continue
@@ -457,8 +460,7 @@ class BubbleManager: BubbleDelegate {
     private func resetLightningBubble() {
         isLightningActivated = false
     }
-    
-    
+
     
 // ************************************ Bubble Removal Functions ***************************************//
     private func destroyStarBubble(_ bubble: Bubble) {
@@ -470,6 +472,7 @@ class BubbleManager: BubbleDelegate {
     private func destroyBubbleWithBomb(_ bubble: Bubble) {
         createBubblePopObject(bubble, IMAGE_EXPLODE_BOMB)
         bubble.destroy()
+        //removeBubbleFromGrid(bubble: bubble)
         delegate?.bubbleDestroyed(bubble)
     }
     

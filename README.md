@@ -50,7 +50,7 @@ Your answer here
 
 question not clear
 workload is too high
-
+diagram too much work
 
 
 bubble slowly snap to position
@@ -75,4 +75,6 @@ sound system reuse old sound
 
 Testing
 save level without save (created)
+save as preloaded level
+start game with empty bubble
 

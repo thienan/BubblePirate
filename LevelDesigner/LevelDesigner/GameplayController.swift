@@ -44,6 +44,9 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     private let SOUND_GAME_WON = "game-won"
     private let SOUND_GAME_LOST = "game-lost"
     
+    private let IMAGE_WIN_BANNER = "win-banner"
+    private let IMAGE_LOSE_BANNER = "lose-banner"
+    
     @IBOutlet weak var settingMenu: UIView!
     @IBOutlet weak var blackBackground: UIImageView!
     @IBOutlet weak var gameOverMenu: UIView!
@@ -81,7 +84,10 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
         newGameEngine.setWorldBound(CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height + WORLD_BOUND_Y_OFFSET))
         
         var gridBubblesWithPosition: [[GridBubble]] = []
-        if loadMode == LoadMode.gridBubbles {
+        
+        
+        switch loadMode {
+        case .gridBubbles:
             guard let gridBubbles = gridBubbles else {
                 print(ERROR_GRID_BUBBLES_NOT_LOADED)
                 return
@@ -89,12 +95,13 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
             guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition(bubbles: gridBubbles) else { return }
             gridBubblesWithPosition = gridBubblesFromGridController
             self.gridBubbles = nil
+
             
-        } else if loadMode == LoadMode.levelName {
+        case .levelName:
             guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition(levelName: levelName) else { return }
             gridBubblesWithPosition = gridBubblesFromGridController
-
-        } else if loadMode == LoadMode.none {
+            
+        case .none:
             guard let gridBubblesFromGridController = gridController?.getGridBubblesWithPosition() else { return }
             gridBubblesWithPosition = gridBubblesFromGridController
         }
@@ -107,8 +114,9 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
         self.bubbleManager = bubbleManager
         setUpGridLowerBound(bubbleManager)
         scoreManager = ScoreManager(bubbleManager)
-        scoreManager?.delegate = self
         bubbleManager.delegate = scoreManager
+        scoreManager?.delegate = self
+        scoreManager?.checkStartGame()
         gameEngine = newGameEngine
     }
     
@@ -183,7 +191,6 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -214,6 +221,7 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     private func gameOver() {
         if isPaused { return }
         isPaused = true
+        bubbleManager?.isGameEnded = true
         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: .curveEaseInOut, animations: ({
             self.gameOverMenu.center.y = UIScreen.main.bounds.size.height/2
         }), completion: nil)
@@ -221,7 +229,7 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     }
     
     func gameWon() {
-        gameOverBanner.image = UIImage(named: "win-banner")
+        gameOverBanner.image = UIImage(named: IMAGE_WIN_BANNER)
         SoundPlayer.play(SOUND_GAME_WON)
         gameOver()
         if loadMode == LoadMode.levelName {
@@ -232,7 +240,7 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     }
     
     func gameLost() {
-        gameOverBanner.image = UIImage(named: "lose-banner")
+        gameOverBanner.image = UIImage(named: IMAGE_LOSE_BANNER)
         SoundPlayer.play(SOUND_GAME_LOST)
         gameOver()
     }

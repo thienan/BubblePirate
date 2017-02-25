@@ -349,7 +349,7 @@
                                             <rect key="frame" x="8" y="101" width="173" height="54"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" name="SavoyeLetPlain" family="Savoye LET" pointSize="40"/>
-                                            <color key="textColor" red="0.49128605769230771" green="0.25713295609413511" blue="0.14603914880811319" alpha="1" colorSpace="calibratedRGB"/>
+                                            <color key="textColor" red="0.35034054487179489" green="0.18386346614233701" blue="0.10703301044086068" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EoM-pB-xt8" userLabel="star1">

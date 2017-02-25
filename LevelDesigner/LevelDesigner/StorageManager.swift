@@ -32,6 +32,10 @@ class StorageManager {
         return url.appendingPathComponent(levelName).path
     }
 
+    public func doesLevelExist(level: Level) -> Bool {
+        return levels.contains(level)
+    }
+    
     // save without overwrite the level
     public func saveLevelStars(level: Level) -> Bool {
         /*

@@ -72,6 +72,10 @@ class GridCollectionController: UICollectionViewController, UICollectionViewDele
         self.collectionView?.reloadData()
     }
     
+    public func levelNameExists(levelName: String) -> Bool {
+        return storageManager.doesLevelExist(level: Level(levelName))
+    }
+    
     private func loadLevelFromStorageToBubbleManager(_ levelName: String) {
         guard let bubbles = storageManager.loadLevel(levelName: levelName) else {
             print(ERROR_FAIL_TO_LOAD_LEVEL)

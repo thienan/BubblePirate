@@ -30,6 +30,10 @@ class PreLoader {
         let bubbleManager = GridBubbleManager()
         try? bubbleManager.setBubbleColor(indexRow: 0, indexCol: GridSettings.COLUMN_COUNT_EVEN/2, bubbleColor: GridBubble.BubbleColor.blue)
         let level = Level(LEVEL_NAME_1)
+        
+        if storageManager.doesLevelExist(level: level) {
+            return
+        }
         _ = storageManager.save(level: level, bubbles: bubbleManager.getBubbles())
     }
 
@@ -39,6 +43,10 @@ class PreLoader {
             try? bubbleManager.setBubbleColor(indexRow: 0, indexCol: col, bubbleColor: GridBubble.BubbleColor.red)
         }
         let level = Level(LEVEL_NAME_2)
+        
+        if storageManager.doesLevelExist(level: level) {
+            return
+        }
         _ = storageManager.save(level: level, bubbles: bubbleManager.getBubbles())
     }
     
@@ -50,6 +58,10 @@ class PreLoader {
             }
         }
         let level = Level(LEVEL_NAME_3)
+        
+        if storageManager.doesLevelExist(level: level) {
+            return
+        }
         _ = storageManager.save(level: level, bubbles: bubbleManager.getBubbles())
     }
 }

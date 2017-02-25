@@ -15,16 +15,24 @@ class ScoreManager: BubbleManagerDelegate {
     init(_ bubbleManager: BubbleManager) {
         self.bubbleManager = bubbleManager
     }
+
+    public func checkStartGame() {
+        checkWinCondition()
+    }
     
     func bubbleDestroyed(_ bubble: Bubble) {
-        if bubbleManager.getBubbleCount() == 0 {
-            delegate?.gameWon()
-        }
+        checkWinCondition()
     }
 
     func bubbleSnapped(_ bubble: Bubble) {
         if bubbleManager.isLastRowFull() {
             delegate?.gameLost()
+        }
+    }
+    
+    private func checkWinCondition() {
+        if bubbleManager.getBubbleCount() == 0 {
+            delegate?.gameWon()
         }
     }
 }
