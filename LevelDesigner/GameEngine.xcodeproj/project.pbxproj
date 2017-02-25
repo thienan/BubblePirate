@@ -29,6 +29,7 @@
 		F3737D1D1E618AB6003C5335 /* game-lost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3737D1B1E618AB6003C5335 /* game-lost.mp3 */; };
 		F3737D1E1E618AB6003C5335 /* game-won.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3737D1C1E618AB6003C5335 /* game-won.mp3 */; };
 		F3737D201E61B34E003C5335 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3737D1F1E61B34E003C5335 /* Level.swift */; };
+		F3737D221E61E80E003C5335 /* PreLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3737D211E61E80E003C5335 /* PreLoader.swift */; };
 		F37647831E4834960008454B /* GameplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37647821E4834960008454B /* GameplayController.swift */; };
 		F37647851E4836A10008454B /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37647841E4836A10008454B /* GameEngine.swift */; };
 		F37647871E4836AF0008454B /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37647861E4836AF0008454B /* GameObject.swift */; };
@@ -96,6 +97,7 @@
 		F3737D1B1E618AB6003C5335 /* game-lost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "game-lost.mp3"; path = "../Sounds/game-lost.mp3"; sourceTree = "<group>"; };
 		F3737D1C1E618AB6003C5335 /* game-won.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "game-won.mp3"; path = "../Sounds/game-won.mp3"; sourceTree = "<group>"; };
 		F3737D1F1E61B34E003C5335 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
+		F3737D211E61E80E003C5335 /* PreLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreLoader.swift; sourceTree = "<group>"; };
 		F37647821E4834960008454B /* GameplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayController.swift; sourceTree = "<group>"; };
 		F37647841E4836A10008454B /* GameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		F37647861E4836AF0008454B /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
@@ -165,6 +167,7 @@
 			isa = PBXGroup;
 			children = (
 				F376DAF91E5998B400B0B80D /* MainMenuViewController.swift */,
+				F3737D211E61E80E003C5335 /* PreLoader.swift */,
 			);
 			name = MainMenu;
 			sourceTree = "<group>";
@@ -436,6 +439,7 @@
 				F3640F751E587248009EC3B2 /* AnimatedSpriteComponent.swift in Sources */,
 				F3DD1F521E40AE0800A16909 /* AppDelegate.swift in Sources */,
 				F376DAFE1E59C76300B0B80D /* LevelSelectCell.swift in Sources */,
+				F3737D221E61E80E003C5335 /* PreLoader.swift in Sources */,
 				F39A0C821E50884F00B1DC45 /* Queue.swift in Sources */,
 				F382CA611E4EFD8C0017C02A /* SphereCollider.swift in Sources */,
 				F33CD5EE1E488E2500DCECAA /* PhysicEngine.swift in Sources */,

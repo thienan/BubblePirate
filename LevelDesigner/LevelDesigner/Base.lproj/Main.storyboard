@@ -306,7 +306,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3BO-p2-JJC">
                                 <rect key="frame" x="678" y="946" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" image="back-button"/>
+                                <state key="normal" image="home-button"/>
                                 <connections>
                                     <segue destination="Zoy-wT-oze" kind="show" id="kET-XJ-fIN"/>
                                 </connections>

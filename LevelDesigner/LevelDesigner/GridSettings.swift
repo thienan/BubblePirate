@@ -14,6 +14,6 @@ class GridSettings {
     public static let ROW_COUNT = 9
     
     public static var cellWidth: CGFloat {
-        return UIScreen.main.bounds.size.width / CGFloat(12)
+        return UIScreen.main.bounds.size.width / CGFloat(COLUMN_COUNT_EVEN)
     }
 }

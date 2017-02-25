@@ -28,7 +28,7 @@ class Level: NSObject, NSCoding {
         self.init(levelName, 0)
     }
     
-    public func setFull() {
+    public func setFullStar() {
         setStars(MAX_STAR)
     }
     
@@ -50,8 +50,8 @@ class Level: NSObject, NSCoding {
         coder.encode(levelName, forKey: Keys.levelName)
         coder.encode(stars, forKey: Keys.star)
     }
-    
-    static func == (lhs: Level, rhs: Level) -> Bool {
-        return lhs.levelName == rhs.levelName
+
+    override func isEqual(_ object: Any?) -> Bool {
+        return self.levelName == (object as? Level)?.levelName
     }
 }

@@ -11,10 +11,12 @@ import UIKit
 class MainMenuViewController: UIViewController {
     private let GAME_MUSIC_VOLUME: Float = 0.1
     private static var isBackgroundMusicPlayed = false
+    let MUSIC_BACKGROUND = "game_music"
+    let preLoader = PreLoader.sharedInstance
     
     func playBackgroundMusic() {
         if !MainMenuViewController.isBackgroundMusicPlayed {
-            SoundPlayer.playLoop("game_music", GAME_MUSIC_VOLUME)
+            SoundPlayer.playLoop(MUSIC_BACKGROUND, GAME_MUSIC_VOLUME)
             MainMenuViewController.isBackgroundMusicPlayed = true
         }
     }

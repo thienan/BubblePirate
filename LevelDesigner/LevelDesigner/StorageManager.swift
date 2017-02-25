@@ -10,7 +10,7 @@ import Foundation
 
 class StorageManager {
     private var levels: [Level] = []
-    private let PATH_LEVEL_NAME = "level-object-name"
+    private let PATH_LEVEL_NAME = "level-object"
     
     init() {
         levels = loadLevelObject()
@@ -32,6 +32,30 @@ class StorageManager {
         return url.appendingPathComponent(levelName).path
     }
 
+    // save without overwrite the level
+    public func saveLevelStars(level: Level) -> Bool {
+        /*
+         guard levelName != "" else {
+         return false
+         }
+         */
+
+        guard let levelObjectPath = getLevelObjectPath() else {
+            return false
+        }
+        
+        if !levels.contains(level) {
+            levels.append(level)
+        } else {
+            if let index = levels.index(of: level) {
+                levels[index].setStars(level.getStars())
+            }
+        }
+        
+        NSKeyedArchiver.archiveRootObject(levels, toFile: levelObjectPath)
+        return true
+    }
+    
     // save level with given levelName, overwrite the content if same levelName exists
     public func save(level: Level, bubbles: [[GridBubble]]) -> Bool {
         /*
@@ -48,7 +72,11 @@ class StorageManager {
             return false
         }
         
-        if !levels.contains(level) {
+        if levels.contains(level) {
+            if let index = levels.index(of: level) {
+                levels[index] = level
+            }
+        } else {
             levels.append(level)
         }
         

@@ -212,6 +212,7 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     }
     
     private func gameOver() {
+        if isPaused { return }
         isPaused = true
         UIView.animate(withDuration: 1, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 2, options: .curveEaseInOut, animations: ({
             self.gameOverMenu.center.y = UIScreen.main.bounds.size.height/2
@@ -223,6 +224,11 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
         gameOverBanner.image = UIImage(named: "win-banner")
         SoundPlayer.play(SOUND_GAME_WON)
         gameOver()
+        if loadMode == LoadMode.levelName {
+            let level = Level(levelName)
+            level.setFullStar()
+            gridController?.save(level: level)
+        }
     }
     
     func gameLost() {
