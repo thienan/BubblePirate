@@ -13,7 +13,7 @@
         <scene sceneID="v6O-IR-yxs">
             <objects>
                 <collectionViewController id="wZb-DX-5T6" customClass="DesignerGridCollectionController" customModule="GameEngine" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="bBM-of-JvJ">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="bBM-of-JvJ">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -63,7 +63,7 @@
                         <viewControllerLayoutGuide type="bottom" id="fGd-cM-a02"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="gNe-mz-b7R">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="934"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="855"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ocean" translatesAutoresizingMaskIntoConstraints="NO" id="TJ5-1x-Lmr">
@@ -298,26 +298,38 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4gT-YP-Uh7">
-                                <rect key="frame" x="0.0" y="90" width="768" height="934"/>
+                                <rect key="frame" x="0.0" y="90" width="768" height="855"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="fcY-7o-AKY" kind="embed" id="4vp-TC-3ID"/>
                                 </connections>
                             </containerView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="level-select-text" translatesAutoresizingMaskIntoConstraints="NO" id="zWE-g5-jFB">
+                                <rect key="frame" x="190" y="17" width="388" height="65"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3BO-p2-JJC">
+                                <rect key="frame" x="678" y="946" width="70" height="70"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="back-button"/>
+                                <connections>
+                                    <segue destination="Zoy-wT-oze" kind="show" id="kET-XJ-fIN"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GO5-3K-1yL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2796" y="2414"/>
+            <point key="canvasLocation" x="-2796.09375" y="2413.4765625"/>
         </scene>
         <!--Level Select Collection Controller-->
         <scene sceneID="axD-bp-ftq">
             <objects>
                 <collectionViewController id="fcY-7o-AKY" customClass="LevelSelectCollectionController" customModule="GameEngine" customModuleProvider="target" sceneMemberID="viewController">
-                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="l4G-Cu-WGn">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="934"/>
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="l4G-Cu-WGn">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="855"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Pus-fX-jLk">
@@ -375,11 +387,11 @@
                         <viewControllerLayoutGuide type="bottom" id="g60-Sy-d8k"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="FJ4-sj-i3n">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="934"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="855"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="kOg-7W-BNr">
-                                <rect key="frame" x="0.0" y="-90" width="768" height="1016"/>
+                                <rect key="frame" x="0.0" y="-169" width="768" height="1016"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                                 <connections>
                                     <segue destination="WUJ-yl-VbP" kind="embed" identifier="grid" id="IBx-ov-PfK"/>
@@ -532,7 +544,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n1C-4V-vdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1424" y="1562"/>
+            <point key="canvasLocation" x="-1440.625" y="1660.83984375"/>
         </scene>
         <!--Grid Collection Controller-->
         <scene sceneID="yIL-GD-IDn">
@@ -599,6 +611,7 @@
         <image name="level-design-button" width="100" height="100"/>
         <image name="level-select" width="497" height="355"/>
         <image name="level-select-button" width="100" height="100"/>
+        <image name="level-select-text" width="489" height="81"/>
         <image name="long-chain" width="380" height="30"/>
         <image name="ocean" width="768" height="1024"/>
         <image name="paused-screen" width="600" height="254"/>

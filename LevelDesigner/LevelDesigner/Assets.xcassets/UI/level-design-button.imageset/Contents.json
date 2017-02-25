@@ -4,6 +4,14 @@
       "idiom" : "universal",
       "filename" : "level-design-button.png",
       "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

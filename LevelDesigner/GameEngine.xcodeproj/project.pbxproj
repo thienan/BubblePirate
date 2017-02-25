@@ -28,6 +28,7 @@
 		F3737D181E616414003C5335 /* LevelSelectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3737D171E616414003C5335 /* LevelSelectViewController.swift */; };
 		F3737D1D1E618AB6003C5335 /* game-lost.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3737D1B1E618AB6003C5335 /* game-lost.mp3 */; };
 		F3737D1E1E618AB6003C5335 /* game-won.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3737D1C1E618AB6003C5335 /* game-won.mp3 */; };
+		F3737D201E61B34E003C5335 /* Level.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3737D1F1E61B34E003C5335 /* Level.swift */; };
 		F37647831E4834960008454B /* GameplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37647821E4834960008454B /* GameplayController.swift */; };
 		F37647851E4836A10008454B /* GameEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37647841E4836A10008454B /* GameEngine.swift */; };
 		F37647871E4836AF0008454B /* GameObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F37647861E4836AF0008454B /* GameObject.swift */; };
@@ -94,6 +95,7 @@
 		F3737D171E616414003C5335 /* LevelSelectViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LevelSelectViewController.swift; sourceTree = "<group>"; };
 		F3737D1B1E618AB6003C5335 /* game-lost.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "game-lost.mp3"; path = "../Sounds/game-lost.mp3"; sourceTree = "<group>"; };
 		F3737D1C1E618AB6003C5335 /* game-won.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "game-won.mp3"; path = "../Sounds/game-won.mp3"; sourceTree = "<group>"; };
+		F3737D1F1E61B34E003C5335 /* Level.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Level.swift; sourceTree = "<group>"; };
 		F37647821E4834960008454B /* GameplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameplayController.swift; sourceTree = "<group>"; };
 		F37647841E4836A10008454B /* GameEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameEngine.swift; sourceTree = "<group>"; };
 		F37647861E4836AF0008454B /* GameObject.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GameObject.swift; sourceTree = "<group>"; };
@@ -216,6 +218,7 @@
 				F36DF4241E42D1C200CCCD7D /* GridBubbleManager.swift */,
 				F321920B1E447FCF0092B010 /* StorageManager.swift */,
 				F37DD6081E4C6F0700CE1A9B /* GridSettings.swift */,
+				F3737D1F1E61B34E003C5335 /* Level.swift */,
 			);
 			name = Grid;
 			sourceTree = "<group>";
@@ -445,6 +448,7 @@
 				F37647851E4836A10008454B /* GameEngine.swift in Sources */,
 				F39A0C801E5055E100B1DC45 /* AnimatedBubble.swift in Sources */,
 				F37647831E4834960008454B /* GameplayController.swift in Sources */,
+				F3737D201E61B34E003C5335 /* Level.swift in Sources */,
 				F3F91BED1E5ECC1900CB3B55 /* LauncherRing.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
