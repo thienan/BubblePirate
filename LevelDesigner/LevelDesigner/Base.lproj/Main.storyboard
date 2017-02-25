@@ -433,7 +433,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tIm-LD-3wm" userLabel="settingButton">
                                 <rect key="frame" x="698" y="925" width="70" height="70"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button" image="ball-black"/>
+                                <state key="normal" image="setting-button"/>
                                 <connections>
                                     <action selector="onSettingButtonPressed:" destination="SWk-fK-BLn" eventType="touchUpInside" id="CL0-VZ-u2U"/>
                                 </connections>
@@ -613,13 +613,14 @@
         <image name="pirate-text" width="611" height="232"/>
         <image name="play-button" width="400" height="164"/>
         <image name="rail" width="768" height="122"/>
+        <image name="setting-button" width="100" height="100"/>
         <image name="win-banner" width="462" height="108"/>
         <image name="win-lose-screen" width="537" height="381"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YyS-UD-pun"/>
-        <segue reference="zg2-kM-nRU"/>
+        <segue reference="dzH-7Y-CUu"/>
         <segue reference="lgt-zJ-KJd"/>
-        <segue reference="Dcx-br-bD4"/>
+        <segue reference="BYU-CD-Yfv"/>
+        <segue reference="zg2-kM-nRU"/>
     </inferredMetricsTieBreakers>
 </document>
