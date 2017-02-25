@@ -14,7 +14,7 @@
             <objects>
                 <collectionViewController id="wZb-DX-5T6" customClass="DesignerGridCollectionController" customModule="GameEngine" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" misplaced="YES" dataMode="prototypes" id="bBM-of-JvJ">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="934"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="qsK-Wg-jsm">
@@ -83,7 +83,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Play" image="play-button"/>
                                 <connections>
-                                    <segue destination="naa-83-DPD" kind="show" id="Dcx-br-bD4"/>
+                                    <segue destination="naa-83-DPD" kind="show" identifier="" id="Dcx-br-bD4"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bubble-text" translatesAutoresizingMaskIntoConstraints="NO" id="2VD-hw-6Zx">
@@ -119,7 +119,7 @@
                         <viewControllerLayoutGuide type="bottom" id="6bO-rv-Dmh"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="SWP-3X-h1O">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="934"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ocean" translatesAutoresizingMaskIntoConstraints="NO" id="qql-sk-hpR">
@@ -127,7 +127,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PaQ-Bz-KYf">
-                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="934"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <connections>
                                     <segue destination="wZb-DX-5T6" kind="embed" identifier="embed" id="8cg-GL-aaK"/>
@@ -310,7 +310,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GO5-3K-1yL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2423" y="1850"/>
+            <point key="canvasLocation" x="-2796" y="2414"/>
         </scene>
         <!--Level Select Collection Controller-->
         <scene sceneID="axD-bp-ftq">
@@ -364,7 +364,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1g-EW-ZFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2240.625" y="2585.7421875"/>
+            <point key="canvasLocation" x="-2154" y="3760"/>
         </scene>
         <!--Gameplay Controller-->
         <scene sceneID="aPo-mH-EKX">
@@ -438,45 +438,45 @@
                                 <color key="tintColor" red="0.076775196335078566" green="0.076775196335078566" blue="0.076775196335078566" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VyJ-Mb-PPw" userLabel="setting">
-                                <rect key="frame" x="0.0" y="179" width="469" height="313"/>
+                                <rect key="frame" x="0.0" y="235" width="450" height="250"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-fU-SmB">
-                                        <rect key="frame" x="66" y="33" width="109" height="30"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="paused-screen" translatesAutoresizingMaskIntoConstraints="NO" id="Mn1-yN-WJF">
+                                        <rect key="frame" x="0.0" y="0.0" width="450" height="250"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Level Selection"/>
-                                        <connections>
-                                            <segue destination="fcY-7o-AKY" kind="show" id="mcJ-Da-L1I"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6f-1h-5nv">
-                                        <rect key="frame" x="66" y="71" width="109" height="30"/>
+                                    </imageView>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="q6f-1h-5nv">
+                                        <rect key="frame" x="329" y="133" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Custom Level"/>
+                                        <state key="normal" title="Custom Level" image="level-design-button"/>
                                         <connections>
                                             <segue destination="XUW-EG-fH6" kind="show" id="16j-wR-fbL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fB-r8-g1F">
-                                        <rect key="frame" x="66" y="108" width="109" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2fB-r8-g1F">
+                                        <rect key="frame" x="152" y="133" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Main Menu"/>
+                                        <state key="normal" title="Main Menu" image="home-button"/>
                                         <connections>
                                             <segue destination="Zoy-wT-oze" kind="show" id="c2B-uK-qlL"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kR-EY-3iu">
-                                        <rect key="frame" x="66" y="141" width="109" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5kR-EY-3iu">
+                                        <rect key="frame" x="68" y="133" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <state key="normal" title="Resume"/>
+                                        <state key="normal" title="Resume" image="back-button"/>
                                         <connections>
                                             <action selector="onResumeButtonPressed:" destination="SWk-fK-BLn" eventType="touchUpInside" id="6t4-SD-uOi"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="win" translatesAutoresizingMaskIntoConstraints="NO" id="Mn1-yN-WJF">
-                                        <rect key="frame" x="0.0" y="-14" width="481" height="319"/>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-fU-SmB">
+                                        <rect key="frame" x="238" y="133" width="60" height="60"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
+                                        <state key="normal" image="level-select-button"/>
+                                        <connections>
+                                            <segue destination="naa-83-DPD" kind="show" id="1Sq-79-0QQ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqF-gw-oWL" userLabel="gameOver">
@@ -524,7 +524,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="n1C-4V-vdV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1407.03125" y="1693.9453125"/>
+            <point key="canvasLocation" x="-1408" y="1693"/>
         </scene>
         <!--Grid Collection Controller-->
         <scene sceneID="yIL-GD-IDn">
@@ -573,6 +573,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="back-button" width="100" height="100"/>
         <image name="ball-black" width="105" height="105"/>
         <image name="ball-blue" width="105" height="105"/>
         <image name="ball-bomb" width="105" height="135"/>
@@ -586,18 +587,22 @@
         <image name="erase" width="168" height="168"/>
         <image name="floor" width="769" height="146"/>
         <image name="gear" width="114" height="114"/>
+        <image name="home-button" width="100" height="100"/>
+        <image name="level-design-button" width="100" height="100"/>
         <image name="level-select" width="497" height="355"/>
+        <image name="level-select-button" width="100" height="100"/>
         <image name="long-chain" width="380" height="30"/>
         <image name="ocean" width="768" height="1024"/>
+        <image name="paused-screen" width="600" height="254"/>
         <image name="pirate-text" width="611" height="232"/>
         <image name="play-button" width="400" height="164"/>
         <image name="rail" width="768" height="122"/>
-        <image name="win" width="537" height="381"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="YyS-UD-pun"/>
-        <segue reference="zg2-kM-nRU"/>
+        <segue reference="dzH-7Y-CUu"/>
         <segue reference="O7s-mx-x5R"/>
-        <segue reference="mcJ-Da-L1I"/>
+        <segue reference="qWN-xH-ert"/>
+        <segue reference="1Sq-79-0QQ"/>
+        <segue reference="zg2-kM-nRU"/>
     </inferredMetricsTieBreakers>
 </document>
