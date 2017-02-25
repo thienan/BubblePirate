@@ -9,7 +9,6 @@
 import Foundation
 
 class ScoreManager: BubbleManagerDelegate {
-    
     let bubbleManager: BubbleManager
     var delegate: ScoreManagerDelegate?
     

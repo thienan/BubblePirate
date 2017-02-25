@@ -71,8 +71,6 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     override func viewDidAppear(_ animated: Bool) {
         setUpEngineAndBubbleManagerAndGridBound()
         createLauncher()
-        
-        
     }
     
     private func setUpEngineAndBubbleManagerAndGridBound() {
