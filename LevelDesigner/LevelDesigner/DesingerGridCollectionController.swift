@@ -41,6 +41,7 @@ class DesignerGridCollectionController: GridCollectionController {
     override func viewDidLoad() {
         super.viewDidLoad()
         initGestures()
+        self.collectionView?.backgroundColor = UIColor.clear
     }
     
     private func initGestures() {
