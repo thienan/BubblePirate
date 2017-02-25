@@ -21,6 +21,7 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
         super.viewDidLoad()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector((tapGesture))))
         levelNames = storageManager.getLevelNames()
+        //self.collectionView?.backgroundColor = UIColor.clear
     }
 
     override func didReceiveMemoryWarning() {
