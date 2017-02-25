@@ -21,5 +21,4 @@ class LevelSelectCell: UICollectionViewCell {
         //label.center = CGPoint(x: self.center.x, y: self.center.y)
         label.center = CGPoint(x: imageView.center.x, y: imageView.center.y + 35)
     }
-    
 }

@@ -16,7 +16,6 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
     private var levelName: String = ""
     private let COL_COUNT = 3
     
-    //var levelNames = ["a", "b", "c"]
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector((tapGesture))))
@@ -61,10 +60,6 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? LevelSelectCell else {
             return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         }
-        
-        //cell.layer.cornerRadius = cell.layer.frame.width / 6
-        //cell.layer.borderWidth = CGFloat(4.0)
-        //cell.layer.borderColor = UIColor.brown.cgColor
         cell.layer.masksToBounds = true
         
         cell.scaleImage()
@@ -98,37 +93,4 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
             gameController.playWithLevelName(levelName)
         }
     }
-
-
-    // MARK: UICollectionViewDelegate
-
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
-
 }

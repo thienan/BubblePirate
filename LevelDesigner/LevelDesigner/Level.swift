@@ -12,22 +12,35 @@ class Level: NSObject, NSCoding {
     
     private struct Keys {
         static let levelName = "levelName"
+        static let star = "star"
     }
 
     public let levelName: String
+    private var stars: Int
+    private let MAX_STAR = 3
     
-    init(_ levelName: String) {
+    init(_ levelName: String, _ stars: Int) {
         self.levelName = levelName
+        self.stars = min(abs(stars), MAX_STAR)
+    }
+    
+    convenience init(_ levelName: String) {
+        self.init(levelName, 0)
+    }
+    
+    public func setStars(_ stars: Int) {
+        self.stars = min(abs(stars), MAX_STAR)
     }
     
     required convenience init(coder decoder: NSCoder) {
         let decodedString = decoder.decodeObject(forKey: Keys.levelName) as? String ?? ""
-        self.init(decodedString)
+        let decodedStar = decoder.decodeInteger(forKey: Keys.star)
+        self.init(decodedString, decodedStar)
     }
     
     func encode(with coder: NSCoder) {
         coder.encode(levelName, forKey: Keys.levelName)
-
+        coder.encode(stars, forKey: Keys.star)
     }
     
     static func == (lhs: Level, rhs: Level) -> Bool {
