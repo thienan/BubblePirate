@@ -78,20 +78,12 @@
                                 <rect key="frame" x="0.0" y="896" width="768" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9Q-zs-4BK">
-                                <rect key="frame" x="369" y="472" width="30" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i9Q-zs-4BK">
+                                <rect key="frame" x="284" y="421" width="200" height="80"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Play"/>
+                                <state key="normal" title="Play" image="play-button"/>
                                 <connections>
                                     <segue destination="naa-83-DPD" kind="show" id="Dcx-br-bD4"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G50-Nh-15Q">
-                                <rect key="frame" x="338" y="523" width="93" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Custom Level"/>
-                                <connections>
-                                    <segue destination="XUW-EG-fH6" kind="show" id="YyS-UD-pun"/>
                                 </connections>
                             </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="bubble-text" translatesAutoresizingMaskIntoConstraints="NO" id="2VD-hw-6Zx">
@@ -102,6 +94,14 @@
                                 <rect key="frame" x="144" y="204" width="481" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G50-Nh-15Q">
+                                <rect key="frame" x="284" y="505" width="200" height="80"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Custom Level" image="create-button"/>
+                                <connections>
+                                    <segue destination="XUW-EG-fH6" kind="show" id="YyS-UD-pun"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
@@ -438,13 +438,9 @@
                                 <color key="tintColor" red="0.076775196335078566" green="0.076775196335078566" blue="0.076775196335078566" alpha="1" colorSpace="calibratedRGB"/>
                             </imageView>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="VyJ-Mb-PPw" userLabel="setting">
-                                <rect key="frame" x="0.0" y="309" width="240" height="183"/>
+                                <rect key="frame" x="0.0" y="179" width="469" height="313"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="win" translatesAutoresizingMaskIntoConstraints="NO" id="Mn1-yN-WJF">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="183"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-fU-SmB">
                                         <rect key="frame" x="66" y="33" width="109" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -477,6 +473,10 @@
                                             <action selector="onResumeButtonPressed:" destination="SWk-fK-BLn" eventType="touchUpInside" id="6t4-SD-uOi"/>
                                         </connections>
                                     </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="win" translatesAutoresizingMaskIntoConstraints="NO" id="Mn1-yN-WJF">
+                                        <rect key="frame" x="0.0" y="-14" width="481" height="319"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                 </subviews>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqF-gw-oWL" userLabel="gameOver">
@@ -582,6 +582,7 @@
         <image name="ball-red" width="106" height="105"/>
         <image name="ball-star" width="105" height="105"/>
         <image name="bubble-text" width="726" height="251"/>
+        <image name="create-button" width="400" height="164"/>
         <image name="erase" width="168" height="168"/>
         <image name="floor" width="769" height="146"/>
         <image name="gear" width="114" height="114"/>
@@ -589,13 +590,14 @@
         <image name="long-chain" width="380" height="30"/>
         <image name="ocean" width="768" height="1024"/>
         <image name="pirate-text" width="611" height="232"/>
+        <image name="play-button" width="400" height="164"/>
         <image name="rail" width="768" height="122"/>
         <image name="win" width="537" height="381"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="dzH-7Y-CUu"/>
+        <segue reference="YyS-UD-pun"/>
+        <segue reference="zg2-kM-nRU"/>
         <segue reference="O7s-mx-x5R"/>
         <segue reference="mcJ-Da-L1I"/>
-        <segue reference="zg2-kM-nRU"/>
     </inferredMetricsTieBreakers>
 </document>
