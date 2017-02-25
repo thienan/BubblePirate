@@ -292,7 +292,7 @@ class BubbleManager: BubbleDelegate {
         bubble.spriteComponent?.isActive = true
         bubble.moveLinearlyTo(position)
     }
-
+    
     public func swapBubble() {
         if nextBubbleQueue.count < MIN_BUBBLE_IN_QUEUE_FOR_SWAPPING {
             return

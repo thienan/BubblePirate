@@ -28,8 +28,16 @@ class Level: NSObject, NSCoding {
         self.init(levelName, 0)
     }
     
+    public func setFull() {
+        setStars(MAX_STAR)
+    }
+    
     public func setStars(_ stars: Int) {
         self.stars = min(abs(stars), MAX_STAR)
+    }
+    
+    public func getStars() -> Int {
+        return stars
     }
     
     required convenience init(coder decoder: NSCoder) {

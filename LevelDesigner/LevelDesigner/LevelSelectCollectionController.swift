@@ -11,7 +11,7 @@ import UIKit
 class LevelSelectCollectionController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     public let storageManager = StorageManager()
     
-    var levelNames: [String] = []
+    var levels: [Level] = []
     private let SEQGUE_TO_GAMEPLAY = "levelSelectToGame"
     private var levelName: String = ""
     private let COL_COUNT = 3
@@ -19,7 +19,7 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
     override func viewDidLoad() {
         super.viewDidLoad()
         view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector((tapGesture))))
-        levelNames = storageManager.getLevelNames()
+        levels = storageManager.getLevels()
         self.collectionView?.backgroundColor = UIColor.clear
     }
 
@@ -28,7 +28,7 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
     }
 
     func sectionCount() -> Int {
-        return Int(ceil(Double(levelNames.count) / 2.0))
+        return Int(ceil(Double(levels.count) / Double(COL_COUNT)))
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -48,7 +48,7 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
             return COL_COUNT
         }
         
-        let remainder = levelNames.count % COL_COUNT
+        let remainder = levels.count % COL_COUNT
         if  remainder == 0 {
             return COL_COUNT
         } else {
@@ -62,14 +62,11 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
         }
         cell.layer.masksToBounds = true
         
-        cell.scaleImage()
-        
         let index = indexPath.section * COL_COUNT + indexPath.row
-        
-        if index < levelNames.count {
-            cell.label.text = levelNames[index]
+        if index < levels.count {
+            cell.label.text = levels[index].levelName
+            cell.initCell(stars: levels[index].getStars())
         }
-        
         return cell
     }
     

@@ -352,11 +352,26 @@
                                             <color key="textColor" red="0.49128605769230771" green="0.25713295609413511" blue="0.14603914880811319" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EoM-pB-xt8" userLabel="star1">
+                                            <rect key="frame" x="8" y="25" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Vcl-6k-HgM" userLabel="star2">
+                                            <rect key="frame" x="66" y="25" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="we3-ul-n0I" userLabel="star3">
+                                            <rect key="frame" x="129" y="25" width="50" height="50"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                     </subviews>
                                 </view>
                                 <connections>
                                     <outlet property="imageView" destination="kYF-xH-RYf" id="9sa-wp-qQ6"/>
                                     <outlet property="label" destination="fuY-oO-fKD" id="ysX-rv-ed7"/>
+                                    <outlet property="star1" destination="EoM-pB-xt8" id="cYn-6G-kuL"/>
+                                    <outlet property="star2" destination="Vcl-6k-HgM" id="mhD-NR-AOr"/>
+                                    <outlet property="star3" destination="we3-ul-n0I" id="PXx-kD-YkL"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -619,8 +634,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dzH-7Y-CUu"/>
-        <segue reference="lgt-zJ-KJd"/>
+        <segue reference="O7s-mx-x5R"/>
         <segue reference="BYU-CD-Yfv"/>
-        <segue reference="zg2-kM-nRU"/>
+        <segue reference="kET-XJ-fIN"/>
     </inferredMetricsTieBreakers>
 </document>
