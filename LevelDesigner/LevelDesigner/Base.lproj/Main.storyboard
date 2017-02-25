@@ -307,6 +307,10 @@
                                     <rect key="frame" x="0.0" y="0.0" width="200" height="200"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="level-select" translatesAutoresizingMaskIntoConstraints="NO" id="kYF-xH-RYf">
+                                            <rect key="frame" x="38" y="44" width="90" height="128"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fuY-oO-fKD">
                                             <rect key="frame" x="60" y="61" width="173" height="33"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -324,8 +328,8 @@
                                         </button>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" red="0.13343167274740009" green="1" blue="0.85286600196902806" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
+                                    <outlet property="imageView" destination="kYF-xH-RYf" id="9sa-wp-qQ6"/>
                                     <outlet property="label" destination="fuY-oO-fKD" id="ysX-rv-ed7"/>
                                 </connections>
                             </collectionViewCell>
@@ -341,7 +345,7 @@
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c1g-EW-ZFY" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2423" y="1971"/>
+            <point key="canvasLocation" x="-2423.4375" y="1970.5078124999998"/>
         </scene>
         <!--Gameplay Controller-->
         <scene sceneID="aPo-mH-EKX">
@@ -418,6 +422,10 @@
                                 <rect key="frame" x="0.0" y="309" width="240" height="183"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="win" translatesAutoresizingMaskIntoConstraints="NO" id="Mn1-yN-WJF">
+                                        <rect key="frame" x="0.0" y="0.0" width="240" height="183"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uyb-fU-SmB">
                                         <rect key="frame" x="66" y="33" width="109" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -451,7 +459,6 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </view>
                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RqF-gw-oWL" userLabel="gameOver">
                                 <rect key="frame" x="264" y="841" width="240" height="183"/>
@@ -559,10 +566,12 @@
         <image name="erase" width="168" height="168"/>
         <image name="floor" width="769" height="146"/>
         <image name="gear" width="114" height="114"/>
+        <image name="level-select" width="497" height="355"/>
         <image name="long-chain" width="380" height="30"/>
         <image name="ocean" width="768" height="1024"/>
         <image name="pirate-text" width="611" height="232"/>
         <image name="rail" width="768" height="122"/>
+        <image name="win" width="537" height="381"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="dzH-7Y-CUu"/>

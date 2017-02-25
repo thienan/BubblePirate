@@ -14,6 +14,7 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
     var levelNames: [String] = []
     private let SEQ_TO_GAMEPLAY = "levelSelectToGame"
     private var levelName: String = ""
+    private let COL_COUNT = 3
     
     //var levelNames = ["a", "b", "c"]
     override func viewDidLoad() {
@@ -31,11 +32,11 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-            return UIEdgeInsets(top: 80, left: 80, bottom: 40, right: 80)
+            return UIEdgeInsets(top: 20, left: 60, bottom: 20, right: 60)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.size.width/3, height: UIScreen.main.bounds.size.height/3)
+        return CGSize(width: UIScreen.main.bounds.size.width/4, height: UIScreen.main.bounds.size.height/6)
     }
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -43,10 +44,15 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if (sectionCount()-1) == section && levelNames.count % 2 != 0 {
-            return 1
+        if (sectionCount()-1) != section {
+            return COL_COUNT
+        }
+        
+        let remainder = levelNames.count % COL_COUNT
+        if  remainder == 0 {
+            return COL_COUNT
         } else {
-            return 2
+            return remainder
         }
     }
     
@@ -54,8 +60,15 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? LevelSelectCell else {
             return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
         }
-
-        let index = indexPath.section * 2 + indexPath.row
+        
+        //cell.layer.cornerRadius = cell.layer.frame.width / 6
+        //cell.layer.borderWidth = CGFloat(4.0)
+        //cell.layer.borderColor = UIColor.brown.cgColor
+        cell.layer.masksToBounds = true
+        
+        cell.scaleImage()
+        
+        let index = indexPath.section * COL_COUNT + indexPath.row
         
         if index < levelNames.count {
             cell.label.text = levelNames[index]

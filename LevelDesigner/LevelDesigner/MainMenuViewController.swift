@@ -9,7 +9,6 @@
 import UIKit
 
 class MainMenuViewController: UIViewController {
-    
     private let GAME_MUSIC_VOLUME: Float = 0.1
     private static var isBackgroundMusicPlayed = false
     
