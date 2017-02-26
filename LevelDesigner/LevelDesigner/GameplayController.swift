@@ -21,15 +21,21 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     private var bubbleManager: BubbleManager?
     private var scoreManager: ScoreManager?
     
+    @IBOutlet private weak var containerView: UIView!
+    @IBOutlet private var scene: UIView!
+    @IBOutlet private weak var border: UIView!
+    @IBOutlet weak var settingMenu: UIView!
+    @IBOutlet weak var blackBackground: UIImageView!
+    @IBOutlet weak var gameOverMenu: UIView!
+    @IBOutlet weak var gameOverBanner: UIImageView!
+    @IBOutlet weak var star1: UIImageView!
+    @IBOutlet weak var star2: UIImageView!
+    @IBOutlet weak var star3: UIImageView!
+    
     private var launcher: Launcher?
     private let launcherYOffSet = CGFloat(100)
     private var cellWidth: CGFloat = GridSettings.cellWidth
     
-    @IBOutlet private weak var containerView: UIView!
-    @IBOutlet private var scene: UIView!
-    @IBOutlet private weak var border: UIView!
-    
-    private let IMAGE_CANNON_BACKGROUND = "cannon-background"
     private let ERROR_GRID_BUBBLES_NOT_LOADED = "ERROR: gridBubblesAreNotLoaded"
     private let ERROR_BUBBLE_MANAGER_FAILED = "ERROR: Bubble Manager failed to initialised"
     private let SEQ_GRID = "grid"
@@ -42,26 +48,31 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     private var gridBubbles: [[GridBubble]]?
     private var levelName: String = ""
     
-    private let SOUND_GAME_WON = "game-won"
-    private let SOUND_GAME_LOST = "game-lost"
-    
-    private let IMAGE_WIN_BANNER = "win-banner"
-    private let IMAGE_LOSE_BANNER = "lose-banner"
-    
     private let MENU_ANIMATE_APPEAR_DURATION: TimeInterval = 1
     private let MENU_ANIMATE_DISAPPEAR_DURATION: TimeInterval = 0.3
     private let MENU_SPRINT_DAMPING: CGFloat = 0.6
     private let MENU_INITIAL_VELOCITY: CGFloat = 2
     
-    @IBOutlet weak var settingMenu: UIView!
-    @IBOutlet weak var blackBackground: UIImageView!
-    @IBOutlet weak var gameOverMenu: UIView!
-    @IBOutlet weak var gameOverBanner: UIImageView!
-    @IBOutlet weak var star1: UIImageView!
-    @IBOutlet weak var star2: UIImageView!
-    @IBOutlet weak var star3: UIImageView!
+    private let STAR_INITIAL_TRANSFORM = CGAffineTransform(scaleX: 0, y: 0)
+    private let STAR_FINAL_TRANSFORM = CGAffineTransform(scaleX: 1.3, y: 1.3)
+    private let STAR_SPRINT_DAMPING: CGFloat = 0.4
+    private let STAR_INITIAL_VELOCITY: CGFloat = 2
+    private let STAR_1_DELAY: TimeInterval = 0.5
+    private let STAR_ANIMATION_DURATION: TimeInterval = 0.6
     
+    private let SOUND_STAR1 = "star-win1"
+    private let SOUND_STAR2 = "star-win2"
+    private let SOUND_STAR3 = "star-win3"
+    private let SOUND_GAME_WON = "game-won"
+    private let SOUND_GAME_LOST = "game-lost"
     
+    private let IMAGE_WIN_BANNER = "win-banner"
+    private let IMAGE_LOSE_BANNER = "lose-banner"
+    private let IMAGE_CANNON_BACKGROUND = "cannon-background"
+    
+    private let winStar1 = UIImageView(image: UIImage(named: "star-win1"))
+    private let winStar2 = UIImageView(image: UIImage(named: "star-win2"))
+    private let winStar3 = UIImageView(image: UIImage(named: "star-win3"))
     
     private var isPaused = false
     
@@ -263,11 +274,6 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
         gameOver()
     }
     
-    let winStar1 = UIImageView(image: UIImage(named: "star-win1"))
-    let winStar2 = UIImageView(image: UIImage(named: "star-win2"))
-    let winStar3 = UIImageView(image: UIImage(named: "star-win3"))
-
-    
     private func createWinStars() {
         winStar1.frame = star1.frame
         winStar2.frame = star2.frame
@@ -279,16 +285,19 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
         
         winStar2.isHidden = true
         winStar3.isHidden = true
+
+        winStar1.transform = STAR_INITIAL_TRANSFORM
+        winStar2.transform = STAR_INITIAL_TRANSFORM
+        winStar3.transform = STAR_INITIAL_TRANSFORM
         
-        winStar1.transform = CGAffineTransform(scaleX: 2, y: 2)
-        winStar2.transform = CGAffineTransform(scaleX: 2, y: 2)
-        winStar3.transform = CGAffineTransform(scaleX: 2, y: 2)
-        
-        UIView.animate(withDuration: 0.7, delay: 0.5, options: .curveLinear, animations: ({
+        UIView.animate(withDuration: STAR_ANIMATION_DURATION, delay: STAR_1_DELAY, usingSpringWithDamping: STAR_SPRINT_DAMPING, initialSpringVelocity: STAR_INITIAL_VELOCITY, options: .curveEaseInOut, animations: ({
             
-            self.winStar1.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+            self.winStar1.transform = self.STAR_FINAL_TRANSFORM
         }), completion: star1Complete)
-        SoundPlayer.play("star-win1")
+        
+        Timer.scheduledTimer(withTimeInterval: STAR_1_DELAY, repeats: false) { (timer) in
+            SoundPlayer.play(self.SOUND_STAR1)
+        }
         
         gameOverMenu.addSubview(winStar1)
         gameOverMenu.addSubview(winStar2)
@@ -297,19 +306,19 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     
     private func star1Complete(_ completed: Bool) {
         winStar2.isHidden = false
-        SoundPlayer.play("star-win2")
+        SoundPlayer.play(self.SOUND_STAR2)
         
-        UIView.animate(withDuration: 0.7, delay: 0, options: .curveLinear, animations: ({
-            self.winStar2.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        UIView.animate(withDuration: STAR_ANIMATION_DURATION, delay: 0, usingSpringWithDamping: STAR_SPRINT_DAMPING, initialSpringVelocity: STAR_INITIAL_VELOCITY, options: .curveEaseInOut, animations: ({
+            self.winStar2.transform = self.STAR_FINAL_TRANSFORM
         }), completion: star2Complete)
     }
     
     private func star2Complete(_ completed: Bool) {
         winStar3.isHidden = false
-        SoundPlayer.play("star-win3")
+        SoundPlayer.play(self.SOUND_STAR3)
         
-        UIView.animate(withDuration: 0.7, delay: 0, options: .curveLinear, animations: ({
-            self.winStar3.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        UIView.animate(withDuration: STAR_ANIMATION_DURATION, delay: 0, usingSpringWithDamping: STAR_SPRINT_DAMPING, initialSpringVelocity: STAR_INITIAL_VELOCITY, options: .curveEaseInOut, animations: ({
+            self.winStar3.transform = self.STAR_FINAL_TRANSFORM
         }), completion: nil)
     }
 }
