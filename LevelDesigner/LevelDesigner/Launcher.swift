@@ -93,7 +93,6 @@ class Launcher: GameObject {
         }
         animatedSpriteComponent.playAnimation()
         SoundPlayer.playRandom(soundNames: [SOUND_SHOOT1, SOUND_SHOOT2])
-        showPath()
     }
     
     public func lookAt(_ lookAtPosition: CGVector) {
@@ -114,12 +113,7 @@ class Launcher: GameObject {
             bubbleManager.swapBubble()
         }
     }
-    
-    public func showPath() {
-        //var positions = GameEngine.rayCast(position + dir * 228, dir, 30)
-        
-    }
-    
+
     // prevent from shooting toward the btm of the screen
     private func isValidFireAngle(_ lookAt: CGVector) -> Bool {
         if lookAt.y > verticalPosLimit {

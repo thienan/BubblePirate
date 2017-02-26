@@ -34,12 +34,10 @@ class StorageManager {
     
     // save without overwrite the level
     public func saveLevelStars(level: Level) -> Bool {
-        /*
-         guard levelName != "" else {
-         return false
-         }
-         */
-
+        guard isValidName(level.levelName)  else {
+            return false
+        }
+        
         guard let levelObjectPath = getLevelObjectPath() else {
             return false
         }
@@ -58,10 +56,7 @@ class StorageManager {
     
     // save level with given levelName, overwrite the content if same levelName exists
     public func save(level: Level, bubbles: [[GridBubble]]) -> Bool {
-        var levelName = level.levelName
-        levelName = levelName.trimmingCharacters(in: .whitespaces)
-        
-        guard levelName != ""  && levelName != "." && levelName != "/"  else {
+        guard isValidName(level.levelName)  else {
             return false
         }
 
@@ -83,6 +78,15 @@ class StorageManager {
         
         NSKeyedArchiver.archiveRootObject(levels, toFile: levelObjectPath)
         NSKeyedArchiver.archiveRootObject(bubbles, toFile: levelContentsPath)
+        return true
+    }
+    
+    private func isValidName(_ levelName: String) -> Bool {
+        let levelNameTrimmed = levelName.trimmingCharacters(in: .whitespaces)
+        
+        if levelNameTrimmed == ""  || levelNameTrimmed.contains(".") || levelNameTrimmed.contains("/")  {
+            return false
+        }
         return true
     }
     
