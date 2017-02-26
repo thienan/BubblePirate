@@ -32,7 +32,8 @@ class GridBubble: NSObject, NSCoding {
         case none = 8
     }
     
-    var position: CGPoint = CGPoint(x: -1, y: -1)
+    let OFFSCREEN_POSITION = CGPoint(x: -1, y: -1)
+    var position: CGPoint
     
     private struct Keys {
         static let color = "color"
@@ -43,6 +44,7 @@ class GridBubble: NSObject, NSCoding {
     
     init(color: BubbleColor) {
         self.color = color
+        position = OFFSCREEN_POSITION
     }
     
     public func cycleToNextColor() {

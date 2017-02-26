@@ -56,7 +56,7 @@ class GridCollectionController: UICollectionViewController, UICollectionViewDele
     
     // set number of items in section
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return (section % 2 == 0) ? bubbleGridManager.COLUMN_COUNT_EVEN : bubbleGridManager.COLUMN_COUNT_ODD
+        return getColCount(section)
     }
     
     // set cell width
@@ -95,7 +95,7 @@ class GridCollectionController: UICollectionViewController, UICollectionViewDele
     
     public func getGridBubblesWithPosition(bubbles: [[GridBubble]]) -> [[GridBubble]] {
         for row in 0..<bubbleGridManager.ROW_COUNT {
-            let columnCount = (row % 2 == 0) ? bubbleGridManager.COLUMN_COUNT_EVEN : bubbleGridManager.COLUMN_COUNT_ODD
+            let columnCount = getColCount(row)
             for col in 0..<columnCount {
                 let bubble = bubbles[row][col]
                 guard let pos = collectionView?.cellForItem(at: IndexPath(row: col, section: row))?.layer.position else {
@@ -119,5 +119,10 @@ class GridCollectionController: UICollectionViewController, UICollectionViewDele
     public func resetGrid() {
         bubbleGridManager.createEmptyBubbleGrid()
         self.collectionView?.reloadData()
+    }
+    
+    private func getColCount(_ row: Int) -> Int {
+        return (row % 2 == 0) ? bubbleGridManager.COLUMN_COUNT_EVEN : bubbleGridManager.COLUMN_COUNT_ODD
+
     }
 }

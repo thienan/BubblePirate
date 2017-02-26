@@ -473,7 +473,6 @@ class BubbleManager: BubbleDelegate {
     private func destroyBubbleWithBomb(_ bubble: Bubble) {
         createBubblePopObject(bubble, IMAGE_EXPLODE_BOMB)
         bubble.destroy()
-        //removeBubbleFromGrid(bubble: bubble)
         delegate?.bubbleDestroyed(bubble)
     }
     
