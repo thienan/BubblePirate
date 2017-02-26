@@ -11,6 +11,9 @@ import Foundation
 class StorageManager {
     private var levels: [Level] = []
     private let PATH_LEVEL_NAME = "level-object"
+    private let DOT_STRING = "."
+    private let SLASH_STRING = "/"
+    private let EMPTY_STRING = ""
     
     init() {
         levels = loadLevelObject()
@@ -84,7 +87,7 @@ class StorageManager {
     private func isValidName(_ levelName: String) -> Bool {
         let levelNameTrimmed = levelName.trimmingCharacters(in: .whitespaces)
         
-        if levelNameTrimmed == ""  || levelNameTrimmed.contains(".") || levelNameTrimmed.contains("/")  {
+        if levelNameTrimmed == EMPTY_STRING  || levelNameTrimmed.contains(DOT_STRING) || levelNameTrimmed.contains(SLASH_STRING)  {
             return false
         }
         return true

@@ -18,6 +18,9 @@ class GameEngine {
     private var displayLink: CADisplayLink?
     public var isPaused: Bool = false
     
+    static let SHAKE_DURATION = 0.3
+    static let SHAKE_VALUES = [-3.0, 0.0, 1.0, 3.0, 2.0, 0.0]
+
     init(_ scene: UIView) {
         self.scene = scene
         renderEngine = RenderEngine(scene)
@@ -94,8 +97,8 @@ extension UIView {
     func shake() {
         let animation = CAKeyframeAnimation(keyPath: "transform.translation.y")
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionLinear)
-        animation.duration = 0.3
-        animation.values = [-3.0, 0.0, 1.0, 3.0, 2.0, 0.0]
+        animation.duration = GameEngine.SHAKE_DURATION
+        animation.values = GameEngine.SHAKE_VALUES
         layer.add(animation, forKey: "shake")
     }
 }

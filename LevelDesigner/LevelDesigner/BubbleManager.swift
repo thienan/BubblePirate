@@ -31,6 +31,7 @@ class BubbleManager: BubbleDelegate {
     private let MIN_BUBBLE_IN_GROUP = 3
     private let MIN_BUBBLE_IN_QUEUE_FOR_SWAPPING = 2
     private let ERROR_CANT_FIND_INDEX_OF_BUBBLE = "UNEXPECTED BEHAVIOUR: cant find index of bubble"
+    private let MIDDLE_ANCHOR = CGVector(0.5, 0.5)
     
     private let BUBBLE_FADE_OUT_SPEED = CGFloat(0.03)
     private let BUBBLE_ROOTED_FADE_OUT_SPEED = CGFloat(0.02)
@@ -57,7 +58,11 @@ class BubbleManager: BubbleDelegate {
     private let SOUND_EXPLOSION = "explosion"
     private let SOUND_LIGHTNING = "lightning"
     private let SOUND_STAR = "star"
-
+    
+    private let STRING_1 = "1"
+    private let STRING_2 = "2"
+    private let STRING_3 = "3"
+    
     private var isLightningActivated = false
     private var isBombSoundPlayed = false
     private var isLightningSoundPlayed = false
@@ -235,13 +240,13 @@ class BubbleManager: BubbleDelegate {
             return
         }
         
-        let sprite1 = spriteName + "1"
-        let sprite2 = spriteName + "2"
-        let sprite3 = spriteName + "3"
+        let sprite1 = spriteName + STRING_1
+        let sprite2 = spriteName + STRING_2
+        let sprite3 = spriteName + STRING_3
         
         let bubblePop = GameObject()
         bubblePop.position = CGVector(position.x, position.y)
-        bubblePop.addAnimatedSpriteComponent(EMPTY_STRING, [sprite1, sprite2, sprite3], spriteComponent.rect, CGVector(0.5, 0.5))
+        bubblePop.addAnimatedSpriteComponent(EMPTY_STRING, [sprite1, sprite2, sprite3], spriteComponent.rect, MIDDLE_ANCHOR)
         bubblePop.rotation = CGFloat(arc4random_uniform(360))
         gameEngine.add(bubblePop)
         

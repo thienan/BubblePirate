@@ -11,15 +11,17 @@ import AVFoundation
 
 class SoundPlayer {
     private static var soundPlayers: [AVAudioPlayer] = []
+    private static let ERROR_URL_NOT_FOUND = "url not found"
+    private static let ERROR_AV_PLAYER_CANT_BE_PLAYED = "Error: AVAudioPlayer cant be played"
+    private static let EXTENSION = "mp3"
     
     public static func play(_ soundName: String, _ volume: Float = 1.0, _ numOfLoops: Int = 0) {
-        guard let url = Bundle.main.url(forResource: soundName, withExtension: "mp3") else {
-            print("url not found")
+        guard let url = Bundle.main.url(forResource: soundName, withExtension: EXTENSION) else {
+            print(ERROR_URL_NOT_FOUND)
             return
         }
 
         do {
-            /// this codes for making this app ready to takeover the device audio
             try AVAudioSession.sharedInstance().setCategory(AVAudioSessionCategoryPlayback)
             try AVAudioSession.sharedInstance().setActive(true)
             
@@ -45,9 +47,8 @@ class SoundPlayer {
                 }
             }
             
-            // no need for prepareToPlay because prepareToPlay is happen automatically when calling play()
-        } catch let error as NSError {
-            print("error: \(error.localizedDescription)")
+        } catch {
+            print(ERROR_AV_PLAYER_CANT_BE_PLAYED)
         }
     }
     

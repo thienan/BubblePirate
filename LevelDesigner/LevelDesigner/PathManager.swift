@@ -25,6 +25,9 @@ class PathManager: GameObject {
     let leftVector = CGVector(-1, 0)
     let anchorAtMiddle = CGVector(0.5, 0.5)
     
+    let PATH_OFFSET: CGFloat = 130
+    let DEACTIVATE_ALPHA: CGFloat = 1
+    
     init(_ launcher: Launcher, _ gameEngine: GameEngine) {
         self.launcher = launcher
         self.gameEngine = gameEngine
@@ -51,7 +54,7 @@ class PathManager: GameObject {
     public override func update(_ deltaTime: CGFloat) {
         deactivateSpriteObjects()
         
-        let positions = gameEngine.rayCast(launcher.position + launcher.dir * 130, launcher.dir, PATH_GAP)
+        let positions = gameEngine.rayCast(launcher.position + launcher.dir * PATH_OFFSET, launcher.dir, PATH_GAP)
 
         if positions.count < 1 {
             return
@@ -86,7 +89,7 @@ class PathManager: GameObject {
             } else {
                 spriteObject.spriteComponent?.isActive = false
             }
-            spriteObject.spriteComponent?.alpha = 1
+            spriteObject.spriteComponent?.alpha = DEACTIVATE_ALPHA
         }
     }
     
