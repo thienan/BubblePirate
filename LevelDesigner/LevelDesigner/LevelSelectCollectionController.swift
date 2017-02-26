@@ -14,6 +14,7 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
     var levels: [Level] = []
     private let SEQGUE_TO_GAMEPLAY = "levelSelectToGame"
     private var levelName: String = ""
+    private let CELL_IDENTIFIER = "cell"
     private let COL_COUNT = 3
     
     override func viewDidLoad() {
@@ -44,7 +45,8 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
     }
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if (sectionCount()-1) != section {
+        let lastSectionIndex = sectionCount()-1
+        if (lastSectionIndex) != section {
             return COL_COUNT
         }
         
@@ -57,8 +59,8 @@ class LevelSelectCollectionController: UICollectionViewController, UICollectionV
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? LevelSelectCell else {
-            return collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CELL_IDENTIFIER, for: indexPath) as? LevelSelectCell else {
+            return collectionView.dequeueReusableCell(withReuseIdentifier: CELL_IDENTIFIER, for: indexPath)
         }
         cell.layer.masksToBounds = true
         
