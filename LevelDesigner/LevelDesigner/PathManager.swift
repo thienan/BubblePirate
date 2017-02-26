@@ -19,6 +19,10 @@ class PathManager: GameObject {
     let OFFSCREEN_POSITION = CGVector(-100, -100)
     let SPRITE_WIDTH: CGFloat = 20
     let PATH_GAP: CGFloat = 50
+    let TO_DEGREE = 180/M_PI
+    
+    let angleOffset: CGFloat = 90
+    let leftVector = CGVector(-1, 0)
     
     init(_ launcher: Launcher, _ gameEngine: GameEngine) {
         self.launcher = launcher
@@ -61,12 +65,9 @@ class PathManager: GameObject {
             spriteObject.spriteComponent?.isActive = true
             spriteObject.position = positions[i]
             
-            let angleOffset: CGFloat = 90
-            let leftVector = CGVector(-1, 0)
-            
             let dir = CGVector.normalize(positions[i+1] - spriteObject.position)
             let dot = CGVector.dot(leftVector, dir)
-            spriteObject.rotation = CGFloat(Double(acos(dot)) * 180/M_PI) - angleOffset
+            spriteObject.rotation = CGFloat(Double(acos(dot)) * TO_DEGREE) - angleOffset
         }
     }
 

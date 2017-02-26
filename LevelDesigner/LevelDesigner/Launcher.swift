@@ -22,6 +22,7 @@ class Launcher: GameObject {
     private let CANNON_WIDTH = 136
     private let CANNON_HEIGHT = 228
     private let CANNON_Y_OFFSET = 175
+    let TO_DEGREE = 180/M_PI
     
     private let CANNON_SPRITE_1 = "cannon1"
     private let CANNON_SPRITE_2 = "cannon2"
@@ -32,6 +33,9 @@ class Launcher: GameObject {
     private let SOUND_SHOOT2 = "shoot2"
     
     private let cannonAnchor = CGVector(0.5, 0.77)
+    let angleOffset: CGFloat = 90
+    let leftVector = CGVector(-1, 0)
+    
     
     private var verticalPosLimit: CGFloat {
         return position.y - 20
@@ -97,12 +101,9 @@ class Launcher: GameObject {
             return
         }
         
-        let angleOffset: CGFloat = 90
-        let leftVector = CGVector(-1, 0)
-        
         dir = getLookAtDir(lookAtPosition)
         let dot = CGVector.dot(leftVector, dir)
-        rotation = CGFloat(Double(acos(dot)) * 180/M_PI) - angleOffset
+        rotation = CGFloat(Double(acos(dot)) * TO_DEGREE) - angleOffset
     }
     
     public func tapped(_ position: CGVector) {
