@@ -187,7 +187,6 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
         launcher?.lookAt(CGVector.toVector(position))
         if gesture.state == .ended {
             launcher?.fireBubble(lookAtPosition: CGVector.toVector(position))
-            //scene.shake()
         }
     }
     
@@ -197,18 +196,6 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
             let position = gesture.location(in: view)
             launcher?.fireBubble(lookAtPosition: CGVector.toVector(position))
             launcher?.tapped(CGVector.toVector(position))
-            //scene.shake2(count: 3, for: 0.3, withTranslation: 3)
-            //scene.shake()
-            
-            var positions = gameEngine?.rayCast(launcher!.position + launcher!.dir * 228, launcher!.dir, 30)
-            /*
-            for pos in positions! {
-                let cannonBackground = GameObject()
-                cannonBackground.position = pos
-                cannonBackground.addSpriteComponent(IMAGE_CANNON_BACKGROUND, CGRect(x: -cellWidth/2, y: -cellWidth/2, width: cellWidth, height: cellWidth))
-                gameEngine?.add(cannonBackground)
-            }
- */
         }
     }
 
