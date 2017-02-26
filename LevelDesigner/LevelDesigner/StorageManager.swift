@@ -18,18 +18,14 @@ class StorageManager {
     
     private func getLevelObjectPath() -> String? {
         let fileManger = FileManager.default
-        guard let url = fileManger.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            return nil
-        }
-        return url.appendingPathComponent(PATH_LEVEL_NAME).path
+        let url = fileManger.urls(for: .documentDirectory, in: .userDomainMask).first
+        return url?.appendingPathComponent(PATH_LEVEL_NAME).path
     }
     
     private func getLevelContentsPath(_ levelName: String) -> String? {
         let fileManger = FileManager.default
-        guard let url = fileManger.urls(for: .documentDirectory, in: .userDomainMask).first else {
-            return nil
-        }
-        return url.appendingPathComponent(levelName).path
+        let url = fileManger.urls(for: .documentDirectory, in: .userDomainMask).first
+        return url?.appendingPathComponent(levelName).path
     }
 
     public func doesLevelExist(level: Level) -> Bool {
@@ -94,11 +90,7 @@ class StorageManager {
             return []
         }
         
-        guard let levels = NSKeyedUnarchiver.unarchiveObject(withFile: levelObjectPath) as? [Level] else {
-            return []
-        }
-        
-        return levels
+        return NSKeyedUnarchiver.unarchiveObject(withFile: levelObjectPath) as? [Level] ?? []
     }
     
     public func loadLevel(levelName: String) -> [[GridBubble]]? {
@@ -106,10 +98,7 @@ class StorageManager {
             return nil
         }
         
-        guard let data = NSKeyedUnarchiver.unarchiveObject(withFile: levelContentsPath) as? [[GridBubble]] else {
-            return nil
-        }
-        return data
+        return NSKeyedUnarchiver.unarchiveObject(withFile: levelContentsPath) as? [[GridBubble]]
     }
     
     public func getLevelNames() -> [String] {

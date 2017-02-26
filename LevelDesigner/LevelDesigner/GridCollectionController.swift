@@ -16,6 +16,7 @@ class GridCollectionController: UICollectionViewController, UICollectionViewDele
     private var cellWidth: CGFloat = GridSettings.cellWidth
     public let bubbleGridManager = GridBubbleManager()
     public let storageManager = StorageManager()
+    private let ROW_OFFSET: CGFloat = -10/80
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,7 +49,7 @@ class GridCollectionController: UICollectionViewController, UICollectionViewDele
         if section % 2 == 0 {
             return UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         } else {
-            let sectionVecticalOffset = -10/80 * cellWidth
+            let sectionVecticalOffset = ROW_OFFSET * cellWidth
             return UIEdgeInsets(top: sectionVecticalOffset, left: cellWidth/2, bottom: sectionVecticalOffset, right: cellWidth/2)
         }
     }

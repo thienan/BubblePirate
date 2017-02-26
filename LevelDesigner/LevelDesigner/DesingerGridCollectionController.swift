@@ -34,6 +34,7 @@ class DesignerGridCollectionController: GridCollectionController {
     
     private let BUTTON_BACKGROUND_ALPHA = 0.3
     private let BUTTON_BORDER_WIDTH = 1.0
+    private let CELL_BORDER_WIDTH: CGFloat = 1.0
 
     private var designMode = DesignMode.IDLE
     private var selectedBubbleColor = GridBubble.BubbleColor.none
@@ -54,14 +55,14 @@ class DesignerGridCollectionController: GridCollectionController {
         panGestureReg.maximumNumberOfTouches = 1
         collectionView?.addGestureRecognizer(panGestureReg)
     }
-    
+
     // set properties of each cell
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GRID_CELL_IDENTIFIER, for: indexPath) as? GridCollectionCell else {
             return GridCollectionCell()
         }
         cell.layer.cornerRadius = cell.layer.frame.width / 2
-        cell.layer.borderWidth = CGFloat(1.0)
+        cell.layer.borderWidth = CELL_BORDER_WIDTH
         cell.layer.borderColor = UIColor.black.cgColor
         cell.layer.masksToBounds = true
         cell.layer.backgroundColor = UIColor.gray.withAlphaComponent(CGFloat(BUTTON_BACKGROUND_ALPHA)).cgColor

@@ -172,7 +172,7 @@ class LevelDesignViewController: UIViewController {
         alert.addAction(UIAlertAction(title: BUTTON_TITLE_SAVE, style: UIAlertActionStyle.default, handler: {(action) in
             alert.dismiss(animated: true, completion: nil)
 
-            guard  let text = alert.textFields?[0].text else {
+            guard  let text = alert.textFields?.first?.text else {
                 return
             }
             

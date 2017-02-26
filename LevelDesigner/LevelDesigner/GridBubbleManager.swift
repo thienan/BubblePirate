@@ -30,7 +30,7 @@ class GridBubbleManager {
         bubbleGrid = []
         for row in 0..<ROW_COUNT {
             bubbleGrid.append([GridBubble]())
-            let columnCount = (row % 2 == 0) ? COLUMN_COUNT_EVEN : COLUMN_COUNT_ODD
+            let columnCount = getColCount(row)
             for _ in 0..<columnCount {
                 bubbleGrid[row].append(GridBubble(color: GridBubble.BubbleColor.none))
             }
@@ -79,7 +79,7 @@ class GridBubbleManager {
             return false
         }
         
-        let colCount = (indexRow % 2 == 0) ? COLUMN_COUNT_EVEN : COLUMN_COUNT_ODD
+        let colCount = getColCount(indexRow)
         return indexCol < colCount
     }
     
@@ -89,11 +89,15 @@ class GridBubbleManager {
         }
 
         for row in 0..<ROW_COUNT {
-            let colCount = (row % 2 == 0) ? COLUMN_COUNT_EVEN : COLUMN_COUNT_ODD
+            let colCount = getColCount(row)
             guard bubbles[row].count == colCount else {
                 return false
             }
         }
         return true
+    }
+    
+    private func getColCount(_ row: Int) -> Int {
+        return (row % 2 == 0) ? COLUMN_COUNT_EVEN : COLUMN_COUNT_ODD
     }
 }
