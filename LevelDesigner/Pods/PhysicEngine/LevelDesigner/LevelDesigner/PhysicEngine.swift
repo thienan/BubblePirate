@@ -145,10 +145,11 @@ public class PhysicEngine {
                 }
                 if isStatic(physicObject) && collider1.intersect(collider2) {
                     moving = false
+                    positions.append(physicObjectBody.position)
                     break
                 }
             }
-
+            
             if collider1.intersect(leftVerticalLine: worldBoundRect.minX) {
                 physicObjectBody.position = CGVector(worldBoundRect.minX + collider1.radius, physicObjectBody.position.y)
                 physicObjectBody.velocity = CGVector(-physicObjectBody.velocity.x, physicObjectBody.velocity.y)
@@ -158,15 +159,16 @@ public class PhysicEngine {
                 physicObjectBody.velocity = CGVector(-physicObjectBody.velocity.x, physicObjectBody.velocity.y)
             }
             if collider1.intersect(topHorizontalLine: worldBoundRect.minY) {
+                positions.append(physicObjectBody.position)
                 physicObjectBody.position = CGVector(physicObjectBody.position.x, worldBoundRect.minY + collider1.radius)
                 moving = false
                 break
             }
-
+            
             positions.append(physicObjectBody.position)
             physicObjectBody.position = physicObjectBody.position + physicObjectBody.velocity
         }
-        
+
         return positions
     }
     

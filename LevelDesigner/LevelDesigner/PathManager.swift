@@ -15,10 +15,10 @@ class PathManager: GameObject {
     var spriteObjectPool: [GameObject]
     
     private let IMAGE_AIM_SHOT = "aim-shot"
-    let PATH_GAP: CGFloat = 32
-    
     let NUM_OF_SPRITES = 60
     let OFFSCREEN_POSITION = CGVector(-100, -100)
+    let SPRITE_WIDTH: CGFloat = 20
+    let PATH_GAP: CGFloat = 50
     
     init(_ launcher: Launcher, _ gameEngine: GameEngine) {
         self.launcher = launcher
@@ -38,7 +38,8 @@ class PathManager: GameObject {
     
     private func createSprite() -> GameObject {
         let gameObject = GameObject()
-        gameObject.addSpriteComponent(IMAGE_AIM_SHOT, CGRect(x: -PATH_GAP/2, y: -PATH_GAP/2, width: PATH_GAP, height: PATH_GAP))
+        let anchorAtMiddle = CGVector(0.5, 0.5)
+        gameObject.addSpriteComponent(IMAGE_AIM_SHOT, CGRect(x: -SPRITE_WIDTH/2, y: -SPRITE_WIDTH/2, width: SPRITE_WIDTH, height: SPRITE_WIDTH), anchorAtMiddle)
 
         gameEngine.add(gameObject)
         return gameObject
@@ -47,14 +48,26 @@ class PathManager: GameObject {
     public override func update(_ deltaTime: CGFloat) {
         deactivateSpriteObjects()
         
-        let positions = gameEngine.rayCast(launcher.position + launcher.dir * 130, launcher.dir, 30)
-        var spriteObject: GameObject?
-        for position in positions {
-            spriteObject = findInactiveSpriteObject()
-            spriteObject?.spriteComponent?.isActive = true
-            spriteObject?.position = position
+        let positions = gameEngine.rayCast(launcher.position + launcher.dir * 130, launcher.dir, PATH_GAP)
+
+        if positions.count < 1 {
+            return
         }
-        spriteObject?.spriteComponent?.alpha = 0.3
+        
+        for i in 0..<positions.count-1 {
+            let object = findInactiveSpriteObject()
+            guard let spriteObject = object else { continue }
+            
+            spriteObject.spriteComponent?.isActive = true
+            spriteObject.position = positions[i]
+            
+            let angleOffset: CGFloat = 90
+            let leftVector = CGVector(-1, 0)
+            
+            let dir = CGVector.normalize(positions[i+1] - spriteObject.position)
+            let dot = CGVector.dot(leftVector, dir)
+            spriteObject.rotation = CGFloat(Double(acos(dot)) * 180/M_PI) - angleOffset
+        }
     }
 
     private func findInactiveSpriteObject() -> GameObject? {
@@ -75,5 +88,9 @@ class PathManager: GameObject {
             }
             spriteObject.spriteComponent?.alpha = 1
         }
+    }
+    
+    public func getLookAtDir(_ lookAtPoint: CGVector) -> CGVector {
+        return CGVector.normalize(lookAtPoint - position)
     }
 }
