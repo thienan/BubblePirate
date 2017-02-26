@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4535443CFF17A7E1D927C5DE /* Pods_GameEngine.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB7A21E457044B5070B422B5 /* Pods_GameEngine.framework */; };
 		F310F4EE1E4249CB00C72156 /* GridCollectionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F310F4ED1E4249CB00C72156 /* GridCollectionController.swift */; };
 		F3206E331E601AFD007F60C0 /* shoot1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3206E311E601AFD007F60C0 /* shoot1.mp3 */; };
 		F3206E341E601AFD007F60C0 /* shoot2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = F3206E321E601AFD007F60C0 /* shoot2.mp3 */; };
@@ -75,6 +76,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3B80FED2768EA3D2AE459B1C /* Pods-GameEngine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameEngine.release.xcconfig"; path = "Pods/Target Support Files/Pods-GameEngine/Pods-GameEngine.release.xcconfig"; sourceTree = "<group>"; };
+		669A87C8E92B7E7C6617DE9D /* Pods-GameEngine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GameEngine.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GameEngine/Pods-GameEngine.debug.xcconfig"; sourceTree = "<group>"; };
+		BB7A21E457044B5070B422B5 /* Pods_GameEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GameEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F310F4ED1E4249CB00C72156 /* GridCollectionController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GridCollectionController.swift; sourceTree = "<group>"; };
 		F3206E311E601AFD007F60C0 /* shoot1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = shoot1.mp3; path = ../Sounds/shoot1.mp3; sourceTree = "<group>"; };
 		F3206E321E601AFD007F60C0 /* shoot2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = shoot2.mp3; path = ../Sounds/shoot2.mp3; sourceTree = "<group>"; };
@@ -140,6 +144,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4535443CFF17A7E1D927C5DE /* Pods_GameEngine.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +158,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9745415D7BDFBB9E6D6F6CE4 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				669A87C8E92B7E7C6617DE9D /* Pods-GameEngine.debug.xcconfig */,
+				3B80FED2768EA3D2AE459B1C /* Pods-GameEngine.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		A6A0A3E2C5F2D3766A502432 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BB7A21E457044B5070B422B5 /* Pods_GameEngine.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		BF814E971DFE8B73005A18BE = {
 			isa = PBXGroup;
 			children = (
@@ -160,6 +182,8 @@
 				F3DD1F501E40AE0800A16909 /* GameEngine */,
 				F3F91BF21E5F119400CB3B55 /* Sounds */,
 				F3DD1F621E40AE0800A16909 /* GameEngineUITests.xctest */,
+				9745415D7BDFBB9E6D6F6CE4 /* Pods */,
+				A6A0A3E2C5F2D3766A502432 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -305,9 +329,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F3DD1F6D1E40AE0800A16909 /* Build configuration list for PBXNativeTarget "GameEngine" */;
 			buildPhases = (
+				BB3F7FA90D2331041A89494B /* [CP] Check Pods Manifest.lock */,
 				F3DD1F4B1E40AE0800A16909 /* Sources */,
 				F3DD1F4C1E40AE0800A16909 /* Frameworks */,
 				F3DD1F4D1E40AE0800A16909 /* Resources */,
+				54CF1EA5F2A29A4825E2A919 /* [CP] Embed Pods Frameworks */,
+				18B987D7153E9AF5EDDA09B9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -409,6 +436,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		18B987D7153E9AF5EDDA09B9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GameEngine/Pods-GameEngine-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		54CF1EA5F2A29A4825E2A919 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GameEngine/Pods-GameEngine-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BB3F7FA90D2331041A89494B /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		F3DD1F4B1E40AE0800A16909 /* Sources */ = {
@@ -591,6 +666,7 @@
 		};
 		F3DD1F691E40AE0800A16909 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 669A87C8E92B7E7C6617DE9D /* Pods-GameEngine.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4CWS2778TZ;
@@ -605,6 +681,7 @@
 		};
 		F3DD1F6A1E40AE0800A16909 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 3B80FED2768EA3D2AE459B1C /* Pods-GameEngine.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 4CWS2778TZ;

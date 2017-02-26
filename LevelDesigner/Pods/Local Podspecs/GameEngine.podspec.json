@@ -1,0 +1,29 @@
+{
+  "name": "GameEngine",
+  "version": "0.0.1",
+  "summary": "PhysicEngine",
+  "description": "PhysicEngine",
+  "homepage": "https://www.gitbook.com/book/cs3217/problem-sets/details",
+  "license": {
+    "type": "MIT",
+    "file": "FILE_LICENSE"
+  },
+  "authors": {
+    "Ta Eu": "taeu93@gmail.com"
+  },
+  "source": {
+    "git": "https://limtaeu@bitbucket.org/cs3217/2017-ps5-a0126356e.git",
+    "branch": "pod"
+  },
+  "source_files": [
+    "LevelDesigner",
+    "LevelDesigner/**/*.{swift}"
+  ],
+  "exclude_files": "Classes/Exclude",
+  "platforms": {
+    "osx": null,
+    "ios": null,
+    "tvos": null,
+    "watchos": null
+  }
+}

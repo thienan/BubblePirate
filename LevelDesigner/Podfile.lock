@@ -1,0 +1,22 @@
+PODS:
+  - GameEngine (0.0.1)
+
+DEPENDENCIES:
+  - GameEngine (from `https://limtaeu@bitbucket.org/cs3217/2017-ps5-a0126356e.git`, branch `pod`)
+
+EXTERNAL SOURCES:
+  GameEngine:
+    :branch: pod
+    :git: https://limtaeu@bitbucket.org/cs3217/2017-ps5-a0126356e.git
+
+CHECKOUT OPTIONS:
+  GameEngine:
+    :commit: f0041e746ffd54fc75b99938dffe5acac7b1bcb0
+    :git: https://limtaeu@bitbucket.org/cs3217/2017-ps5-a0126356e.git
+
+SPEC CHECKSUMS:
+  GameEngine: f484996d8d3beeefe7b42359d8b8c355d175537e
+
+PODFILE CHECKSUM: e70bebbe6bf27908bb43051cb59d3a0835bd2159
+
+COCOAPODS: 1.2.0.rc.1
