@@ -541,12 +541,12 @@
                                         <rect key="frame" x="203" y="92" width="90" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star3" translatesAutoresizingMaskIntoConstraints="NO" id="lQt-8q-0zL" userLabel="star3">
-                                        <rect key="frame" x="342" y="117" width="90" height="90"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star1" translatesAutoresizingMaskIntoConstraints="NO" id="WO4-Ie-hYG" userLabel="star1">
+                                        <rect key="frame" x="92" y="107" width="90" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star1" translatesAutoresizingMaskIntoConstraints="NO" id="WO4-Ie-hYG" userLabel="star1">
-                                        <rect key="frame" x="70" y="117" width="90" height="90"/>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="star3" translatesAutoresizingMaskIntoConstraints="NO" id="lQt-8q-0zL" userLabel="star3">
+                                        <rect key="frame" x="315" y="107" width="90" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
                                 </subviews>

@@ -244,6 +244,7 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     }
     
     func gameWon() {
+        if isPaused { return }
         gameOverBanner.image = UIImage(named: IMAGE_WIN_BANNER)
         SoundPlayer.play(SOUND_GAME_WON)
         gameOver()
@@ -256,23 +257,60 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     }
 
     func gameLost() {
+        if isPaused { return }
         gameOverBanner.image = UIImage(named: IMAGE_LOSE_BANNER)
         SoundPlayer.play(SOUND_GAME_LOST)
         gameOver()
     }
     
+    let winStar1 = UIImageView(image: UIImage(named: "star-win1"))
+    let winStar2 = UIImageView(image: UIImage(named: "star-win2"))
+    let winStar3 = UIImageView(image: UIImage(named: "star-win3"))
+
+    
     private func createWinStars() {
-        let winStar1 = UIImageView(image: UIImage(named: "star-win1"))
-        let winStar2 = UIImageView(image: UIImage(named: "star-win2"))
-        let winStar3 = UIImageView(image: UIImage(named: "star-win3"))
+        winStar1.frame = star1.frame
+        winStar2.frame = star2.frame
+        winStar3.frame = star3.frame
         
         winStar1.center = star1.center
         winStar2.center = star2.center
         winStar3.center = star3.center
         
+        winStar2.isHidden = true
+        winStar3.isHidden = true
+        
+        winStar1.transform = CGAffineTransform(scaleX: 2, y: 2)
+        winStar2.transform = CGAffineTransform(scaleX: 2, y: 2)
+        winStar3.transform = CGAffineTransform(scaleX: 2, y: 2)
+        
+        UIView.animate(withDuration: 0.7, delay: 0.5, options: .curveLinear, animations: ({
+            
+            self.winStar1.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }), completion: star1Complete)
+        SoundPlayer.play("star-win1")
+        
         gameOverMenu.addSubview(winStar1)
         gameOverMenu.addSubview(winStar2)
         gameOverMenu.addSubview(winStar3)
+    }
+    
+    private func star1Complete(_ completed: Bool) {
+        winStar2.isHidden = false
+        SoundPlayer.play("star-win2")
+        
+        UIView.animate(withDuration: 0.7, delay: 0, options: .curveLinear, animations: ({
+            self.winStar2.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }), completion: star2Complete)
+    }
+    
+    private func star2Complete(_ completed: Bool) {
+        winStar3.isHidden = false
+        SoundPlayer.play("star-win3")
+        
+        UIView.animate(withDuration: 0.7, delay: 0, options: .curveLinear, animations: ({
+            self.winStar3.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }), completion: nil)
     }
 }
 
