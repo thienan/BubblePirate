@@ -57,7 +57,12 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     @IBOutlet weak var blackBackground: UIImageView!
     @IBOutlet weak var gameOverMenu: UIView!
     @IBOutlet weak var gameOverBanner: UIImageView!
-
+    @IBOutlet weak var star1: UIImageView!
+    @IBOutlet weak var star2: UIImageView!
+    @IBOutlet weak var star3: UIImageView!
+    
+    
+    
     private var isPaused = false
     
     override func viewDidLoad() {
@@ -247,12 +252,27 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
             level.setFullStar()
             gridController?.save(level: level)
         }
+        createWinStars()
     }
-    
+
     func gameLost() {
         gameOverBanner.image = UIImage(named: IMAGE_LOSE_BANNER)
         SoundPlayer.play(SOUND_GAME_LOST)
         gameOver()
+    }
+    
+    private func createWinStars() {
+        let winStar1 = UIImageView(image: UIImage(named: "star-win1"))
+        let winStar2 = UIImageView(image: UIImage(named: "star-win2"))
+        let winStar3 = UIImageView(image: UIImage(named: "star-win3"))
+        
+        winStar1.center = star1.center
+        winStar2.center = star2.center
+        winStar3.center = star3.center
+        
+        gameOverMenu.addSubview(winStar1)
+        gameOverMenu.addSubview(winStar2)
+        gameOverMenu.addSubview(winStar3)
     }
 }
 
