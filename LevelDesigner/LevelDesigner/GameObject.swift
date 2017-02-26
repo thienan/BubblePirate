@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import PhysicEngine
 
 class GameObject: Equatable, PhysicObject {
     private static var idCount = 0

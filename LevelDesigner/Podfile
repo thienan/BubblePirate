@@ -6,7 +6,7 @@ target 'GameEngine' do
   use_frameworks!
 
   # Pods for GraphADT
-pod 'GameEngine', :git => 'https://limtaeu@bitbucket.org/cs3217/2017-ps5-a0126356e.git', :branch => 'pod'
+pod 'PhysicEngine', :git => 'https://limtaeu@bitbucket.org/cs3217/2017-ps5-a0126356e.git', :branch => 'pod'
 
   #target 'GameEngine' do
    # inherit! :search_paths

@@ -1,6 +1,0 @@
-framework module GameEngine {
-  umbrella header "GameEngine-umbrella.h"
-
-  export *
-  module * { export * }
-}

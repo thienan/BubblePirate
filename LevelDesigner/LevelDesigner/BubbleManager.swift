@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import PhysicEngine
 
 class BubbleManager: BubbleDelegate {
     enum GameplayMode {

@@ -1,0 +1,6 @@
+framework module PhysicEngine {
+  umbrella header "PhysicEngine-umbrella.h"
+
+  export *
+  module * { export * }
+}

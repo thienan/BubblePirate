@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import PhysicEngine
 
 class SphereColliderComponent: Component, SphereCollider {
     private static var idCount = 0

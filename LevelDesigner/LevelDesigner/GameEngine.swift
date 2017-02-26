@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import PhysicEngine
 
 class GameEngine {
     private(set) static var gameObjects: [GameObject] = []

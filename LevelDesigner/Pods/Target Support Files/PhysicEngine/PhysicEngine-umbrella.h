@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double GameEngineVersionNumber;
-FOUNDATION_EXPORT const unsigned char GameEngineVersionString[];
+FOUNDATION_EXPORT double PhysicEngineVersionNumber;
+FOUNDATION_EXPORT const unsigned char PhysicEngineVersionString[];
 

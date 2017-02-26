@@ -8,6 +8,7 @@
 
 import UIKit
 import Foundation
+import PhysicEngine
 
 class GameplayController: UIViewController, ScoreManagerDelegate {
     enum LoadMode {
