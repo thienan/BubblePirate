@@ -40,7 +40,7 @@ class PreLoader {
     private func createLevel2() {
         let bubbleManager = GridBubbleManager()
         for col in 0..<GridSettings.COLUMN_COUNT_EVEN {
-            try? bubbleManager.setBubbleColor(indexRow: 0, indexCol: col, bubbleColor: GridBubble.BubbleColor.red)
+            try? bubbleManager.setBubbleColor(indexRow: 0, indexCol: col, bubbleColor: GridBubble.BubbleColor.lightning)
         }
         let level = Level(LEVEL_NAME_2)
         

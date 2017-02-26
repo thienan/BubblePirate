@@ -10,7 +10,7 @@ import Foundation
 
 class StorageManager {
     private var levels: [Level] = []
-    private let PATH_LEVEL_NAME = "level-object"
+    private let PATH_LEVEL_NAME = "level-objects"
     private let DOT_STRING = "."
     private let SLASH_STRING = "/"
     private let EMPTY_STRING = ""
