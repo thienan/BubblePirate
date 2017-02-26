@@ -133,13 +133,16 @@ class PhysicEngine {
         if !worldBound {
             return []
         }
+        
         guard let collider1 = physicObjectBody.getSphereCollider() else {
             return []
         }
         
         while moving {
             for physicObject in physicObjects {
-                guard let collider2 = physicObject.getSphereCollider() else { continue }
+                guard let collider2 = physicObject.getSphereCollider() else {
+                    continue
+                }
                 if collider1.intersect(collider2) {
                     moving = false
                     break
@@ -163,11 +166,9 @@ class PhysicEngine {
             positions.append(physicObjectBody.position)
             physicObjectBody.position = physicObjectBody.position + physicObjectBody.velocity
         }
-        
-        
+
         return positions
     }
-
     
     public func setWorldBound(_ worldBoundRect: CGRect) {
         self.worldBound = true
