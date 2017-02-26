@@ -165,9 +165,16 @@ Star bubble
 
 Cannon
 - shoots bubble in the direction of the cannon's direction'
-- show a trajectory that has a limit when there is too many bounces
+- tap as fast as possible
+- tap at the bottom of the screen 
 
+trajectory
+- trajectory that has a limit when there is too many bounces
+- test upward trajectory
 
+Sound
+- test background music 
+- test bubble effect music overlaps with background music
 
 Glass-box testing
 GamePlay Controller class

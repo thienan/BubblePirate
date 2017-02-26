@@ -92,7 +92,7 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(true);
+        super.viewWillAppear(true)
         navigationController?.navigationBar.isHidden = true // for navigation bar hide
     }
     
