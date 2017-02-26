@@ -58,12 +58,13 @@ class StorageManager {
     
     // save level with given levelName, overwrite the content if same levelName exists
     public func save(level: Level, bubbles: [[GridBubble]]) -> Bool {
-        /*
-        guard levelName != "" else {
+        var levelName = level.levelName
+        levelName = levelName.trimmingCharacters(in: .whitespaces)
+        
+        guard levelName != ""  && levelName != "." && levelName != "/"  else {
             return false
         }
-        */
-        
+
         guard let levelObjectPath = getLevelObjectPath() else {
             return false
         }
