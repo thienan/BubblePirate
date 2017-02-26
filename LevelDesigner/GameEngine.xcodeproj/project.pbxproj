@@ -15,6 +15,7 @@
 		F3206E381E6046AB007F60C0 /* ScoreManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3206E371E6046AB007F60C0 /* ScoreManagerDelegate.swift */; };
 		F32072251E4DCAC300234C4B /* BubbleDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32072241E4DCAC300234C4B /* BubbleDelegate.swift */; };
 		F321920C1E447FCF0092B010 /* StorageManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F321920B1E447FCF0092B010 /* StorageManager.swift */; };
+		F32748441E62DD3B009B0A89 /* PathManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = F32748431E62DD3B009B0A89 /* PathManager.swift */; };
 		F33CD5F01E48974C00DCECAA /* RenderEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F33CD5EF1E48974C00DCECAA /* RenderEngine.swift */; };
 		F3640F751E587248009EC3B2 /* AnimatedSpriteComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3640F741E587248009EC3B2 /* AnimatedSpriteComponent.swift */; };
 		F36807871E41A6CD00586C2E /* Bubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = F36807861E41A6CD00586C2E /* Bubble.swift */; };
@@ -82,6 +83,7 @@
 		F3206E371E6046AB007F60C0 /* ScoreManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScoreManagerDelegate.swift; sourceTree = "<group>"; };
 		F32072241E4DCAC300234C4B /* BubbleDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleDelegate.swift; sourceTree = "<group>"; };
 		F321920B1E447FCF0092B010 /* StorageManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		F32748431E62DD3B009B0A89 /* PathManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PathManager.swift; sourceTree = "<group>"; };
 		F33CD5EF1E48974C00DCECAA /* RenderEngine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RenderEngine.swift; sourceTree = "<group>"; };
 		F3640F741E587248009EC3B2 /* AnimatedSpriteComponent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnimatedSpriteComponent.swift; sourceTree = "<group>"; };
 		F36807861E41A6CD00586C2E /* Bubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bubble.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 				F39A0C7F1E5055E000B1DC45 /* AnimatedBubble.swift */,
 				F38BECF31E4B3A80009FCE86 /* Launcher.swift */,
 				F3F91BEC1E5ECC1900CB3B55 /* LauncherRing.swift */,
+				F32748431E62DD3B009B0A89 /* PathManager.swift */,
 			);
 			name = GamePlay;
 			sourceTree = "<group>";
@@ -486,6 +489,7 @@
 				F36DF4271E42DE1A00CCCD7D /* GridCollectionCell.swift in Sources */,
 				F321920C1E447FCF0092B010 /* StorageManager.swift in Sources */,
 				F37647871E4836AF0008454B /* GameObject.swift in Sources */,
+				F32748441E62DD3B009B0A89 /* PathManager.swift in Sources */,
 				F368078F1E422F1800586C2E /* LevelDesignViewController.swift in Sources */,
 				F32072251E4DCAC300234C4B /* BubbleDelegate.swift in Sources */,
 				F36E8A491E4C4E17008F055C /* DesingerGridCollectionController.swift in Sources */,

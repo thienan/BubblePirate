@@ -154,16 +154,23 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
         guard let bubbleManager = bubbleManager else {
             return
         }
+        guard let gameEngine = gameEngine else {
+            return
+        }
+        
         let launcher = Launcher(CGVector(UIScreen.main.bounds.size.width/2, UIScreen.main.bounds.size.height - launcherYOffSet), bubbleManager)
         self.launcher = launcher
-        gameEngine?.add(launcher)
+        gameEngine.add(launcher)
         
         createCannonBackground(launcher.position)
         
         let launcherRing = LauncherRing(launcher.position + launcher.nextBubbleOffsetPos)
-        gameEngine?.add(launcherRing)
+        gameEngine.add(launcherRing)
         
         createCannonBackground(launcherRing.position)
+        
+        let pathManager = PathManager(launcher, gameEngine)
+        gameEngine.add(pathManager)
     }
     
     private func createCannonBackground(_ position: CGVector) {
@@ -193,14 +200,15 @@ class GameplayController: UIViewController, ScoreManagerDelegate {
             //scene.shake2(count: 3, for: 0.3, withTranslation: 3)
             //scene.shake()
             
-            var positions = GameEngine.rayCast(launcher!.position + launcher!.dir * 228, launcher!.dir, 30)
-            
-            for pos in positions {
+            var positions = gameEngine?.rayCast(launcher!.position + launcher!.dir * 228, launcher!.dir, 30)
+            /*
+            for pos in positions! {
                 let cannonBackground = GameObject()
                 cannonBackground.position = pos
                 cannonBackground.addSpriteComponent(IMAGE_CANNON_BACKGROUND, CGRect(x: -cellWidth/2, y: -cellWidth/2, width: cellWidth, height: cellWidth))
                 gameEngine?.add(cannonBackground)
             }
+ */
         }
     }
 

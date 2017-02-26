@@ -15,6 +15,7 @@ class Launcher: GameObject {
     public let nextBubbleOffsetPos: CGVector = CGVector(100, 30)
     let speed = CGFloat(1500)
     private(set) var dir: CGVector = CGVector.zero
+    private let UPWARD_DIRECTION = CGVector(0, -100)
     
     private let CANNON_SPRITE_Z_POSITION = CGFloat(100)
     private let CANNON_ANIMATION_DURATION = 0.2
@@ -54,6 +55,8 @@ class Launcher: GameObject {
         
         bubbleManager.setCurrentBubbleInQueue(position: position)
         bubbleManager.setNextBubbleInQueue(position: position + nextBubbleOffsetPos)
+        
+        lookAt(position + UPWARD_DIRECTION)
     }
 
     public func getLookAtDir(_ lookAtPoint: CGVector) -> CGVector {

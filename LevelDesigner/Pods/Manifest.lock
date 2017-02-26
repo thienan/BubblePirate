@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   PhysicEngine:
-    :commit: 01cd9ada6e00f0bebd65a4edd72f2ae292dc1149
+    :commit: cc4b6e7f6f67c2a6db63e1260441e673a66fd671
     :git: https://limtaeu@bitbucket.org/cs3217/2017-ps5-a0126356e.git
 
 SPEC CHECKSUMS:

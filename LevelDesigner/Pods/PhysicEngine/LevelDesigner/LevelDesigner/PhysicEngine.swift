@@ -143,12 +143,12 @@ public class PhysicEngine {
                 guard let collider2 = physicObject.getSphereCollider() else {
                     continue
                 }
-                if collider1.intersect(collider2) {
+                if isStatic(physicObject) && collider1.intersect(collider2) {
                     moving = false
                     break
                 }
             }
-            
+
             if collider1.intersect(leftVerticalLine: worldBoundRect.minX) {
                 physicObjectBody.position = CGVector(worldBoundRect.minX + collider1.radius, physicObjectBody.position.y)
                 physicObjectBody.velocity = CGVector(-physicObjectBody.velocity.x, physicObjectBody.velocity.y)
@@ -162,11 +162,11 @@ public class PhysicEngine {
                 moving = false
                 break
             }
-            
+
             positions.append(physicObjectBody.position)
             physicObjectBody.position = physicObjectBody.position + physicObjectBody.velocity
         }
-
+        
         return positions
     }
     

@@ -11,8 +11,8 @@ import UIKit
 import PhysicEngine
 
 class GameEngine {
-    private(set) static var gameObjects: [GameObject] = []
-    private static let physicEngine: PhysicEngine = PhysicEngine()
+    private(set) var gameObjects: [GameObject] = []
+    private let physicEngine: PhysicEngine = PhysicEngine()
     private let renderEngine: RenderEngine
     private let scene: UIView
     private var displayLink: CADisplayLink?
@@ -34,17 +34,17 @@ class GameEngine {
         
         let deltaTime = CGFloat(displaylink.targetTimestamp - displaylink.timestamp)
         updateObjects(deltaTime)
-        GameEngine.physicEngine.update(deltaTime, GameEngine.gameObjects)
-        renderEngine.update(GameEngine.gameObjects)
+        physicEngine.update(deltaTime, gameObjects)
+        renderEngine.update(gameObjects)
         removeDeadObject()
     }
 
     private func removeDeadObject() {
         // remove gameobject's sprite component from renderer
-        let removedObject = GameEngine.gameObjects.filter{!$0.isAlive()}
+        let removedObject = gameObjects.filter{!$0.isAlive()}
         renderEngine.removeSpriteComponent(removedObject)
         notifyDestroyed(removedObject)
-        GameEngine.gameObjects = GameEngine.gameObjects.filter{$0.isAlive()}
+        gameObjects = gameObjects.filter{$0.isAlive()}
     }
     
     private func notifyDestroyed(_ inGameObject: [GameObject]) {
@@ -54,35 +54,35 @@ class GameEngine {
     }
     
     private func updateObjects(_ deltaTime: CGFloat) {
-        for gameObject in GameEngine.gameObjects {
+        for gameObject in gameObjects {
             gameObject.update(deltaTime)
         }
     }
     
     public func turnOffEngine() {
-        renderEngine.removeSpriteComponent(GameEngine.gameObjects)
-        GameEngine.gameObjects = []
+        renderEngine.removeSpriteComponent(gameObjects)
+        gameObjects = []
         displayLink?.invalidate()
     }
     
     public func add(_ gameObject: GameObject) {
-        GameEngine.gameObjects.append(gameObject)
+        gameObjects.append(gameObject)
     }
     
     public func setWorldBound(_ boundRect: CGRect) {
-        GameEngine.physicEngine.setWorldBound(boundRect)
+        physicEngine.setWorldBound(boundRect)
     }
 
     public static func localToWorldPosition(_ parent: GameObject, _ vec: CGVector) -> CGVector {
         return parent.position + vec
     }
     
-    public static func rayCast(_ origin: CGVector, _ direction: CGVector, _ radius: CGFloat) -> [CGVector] {
+    public func rayCast(_ origin: CGVector, _ direction: CGVector, _ radius: CGFloat) -> [CGVector] {
         let physicObjectBody = GameObject()
         physicObjectBody.addSphereColliderComponent(CGVector.zero, radius)
         physicObjectBody.position = origin
         physicObjectBody.velocity = direction * radius
-        return GameEngine.physicEngine.rayCast(GameEngine.gameObjects, physicObjectBody)
+        return physicEngine.rayCast(gameObjects, physicObjectBody)
     }
     
     public func shake() {
