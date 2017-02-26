@@ -23,6 +23,7 @@ class PathManager: GameObject {
     
     let angleOffset: CGFloat = 90
     let leftVector = CGVector(-1, 0)
+    let anchorAtMiddle = CGVector(0.5, 0.5)
     
     init(_ launcher: Launcher, _ gameEngine: GameEngine) {
         self.launcher = launcher
@@ -42,9 +43,7 @@ class PathManager: GameObject {
     
     private func createSprite() -> GameObject {
         let gameObject = GameObject()
-        let anchorAtMiddle = CGVector(0.5, 0.5)
         gameObject.addSpriteComponent(IMAGE_AIM_SHOT, CGRect(x: -SPRITE_WIDTH/2, y: -SPRITE_WIDTH/2, width: SPRITE_WIDTH, height: SPRITE_WIDTH), anchorAtMiddle)
-
         gameEngine.add(gameObject)
         return gameObject
     }
