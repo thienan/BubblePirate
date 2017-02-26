@@ -76,8 +76,12 @@ class GameEngine {
         return parent.position + vec
     }
     
-    public static func rayCast(_ origin: CGVector, _ direction: CGVector) -> (Bool, GameObject?) {
-        return GameEngine.physicEngine.rayCast(GameEngine.gameObjects, origin, direction) as! (Bool, GameObject?)
+    public static func rayCast(_ origin: CGVector, _ direction: CGVector, _ radius: CGFloat) -> [CGVector] {
+        let physicObjectBody = GameObject()
+        physicObjectBody.addSphereColliderComponent(CGVector.zero, radius)
+        physicObjectBody.position = origin
+        physicObjectBody.velocity = direction * radius
+        return GameEngine.physicEngine.rayCast(GameEngine.gameObjects, physicObjectBody)
     }
     
     public func shake() {

@@ -13,7 +13,7 @@ class Launcher: GameObject {
     private let bubbleManager: BubbleManager
     public let nextBubbleOffsetPos: CGVector = CGVector(100, 30)
     let speed = CGFloat(1500)
-    private var dir: CGVector = CGVector.zero
+    private(set) var dir: CGVector = CGVector.zero
     
     private let CANNON_SPRITE_Z_POSITION = CGFloat(100)
     private let CANNON_ANIMATION_DURATION = 0.2
@@ -85,6 +85,7 @@ class Launcher: GameObject {
         }
         animatedSpriteComponent.playAnimation()
         SoundPlayer.playRandom(soundNames: [SOUND_SHOOT1, SOUND_SHOOT2])
+        showPath()
     }
     
     public func lookAt(_ lookAtPosition: CGVector) {
@@ -107,6 +108,11 @@ class Launcher: GameObject {
         if sphereColliderComponent.contains(point: position) {
             bubbleManager.swapBubble()
         }
+    }
+    
+    public func showPath() {
+        //var positions = GameEngine.rayCast(position + dir * 228, dir, 30)
+        
     }
     
     // prevent from shooting toward the btm of the screen
