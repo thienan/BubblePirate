@@ -16,9 +16,9 @@ class PreLoader {
     
     let storageManager = StorageManager()
     
-    let LEVEL_NAME_1 = "Lonely"
-    let LEVEL_NAME_2 = "Effortless"
-    let LEVEL_NAME_3 = "Point Blank"
+    private let LEVEL_NAME_1 = "Lonely"
+    private let LEVEL_NAME_2 = "Effortless"
+    private let LEVEL_NAME_3 = "Point Blank"
     
     private init() {
         createLevel1()

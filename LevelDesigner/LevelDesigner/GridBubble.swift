@@ -32,7 +32,7 @@ class GridBubble: NSObject, NSCoding {
         case none = 8
     }
     
-    let OFFSCREEN_POSITION = CGPoint(x: -1, y: -1)
+    private let OFFSCREEN_POSITION = CGPoint(x: -1, y: -1)
     var position: CGPoint
     
     private struct Keys {

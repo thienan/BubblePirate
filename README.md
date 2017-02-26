@@ -126,6 +126,12 @@ Level Selection
 - test the view when is is loaded with 0 levels
 - test the view when is is loaded with 1 levels
 
+Gameplay Level
+- test end game by destroyign all bubbles
+- test end game with some bubbles flying around
+    - bubbles should dissapear
+- test pause menu
+
 Level Design
 -save and load with a valid string,”level 1”
 -save with invalid string,“”, " ", ".", "/"
@@ -167,6 +173,8 @@ Cannon
 - shoots bubble in the direction of the cannon's direction'
 - tap as fast as possible
 - tap at the bottom of the screen 
+- test animation
+    -should be played once for every tap and stoped
 
 trajectory
 - trajectory that has a limit when there is too many bounces
@@ -175,6 +183,9 @@ trajectory
 Sound
 - test background music 
 - test bubble effect music overlaps with background music
+- test all special effect bubble sound
+    -expected all different
+
 
 Glass-box testing
 GamePlay Controller class
@@ -278,6 +289,84 @@ loadLevelNames()
 getLevelNames()
 -0 level saved
 -10 level saved
+
+LevelDesignViewController.swift
+-all button presses func()
+-embedController is nil
+-press the same button - expect to be unselected
+-fadeAllButton()
+-when no button is selected
+-when a button is selected (test for all button)
+-createSaveAlert(title)
+-title = empty string
+-title = “level1”
+-textfield - empty string, “level1”, unicode
+-embedController is nil
+
+GridCollectionController.swift
+
+GridCollectionCell.swift
+-clearImage()
+-when imageView.image has an image
+-when imageView.image has no image 
+-setImage(image: UIImage)
+-different screen width for auto scaling
+-image that fits the cell
+-image that is bigger than the cell
+-image that is smaller than the cell
+
+BubbleGridManager.swift
+-createEmptyBubbleGrid()
+-call the function when grid is totally empty, full of bubbles
+-ROW_COUNT = 0
+-COLUMN_COUNT_ODD = 0
+-COLUMN_COUNT_EVEN = 0	
+
+-setBubbleColor(), getBubbleColor(), cycleBubbleColor(), isValid(indexRow, indexCol)
+-valid indexCol, indexRow
+-invalid indexCol, indexRow
+-indexRow, indexCol = 0
+-indexRow, indexCol such that: 
+-indexRow = ROW_COUNT - 1
+-indexRow = COLUMN_COUNT_EVEN -1
+-indexRow = COLUMN_COUNT_ODD -1
+
+-cycleBubbleColor() 
+-when bubbleColor != NONE
+-when bubbleColor == NONE
+
+-getBubbles()
+-when bubbleGrid is empty
+-when bubble grid is full of bubbles
+
+-loadBubbles(bubbles: [[Bubble]])
+*dimension = row size, col size
+-bubbles’s dimension = bubble grid dimension
+-when bubbles’s dimension != bubble grid dimension
+-empty grid
+-full of bubbles
+-1 bubble
+
+-isValid(bubbles: [[Bubble]])
+-bubbles’s dimension = bubble grid dimension
+-when bubbles’s dimension != bubble grid dimension
+
+
+GridBubble.swift
+cycleToNextColor()
+-blue -> red
+-red -> orange
+-orange -> green
+-green -> blue
+-none -> none
+
+required convenience init()
+-valid color
+-invalid color.rawvalue
+
+encode()
+-valid color
+
 
 ### Problem 9: The Bells & Whistles
 - screen vibration when pop bubble / special bubble

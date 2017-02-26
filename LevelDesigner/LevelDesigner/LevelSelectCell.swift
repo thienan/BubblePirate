@@ -17,19 +17,19 @@ class LevelSelectCell: UICollectionViewCell {
     @IBOutlet weak var star2: UIImageView!
     @IBOutlet weak var star3: UIImageView!
     
-    let MAX_STARS = 3
-    let OFFSET_X_SIDE_STAR: CGFloat = 60
-    let OFFSET_Y_SIDE_STAR: CGFloat = 35
-    let OFFSET_X_MIDDLE_STAR: CGFloat = 45
-    let OFFSET_Y_LABEL: CGFloat = 35
+    private let MAX_STARS = 3
+    private let OFFSET_X_SIDE_STAR: CGFloat = 60
+    private let OFFSET_Y_SIDE_STAR: CGFloat = 35
+    private let OFFSET_X_MIDDLE_STAR: CGFloat = 45
+    private let OFFSET_Y_LABEL: CGFloat = 35
     
-    let STAR1 = "star1"
-    let STAR2 = "star2"
-    let STAR3 = "star3"
+    private let STAR1 = "star1"
+    private let STAR2 = "star2"
+    private let STAR3 = "star3"
     
-    let STAR_WIN1 = "star-win1"
-    let STAR_WIN2 = "star-win2"
-    let STAR_WIN3 = "star-win3"
+    private let STAR_WIN1 = "star-win1"
+    private let STAR_WIN2 = "star-win2"
+    private let STAR_WIN3 = "star-win3"
     
     public func initCell(stars: Int) {
         scaleImage()
