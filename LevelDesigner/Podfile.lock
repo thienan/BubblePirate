@@ -11,7 +11,7 @@ EXTERNAL SOURCES:
 
 CHECKOUT OPTIONS:
   GameEngine:
-    :commit: f0041e746ffd54fc75b99938dffe5acac7b1bcb0
+    :commit: 72d0d4d63fe860402320bd212331b1a58cd8c5a8
     :git: https://limtaeu@bitbucket.org/cs3217/2017-ps5-a0126356e.git
 
 SPEC CHECKSUMS:

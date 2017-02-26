@@ -7,19 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		00C8EF9E0E3E9522410D11B3040FAA75 /* GameEngine-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 61D07F33DCF6669BD88559155CCC9CCF /* GameEngine-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0C4799464781FF1F02B96339F92A62F5 /* CollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE0A827D38882A8EE1EF8EE5AAD4F455 /* CollectionViewController.swift */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		0C8DEAEF2EE25B6D74E059684328A975 /* GameEngine-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A8888A0961397A9D7BF1A9800D8F896A /* GameEngine-dummy.m */; };
 		17D0B5227A6A345464B00EA15EF3305D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
-		72F9E367B970EA17A648C12693D744D4 /* PhysicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32F6544642B122CE5E4033C705115E9C /* PhysicEngine.swift */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		208F07B7E565AB9A1A25E2B52099044F /* PhysicEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = F1AA0764122656330943B6F53AEDE908 /* PhysicEngine.swift */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		3AE89128AFC7E4590614668F1B40F5C4 /* CGVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9058516606CE06088EB5D7658D7398C5 /* CGVector.swift */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		763293A554C72932F267628D4F72AF4C /* PhysicObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = C2ACDD55411971C8501438D7AB7D645A /* PhysicObject.swift */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		892CBA93EFCAA2C080F6E17248BABB21 /* GameEngine-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = DA481C3F7F5901CA637FA7A8F3D6F885 /* GameEngine-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8B50D6937161B38E1D2F12D706B57089 /* Pods-GameEngine-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = BC3621EE22CC103784C5BF798D750547 /* Pods-GameEngine-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		ADCD6DE2679C521BE6D942AC8D0E992D /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
+		A6957D498AC8956EB2C82BC5572CAFBC /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */; };
 		B9158AAD1D9CB78481D128A808A81F0C /* Pods-GameEngine-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 6A436A71577D0BDBF793744AF7D14FB3 /* Pods-GameEngine-dummy.m */; };
-		C6F65FDD9C3021B57BE764BDD1CFF183 /* SphereCollider.swift in Sources */ = {isa = PBXBuildFile; fileRef = CB947B1DD361C19A28ABBCC2918E2944 /* SphereCollider.swift */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		CD03499AD5F492E0A68BDEA417205593 /* PhysicObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EB3E2FAE82B1EB0E0BB04CAB67D66CE /* PhysicObject.swift */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		CEF9A30AA65051EA18A5859319EB31CF /* GridViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37A678CB344799DB8AA30A86D2FBBEBC /* GridViewController.swift */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		EA07F5C6DAAF5E972090756B0F994124 /* CGVector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 78786C48E753C7AA2D4226C61595E707 /* CGVector.swift */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
-		F6EB8416E49EFBD0618DC90B8DD5554F /* BombBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B712F33ECABAE06EA94C0F99F2343615 /* BombBubble.swift */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		E29FDF153FA33C9AD12012D73FE735E7 /* SphereCollider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 262574E3AA3614B497282E2BFC531EBF /* SphereCollider.swift */; settings = {COMPILER_FLAGS = "-DOS_OBJECT_USE_OBJC=0"; }; };
+		F81286D7D8CAC6400157A950982CFA5F /* GameEngine-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = D7FA77C68EA66AF1FCCCD7C4D2B7D137 /* GameEngine-dummy.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,38 +24,35 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 2298F928F92DE9C621C9EA6ADDFFB4DF;
+			remoteGlobalIDString = 7426243FF9AC0AD16AEBCC3B5DD59282;
 			remoteInfo = GameEngine;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		03D6926798FFA6570231D56ABB9C59E5 /* GameEngine-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GameEngine-prefix.pch"; sourceTree = "<group>"; };
 		0B1333CA59AD9311C094746C145C94AF /* Pods-GameEngine.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GameEngine.debug.xcconfig"; sourceTree = "<group>"; };
-		2A7180E1546F64C82B702186FD393AE1 /* GameEngine.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GameEngine.modulemap; sourceTree = "<group>"; };
+		15661F54728C1A24C22462414FC3351A /* GameEngine.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GameEngine.xcconfig; sourceTree = "<group>"; };
+		262574E3AA3614B497282E2BFC531EBF /* SphereCollider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SphereCollider.swift; path = LevelDesigner/LevelDesigner/SphereCollider.swift; sourceTree = "<group>"; };
 		32D265A1AA3E27362CCF4BE8272EE0EE /* Pods-GameEngine.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GameEngine.release.xcconfig"; sourceTree = "<group>"; };
-		32F6544642B122CE5E4033C705115E9C /* PhysicEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhysicEngine.swift; path = LevelDesigner/LevelDesigner/PhysicEngine.swift; sourceTree = "<group>"; };
-		37A678CB344799DB8AA30A86D2FBBEBC /* GridViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = GridViewController.swift; path = LevelDesigner/LevelDesigner/GridViewController.swift; sourceTree = "<group>"; };
 		3D199CB6C17700BF69F53A7EBA8D2E60 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44B6B4777FAFD1D39FFECA0DC714B9E5 /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		45F361F5AE5F0ADDEFA2D80413353480 /* Pods-GameEngine-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GameEngine-frameworks.sh"; sourceTree = "<group>"; };
 		48B383F3D97A780AE81650EE60A2C29C /* Pods_GameEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_GameEngine.framework; path = "Pods-GameEngine.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		52BA79DBF8E81E4E36BE64F0A66A16DE /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		61D07F33DCF6669BD88559155CCC9CCF /* GameEngine-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GameEngine-umbrella.h"; sourceTree = "<group>"; };
 		6A436A71577D0BDBF793744AF7D14FB3 /* Pods-GameEngine-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GameEngine-dummy.m"; sourceTree = "<group>"; };
-		6EB3E2FAE82B1EB0E0BB04CAB67D66CE /* PhysicObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhysicObject.swift; path = LevelDesigner/LevelDesigner/PhysicObject.swift; sourceTree = "<group>"; };
-		78786C48E753C7AA2D4226C61595E707 /* CGVector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CGVector.swift; path = LevelDesigner/LevelDesigner/CGVector.swift; sourceTree = "<group>"; };
+		9058516606CE06088EB5D7658D7398C5 /* CGVector.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CGVector.swift; path = LevelDesigner/LevelDesigner/CGVector.swift; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		999DEB97189D3C40773657BFFE53AE57 /* Pods-GameEngine.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = "Pods-GameEngine.modulemap"; sourceTree = "<group>"; };
-		A8888A0961397A9D7BF1A9800D8F896A /* GameEngine-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GameEngine-dummy.m"; sourceTree = "<group>"; };
-		AC3DD4D0BEB3475BCFFD5C09E71CEA39 /* GameEngine.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = GameEngine.xcconfig; sourceTree = "<group>"; };
-		B712F33ECABAE06EA94C0F99F2343615 /* BombBubble.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = BombBubble.swift; path = LevelDesigner/LevelDesigner/BombBubble.swift; sourceTree = "<group>"; };
 		BC3621EE22CC103784C5BF798D750547 /* Pods-GameEngine-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GameEngine-umbrella.h"; sourceTree = "<group>"; };
+		C0040C1C045BE24AB7A0731B1B6BA62F /* GameEngine-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GameEngine-prefix.pch"; sourceTree = "<group>"; };
 		C1754F139AD9AA9EDDC764A011C55173 /* Pods-GameEngine-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GameEngine-acknowledgements.plist"; sourceTree = "<group>"; };
-		CB947B1DD361C19A28ABBCC2918E2944 /* SphereCollider.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SphereCollider.swift; path = LevelDesigner/LevelDesigner/SphereCollider.swift; sourceTree = "<group>"; };
+		C2ACDD55411971C8501438D7AB7D645A /* PhysicObject.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhysicObject.swift; path = LevelDesigner/LevelDesigner/PhysicObject.swift; sourceTree = "<group>"; };
 		CBB3DE36805AF21409EC968A9691732F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS10.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		CE0A827D38882A8EE1EF8EE5AAD4F455 /* CollectionViewController.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CollectionViewController.swift; path = LevelDesigner/LevelDesigner/CollectionViewController.swift; sourceTree = "<group>"; };
 		D39264390A7BA834ABBD009BDAC611CB /* Pods-GameEngine-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GameEngine-acknowledgements.markdown"; sourceTree = "<group>"; };
+		D7FA77C68EA66AF1FCCCD7C4D2B7D137 /* GameEngine-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "GameEngine-dummy.m"; sourceTree = "<group>"; };
+		D857A240117A475E7C226898897C9E52 /* GameEngine.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; path = GameEngine.modulemap; sourceTree = "<group>"; };
+		DA481C3F7F5901CA637FA7A8F3D6F885 /* GameEngine-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "GameEngine-umbrella.h"; sourceTree = "<group>"; };
 		E821773897878A1C644139549280B1D2 /* Pods-GameEngine-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GameEngine-resources.sh"; sourceTree = "<group>"; };
+		F1AA0764122656330943B6F53AEDE908 /* PhysicEngine.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = PhysicEngine.swift; path = LevelDesigner/LevelDesigner/PhysicEngine.swift; sourceTree = "<group>"; };
 		FBFE99FC35712C746253F9184D6138A3 /* GameEngine.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = GameEngine.framework; path = GameEngine.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -71,21 +65,21 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		6B3520913E7ACBBB0EA71585E1CE49C3 /* Frameworks */ = {
+		9E51F61E298501FB456897282852627F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ADCD6DE2679C521BE6D942AC8D0E992D /* Foundation.framework in Frameworks */,
+				A6957D498AC8956EB2C82BC5572CAFBC /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2A958ED25715E61AFFB4A2145E5B5EAB /* Pods */ = {
+		08006DBA7B0F6EE58EF8A6F74DFC7CF2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				BEF21F65CB56782189F5D77E65E48F6E /* GameEngine */,
+				C4A2DECB3F5AD87A21BB0C5007AB1736 /* GameEngine */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -138,21 +132,21 @@
 			children = (
 				93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */,
 				BC3CA7F9E30CC8F7E2DD044DD34432FC /* Frameworks */,
-				2A958ED25715E61AFFB4A2145E5B5EAB /* Pods */,
+				08006DBA7B0F6EE58EF8A6F74DFC7CF2 /* Pods */,
 				5C389DEEC0E8CF6D57076E6B6B0ABDB2 /* Products */,
 				4A9475DD46A72E29EFA49D7AB2E10D4E /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		AE53B68CD914A03908DFF14C2C7BA330 /* Support Files */ = {
+		A2ED9484D79C0F0A029A4B7927876223 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				2A7180E1546F64C82B702186FD393AE1 /* GameEngine.modulemap */,
-				AC3DD4D0BEB3475BCFFD5C09E71CEA39 /* GameEngine.xcconfig */,
-				A8888A0961397A9D7BF1A9800D8F896A /* GameEngine-dummy.m */,
-				03D6926798FFA6570231D56ABB9C59E5 /* GameEngine-prefix.pch */,
-				61D07F33DCF6669BD88559155CCC9CCF /* GameEngine-umbrella.h */,
-				52BA79DBF8E81E4E36BE64F0A66A16DE /* Info.plist */,
+				D857A240117A475E7C226898897C9E52 /* GameEngine.modulemap */,
+				15661F54728C1A24C22462414FC3351A /* GameEngine.xcconfig */,
+				D7FA77C68EA66AF1FCCCD7C4D2B7D137 /* GameEngine-dummy.m */,
+				C0040C1C045BE24AB7A0731B1B6BA62F /* GameEngine-prefix.pch */,
+				DA481C3F7F5901CA637FA7A8F3D6F885 /* GameEngine-umbrella.h */,
+				44B6B4777FAFD1D39FFECA0DC714B9E5 /* Info.plist */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/GameEngine";
@@ -166,17 +160,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BEF21F65CB56782189F5D77E65E48F6E /* GameEngine */ = {
+		C4A2DECB3F5AD87A21BB0C5007AB1736 /* GameEngine */ = {
 			isa = PBXGroup;
 			children = (
-				B712F33ECABAE06EA94C0F99F2343615 /* BombBubble.swift */,
-				78786C48E753C7AA2D4226C61595E707 /* CGVector.swift */,
-				CE0A827D38882A8EE1EF8EE5AAD4F455 /* CollectionViewController.swift */,
-				37A678CB344799DB8AA30A86D2FBBEBC /* GridViewController.swift */,
-				32F6544642B122CE5E4033C705115E9C /* PhysicEngine.swift */,
-				6EB3E2FAE82B1EB0E0BB04CAB67D66CE /* PhysicObject.swift */,
-				CB947B1DD361C19A28ABBCC2918E2944 /* SphereCollider.swift */,
-				AE53B68CD914A03908DFF14C2C7BA330 /* Support Files */,
+				9058516606CE06088EB5D7658D7398C5 /* CGVector.swift */,
+				F1AA0764122656330943B6F53AEDE908 /* PhysicEngine.swift */,
+				C2ACDD55411971C8501438D7AB7D645A /* PhysicObject.swift */,
+				262574E3AA3614B497282E2BFC531EBF /* SphereCollider.swift */,
+				A2ED9484D79C0F0A029A4B7927876223 /* Support Files */,
 			);
 			name = GameEngine;
 			path = GameEngine;
@@ -193,34 +184,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F1A4E4307201638B43D84B705FC2C1B3 /* Headers */ = {
+		F76185715BCED8895FD6842C9965D9B1 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00C8EF9E0E3E9522410D11B3040FAA75 /* GameEngine-umbrella.h in Headers */,
+				892CBA93EFCAA2C080F6E17248BABB21 /* GameEngine-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		2298F928F92DE9C621C9EA6ADDFFB4DF /* GameEngine */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = AB54E34268FED0314E60301AB7676DFA /* Build configuration list for PBXNativeTarget "GameEngine" */;
-			buildPhases = (
-				439B6D3320D2958297248A298CF13206 /* Sources */,
-				6B3520913E7ACBBB0EA71585E1CE49C3 /* Frameworks */,
-				F1A4E4307201638B43D84B705FC2C1B3 /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = GameEngine;
-			productName = GameEngine;
-			productReference = FBFE99FC35712C746253F9184D6138A3 /* GameEngine.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		6759450CF44594E8B7E004BCBEA52DA8 /* Pods-GameEngine */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 55B1B339F51990A01C2F0DA7C2A36819 /* Build configuration list for PBXNativeTarget "Pods-GameEngine" */;
@@ -237,6 +211,23 @@
 			name = "Pods-GameEngine";
 			productName = "Pods-GameEngine";
 			productReference = 48B383F3D97A780AE81650EE60A2C29C /* Pods_GameEngine.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		7426243FF9AC0AD16AEBCC3B5DD59282 /* GameEngine */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B840E44D2D52F0BA0212F5C9C577D311 /* Build configuration list for PBXNativeTarget "GameEngine" */;
+			buildPhases = (
+				6BB996E6201E17E4DEA2213AC42BDDA2 /* Sources */,
+				9E51F61E298501FB456897282852627F /* Frameworks */,
+				F76185715BCED8895FD6842C9965D9B1 /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GameEngine;
+			productName = GameEngine;
+			productReference = FBFE99FC35712C746253F9184D6138A3 /* GameEngine.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 /* End PBXNativeTarget section */
@@ -260,25 +251,22 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2298F928F92DE9C621C9EA6ADDFFB4DF /* GameEngine */,
+				7426243FF9AC0AD16AEBCC3B5DD59282 /* GameEngine */,
 				6759450CF44594E8B7E004BCBEA52DA8 /* Pods-GameEngine */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		439B6D3320D2958297248A298CF13206 /* Sources */ = {
+		6BB996E6201E17E4DEA2213AC42BDDA2 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F6EB8416E49EFBD0618DC90B8DD5554F /* BombBubble.swift in Sources */,
-				EA07F5C6DAAF5E972090756B0F994124 /* CGVector.swift in Sources */,
-				0C4799464781FF1F02B96339F92A62F5 /* CollectionViewController.swift in Sources */,
-				0C8DEAEF2EE25B6D74E059684328A975 /* GameEngine-dummy.m in Sources */,
-				CEF9A30AA65051EA18A5859319EB31CF /* GridViewController.swift in Sources */,
-				72F9E367B970EA17A648C12693D744D4 /* PhysicEngine.swift in Sources */,
-				CD03499AD5F492E0A68BDEA417205593 /* PhysicObject.swift in Sources */,
-				C6F65FDD9C3021B57BE764BDD1CFF183 /* SphereCollider.swift in Sources */,
+				3AE89128AFC7E4590614668F1B40F5C4 /* CGVector.swift in Sources */,
+				F81286D7D8CAC6400157A950982CFA5F /* GameEngine-dummy.m in Sources */,
+				208F07B7E565AB9A1A25E2B52099044F /* PhysicEngine.swift in Sources */,
+				763293A554C72932F267628D4F72AF4C /* PhysicObject.swift in Sources */,
+				E29FDF153FA33C9AD12012D73FE735E7 /* SphereCollider.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,12 +284,44 @@
 		5365A1A5A7729188BD2DAF8E5C213685 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GameEngine;
-			target = 2298F928F92DE9C621C9EA6ADDFFB4DF /* GameEngine */;
+			target = 7426243FF9AC0AD16AEBCC3B5DD59282 /* GameEngine */;
 			targetProxy = 0FDCA57CD80C241C0A6FBC9CECFF53F0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
+		0797BE4084A6230C40D183EE2EB51A79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 15661F54728C1A24C22462414FC3351A /* GameEngine.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/GameEngine/GameEngine-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/GameEngine/Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MODULEMAP_FILE = "Target Support Files/GameEngine/GameEngine.modulemap";
+				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_NAME = GameEngine;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		12914D756594D15C6F2CA12FE5F89F1B /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -346,9 +366,9 @@
 			};
 			name = Debug;
 		};
-		589B742BB5A2074C87C3BFFBC613E529 /* Debug */ = {
+		4DA713E26BE9EB38E9911BBBC93FDAD3 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC3DD4D0BEB3475BCFFD5C09E71CEA39 /* GameEngine.xcconfig */;
+			baseConfigurationReference = 15661F54728C1A24C22462414FC3351A /* GameEngine.xcconfig */;
 			buildSettings = {
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -378,38 +398,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		5C2218960C0CA01EC8751F20EE16DDB8 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = AC3DD4D0BEB3475BCFFD5C09E71CEA39 /* GameEngine.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/GameEngine/GameEngine-prefix.pch";
-				INFOPLIST_FILE = "Target Support Files/GameEngine/Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				MODULEMAP_FILE = "Target Support Files/GameEngine/GameEngine.modulemap";
-				MTL_ENABLE_DEBUG_INFO = NO;
-				PRODUCT_NAME = GameEngine;
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 3.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		5F3F7ADCE05769B61CBD9E48FB4896E2 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -543,11 +531,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		AB54E34268FED0314E60301AB7676DFA /* Build configuration list for PBXNativeTarget "GameEngine" */ = {
+		B840E44D2D52F0BA0212F5C9C577D311 /* Build configuration list for PBXNativeTarget "GameEngine" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				589B742BB5A2074C87C3BFFBC613E529 /* Debug */,
-				5C2218960C0CA01EC8751F20EE16DDB8 /* Release */,
+				4DA713E26BE9EB38E9911BBBC93FDAD3 /* Debug */,
+				0797BE4084A6230C40D183EE2EB51A79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
